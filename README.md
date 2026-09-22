@@ -22,3 +22,8 @@ Live site: see `config.json` (`base_url`). Agent entry point: `/llms.txt`. Data:
 
 - `/intros/theo/` : Theo (t3.gg) top 10 outlier videos, past 12 months, intros cut at the sponsor handoff
 - `/intros/riley-brown/` : Riley Brown top 10 by views, intros cut at the transition into the body
+- `/intros/greg-isenberg/` : Greg Isenberg top 10 outliers, intros run through the cold open and guest setup to the handoff line
+- `/intros/alex-hormozi/` : Alex Hormozi top 10 outliers, intros cut where the first point or breakdown starts
+- `/intros/kallaway/` : Kallaway top 10 outliers, intros cut at the credibility line before section one
+
+Ranking for the outlier sets: views divided by the channel's median views over its past-year long-form uploads. Video lists via yt-dlp, transcripts via YouTube captions (Theo's via OutlierKit).

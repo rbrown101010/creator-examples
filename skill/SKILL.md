@@ -1,6 +1,6 @@
 ---
 name: creator-examples
-description: Look up Riley Brown's Creator Examples database, a plain-text website of creator content examples (currently YouTube video intros from Theo t3.gg and Riley Brown). Use whenever Riley or an agent needs reference intros, hooks, or outlier-video examples to study, imitate, compare against, or cite; when asked "what does a good intro look like", "show me Theo's intros", "pull my best intros"; or when adding new creators or examples to the database.
+description: Look up Riley Brown's Creator Examples database, a plain-text website of creator content examples (currently YouTube video intros from Theo t3.gg, Riley Brown, Greg Isenberg, Alex Hormozi, and Kallaway). Use whenever Riley or an agent needs reference intros, hooks, or outlier-video examples to study, imitate, compare against, or cite; when asked "what does a good intro look like", "show me Theo's intros", "pull my best intros"; or when adding new creators or examples to the database.
 ---
 
 # Creator Examples
@@ -21,6 +21,9 @@ A static, unstyled website that acts as a database of creator content examples. 
 - /intros/ : Intros. Links to one page per creator.
 - /intros/theo/ : Theo (t3.gg) top 10 outlier videos of the past year, each intro cut at the sponsor handoff.
 - /intros/riley-brown/ : Riley Brown top 10 videos by views, each intro cut at the transition into the body, plus a bullet outline of the rest of the video.
+- /intros/greg-isenberg/ : Greg Isenberg top 10 outliers, past year. Intro = produced cold open plus the guest setup, ending at "let's get into it" or "Enjoy the episode".
+- /intros/alex-hormozi/ : Alex Hormozi top 10 outliers, past year. Intro = hook and promise up to the line that starts the first point or business breakdown.
+- /intros/kallaway/ : Kallaway top 10 outliers, past year. Intro = hook, promise, and credibility line up to the sentence that opens section one.
 - /intros/<creator>/<NN-slug>/ : one page per example with title, source video link, views, duration, where the intro ends, and the intro text.
 - /data/<creator>.json : the same data as JSON. Each intro has title, url, views, duration, intro text, and its page URL.
 

@@ -37,3 +37,48 @@
 - https://creator-examples.vercel.app/intros/riley-brown/09-ai-coding-masterclass-from-beginner-to-expert-in-90-minutes/ : AI Coding Masterclass: From Beginner to Expert in 90 Minutes (205,607 views)
 - https://creator-examples.vercel.app/intros/riley-brown/10-complete-guide-to-cursor-for-non-coders-vibe-coding-101/ : Complete Guide to Cursor For Non-Coders (Vibe Coding 101) (177,362 views)
 
+## Intros: Greg Isenberg
+- Creator page: https://creator-examples.vercel.app/intros/greg-isenberg/
+- JSON: https://creator-examples.vercel.app/data/greg-isenberg.json
+- Method: Top 10 of 108 long-form uploads (Sept 2025 to Sept 2026) ranked by views divided by channel median views. Intro = everything before the conversation or teaching starts: the produced cold open plus the guest setup exchange, ending at the handoff line ("let's get into it", "Enjoy the episode"). Transcripts are YouTube captions.
+- https://creator-examples.vercel.app/intros/greg-isenberg/01-how-ai-agents-claude-skills-work-clearly-explained/ : How AI agents & Claude skills work (Clearly Explained) (837,314 views)
+- https://creator-examples.vercel.app/intros/greg-isenberg/02-building-ai-agents-that-actually-work-full-course/ : Building AI Agents that actually work (Full Course) (737,326 views)
+- https://creator-examples.vercel.app/intros/greg-isenberg/03-jev-is-here-how-to-use-it/ : Jev is HERE. How to use it (503,024 views)
+- https://creator-examples.vercel.app/intros/greg-isenberg/04-how-i-use-obsidian-claude-code-to-run-my-life/ : How I Use Obsidian + Claude Code to Run My Life (457,583 views)
+- https://creator-examples.vercel.app/intros/greg-isenberg/05-i-got-a-private-lesson-on-claude-cowork-claude-code/ : I got a private lesson on Claude Cowork & Claude Code (393,619 views)
+- https://creator-examples.vercel.app/intros/greg-isenberg/06-paperclip-hire-ai-agents-like-employees-live-demo/ : Paperclip: Hire AI Agents Like Employees (Live Demo) (381,263 views)
+- https://creator-examples.vercel.app/intros/greg-isenberg/07-claude-code-clearly-explained-and-how-to-use-it/ : Claude Code Clearly Explained (and how to use it) (372,952 views)
+- https://creator-examples.vercel.app/intros/greg-isenberg/08-clawdbot-openclaw-clearly-explained-and-how-to-use-it/ : Clawdbot/OpenClaw Clearly Explained (and how to use it) (343,180 views)
+- https://creator-examples.vercel.app/intros/greg-isenberg/09-i-m-obsessed-with-local-ai-here-s-why/ : I'm Obsessed With Local AI. Here's Why (336,025 views)
+- https://creator-examples.vercel.app/intros/greg-isenberg/10-cloudflare-will-make-1000-ai-millionaires/ : Cloudflare will make 1000+ AI millionaires (303,882 views)
+
+## Intros: Alex Hormozi
+- Creator page: https://creator-examples.vercel.app/intros/alex-hormozi/
+- JSON: https://creator-examples.vercel.app/data/alex-hormozi.json
+- Method: Top 10 of 63 long-form uploads (Sept 2025 to Sept 2026) ranked by views divided by channel median views. Intro = hook and promise up to the line that starts the first point, story, or business breakdown. Transcripts are YouTube captions.
+- https://creator-examples.vercel.app/intros/alex-hormozi/01-if-i-started-a-business-in-2026-i-d-do-this/ : If I Started A Business in 2026, I'd Do This (1,862,594 views)
+- https://creator-examples.vercel.app/intros/alex-hormozi/02-if-you-re-ambitious-but-inconsistent-please-watch-this/ : If you’re ambitious but inconsistent, please watch this (1,862,014 views)
+- https://creator-examples.vercel.app/intros/alex-hormozi/03-if-i-wanted-to-make-my-first-100k-in-2026-i-d-do-this/ : If I Wanted to Make My First $100K in 2026, I’d Do This (1,594,097 views)
+- https://creator-examples.vercel.app/intros/alex-hormozi/04-if-you-re-in-your-20s-or-30s-here-s-how-to-win-at-anything/ : If You're in Your 20s or 30s, Here's How to Win (at Anything) (1,228,329 views)
+- https://creator-examples.vercel.app/intros/alex-hormozi/05-how-i-would-build-a-10m-service-business-if-i-had-to-start-over/ : How I Would Build a $10M Service Business (If I Had to Start Over) (1,181,825 views)
+- https://creator-examples.vercel.app/intros/alex-hormozi/06-can-i-save-this-failing-theme-park-in-90-days/ : Can I Save This Failing Theme Park in 90 Days? (1,084,783 views)
+- https://creator-examples.vercel.app/intros/alex-hormozi/07-if-you-want-2026-to-be-the-best-year-of-your-life-please-watch-this-vi/ : If you want 2026 to be the best year of your life, please watch this video... (1,031,795 views)
+- https://creator-examples.vercel.app/intros/alex-hormozi/08-my-actual-social-media-strategy-for-2026/ : My Actual Social Media Strategy For 2026 (882,093 views)
+- https://creator-examples.vercel.app/intros/alex-hormozi/09-how-to-win-with-ai-in-2026/ : How to Win With AI in 2026 (835,871 views)
+- https://creator-examples.vercel.app/intros/alex-hormozi/10-how-to-force-yourself-to-be-consistent-and-do-hard-things/ : how to force yourself to be consistent and do hard things (810,953 views)
+
+## Intros: Kallaway
+- Creator page: https://creator-examples.vercel.app/intros/kallaway/
+- JSON: https://creator-examples.vercel.app/data/kallaway.json
+- Method: Top 10 of 46 long-form uploads (Sept 2025 to Sept 2026) ranked by views divided by channel median views. Intro = hook, promise, and credibility line ('I have a million followers...') up to the sentence that opens the first section. Transcripts are YouTube captions.
+- https://creator-examples.vercel.app/intros/kallaway/01-how-social-media-algorithms-actually-work-and-how-to-beat-them/ : How Social Media Algorithms Actually Work (And How to Beat Them) (951,751 views)
+- https://creator-examples.vercel.app/intros/kallaway/02-how-to-become-a-storytelling-genius-dopamine-ladders/ : How to Become a Storytelling Genius (Dopamine Ladders) (636,121 views)
+- https://creator-examples.vercel.app/intros/kallaway/03-the-neuroscience-of-addictive-storytelling-and-how-to-master-it/ : The Neuroscience of Addictive Storytelling (And How to Master It) (318,410 views)
+- https://creator-examples.vercel.app/intros/kallaway/04-you-re-not-ready-for-the-next-phase-of-social-media/ : You’re Not Ready for the Next Phase of Social Media (252,129 views)
+- https://creator-examples.vercel.app/intros/kallaway/05-the-only-6-words-you-need-to-hook-any-viewer/ : The ONLY 6 Words You Need to Hook ANY Viewer (188,867 views)
+- https://creator-examples.vercel.app/intros/kallaway/06-how-to-build-an-audience-that-s-obsessed-with-you-the-power-of-suggest/ : How to Build an Audience That's Obsessed With You (The Power of Suggestion) (187,692 views)
+- https://creator-examples.vercel.app/intros/kallaway/07-say-this-in-your-videos-it-ll-improve-your-storytelling-by-10x/ : Say This in Your Videos, It’ll Improve Your Storytelling by 10x (136,854 views)
+- https://creator-examples.vercel.app/intros/kallaway/08-the-new-era-of-personal-brands-is-here-and-you-re-not-ready/ : The NEW Era of Personal Brands is Here (and you’re not ready) (135,681 views)
+- https://creator-examples.vercel.app/intros/kallaway/09-how-to-speedrun-social-media/ : How to Speedrun Social Media (116,501 views)
+- https://creator-examples.vercel.app/intros/kallaway/10-5-claude-skills-to-grow-faster-than-99-of-people-on-social-media/ : 5 Claude Skills To Grow Faster Than 99% of People on Social Media (110,576 views)
+

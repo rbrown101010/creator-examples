@@ -15,6 +15,30 @@
    "page": "https://creator-examples.vercel.app/intros/riley-brown/",
    "json": "https://creator-examples.vercel.app/data/riley-brown.json",
    "count": 10
+  },
+  {
+   "name": "Greg Isenberg",
+   "slug": "greg-isenberg",
+   "type": "intros",
+   "page": "https://creator-examples.vercel.app/intros/greg-isenberg/",
+   "json": "https://creator-examples.vercel.app/data/greg-isenberg.json",
+   "count": 10
+  },
+  {
+   "name": "Alex Hormozi",
+   "slug": "alex-hormozi",
+   "type": "intros",
+   "page": "https://creator-examples.vercel.app/intros/alex-hormozi/",
+   "json": "https://creator-examples.vercel.app/data/alex-hormozi.json",
+   "count": 10
+  },
+  {
+   "name": "Kallaway",
+   "slug": "kallaway",
+   "type": "intros",
+   "page": "https://creator-examples.vercel.app/intros/kallaway/",
+   "json": "https://creator-examples.vercel.app/data/kallaway.json",
+   "count": 10
   }
  ]
 }

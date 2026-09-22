@@ -12,6 +12,9 @@ BASE = os.environ.get("BASE_URL", CFG["base_url"]).rstrip("/")
 CREATORS = [  # order on the Intros page
     ("theo", "Theo", "data/theo.json"),
     ("riley-brown", "Riley Brown", "data/riley-brown.json"),
+    ("greg-isenberg", "Greg Isenberg", "data/greg-isenberg.json"),
+    ("alex-hormozi", "Alex Hormozi", "data/alex-hormozi.json"),
+    ("kallaway", "Kallaway", "data/kallaway.json"),
 ]
 
 def slug(s):
@@ -77,7 +80,7 @@ for cslug, name, dfile in CREATORS:
         if prv: nav.append(f"<a href=\"/intros/{cslug}/{prv['_slug']}/\">Previous</a>")
         if nxt: nav.append(f"<a href=\"/intros/{cslug}/{nxt['_slug']}/\">Next</a>")
         body = (f"<h1>{esc(it['title'])}</h1>\n<p>{' | '.join(nav)}</p>\n<ul>\n" + "\n".join(f"<li>{m}</li>" for m in meta) + "\n</ul>\n"
-                f"<h2>Intro</h2>\n<p>{esc(it['intro'])}</p>\n")
+                f"<h2>Intro</h2>\n" + "\n".join(f"<p>{esc(para)}</p>" for para in it['intro'].split("\n") if para.strip()) + "\n")
         if it.get("rest_of_video"):
             body += "<h2>Rest of video</h2>\n<ul>\n" + "\n".join(f"<li>{esc(b)}</li>" for b in it["rest_of_video"]) + "\n</ul>\n"
         body += f"<p>{' | '.join(nav)}</p>"

@@ -1,0 +1,50 @@
+{
+ "greg-isenberg": {
+  "creator": "Greg Isenberg", "handle": "@GregIsenberg", "channel_url": "https://www.youtube.com/@GregIsenberg",
+  "method": "Top 10 of 108 long-form uploads (Sept 2025 to Sept 2026) ranked by views divided by channel median views. Intro = everything before the conversation or teaching starts: the produced cold open plus the guest setup exchange, ending at the handoff line (\"let's get into it\", \"Enjoy the episode\"). Transcripts are YouTube captions.",
+  "cuts": {
+   "S_oN3vlzpMw": [">> Let's go.", "guest setup ends with 'Let's go'"],
+   "eA9Zf2-qYYM": ["All right, let's do it. >> Sweet.", "cold open + guest setup, ends 'let's do it'"],
+   "4mTLpuQpB80": ["I'm just going to start out with a demo.", "cold open + guest setup, ends as the demo begins"],
+   "6MBq1paspVU": ["Let's get into it.", "cold open + guest setup, ends 'Let's get into it'"],
+   "DW4a1Cm8nG4": ["how they want to use co-work.", "cold open + guest's answer to 'what will people learn'"],
+   "C3-4llQYT8o": ["All right, let's get into it.", "cold open + guest banter, ends 'let's get into it'"],
+   "zxMjOqM7DFs": ["Okay, let's let's get into it.", "cold open + guest setup, ends 'let's get into it'"],
+   "U8kXfk8enrY": ["All right, let's get into it. >> Let's do it.", "cold open + guest setup, ends 'let's do it'"],
+   "UtFo1ZNC2ns": ["Okay, let's dive in.", "solo episode, ends 'let's dive in' before the show bumper"],
+   "MNNfat_QP0E": ["Enjoy the episode.", "solo episode, ends 'Enjoy the episode'"]
+  }
+ },
+ "alex-hormozi": {
+  "creator": "Alex Hormozi", "handle": "@AlexHormozi", "channel_url": "https://www.youtube.com/@AlexHormozi",
+  "method": "Top 10 of 63 long-form uploads (Sept 2025 to Sept 2026) ranked by views divided by channel median views. Intro = hook and promise up to the line that starts the first point, story, or business breakdown. Transcripts are YouTube captions.",
+  "cuts": {
+   "uWdIgftpvBI": ["Let's dive in.", "ends 'Let's dive in' after the thesis"],
+   "UDBkiBnMrHs": ["because fitness is still a passion of mine.", "ends at the promise, before the backstory"],
+   "jfW6gL6hKhk": ["trying to help you get there.", "ends at the promise, before step one"],
+   "0lMn_-EXyhQ": ["which is more.", "ends when the topic ('more') is named"],
+   "o64cI6tebnU": ["let's go meet Caleb.", "ends 'let's go meet Caleb'"],
+   "xRxVpjeHmeA": ["let's dive into the business.", "ends 'let's dive into the business'"],
+   "vhOV_Od0A3M": ["Hopefully, they're useful for you, too. Enjoy.", "compilation; three-sentence framing ends 'Enjoy'"],
+   "dMZ-n2KSlxE": ["So what do these actually stand for?", "ends as the SPCL framework breakdown begins"],
+   "9q5ojtkqsBs": ["This is also for my team.", "ends after the promise, before the argument"],
+   "WOZGZK7K-Jo": ["that will inevitably come as you grow.", "monologue; ends at the thesis before the argument"]
+  }
+ },
+ "kallaway": {
+  "creator": "Kallaway", "handle": "@kallawaymarketing", "channel_url": "https://www.youtube.com/@kallawaymarketing",
+  "method": "Top 10 of 46 long-form uploads (Sept 2025 to Sept 2026) ranked by views divided by channel median views. Intro = hook, promise, and credibility line ('I have a million followers...') up to the sentence that opens the first section. Transcripts are YouTube captions.",
+  "cuts": {
+   "8cQidXgtGmU": ["let's just start with how the algorithms actually work.", "ends on the transition into section one"],
+   "jtmstMt4WLc": ["how you can use it to your advantage. All right.", "ends at the promise"],
+   "KyC8r-zitVE": ["All right, let's dive in.", "ends 'let's dive in'"],
+   "XxzV82GNolg": ["you're going to want to pay attention. All right.", "ends before trend one"],
+   "S9FlxFv9dxg": ["to make hooks that actually work.", "ends on the transition into the six words"],
+   "cuVyTmbOZjk": ["an S-tier audience that's obsessed.", "ends at the promise, before the definition"],
+   "pcnrzBwoVUk": ["content is all I do all day long.", "ends at the credibility line before story lock one"],
+   "46t_cn0lx2E": ["content, marketing, and distribution in the future.", "ends at the promise, before attribute one"],
+   "fk6LExgMPxI": ["Let's start with number one.", "ends 'Let's start with number one'"],
+   "Cnk9NQ8JpCs": ["thank you to Enthropic for sponsoring this one.", "ends at the sponsor thanks, before setup"]
+  }
+ }
+}
