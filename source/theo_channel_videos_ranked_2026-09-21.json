@@ -1,0 +1,2702 @@
+[
+ {
+  "video_id": "0oXOOlqVu5M",
+  "title": "So I tried Matt's skills...",
+  "duration": "38:22",
+  "view_count": "439K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 439000,
+  "outlier": 4.2
+ },
+ {
+  "video_id": "XFWpf0wLbh0",
+  "title": "It's Here.",
+  "duration": "44:12",
+  "view_count": "398K views",
+  "published_time": "2 weeks ago",
+  "page": 1,
+  "views": 398000,
+  "outlier": 3.81
+ },
+ {
+  "video_id": "Xdxp3lbQKyQ",
+  "title": "Ox Alpha is INSANE",
+  "duration": "43:15",
+  "view_count": "354K views",
+  "published_time": "3 weeks ago",
+  "page": 1,
+  "views": 354000,
+  "outlier": 3.39
+ },
+ {
+  "video_id": "F3YXg7AaKWE",
+  "title": "Jev is incredible",
+  "duration": "30:30",
+  "view_count": "345K views",
+  "published_time": "23 hours ago",
+  "page": 1,
+  "views": 345000,
+  "outlier": 3.3
+ },
+ {
+  "video_id": "jKCjLzjmiaA",
+  "title": "Well This Was Unexpected...",
+  "duration": "27:05",
+  "view_count": "334K views",
+  "published_time": "3 weeks ago",
+  "page": 1,
+  "views": 334000,
+  "outlier": 3.2
+ },
+ {
+  "video_id": "GcNu6wrLTJc",
+  "title": "Delete your CLAUDE.md (and your AGENT.md too)",
+  "duration": "29:16",
+  "view_count": "303K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 303000,
+  "outlier": 2.9
+ },
+ {
+  "video_id": "aFcVKzfkJPk",
+  "title": "Claude Mythos and the end of software",
+  "duration": "26:25",
+  "view_count": "289K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 289000,
+  "outlier": 2.77
+ },
+ {
+  "video_id": "P7bxbDSnZRM",
+  "title": "Fable Vs Astra Debate Is Over",
+  "duration": "1:16:52",
+  "view_count": "288K views",
+  "published_time": "10 days ago",
+  "page": 1,
+  "views": 288000,
+  "outlier": 2.76
+ },
+ {
+  "video_id": "VgLwsakPgo4",
+  "title": "NVIDIA Just Lost Their Lead",
+  "duration": "25:28",
+  "view_count": "247K views",
+  "published_time": "3 weeks ago",
+  "page": 1,
+  "views": 247000,
+  "outlier": 2.36
+ },
+ {
+  "video_id": "lNVa33qUzZ8",
+  "title": "We all fell for it\u2026",
+  "duration": "56:43",
+  "view_count": "233K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 233000,
+  "outlier": 2.23
+ },
+ {
+  "video_id": "oPZLPUtmROo",
+  "title": "Did AI Kill React Native?",
+  "duration": "1:02:53",
+  "view_count": "229K views",
+  "published_time": "7 days ago",
+  "page": 1,
+  "views": 229000,
+  "outlier": 2.19
+ },
+ {
+  "video_id": "I82j7AzMU80",
+  "title": "How does Claude Code *actually* work?",
+  "duration": "39:23",
+  "view_count": "229K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 229000,
+  "outlier": 2.19
+ },
+ {
+  "video_id": "5KvY8CnBB3w",
+  "title": "Stop Pretending You Understand Your Codebase",
+  "duration": "28:36",
+  "view_count": "226K views",
+  "published_time": "2 weeks ago",
+  "page": 1,
+  "views": 226000,
+  "outlier": 2.16
+ },
+ {
+  "video_id": "q1D90-uGvBg",
+  "title": "You're using AI agents wrong",
+  "duration": "49:22",
+  "view_count": "222K views",
+  "published_time": "12 days ago",
+  "page": 1,
+  "views": 222000,
+  "outlier": 2.12
+ },
+ {
+  "video_id": "pzUn9wTCgcw",
+  "title": "Jira and Linear are legacy software",
+  "duration": "23:37",
+  "view_count": "219K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 219000,
+  "outlier": 2.1
+ },
+ {
+  "video_id": "8dTN4PBD2rg",
+  "title": "Google just dropped their Cursor killer (FREE Gemini 3 Pro???)",
+  "duration": "17:48",
+  "view_count": "218K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 218000,
+  "outlier": 2.09
+ },
+ {
+  "video_id": "9tGrhrVKCrE",
+  "title": "Why I'm moving to Linux (for real)",
+  "duration": "38:06",
+  "view_count": "213K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 213000,
+  "outlier": 2.04
+ },
+ {
+  "video_id": "stZr6U_7S90",
+  "title": "Claude Code is unusable now",
+  "duration": "24:23",
+  "view_count": "213K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 213000,
+  "outlier": 2.04
+ },
+ {
+  "video_id": "Be-NqsW-wuk",
+  "title": "Claude watermarks your code now",
+  "duration": "31:59",
+  "view_count": "211K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 211000,
+  "outlier": 2.02
+ },
+ {
+  "video_id": "luhgjBrRulk",
+  "title": "The Tailwind drama",
+  "duration": "17:02",
+  "view_count": "211K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 211000,
+  "outlier": 2.02
+ },
+ {
+  "video_id": "Q4LoxsIwriA",
+  "title": "Kimi K3 is the best model ever made (sometimes)",
+  "duration": "41:35",
+  "view_count": "210K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 210000,
+  "outlier": 2.01
+ },
+ {
+  "video_id": "m1QrNF9wZao",
+  "title": "Which browser should you use right now?",
+  "duration": "1:07:14",
+  "view_count": "204K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 204000,
+  "outlier": 1.95
+ },
+ {
+  "video_id": "EUE8N6mqtGg",
+  "title": "So I stopped using Ghostty...",
+  "duration": "23:22",
+  "view_count": "202K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 202000,
+  "outlier": 1.93
+ },
+ {
+  "video_id": "1HeALnI-gVg",
+  "title": "Are you f**king kidding?",
+  "duration": "15:38",
+  "view_count": "202K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 202000,
+  "outlier": 1.93
+ },
+ {
+  "video_id": "r_dw-1109Ag",
+  "title": "My New Favorite Model",
+  "duration": "55:06",
+  "view_count": "200K views",
+  "published_time": "2 weeks ago",
+  "page": 1,
+  "views": 200000,
+  "outlier": 1.91
+ },
+ {
+  "video_id": "Wvj1mTqyzsQ",
+  "title": "BREAKING: Claude Code source leaked",
+  "duration": "39:27",
+  "view_count": "199K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 199000,
+  "outlier": 1.9
+ },
+ {
+  "video_id": "SU7T8FztjKQ",
+  "title": "This Model Shouldn't Exist...",
+  "duration": "34:23",
+  "view_count": "198K views",
+  "published_time": "2 weeks ago",
+  "page": 1,
+  "views": 198000,
+  "outlier": 1.89
+ },
+ {
+  "video_id": "-g1yKRo5XtY",
+  "title": "How I code with AI right now",
+  "duration": "55:44",
+  "view_count": "198K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 198000,
+  "outlier": 1.89
+ },
+ {
+  "video_id": "1p334v40npw",
+  "title": "I'm scared to make this video",
+  "duration": "23:37",
+  "view_count": "197K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 197000,
+  "outlier": 1.89
+ },
+ {
+  "video_id": "4B4R2T4w7Kg",
+  "title": "This is really bad\u2026",
+  "duration": "26:34",
+  "view_count": "196K views",
+  "published_time": "12 days ago",
+  "page": 1,
+  "views": 196000,
+  "outlier": 1.88
+ },
+ {
+  "video_id": "DlNTmbARUTA",
+  "title": "I think they mean it this time",
+  "duration": "34:48",
+  "view_count": "194K views",
+  "published_time": "8 days ago",
+  "page": 1,
+  "views": 194000,
+  "outlier": 1.86
+ },
+ {
+  "video_id": "131yAOjxHHQ",
+  "title": "I'm done.",
+  "duration": "45:51",
+  "view_count": "193K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 193000,
+  "outlier": 1.85
+ },
+ {
+  "video_id": "-5LfRL82Jck",
+  "title": "I'm addicted to Claude Code (i get it now)",
+  "duration": "32:21",
+  "view_count": "186K views",
+  "published_time": "8 months ago",
+  "page": 7,
+  "views": 186000,
+  "outlier": 1.78
+ },
+ {
+  "video_id": "qKf9sgKFQLU",
+  "title": "OpenAI just dropped their Cursor killer",
+  "duration": "22:50",
+  "view_count": "182K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 182000,
+  "outlier": 1.74
+ },
+ {
+  "video_id": "Q7n0PGbMW_U",
+  "title": "Anthropic Is \"Increasing\" Your Limits",
+  "duration": "15:20",
+  "view_count": "179K views",
+  "published_time": "3 weeks ago",
+  "page": 1,
+  "views": 179000,
+  "outlier": 1.71
+ },
+ {
+  "video_id": "88qc67oYDl4",
+  "title": "Realistic advice about software dev right now",
+  "duration": "54:07",
+  "view_count": "179K views",
+  "published_time": "4 months ago",
+  "page": 4,
+  "views": 179000,
+  "outlier": 1.71
+ },
+ {
+  "video_id": "iBrAWpjXNxs",
+  "title": "Please stop using stupid models",
+  "duration": "27:09",
+  "view_count": "175K views",
+  "published_time": "3 days ago",
+  "page": 1,
+  "views": 175000,
+  "outlier": 1.67
+ },
+ {
+  "video_id": "tKPtZtsLgUA",
+  "title": "Vibe coding is already dead",
+  "duration": "23:20",
+  "view_count": "173K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 173000,
+  "outlier": 1.66
+ },
+ {
+  "video_id": "JMYspR42HFM",
+  "title": "Claude Code vs Codex vs Cursor (an honest comparison)",
+  "duration": "37:57",
+  "view_count": "169K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 169000,
+  "outlier": 1.62
+ },
+ {
+  "video_id": "sFEDAkJy9Dc",
+  "title": "I can't believe nobody's done this before...",
+  "duration": "18:55",
+  "view_count": "169K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 169000,
+  "outlier": 1.62
+ },
+ {
+  "video_id": "w62xTVuyu3s",
+  "title": "AI has a subsidization problem",
+  "duration": "37:39",
+  "view_count": "168K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 168000,
+  "outlier": 1.61
+ },
+ {
+  "video_id": "p2aea9dytpE",
+  "title": "Software engineering is dead now",
+  "duration": "40:18",
+  "view_count": "167K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 167000,
+  "outlier": 1.6
+ },
+ {
+  "video_id": "06BvFMW8Ng8",
+  "title": "Which AI Models Are Worth Using",
+  "duration": "36:36",
+  "view_count": "166K views",
+  "published_time": "4 weeks ago",
+  "page": 1,
+  "views": 166000,
+  "outlier": 1.59
+ },
+ {
+  "video_id": "zd6tBbCwkks",
+  "title": "This model is kind of a disaster.",
+  "duration": "38:00",
+  "view_count": "166K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 166000,
+  "outlier": 1.59
+ },
+ {
+  "video_id": "-Gj0-EIyx6g",
+  "title": "Meta's Claude Code clone is INSANELY cheap",
+  "duration": "44:42",
+  "view_count": "165K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 165000,
+  "outlier": 1.58
+ },
+ {
+  "video_id": "3pkz-Ie_k_c",
+  "title": "Anthropic just\u2026wait what",
+  "duration": "35:13",
+  "view_count": "164K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 164000,
+  "outlier": 1.57
+ },
+ {
+  "video_id": "hDn8-fK3XaU",
+  "title": "It's finally here.",
+  "duration": "12:38",
+  "view_count": "163K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 163000,
+  "outlier": 1.56
+ },
+ {
+  "video_id": "39PdgOYjBMg",
+  "title": "Gemini 3 Pro is the best model ever made",
+  "duration": "30:56",
+  "view_count": "163K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 163000,
+  "outlier": 1.56
+ },
+ {
+  "video_id": "mHG7K7QmQyU",
+  "title": "So I've been using gpt-5.6 for awhile...",
+  "duration": "26:09",
+  "view_count": "162K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 162000,
+  "outlier": 1.55
+ },
+ {
+  "video_id": "KSV-7ywHxeU",
+  "title": "FABLE IS BACK! (And Sonnet 5 is here too)",
+  "duration": "28:38",
+  "view_count": "161K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 161000,
+  "outlier": 1.54
+ },
+ {
+  "video_id": "7IewbRdaBWI",
+  "title": "Fable is Mythos, and it is really good.",
+  "duration": "32:54",
+  "view_count": "159K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 159000,
+  "outlier": 1.52
+ },
+ {
+  "video_id": "HuE7OvOckfE",
+  "title": "Get In, We're Leaving GitHub",
+  "duration": "50:46",
+  "view_count": "159K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 159000,
+  "outlier": 1.52
+ },
+ {
+  "video_id": "DWcqbPm_Rn4",
+  "title": "Markdown is a terrible language",
+  "duration": "22:06",
+  "view_count": "159K views",
+  "published_time": "4 months ago",
+  "page": 4,
+  "views": 159000,
+  "outlier": 1.52
+ },
+ {
+  "video_id": "gh6aFBnwQj4",
+  "title": "Anthropic just burned so much trust...",
+  "duration": "24:25",
+  "view_count": "159K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 159000,
+  "outlier": 1.52
+ },
+ {
+  "video_id": "W-kM56mf-Nw",
+  "title": "BREAKING: Fable and Mythos have been taken down for security concerns.",
+  "duration": "14:20",
+  "view_count": "158K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 158000,
+  "outlier": 1.51
+ },
+ {
+  "video_id": "wvt5JNUXXLM",
+  "title": "The Future of TypeScript",
+  "duration": "30:01",
+  "view_count": "156K views",
+  "published_time": "7 months ago",
+  "page": 5,
+  "views": 156000,
+  "outlier": 1.49
+ },
+ {
+  "video_id": "HD5TWE8xD7o",
+  "title": "gpt-5.4 is really, really good",
+  "duration": "40:21",
+  "view_count": "154K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 154000,
+  "outlier": 1.47
+ },
+ {
+  "video_id": "dLhcLqoff6k",
+  "title": "I'm done with terminals",
+  "duration": "31:17",
+  "view_count": "152K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 152000,
+  "outlier": 1.45
+ },
+ {
+  "video_id": "U3uX115I9sY",
+  "title": "Oh no (the new Grok model is good)",
+  "duration": "24:44",
+  "view_count": "152K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 152000,
+  "outlier": 1.45
+ },
+ {
+  "video_id": "VDPMXSAxiWk",
+  "title": "Prime is (mostly) right about AI",
+  "duration": "41:12",
+  "view_count": "152K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 152000,
+  "outlier": 1.45
+ },
+ {
+  "video_id": "Jcuig8vhmx4",
+  "title": "AI mistakes you're probably making",
+  "duration": "46:08",
+  "view_count": "148K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 148000,
+  "outlier": 1.42
+ },
+ {
+  "video_id": "_goOUJkkxUk",
+  "title": "Anthropic fights back",
+  "duration": "28:03",
+  "view_count": "147K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 147000,
+  "outlier": 1.41
+ },
+ {
+  "video_id": "Sc5ca-VJdxY",
+  "title": "I moved off of Next.js",
+  "duration": "52:29",
+  "view_count": "147K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 147000,
+  "outlier": 1.41
+ },
+ {
+  "video_id": "UvUzpSlXKtg",
+  "title": "Cursor just crushed Claude Code",
+  "duration": "37:30",
+  "view_count": "145K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 145000,
+  "outlier": 1.39
+ },
+ {
+  "video_id": "g-CGIWHeSyo",
+  "title": "Finally.",
+  "duration": "13:23",
+  "view_count": "145K views",
+  "published_time": "11 months ago",
+  "page": 8,
+  "views": 145000,
+  "outlier": 1.39
+ },
+ {
+  "video_id": "cIgoqAy_Vs8",
+  "title": "Opus 5 is my new go-to model",
+  "duration": "44:29",
+  "view_count": "143K views",
+  "published_time": "1 month ago",
+  "page": 2,
+  "views": 143000,
+  "outlier": 1.37
+ },
+ {
+  "video_id": "xJaMTo2YgO8",
+  "title": "How I code with AI changed a lot",
+  "duration": "47:34",
+  "view_count": "143K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 143000,
+  "outlier": 1.37
+ },
+ {
+  "video_id": "zqOrriq20Tc",
+  "title": "Apple Changed...",
+  "duration": "58:40",
+  "view_count": "142K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 142000,
+  "outlier": 1.36
+ },
+ {
+  "video_id": "iJVJwmCKW9o",
+  "title": "I guess we're writing loops now?",
+  "duration": "24:45",
+  "view_count": "142K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 142000,
+  "outlier": 1.36
+ },
+ {
+  "video_id": "eTZygkJLmqs",
+  "title": "Anthropic and OpenAI are terrified of Kimi",
+  "duration": "36:01",
+  "view_count": "141K views",
+  "published_time": "1 month ago",
+  "page": 2,
+  "views": 141000,
+  "outlier": 1.35
+ },
+ {
+  "video_id": "1piFEKA9XL0",
+  "title": "Anthropic admits that MCP sucks",
+  "duration": "28:36",
+  "view_count": "141K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 141000,
+  "outlier": 1.35
+ },
+ {
+  "video_id": "t8hfOyF4ehw",
+  "title": "I can't believe they released this",
+  "duration": "25:59",
+  "view_count": "139K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 139000,
+  "outlier": 1.33
+ },
+ {
+  "video_id": "wnfxSxP8pGs",
+  "title": "I need to rant about local models",
+  "duration": "28:11",
+  "view_count": "139K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 139000,
+  "outlier": 1.33
+ },
+ {
+  "video_id": "8GRmLR__OGQ",
+  "title": "A proper guide to Fable 5",
+  "duration": "43:15",
+  "view_count": "138K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 138000,
+  "outlier": 1.32
+ },
+ {
+  "video_id": "ypO0q_8zhWw",
+  "title": "Why is OpenAI so much more efficient?",
+  "duration": "31:31",
+  "view_count": "136K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 136000,
+  "outlier": 1.3
+ },
+ {
+  "video_id": "73F6ZURl1MQ",
+  "title": "Cursor, Claude Code and Codex all have a BIG problem",
+  "duration": "44:08",
+  "view_count": "135K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 135000,
+  "outlier": 1.29
+ },
+ {
+  "video_id": "HUsDzyJ3H64",
+  "title": "I don't really like GPT-5.5\u2026",
+  "duration": "27:09",
+  "view_count": "134K views",
+  "published_time": "4 months ago",
+  "page": 4,
+  "views": 134000,
+  "outlier": 1.28
+ },
+ {
+  "video_id": "QwShVo0zfuk",
+  "title": "Everything needs to change",
+  "duration": "24:38",
+  "view_count": "134K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 134000,
+  "outlier": 1.28
+ },
+ {
+  "video_id": "cTJbjM0T_Fs",
+  "title": "Clawdbot has gone rogue (I can't believe this is real)",
+  "duration": "29:07",
+  "view_count": "134K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 134000,
+  "outlier": 1.28
+ },
+ {
+  "video_id": "28z6OjsNsUk",
+  "title": "What happens now?",
+  "duration": "49:10",
+  "view_count": "134K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 134000,
+  "outlier": 1.28
+ },
+ {
+  "video_id": "B6C-MWCFfAg",
+  "title": "It's time to change your database",
+  "duration": "39:44",
+  "view_count": "133K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 133000,
+  "outlier": 1.27
+ },
+ {
+  "video_id": "Z9UxjmNF7b0",
+  "title": "You're falling behind. It's time to catch up.",
+  "duration": "32:45",
+  "view_count": "133K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 133000,
+  "outlier": 1.27
+ },
+ {
+  "video_id": "NeJ6wq2szVs",
+  "title": "Ripple: a new framework that takes the best of everything",
+  "duration": "30:08",
+  "view_count": "131K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 131000,
+  "outlier": 1.25
+ },
+ {
+  "video_id": "NvVbCqDgfCs",
+  "title": "How I Code Without Typing",
+  "duration": "38:22",
+  "view_count": "129K views",
+  "published_time": "5 days ago",
+  "page": 1,
+  "views": 129000,
+  "outlier": 1.23
+ },
+ {
+  "video_id": "zl_Z5TNJB3U",
+  "title": "The unexpected death of Codex",
+  "duration": "26:51",
+  "view_count": "128K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 128000,
+  "outlier": 1.22
+ },
+ {
+  "video_id": "h6ukrWyqOm4",
+  "title": "I'm so f***ing tired of Obsidian.",
+  "duration": "18:29",
+  "view_count": "128K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 128000,
+  "outlier": 1.22
+ },
+ {
+  "video_id": "vtWMgVCMsx8",
+  "title": "GLM-5 is unbelievable (Opus for 20% the cost??)",
+  "duration": "26:23",
+  "view_count": "128K views",
+  "published_time": "7 months ago",
+  "page": 5,
+  "views": 128000,
+  "outlier": 1.22
+ },
+ {
+  "video_id": "xmGY276gEFY",
+  "title": "Claude Code's creator has some really good advice",
+  "duration": "19:13",
+  "view_count": "127K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 127000,
+  "outlier": 1.22
+ },
+ {
+  "video_id": "j_kJNYLI6Tw",
+  "title": "We need to talk about the Claude Code rate limits",
+  "duration": "32:57",
+  "view_count": "127K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 127000,
+  "outlier": 1.22
+ },
+ {
+  "video_id": "f2FnYRP5kC4",
+  "title": "The Best Model For Frontend Design Is...",
+  "duration": "31:36",
+  "view_count": "127K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 127000,
+  "outlier": 1.22
+ },
+ {
+  "video_id": "WkHdkwDQJ5o",
+  "title": "Claude's new Cursor killer just dropped",
+  "duration": "30:07",
+  "view_count": "126K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 126000,
+  "outlier": 1.21
+ },
+ {
+  "video_id": "qCPGzV5GfRU",
+  "title": "PewDiePie is right about AI",
+  "duration": "43:37",
+  "view_count": "126K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 126000,
+  "outlier": 1.21
+ },
+ {
+  "video_id": "yzRJDl5GQVg",
+  "title": "GPT-5.6 is here, and we can't use it",
+  "duration": "30:08",
+  "view_count": "125K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 125000,
+  "outlier": 1.2
+ },
+ {
+  "video_id": "wDgq9aiuL-w",
+  "title": "Did Anthropic just kill Figma?",
+  "duration": "37:54",
+  "view_count": "124K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 124000,
+  "outlier": 1.19
+ },
+ {
+  "video_id": "rncxz2XROUg",
+  "title": "Gemini 3.1 Pro is the smartest model ever made",
+  "duration": "24:46",
+  "view_count": "124K views",
+  "published_time": "7 months ago",
+  "page": 5,
+  "views": 124000,
+  "outlier": 1.19
+ },
+ {
+  "video_id": "w4gqOWUw230",
+  "title": "Life after TypeScript",
+  "duration": "42:48",
+  "view_count": "124K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 124000,
+  "outlier": 1.19
+ },
+ {
+  "video_id": "uZBjVeyiYkk",
+  "title": "Sonnet 4.5 is the best coding model in the world",
+  "duration": "33:17",
+  "view_count": "124K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 124000,
+  "outlier": 1.19
+ },
+ {
+  "video_id": "4wAXvZfCXTg",
+  "title": "I can't take it anymore.",
+  "duration": "1:05:16",
+  "view_count": "123K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 123000,
+  "outlier": 1.18
+ },
+ {
+  "video_id": "_k22WAEAfpE",
+  "title": "Anthropic is lying to us.",
+  "duration": "31:53",
+  "view_count": "123K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 123000,
+  "outlier": 1.18
+ },
+ {
+  "video_id": "J8O9LLpJNrg",
+  "title": "Seriously, Anthropic??",
+  "duration": "34:39",
+  "view_count": "122K views",
+  "published_time": "4 months ago",
+  "page": 4,
+  "views": 122000,
+  "outlier": 1.17
+ },
+ {
+  "video_id": "ysS8GDwsaK8",
+  "title": "Anthropic thinks they're Apple. They're actually hypocrites.",
+  "duration": "23:31",
+  "view_count": "122K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 122000,
+  "outlier": 1.17
+ },
+ {
+  "video_id": "J8lxHyQmcaI",
+  "title": "The end of the GPU era",
+  "duration": "18:25",
+  "view_count": "120K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 120000,
+  "outlier": 1.15
+ },
+ {
+  "video_id": "Jf54k7tFeEc",
+  "title": "Turn off Claude Code's Memory",
+  "duration": "39:29",
+  "view_count": "119K views",
+  "published_time": "3 weeks ago",
+  "page": 1,
+  "views": 119000,
+  "outlier": 1.14
+ },
+ {
+  "video_id": "kEPLuEjVr_4",
+  "title": "So close to Opus at 1/10th the price (GLM-4.7 and Minimax M2.1 showdown)",
+  "duration": "49:39",
+  "view_count": "119K views",
+  "published_time": "8 months ago",
+  "page": 7,
+  "views": 119000,
+  "outlier": 1.14
+ },
+ {
+  "video_id": "c7W8jpsjtCc",
+  "title": "xAI just caught up (Grok 4.6 is here)",
+  "duration": "25:31",
+  "view_count": "117K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 117000,
+  "outlier": 1.12
+ },
+ {
+  "video_id": "IfkBQyWuTOE",
+  "title": "Fable 5 vs GPT-5.6",
+  "duration": "57:39",
+  "view_count": "117K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 117000,
+  "outlier": 1.12
+ },
+ {
+  "video_id": "e1snsuY4lTI",
+  "title": "My AGENTS.md & SKILLS.md Breakdown (Don't copy them)",
+  "duration": "51:15",
+  "view_count": "116K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 116000,
+  "outlier": 1.11
+ },
+ {
+  "video_id": "1SJGGUeEbQs",
+  "title": "A realistic comparison of Opus and Codex",
+  "duration": "54:10",
+  "view_count": "116K views",
+  "published_time": "7 months ago",
+  "page": 5,
+  "views": 116000,
+  "outlier": 1.11
+ },
+ {
+  "video_id": "KFisvc-AMII",
+  "title": "Did Claude really get dumber again?",
+  "duration": "44:15",
+  "view_count": "115K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 115000,
+  "outlier": 1.1
+ },
+ {
+  "video_id": "Noo0NWD0gHU",
+  "title": "I need you to hear me out (it's REALLY good)",
+  "duration": "30:48",
+  "view_count": "114K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 114000,
+  "outlier": 1.09
+ },
+ {
+  "video_id": "sKmrLtB47WA",
+  "title": "This is absolute chaos...",
+  "duration": "30:09",
+  "view_count": "114K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 114000,
+  "outlier": 1.09
+ },
+ {
+  "video_id": "icu0GZcSb58",
+  "title": "I got DMCA'd by Anthropic (not a joke)",
+  "duration": "16:17",
+  "view_count": "114K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 114000,
+  "outlier": 1.09
+ },
+ {
+  "video_id": "M-pkXr-qqII",
+  "title": "We need to talk about Sonnet 4.6",
+  "duration": "46:42",
+  "view_count": "114K views",
+  "published_time": "7 months ago",
+  "page": 5,
+  "views": 114000,
+  "outlier": 1.09
+ },
+ {
+  "video_id": "VgtfpTGJmHQ",
+  "title": "Cursor just changed forever",
+  "duration": "21:48",
+  "view_count": "114K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 114000,
+  "outlier": 1.09
+ },
+ {
+  "video_id": "kAjNWanR3n8",
+  "title": "Zig's creator can't stop himself",
+  "duration": "1:00:07",
+  "view_count": "113K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 113000,
+  "outlier": 1.08
+ },
+ {
+  "video_id": "WBT-z_-OPhw",
+  "title": "It's time to go bigger",
+  "duration": "23:22",
+  "view_count": "113K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 113000,
+  "outlier": 1.08
+ },
+ {
+  "video_id": "FDxW2bfBOWE",
+  "title": "I hated making this video...",
+  "duration": "27:47",
+  "view_count": "113K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 113000,
+  "outlier": 1.08
+ },
+ {
+  "video_id": "fxxpQhJyupQ",
+  "title": "Microsoft and OpenAI break up (Amazon is pumped)",
+  "duration": "36:46",
+  "view_count": "113K views",
+  "published_time": "4 months ago",
+  "page": 4,
+  "views": 113000,
+  "outlier": 1.08
+ },
+ {
+  "video_id": "aKPaxQJs-30",
+  "title": "Shadcn just changed forever",
+  "duration": "25:29",
+  "view_count": "113K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 113000,
+  "outlier": 1.08
+ },
+ {
+  "video_id": "UiCEejcV5N4",
+  "title": "React got hacked. It's really, really bad.",
+  "duration": "32:54",
+  "view_count": "113K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 113000,
+  "outlier": 1.08
+ },
+ {
+  "video_id": "TKlOCjLMNtw",
+  "title": "Fable Broke My App and Couldn't Fix It",
+  "duration": "27:32",
+  "view_count": "112K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 112000,
+  "outlier": 1.07
+ },
+ {
+  "video_id": "IyoTJHLmClo",
+  "title": "GPT-5.6: The Review",
+  "duration": "36:00",
+  "view_count": "111K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 111000,
+  "outlier": 1.06
+ },
+ {
+  "video_id": "m5faQ13A90M",
+  "title": "I hope you already own a Macbook...",
+  "duration": "22:44",
+  "view_count": "110K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 110000,
+  "outlier": 1.05
+ },
+ {
+  "video_id": "h8Pz51ZEW5U",
+  "title": "They cut Node.js Memory in half",
+  "duration": "28:51",
+  "view_count": "110K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 110000,
+  "outlier": 1.05
+ },
+ {
+  "video_id": "yfxDdQo2cyI",
+  "title": "Where Should You Deploy In 2026?",
+  "duration": "37:14",
+  "view_count": "110K views",
+  "published_time": "7 months ago",
+  "page": 5,
+  "views": 110000,
+  "outlier": 1.05
+ },
+ {
+  "video_id": "Yr9O6KFwbW4",
+  "title": "We need to talk about Ralph",
+  "duration": "24:03",
+  "view_count": "110K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 110000,
+  "outlier": 1.05
+ },
+ {
+  "video_id": "5vp9ypOUgMw",
+  "title": "Vibe Coding is For Senior Developers",
+  "duration": "21:46",
+  "view_count": "110K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 110000,
+  "outlier": 1.05
+ },
+ {
+  "video_id": "gILMoijqeGA",
+  "title": "I wish this was clickbait",
+  "duration": "27:30",
+  "view_count": "109K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 109000,
+  "outlier": 1.04
+ },
+ {
+  "video_id": "XKA94rcu8b8",
+  "title": "This is bad...",
+  "duration": "27:17",
+  "view_count": "108K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 108000,
+  "outlier": 1.03
+ },
+ {
+  "video_id": "FI5ba4RRE8U",
+  "title": "Software Sucks Now",
+  "duration": "28:37",
+  "view_count": "108K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 108000,
+  "outlier": 1.03
+ },
+ {
+  "video_id": "yz0SZIng2Po",
+  "title": "OpenAI and Anthropic think it's time to stop",
+  "duration": "32:19",
+  "view_count": "107K views",
+  "published_time": "1 month ago",
+  "page": 2,
+  "views": 107000,
+  "outlier": 1.02
+ },
+ {
+  "video_id": "nbB8sMmgYok",
+  "title": "The end of the Clawdbot saga",
+  "duration": "25:08",
+  "view_count": "107K views",
+  "published_time": "7 months ago",
+  "page": 5,
+  "views": 107000,
+  "outlier": 1.02
+ },
+ {
+  "video_id": "YUznWuxA-jE",
+  "title": "Opus 4.6 Is The Best Coding Model Ever Made*",
+  "duration": "30:52",
+  "view_count": "106K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 106000,
+  "outlier": 1.01
+ },
+ {
+  "video_id": "j9wvCrON3XA",
+  "title": "OpenAI dropped a new model built for developers",
+  "duration": "24:21",
+  "view_count": "106K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 106000,
+  "outlier": 1.01
+ },
+ {
+  "video_id": "4wVNFaFDIn8",
+  "title": "MacOS Is Making Your Mac Slow",
+  "duration": "31:48",
+  "view_count": "105K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 105000,
+  "outlier": 1.0
+ },
+ {
+  "video_id": "gVfEtktkvnE",
+  "title": "Did Anthropic finally fix MCP?",
+  "duration": "18:17",
+  "view_count": "104K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 104000,
+  "outlier": 1.0
+ },
+ {
+  "video_id": "S9EGx6ik-18",
+  "title": "Stop letting your agents write Markdown.",
+  "duration": "36:06",
+  "view_count": "103K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 103000,
+  "outlier": 0.99
+ },
+ {
+  "video_id": "23BtT8P7rCA",
+  "title": "Dear Google, we need to talk.",
+  "duration": "19:24",
+  "view_count": "102K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 102000,
+  "outlier": 0.98
+ },
+ {
+  "video_id": "QzEsYFcaAkY",
+  "title": "Anthropic won. This is my new favorite model (sorry Gemini\u2026)",
+  "duration": "30:16",
+  "view_count": "101K views",
+  "published_time": "9 months ago",
+  "page": 8,
+  "views": 101000,
+  "outlier": 0.97
+ },
+ {
+  "video_id": "R7ex-Gt8dtw",
+  "title": "Github is Falling Apart",
+  "duration": "35:11",
+  "view_count": "100K views",
+  "published_time": "4 months ago",
+  "page": 4,
+  "views": 100000,
+  "outlier": 0.96
+ },
+ {
+  "video_id": "RIkSlHgQYog",
+  "title": "I need you guys to trust me on this (sorry Anthropic)",
+  "duration": "17:10",
+  "view_count": "100K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 100000,
+  "outlier": 0.96
+ },
+ {
+  "video_id": "CtMk0GuQ7cc",
+  "title": "GPT-5.2 is the best model ever made*",
+  "duration": "25:32",
+  "view_count": "100K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 100000,
+  "outlier": 0.96
+ },
+ {
+  "video_id": "EiPYgiu8-Hc",
+  "title": "AI is ruining the job market",
+  "duration": "37:49",
+  "view_count": "100K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 100000,
+  "outlier": 0.96
+ },
+ {
+  "video_id": "XFSwfwiM8nk",
+  "title": "Linus Entered the AI Debate",
+  "duration": "23:38",
+  "view_count": "99K views",
+  "published_time": "1 month ago",
+  "page": 1,
+  "views": 99000,
+  "outlier": 0.95
+ },
+ {
+  "video_id": "x7p5cClmdfI",
+  "title": "NVIDIA calls out Anthropic",
+  "duration": "32:11",
+  "view_count": "99K views",
+  "published_time": "1 month ago",
+  "page": 2,
+  "views": 99000,
+  "outlier": 0.95
+ },
+ {
+  "video_id": "l8pQeVVaqpY",
+  "title": "Open source is dying",
+  "duration": "40:27",
+  "view_count": "99K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 99000,
+  "outlier": 0.95
+ },
+ {
+  "video_id": "X1Gfv7P-XRw",
+  "title": "Cloudflare takes on Next.js",
+  "duration": "20:39",
+  "view_count": "99K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 99000,
+  "outlier": 0.95
+ },
+ {
+  "video_id": "0wemf5SZkW4",
+  "title": "Boris Is Right Again (I Hate It)",
+  "duration": "33:48",
+  "view_count": "98K views",
+  "published_time": "4 weeks ago",
+  "page": 1,
+  "views": 98000,
+  "outlier": 0.94
+ },
+ {
+  "video_id": "weLhik7ArCY",
+  "title": "You have no idea how how bad this really is.",
+  "duration": "21:14",
+  "view_count": "98K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 98000,
+  "outlier": 0.94
+ },
+ {
+  "video_id": "434cG4g5KLE",
+  "title": "Write Code You Will Never Read Again",
+  "duration": "24:11",
+  "view_count": "97K views",
+  "published_time": "1 month ago",
+  "page": 2,
+  "views": 97000,
+  "outlier": 0.93
+ },
+ {
+  "video_id": "5LqC6qdVAwU",
+  "title": "You were lied to about Fable",
+  "duration": "23:24",
+  "view_count": "97K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 97000,
+  "outlier": 0.93
+ },
+ {
+  "video_id": "JpSHyEIZ_bo",
+  "title": "SWE-Bench is getting replaced???",
+  "duration": "32:31",
+  "view_count": "97K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 97000,
+  "outlier": 0.93
+ },
+ {
+  "video_id": "JKbVk6bIXvA",
+  "title": "I did not expect this...",
+  "duration": "30:05",
+  "view_count": "97K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 97000,
+  "outlier": 0.93
+ },
+ {
+  "video_id": "RYWrK2hsIB8",
+  "title": "Never mind (OpenAI won again)",
+  "duration": "43:33",
+  "view_count": "97K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 97000,
+  "outlier": 0.93
+ },
+ {
+  "video_id": "s3AWPNLeUlU",
+  "title": "wtf is going on with ChatGPT?",
+  "duration": "27:29",
+  "view_count": "97K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 97000,
+  "outlier": 0.93
+ },
+ {
+  "video_id": "xTSar1SEmIU",
+  "title": "The Github Tax (I can't believe they actually did this...)",
+  "duration": "20:49",
+  "view_count": "97K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 97000,
+  "outlier": 0.93
+ },
+ {
+  "video_id": "tOC2N0B9lio",
+  "title": "The next paradigm shift (according to Karpathy)",
+  "duration": "20:47",
+  "view_count": "96K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 96000,
+  "outlier": 0.92
+ },
+ {
+  "video_id": "08NqrRQArNw",
+  "title": "I'm serious.",
+  "duration": "39:45",
+  "view_count": "96K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 96000,
+  "outlier": 0.92
+ },
+ {
+  "video_id": "YVq28OTPCKw",
+  "title": "Agentic Coding Has A HUGE Problem",
+  "duration": "19:03",
+  "view_count": "96K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 96000,
+  "outlier": 0.92
+ },
+ {
+  "video_id": "cZ3kARY_MDI",
+  "title": "The weird situation with Fable",
+  "duration": "29:32",
+  "view_count": "95K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 95000,
+  "outlier": 0.91
+ },
+ {
+  "video_id": "s5USum9JiRA",
+  "title": "Kimi K2.5 might be my new favorite model...",
+  "duration": "39:03",
+  "view_count": "95K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 95000,
+  "outlier": 0.91
+ },
+ {
+  "video_id": "bAYZjVAodoo",
+  "title": "MCP is the wrong abstraction",
+  "duration": "44:58",
+  "view_count": "95K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 95000,
+  "outlier": 0.91
+ },
+ {
+  "video_id": "wEAb0x3wTRc",
+  "title": "I don't have time to build these things, will you?",
+  "duration": "44:34",
+  "view_count": "94K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 94000,
+  "outlier": 0.9
+ },
+ {
+  "video_id": "bLoBezKKiiI",
+  "title": "Gemini Got Beat Already??? (GPT-5.1-Pro is insane)",
+  "duration": "31:59",
+  "view_count": "94K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 94000,
+  "outlier": 0.9
+ },
+ {
+  "video_id": "Y8cY1DEURtE",
+  "title": "Codeberg, are you serious?!?",
+  "duration": "38:47",
+  "view_count": "93K views",
+  "published_time": "1 month ago",
+  "page": 2,
+  "views": 93000,
+  "outlier": 0.89
+ },
+ {
+  "video_id": "3A4y_Iw_gpU",
+  "title": "Why Copilot's Billing Had To Change",
+  "duration": "39:06",
+  "view_count": "93K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 93000,
+  "outlier": 0.89
+ },
+ {
+  "video_id": "K6CCw1DK1EQ",
+  "title": "The drama never ends...",
+  "duration": "37:52",
+  "view_count": "92K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 92000,
+  "outlier": 0.88
+ },
+ {
+  "video_id": "gPcB2VdzeKo",
+  "title": "Namecheap is suing their customers",
+  "duration": "29:29",
+  "view_count": "92K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 92000,
+  "outlier": 0.88
+ },
+ {
+  "video_id": "32iH1WBJbJo",
+  "title": "Did GPT-6 Break Out During Testing?",
+  "duration": "16:59",
+  "view_count": "91K views",
+  "published_time": "1 month ago",
+  "page": 2,
+  "views": 91000,
+  "outlier": 0.87
+ },
+ {
+  "video_id": "TilDSWeiAlw",
+  "title": "The language holding our agents back.",
+  "duration": "32:23",
+  "view_count": "91K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 91000,
+  "outlier": 0.87
+ },
+ {
+  "video_id": "IcQEaopx90g",
+  "title": "Claude Cowork: a small taste of AGI",
+  "duration": "32:53",
+  "view_count": "90K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 90000,
+  "outlier": 0.86
+ },
+ {
+  "video_id": "v0gyPfrlOc8",
+  "title": "You don't want to be a manager.",
+  "duration": "33:35",
+  "view_count": "88K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 88000,
+  "outlier": 0.84
+ },
+ {
+  "video_id": "vcfISXg--R0",
+  "title": "How I parsed billions of rows for every user in 2 seconds",
+  "duration": "30:19",
+  "view_count": "88K views",
+  "published_time": "8 months ago",
+  "page": 7,
+  "views": 88000,
+  "outlier": 0.84
+ },
+ {
+  "video_id": "u9P3CKwtRnM",
+  "title": "I don't really use libraries anymore",
+  "duration": "32:04",
+  "view_count": "87K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 87000,
+  "outlier": 0.83
+ },
+ {
+  "video_id": "-yhXIMNxW3A",
+  "title": "OpenAI made a browser???",
+  "duration": "29:17",
+  "view_count": "87K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 87000,
+  "outlier": 0.83
+ },
+ {
+  "video_id": "KAmQTmooLGQ",
+  "title": "China is winning the AI race",
+  "duration": "36:08",
+  "view_count": "86K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 86000,
+  "outlier": 0.82
+ },
+ {
+  "video_id": "v1MptV67kSI",
+  "title": "Claude Code's favorite tech stack",
+  "duration": "38:59",
+  "view_count": "85K views",
+  "published_time": "4 months ago",
+  "page": 4,
+  "views": 85000,
+  "outlier": 0.81
+ },
+ {
+  "video_id": "eUG6r8ixngs",
+  "title": "Where the f*** is Gemini 3?",
+  "duration": "16:45",
+  "view_count": "85K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 85000,
+  "outlier": 0.81
+ },
+ {
+  "video_id": "M_HxHr7du5M",
+  "title": "AI Is Hacking Everything Now...",
+  "duration": "33:59",
+  "view_count": "84K views",
+  "published_time": "4 months ago",
+  "page": 3,
+  "views": 84000,
+  "outlier": 0.8
+ },
+ {
+  "video_id": "MWFyApldYDA",
+  "title": "Trump actually threatened Anthropic (this is bad\u2026)",
+  "duration": "22:16",
+  "view_count": "84K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 84000,
+  "outlier": 0.8
+ },
+ {
+  "video_id": "dSIgEJSi0rY",
+  "title": "The Future of Bun",
+  "duration": "58:43",
+  "view_count": "83K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 83000,
+  "outlier": 0.79
+ },
+ {
+  "video_id": "IrrOHBqq7oU",
+  "title": "I hate that this is still happening",
+  "duration": "37:22",
+  "view_count": "83K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 83000,
+  "outlier": 0.79
+ },
+ {
+  "video_id": "L3vToC1jO64",
+  "title": "\"AI Startups\" are over done (finally)",
+  "duration": "51:51",
+  "view_count": "83K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 83000,
+  "outlier": 0.79
+ },
+ {
+  "video_id": "YY04jVCKeB4",
+  "title": "Open source is dead now?",
+  "duration": "26:21",
+  "view_count": "82K views",
+  "published_time": "4 months ago",
+  "page": 4,
+  "views": 82000,
+  "outlier": 0.78
+ },
+ {
+  "video_id": "l-gfVIm0Xn8",
+  "title": "OpenAI is lying",
+  "duration": "38:58",
+  "view_count": "82K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 82000,
+  "outlier": 0.78
+ },
+ {
+  "video_id": "w7o355LsM9I",
+  "title": "Are juniors screwed? (Getting a job in a post-AI world)",
+  "duration": "56:57",
+  "view_count": "82K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 82000,
+  "outlier": 0.78
+ },
+ {
+  "video_id": "C28ywQbyKxs",
+  "title": "It's time to move off Slack...",
+  "duration": "21:17",
+  "view_count": "82K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 82000,
+  "outlier": 0.78
+ },
+ {
+  "video_id": "xjucOlb_mFM",
+  "title": "I didn't expect this from Anthropic",
+  "duration": "44:57",
+  "view_count": "81K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 81000,
+  "outlier": 0.78
+ },
+ {
+  "video_id": "n2YtM-MecZk",
+  "title": "Cloudflare bought Vite to destroy Vercel",
+  "duration": "30:11",
+  "view_count": "81K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 81000,
+  "outlier": 0.78
+ },
+ {
+  "video_id": "4AyM_3SK31w",
+  "title": "I think I'm addicted to Opus 4.5...",
+  "duration": "31:21",
+  "view_count": "81K views",
+  "published_time": "8 months ago",
+  "page": 7,
+  "views": 81000,
+  "outlier": 0.78
+ },
+ {
+  "video_id": "1_P1K9i1Oq0",
+  "title": "Cursor just started their war on GitHub",
+  "duration": "28:16",
+  "view_count": "81K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 81000,
+  "outlier": 0.78
+ },
+ {
+  "video_id": "LwPNjhjf0-8",
+  "title": "Apple is paying Google to fix Siri (yes really)",
+  "duration": "27:34",
+  "view_count": "81K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 81000,
+  "outlier": 0.78
+ },
+ {
+  "video_id": "-9w2Yr1JyvI",
+  "title": "OpenAI is burning cash",
+  "duration": "18:03",
+  "view_count": "81K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 81000,
+  "outlier": 0.78
+ },
+ {
+  "video_id": "jB2iKoBSPyo",
+  "title": "Elon won after all",
+  "duration": "23:22",
+  "view_count": "80K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 80000,
+  "outlier": 0.77
+ },
+ {
+  "video_id": "DnTs_D_y1vA",
+  "title": "Fumble of the decade",
+  "duration": "20:01",
+  "view_count": "80K views",
+  "published_time": "7 months ago",
+  "page": 5,
+  "views": 80000,
+  "outlier": 0.77
+ },
+ {
+  "video_id": "xrio-BsgkqU",
+  "title": "Claude Code has a big problem",
+  "duration": "40:33",
+  "view_count": "80K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 80000,
+  "outlier": 0.77
+ },
+ {
+  "video_id": "QGnKTRtEH50",
+  "title": "Did Cursor really steal Kimi???",
+  "duration": "27:48",
+  "view_count": "78K views",
+  "published_time": "5 months ago",
+  "page": 5,
+  "views": 78000,
+  "outlier": 0.75
+ },
+ {
+  "video_id": "iV1EcfZSdCM",
+  "title": "What's the best programming language for AI?",
+  "duration": "32:29",
+  "view_count": "78K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 78000,
+  "outlier": 0.75
+ },
+ {
+  "video_id": "dNviWH13dNY",
+  "title": "If you write code, please watch this.",
+  "duration": "17:30",
+  "view_count": "78K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 78000,
+  "outlier": 0.75
+ },
+ {
+  "video_id": "BiFt4vw1-uM",
+  "title": "Claude made its own language (it took 3 months)",
+  "duration": "24:11",
+  "view_count": "78K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 78000,
+  "outlier": 0.75
+ },
+ {
+  "video_id": "KJfz9ChQ0A0",
+  "title": "You're all wrong",
+  "duration": "35:20",
+  "view_count": "77K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 77000,
+  "outlier": 0.74
+ },
+ {
+  "video_id": "ZP9lqjNa_BQ",
+  "title": "Kimi K2 is the best model ever (kind of\u2026)",
+  "duration": "24:10",
+  "view_count": "77K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 77000,
+  "outlier": 0.74
+ },
+ {
+  "video_id": "LJJnu0zfI6w",
+  "title": "Better than Claude and 10x cheaper?? GLM-4.6 is so good",
+  "duration": "19:54",
+  "view_count": "77K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 77000,
+  "outlier": 0.74
+ },
+ {
+  "video_id": "dOEDZdqq5m8",
+  "title": "Google got forced to open up Android",
+  "duration": "37:50",
+  "view_count": "76K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 76000,
+  "outlier": 0.73
+ },
+ {
+  "video_id": "ebacH8tdXug",
+  "title": "I ranked every vibe coding app",
+  "duration": "32:28",
+  "view_count": "76K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 76000,
+  "outlier": 0.73
+ },
+ {
+  "video_id": "3sTu8sSLVfg",
+  "title": "Mythos is here, it's time to start tokenmaxxing",
+  "duration": "30:41",
+  "view_count": "75K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 75000,
+  "outlier": 0.72
+ },
+ {
+  "video_id": "ho4pQ6pI8Rg",
+  "title": "Peering into Claude's soul (I can't believe this is real...)",
+  "duration": "1:12:20",
+  "view_count": "75K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 75000,
+  "outlier": 0.72
+ },
+ {
+  "video_id": "UV9GqinedQ8",
+  "title": "Google won image generation (it's not even close) NANO BANANA PRO BREAKDOWN",
+  "duration": "28:19",
+  "view_count": "75K views",
+  "published_time": "9 months ago",
+  "page": 8,
+  "views": 75000,
+  "outlier": 0.72
+ },
+ {
+  "video_id": "WnBx1Vi7M6w",
+  "title": "More Prompts = Worse Code?",
+  "duration": "20:30",
+  "view_count": "72K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 72000,
+  "outlier": 0.69
+ },
+ {
+  "video_id": "q88yYhLSPC0",
+  "title": "Holy sh*t I think Anthropic is profitable now",
+  "duration": "27:55",
+  "view_count": "72K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 72000,
+  "outlier": 0.69
+ },
+ {
+  "video_id": "3DNkDIVKtK8",
+  "title": "Crashing out at Anthropic and getting Pi pilled",
+  "duration": "1:21:48",
+  "view_count": "72K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 72000,
+  "outlier": 0.69
+ },
+ {
+  "video_id": "mVKxygo5Sdo",
+  "title": "Vercel accuses Cloudflare of stealing",
+  "duration": "31:11",
+  "view_count": "72K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 72000,
+  "outlier": 0.69
+ },
+ {
+  "video_id": "1M_p8R7WT-8",
+  "title": "OpenAI is in \"CODE RED\" (Did Gemini win that hard??)",
+  "duration": "32:39",
+  "view_count": "72K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 72000,
+  "outlier": 0.69
+ },
+ {
+  "video_id": "hPPTrsUzLA8",
+  "title": "Anthropic is trying SO hard to fix MCP...",
+  "duration": "38:50",
+  "view_count": "72K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 72000,
+  "outlier": 0.69
+ },
+ {
+  "video_id": "Dgm_Rr5JtaU",
+  "title": "NVIDIA's first real competition (Google is KILLING it)",
+  "duration": "18:23",
+  "view_count": "72K views",
+  "published_time": "9 months ago",
+  "page": 8,
+  "views": 72000,
+  "outlier": 0.69
+ },
+ {
+  "video_id": "vUARWTh7AGc",
+  "title": "Vite costs money now? wtf is Vite+",
+  "duration": "46:51",
+  "view_count": "72K views",
+  "published_time": "11 months ago",
+  "page": 8,
+  "views": 72000,
+  "outlier": 0.69
+ },
+ {
+  "video_id": "cOxC0t8DqYk",
+  "title": "Is it ever coming back?",
+  "duration": "19:57",
+  "view_count": "71K views",
+  "published_time": "2 months ago",
+  "page": 2,
+  "views": 71000,
+  "outlier": 0.68
+ },
+ {
+  "video_id": "El6ot9rE5BU",
+  "title": "I asked Sam Altman about the future of code",
+  "duration": "30:43",
+  "view_count": "71K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 71000,
+  "outlier": 0.68
+ },
+ {
+  "video_id": "21pyywq8-SU",
+  "title": "GPT-5.2 is dumb (I'm tired of benchmarks)",
+  "duration": "25:15",
+  "view_count": "70K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 70000,
+  "outlier": 0.67
+ },
+ {
+  "video_id": "Ij7gT34BQCs",
+  "title": "You should NOT work at a startup",
+  "duration": "1:02:58",
+  "view_count": "70K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 70000,
+  "outlier": 0.67
+ },
+ {
+  "video_id": "CL0vkl8Sxvs",
+  "title": "I was wrong",
+  "duration": "40:04",
+  "view_count": "69K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 69000,
+  "outlier": 0.66
+ },
+ {
+  "video_id": "g0wXXJ_VZlY",
+  "title": "Well that was fun",
+  "duration": "47:13",
+  "view_count": "69K views",
+  "published_time": "11 months ago",
+  "page": 8,
+  "views": 69000,
+  "outlier": 0.66
+ },
+ {
+  "video_id": "E2Psyapm2ZM",
+  "title": "GPT-5.1 is built for normies",
+  "duration": "41:23",
+  "view_count": "67K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 67000,
+  "outlier": 0.64
+ },
+ {
+  "video_id": "wn1qHif7W18",
+  "title": "Cloudflare and Vercel can't stop fighting",
+  "duration": "34:04",
+  "view_count": "67K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 67000,
+  "outlier": 0.64
+ },
+ {
+  "video_id": "1t-k6-m50Fc",
+  "title": "Saving the web from Javascript bloat",
+  "duration": "33:24",
+  "view_count": "66K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 66000,
+  "outlier": 0.63
+ },
+ {
+  "video_id": "rddX4GEeyvE",
+  "title": "Gemini Flash 3 is my new favorite model (yes really)",
+  "duration": "37:43",
+  "view_count": "66K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 66000,
+  "outlier": 0.63
+ },
+ {
+  "video_id": "6kZPt-AELVk",
+  "title": "I'm so tired.",
+  "duration": "20:47",
+  "view_count": "65K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 65000,
+  "outlier": 0.62
+ },
+ {
+  "video_id": "xBM307YwVRw",
+  "title": "I can't believe he was right.",
+  "duration": "27:28",
+  "view_count": "64K views",
+  "published_time": "8 months ago",
+  "page": 7,
+  "views": 64000,
+  "outlier": 0.61
+ },
+ {
+  "video_id": "Yj9677a3y6c",
+  "title": "Bun got bought by Anthropic (yes really)",
+  "duration": "30:39",
+  "view_count": "64K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 64000,
+  "outlier": 0.61
+ },
+ {
+  "video_id": "VUyib5mR8Pg",
+  "title": "Anthropic can't help themselves\u2026",
+  "duration": "20:25",
+  "view_count": "64K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 64000,
+  "outlier": 0.61
+ },
+ {
+  "video_id": "nTMP_rLZOYM",
+  "title": "TOON: \"JSON for AI\" (is it any good?)",
+  "duration": "14:20",
+  "view_count": "63K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 63000,
+  "outlier": 0.6
+ },
+ {
+  "video_id": "2r8xT1ORZ5k",
+  "title": "Is gpt-5.1 the best code model ever?",
+  "duration": "27:56",
+  "view_count": "63K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 63000,
+  "outlier": 0.6
+ },
+ {
+  "video_id": "G1xqTjoihfo",
+  "title": "A letter to tech CEOs",
+  "duration": "39:44",
+  "view_count": "61K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 61000,
+  "outlier": 0.58
+ },
+ {
+  "video_id": "ND9CSuzvrIY",
+  "title": "I'm scared about the future of security",
+  "duration": "33:43",
+  "view_count": "61K views",
+  "published_time": "5 months ago",
+  "page": 4,
+  "views": 61000,
+  "outlier": 0.58
+ },
+ {
+  "video_id": "5DeqL844pH0",
+  "title": "Anthropic gave MCP to the Linux Foundation",
+  "duration": "27:10",
+  "view_count": "61K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 61000,
+  "outlier": 0.58
+ },
+ {
+  "video_id": "rTMRlqT8Q8c",
+  "title": "This might be a Hot Take",
+  "duration": "38:50",
+  "view_count": "60K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 60000,
+  "outlier": 0.57
+ },
+ {
+  "video_id": "wFYdok_YWq8",
+  "title": "You're logging wrong",
+  "duration": "34:49",
+  "view_count": "60K views",
+  "published_time": "8 months ago",
+  "page": 7,
+  "views": 60000,
+  "outlier": 0.57
+ },
+ {
+  "video_id": "LrUpYblQIV4",
+  "title": "React is killing the web",
+  "duration": "1:12:29",
+  "view_count": "60K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 60000,
+  "outlier": 0.57
+ },
+ {
+  "video_id": "7bvBVBy_CrM",
+  "title": "I hate JavaScript",
+  "duration": "21:09",
+  "view_count": "60K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 60000,
+  "outlier": 0.57
+ },
+ {
+  "video_id": "Px2ksfuAowo",
+  "title": "It's not just you (Claude did get dumber)",
+  "duration": "51:37",
+  "view_count": "60K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 60000,
+  "outlier": 0.57
+ },
+ {
+  "video_id": "_nxbZgZysT4",
+  "title": "OpenAI: Trapped in 2nd place",
+  "duration": "33:55",
+  "view_count": "59K views",
+  "published_time": "8 months ago",
+  "page": 7,
+  "views": 59000,
+  "outlier": 0.56
+ },
+ {
+  "video_id": "iES9r7AZP1s",
+  "title": "The best model Anthropic has ever made",
+  "duration": "20:45",
+  "view_count": "59K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 59000,
+  "outlier": 0.56
+ },
+ {
+  "video_id": "9iUd2Ik-bBI",
+  "title": "My new app is really stupid (I wrote none of the code)",
+  "duration": "12:16",
+  "view_count": "58K views",
+  "published_time": "6 months ago",
+  "page": 5,
+  "views": 58000,
+  "outlier": 0.56
+ },
+ {
+  "video_id": "ZINQTR6H5dI",
+  "title": "Anthropic study shows AI makes devs dumb",
+  "duration": "30:43",
+  "view_count": "58K views",
+  "published_time": "7 months ago",
+  "page": 6,
+  "views": 58000,
+  "outlier": 0.56
+ },
+ {
+  "video_id": "iN_9aH3VuzU",
+  "title": "I miss when programmers were lazy.",
+  "duration": "18:57",
+  "view_count": "57K views",
+  "published_time": "3 months ago",
+  "page": 3,
+  "views": 57000,
+  "outlier": 0.55
+ },
+ {
+  "video_id": "P6u0K3-z2p4",
+  "title": "Why people spend millions on Github stars",
+  "duration": "36:52",
+  "view_count": "57K views",
+  "published_time": "4 months ago",
+  "page": 4,
+  "views": 57000,
+  "outlier": 0.55
+ },
+ {
+  "video_id": "jxsA_185lMI",
+  "title": "ChatGPT Atlas Drove Me Insane (it's not just Chrome)",
+  "duration": "30:54",
+  "view_count": "57K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 57000,
+  "outlier": 0.55
+ },
+ {
+  "video_id": "Ct0y7FN7yLA",
+  "title": "Was I wrong about Cloudflare?",
+  "duration": "30:59",
+  "view_count": "57K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 57000,
+  "outlier": 0.55
+ },
+ {
+  "video_id": "05YgaYY2V2M",
+  "title": "It's not just you (gpt-5 got dumber)",
+  "duration": "23:47",
+  "view_count": "56K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 56000,
+  "outlier": 0.54
+ },
+ {
+  "video_id": "Y-SyfYXupTQ",
+  "title": "These might be my new favorite models (don't sleep on Grok 4 Fast)",
+  "duration": "28:23",
+  "view_count": "56K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 56000,
+  "outlier": 0.54
+ },
+ {
+  "video_id": "hFMQ5LkkS98",
+  "title": "Claude Code's latest update is really cool (when it works...)",
+  "duration": "35:19",
+  "view_count": "55K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 55000,
+  "outlier": 0.53
+ },
+ {
+  "video_id": "JMTSX7GdDxk",
+  "title": "React 19.2 Dropped Early???",
+  "duration": "27:41",
+  "view_count": "55K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 55000,
+  "outlier": 0.53
+ },
+ {
+  "video_id": "Ge8LoXfJJdA",
+  "title": "2025: The year I stopped writing code",
+  "duration": "47:00",
+  "view_count": "52K views",
+  "published_time": "8 months ago",
+  "page": 7,
+  "views": 52000,
+  "outlier": 0.5
+ },
+ {
+  "video_id": "c4NlwDWBI5Q",
+  "title": "Did gpt-5.1 just leak?",
+  "duration": "14:45",
+  "view_count": "51K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 51000,
+  "outlier": 0.49
+ },
+ {
+  "video_id": "3_71Nog8JZw",
+  "title": "Reflecting on AI in 2025",
+  "duration": "45:40",
+  "view_count": "50K views",
+  "published_time": "8 months ago",
+  "page": 7,
+  "views": 50000,
+  "outlier": 0.48
+ },
+ {
+  "video_id": "d6Mk-3qh2O0",
+  "title": "The Future of React",
+  "duration": "1:08:49",
+  "view_count": "50K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 50000,
+  "outlier": 0.48
+ },
+ {
+  "video_id": "klvDE3kOgXc",
+  "title": "Theo fell off",
+  "duration": "49:13",
+  "view_count": "49K views",
+  "published_time": "8 months ago",
+  "page": 6,
+  "views": 49000,
+  "outlier": 0.47
+ },
+ {
+  "video_id": "5JCwZkC-jWs",
+  "title": "Amazon bets big on React Native",
+  "duration": "29:13",
+  "view_count": "48K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 48000,
+  "outlier": 0.46
+ },
+ {
+  "video_id": "fSeo63tjtIs",
+  "title": "OpenAI's TikTok Clone Is Interesting\u2026",
+  "duration": "35:15",
+  "view_count": "47K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 47000,
+  "outlier": 0.45
+ },
+ {
+  "video_id": "C84YEp-8-hI",
+  "title": "Watch this if you hate React Server Components",
+  "duration": "45:19",
+  "view_count": "46K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 46000,
+  "outlier": 0.44
+ },
+ {
+  "video_id": "AORIZL-jGDM",
+  "title": "Should we break up AWS over the us-east-1 outage?",
+  "duration": "22:41",
+  "view_count": "45K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 45000,
+  "outlier": 0.43
+ },
+ {
+  "video_id": "1uR4QPtXF4Y",
+  "title": "wtf is Y Combinator doing???",
+  "duration": "49:21",
+  "view_count": "44K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 44000,
+  "outlier": 0.42
+ },
+ {
+  "video_id": "tV8wTuY4b0E",
+  "title": "This is good, actually",
+  "duration": "1:05:00",
+  "view_count": "44K views",
+  "published_time": "10 months ago",
+  "page": 8,
+  "views": 44000,
+  "outlier": 0.42
+ },
+ {
+  "video_id": "6qIZTmaJc0Y",
+  "title": "The real reason Claude got dumber",
+  "duration": "26:52",
+  "view_count": "43K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 43000,
+  "outlier": 0.41
+ },
+ {
+  "video_id": "BVTg-yJNRWk",
+  "title": "AI sucks at art still",
+  "duration": "57:53",
+  "view_count": "42K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 42000,
+  "outlier": 0.4
+ },
+ {
+  "video_id": "9XiGGc8Xo4g",
+  "title": "React caused an outage for Cloudflare?",
+  "duration": "16:32",
+  "view_count": "42K views",
+  "published_time": "11 months ago",
+  "page": 9,
+  "views": 42000,
+  "outlier": 0.4
+ },
+ {
+  "video_id": "0kCn2f6ngAs",
+  "title": "I think Firefox hates their users",
+  "duration": "27:13",
+  "view_count": "39K views",
+  "published_time": "9 months ago",
+  "page": 7,
+  "views": 39000,
+  "outlier": 0.37
+ },
+ {
+  "video_id": "iG4AGQqbA6I",
+  "title": "It was a wild year for CSS",
+  "duration": "39:26",
+  "view_count": "36K views",
+  "published_time": "8 months ago",
+  "page": 7,
+  "views": 36000,
+  "outlier": 0.34
+ },
+ {
+  "video_id": "jo4LC9UMQO4",
+  "title": "This could have destroyed the entire web (the next one probably will)",
+  "duration": "42:58",
+  "view_count": "34K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 34000,
+  "outlier": 0.33
+ },
+ {
+  "video_id": "bPde0LHofQ4",
+  "title": "Predicting OpenAI's future via their acquisitions",
+  "duration": "30:55",
+  "view_count": "34K views",
+  "published_time": "1 year ago",
+  "page": 9,
+  "views": 34000,
+  "outlier": 0.33
+ }
+]

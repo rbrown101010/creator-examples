@@ -1,0 +1,415 @@
+# Riley Brown Intro-outlines
+
+Source set:
+
+- YouTube channel: `@rileybrownai`
+- Window checked: 2025-01-15 through 2026-05-15
+- Ranking basis: public YouTube view count from regular YouTube uploads, not Shorts
+- Transcript basis: Supadata transcript pulls
+
+What this is:
+
+- A local reference of Riley Brown's top-performing regular YouTube videos from the past 16 months.
+- Each entry is an Intro-outline: the full intro up to the intro transition, followed by 7-10 bullets outlining the rest of the video.
+- Use this as the reference format when creating new Intro-outlines or adding more examples later.
+
+Intro-outline format:
+
+1. Start with the video title, URL, publish date, public view count, and duration.
+2. Add `Intro` with the full spoken intro up to "Let's dive in", "Let's just dive in", "Let's learn...", "Let the games begin", or the closest equivalent transition into the body.
+3. Add `Rest of video` with 7-10 plain bullets that outline what happens after the intro.
+4. Keep the intro transcript close to the spoken cadence, but lightly clean obvious transcript errors, names, punctuation, and capitalization.
+5. Keep the bullets factual and useful for reconstructing the video structure.
+
+Recurring Intro-outline patterns:
+
+- The intro starts with a concrete stakes question, named comparison, or direct course promise.
+- The premise is clear before any background explanation.
+- The intro names the key tool, company, model, guest, or challenge immediately.
+- The intro uses numbers to make the stakes concrete: valuation, revenue, prompts, minutes, tools, apps, steps, or model count.
+- The transition moves quickly into either the first demo, the first guest handoff, or the first teaching section.
+- The rest of the video usually alternates between live demo progress, tactical explanation, debugging, and a final test or payoff.
+
+## Top 10 by public views
+
+1. `Can I Vibecode a $250M App Better Than a Pro Developer? (With No Code)` - 908,622 views - 2025-08-18 - 55:47
+2. `We Made Claude Code Build Lovable in 75 Minutes (With No Code)` - 309,221 views - 2025-07-08 - 1:23:00
+3. `Cursor 2.0 Tutorial for Beginners (Full Course)` - 304,169 views - 2025-11-10 - 2:34:14
+4. `Claude Code Replaced Cursor for Me... Here's Why` - 297,316 views - 2025-06-25 - 37:08
+5. `We Built 2 FULL Video Games In 7 Prompts (Claude Code vs GPT-5 Codex)` - 248,615 views - 2025-09-22 - 1:05:59
+6. `The 6 Steps to Master AI` - 245,766 views - 2025-04-21 - 1:50:52
+7. `We Vibecoded an $80M App in 60 Minutes (With No Code)` - 241,572 views - 2025-07-15 - 47:09
+8. `Deepseek Explained` - 206,291 views - 2025-01-27 - 9:51
+9. `AI Coding Masterclass: From Beginner to Expert in 90 Minutes` - 205,607 views - 2025-09-11 - 1:36:02
+10. `Complete Guide to Cursor For Non-Coders (Vibe Coding 101)` - 177,362 views - 2025-02-11 - 2:28:17
+
+## 1. Can I Vibecode a $250M App Better Than a Pro Developer? (With No Code)
+
+- URL: https://www.youtube.com/watch?v=NnYLzGMk8Tg
+- Published: 2025-08-18
+- Public views checked: 908,622
+- Duration: 55:47
+
+### Intro
+
+```text
+Can a vibe coder make a better app than a senior iOS engineer? Well, that's exactly what we're
+going to try and find out today. In this video, I, Riley Brown, a vibe coder, am taking on
+Vishal, a senior iOS developer who's been building iOS apps for the past 10 years. We're going
+head-to-head to see who can build a better clone of Granola, a $250 million app with multiple
+AI features. We each only have five prompts to build this app and we can only use AI. And in
+this video, we're going to see whose app is better. And so, Vishal is going to be using Claude
+Code. And I'm going to be using a tool made specifically for vibe coding mobile apps. And
+you're going to be the judge of whose app is better in the comments. And we're going to be
+giving $1,000 of credits to three people who vote in the comments below. And if you like videos
+like these, make sure to hit that like and subscribe button because if this video does well,
+we're just going to keep doing them. Let's not waste any more time. Let's dive into the video.
+```
+
+### Rest of video
+
+- Sets the rules for a snake-style prompt battle: Vishal and Riley each get five prompts to build a Granola-style AI notetaker.
+- Defines the required features: voice recording, transcription, calendar sync, AI summaries, meeting details, and folders.
+- Vishal starts in Xcode with Claude Code, gets the native iOS project running, and works through calendar, microphone, and speech permissions.
+- Riley builds his version in a mobile-focused vibe coding tool, prioritizing the home screen, meeting list, recording flow, meeting detail page, and summaries.
+- Both apps hit realistic bugs: failed summary generation, folder issues, calendar logic, render errors, and unclear API failures.
+- The middle of the video becomes a prompt-by-prompt debugging session, with both sides refining prompts around transcription, folders, design, and saving behavior.
+- Vishal's app gets strong native permission handling and transcript behavior; Riley's app gets stronger UI animation, recording controls, and folder/detail polish.
+- The ending compares both finished apps, tests core features, jokes through the remaining flaws, and pushes viewers to vote on whose app is better.
+
+## 2. We Made Claude Code Build Lovable in 75 Minutes (With No Code)
+
+- URL: https://www.youtube.com/watch?v=_GMtx9EsIKU
+- Published: 2025-07-08
+- Public views checked: 309,221
+- Duration: 1:23:00
+
+### Intro
+
+```text
+Many people think that Claude Code is better than Cursor. So I brought on an AI coding legend,
+Kehan Zhang, to see if Claude Code can actually vibe code a full application. And so to test
+this in one sitting, Kehan is going to try and build Lovable with Claude Code. In this video,
+we show you how to set up Claude Code. We talk about how you can build Claude Code wrappers
+with their SDK. And by the end of the video, you will see if we're successful in building
+Lovable with Claude Code. And this thing also just finished generating a website. Bro, ours
+looks better. So cool. I'm super excited. This was a fun one. Let's dive in.
+```
+
+### Rest of video
+
+- Kehan explains Claude Code, the command line, and why the SDK lets builders wrap Claude Code into code-generation products.
+- They scope the Lovable clone down to a site that can generate another site, starting with a simple backend-first proof of concept.
+- Claude Code creates early generation scripts, proves it can write a small app, and then needs a real web interface around the function.
+- The team connects a frontend text input to the Claude Code SDK function so prompts can trigger code generation from the site.
+- They discuss the need for isolated execution, then introduce sandboxed environments so generated code does not damage the main app.
+- A large section focuses on running code inside the sandbox, opening generated previews, and debugging command, dependency, and path issues.
+- They add a stronger UI around the generated output, including better progress display, prompt handling, and preview links.
+- The final stretch tests more prompts, including simple landing page and link-tree ideas, and evaluates how close the system gets to a working Lovable-style experience.
+
+## 3. Cursor 2.0 Tutorial for Beginners (Full Course)
+
+- URL: https://www.youtube.com/watch?v=2aldTxnbNt0
+- Published: 2025-11-10
+- Public views checked: 304,169
+- Duration: 2:34:14
+
+### Intro
+
+```text
+Welcome to the complete Cursor guide with Kehan Zhang. He is the best developer I've ever met
+and he's used Cursor every single day since it came out. In this video, he's going to give us
+the most comprehensive course on how to use Cursor on the entire internet. And by the end of
+this course, you'll be able to confidently use Cursor to vibe code landing pages, desktop apps,
+or anything you can imagine. If you've been looking for a comprehensive, easy to follow,
+well-organized, and practical course that takes you from zero to hero, this is the right Cursor
+course for you. You don't need any prior knowledge of programming. All you need is a computer.
+If you already have a foundation, the whole video is timestamped, so you can switch to any
+chapter that you want. And in the second half of the video, we're actually going to be covering
+the most advanced features inside Cursor. We are truly covering everything. And so if you're new
+here, make sure to subscribe as I upload new videos all the time about vibe coding and building
+with AI. This is going to be a very long video. Let's dive in.
+```
+
+### Rest of video
+
+- Kehan defines Cursor as an IDE and explains basic vocabulary for non-coders: files, folders, front end, back end, directories, and components.
+- They compare Cursor to friendlier vibe coding tools like Lovable, Bolt, and Replit so viewers understand why Cursor is more flexible but less beginner-looking.
+- The first build is a meme generator, used to teach prompting, rules, design instructions, direct canvas edits, and iterative bug fixing.
+- They show how model behavior changes depending on prompt specificity, screenshots, project context, and Cursor rules.
+- The app is expanded into a fuller product with authentication, a database, saved memes, voting, and user-specific state.
+- Kehan explains full-stack concepts while Cursor writes and refactors thousands of lines of code, then they test what worked and what broke.
+- The course covers terminal concepts, CLI/TUI language, deployment, hosting with Vercel, public URLs, domains, and environment variables.
+- The final section compares Cursor with other vibe coding tools, covering tradeoffs around control, ease of use, lock-in, cloud ownership, and upgrade paths.
+
+## 4. Claude Code Replaced Cursor for Me... Here's Why
+
+- URL: https://www.youtube.com/watch?v=0iGEpx8IeM0
+- Published: 2025-06-25
+- Public views checked: 297,316
+- Duration: 37:08
+
+### Intro
+
+```text
+Many people think that Claude Code is better than Cursor. So, I brought on an AI coding expert,
+Ross Mike, to break down what Claude Code is and why it's changing the world of AI coding. We
+talked about how Claude Code is different than tools like Cursor and Windsurf. We talked about
+how to get started building with Claude Code. We looked at an app that Mickey built fully with
+Claude Code. And we also talked about why Anthropic is building Claude Code the way they are.
+Let's dive in.
+```
+
+### Rest of video
+
+- Ross explains that Cursor, Windsurf, Zed, and VS Code can use similar models, so the real difference is the tools wrapped around the model.
+- He uses a diagram to show how agents read files, edit files, manage context, and use tool calls differently across coding products.
+- They discuss why Anthropic may have an advantage because Claude Code is built by the same company building Claude for programming.
+- Ross shows his preferred Claude Code setup and explains why the terminal interface is less friendly but more powerful for developers.
+- The conversation moves into Claude Code's SDK and why specialized wrappers may become a major category of vibe coding products.
+- They compare Claude Code, Cursor, Codex, Devin, and CodeRabbit across autonomy, review quality, cloud execution, context management, and practical use cases.
+- Ross explains why backend choices like Firebase, Supabase, Convex, and InstantDB matter less early on than getting the product working.
+- The video ends by showing a real app Ross built with Claude Code and giving a simple workflow: start from a solid template, let Claude Code understand the codebase, then build features.
+
+## 5. We Built 2 FULL Video Games In 7 Prompts (Claude Code vs GPT-5 Codex)
+
+- URL: https://www.youtube.com/watch?v=aEdRB2yVK-I
+- Published: 2025-09-22
+- Public views checked: 248,615
+- Duration: 1:05:59
+
+### Intro
+
+```text
+The two best coding agents in the world are Claude Code and Codex with ChatGPT. Today, I'm
+going head-to-head with a pro developer to see who can vibe code a better video game. In this
+video, we're both going to build a video game with AI, and you are going to be voting on which
+game is better. Vishal is going to be using Claude Code. I'm going to be using Codex with
+GPT-5, which many people are saying is the best coding model in the world right now. We're each
+going to get seven prompts to build our game and we're going to be selecting five people who
+vote below in the comments whose game is better and we're going to be giving $1,000 worth of
+credits to Claude Code and Codex. Or if you want to build mobile apps, you can use your credits
+there. Last time Vishal and I went head-to-head, Vishal got over 1,000 votes and so he won by
+about 35%. And we're going to see this time if I can take him down. I'm feeling really
+confident. I've improved a lot. Let's see. Let the games begin.
+```
+
+### Rest of video
+
+- Vishal scopes a 3D Star Wars-style space shooter where the player destroys a Planetron while dodging enemies and lasers.
+- Riley scopes a multiplayer Crossy Road-style game, choosing a more web-friendly path with shared rooms and real-time play.
+- The first prompts establish each game direction, with Riley discussing how Codex can be more literal while Claude Code can be more imaginative.
+- Vishal fights 3D movement, camera, reticle, lasers, enemy fighters, star fields, and weak-point targeting.
+- Riley adds gameplay polish, arcade music, multiplayer rooms, player movement, live shooting, and InstantDB-backed shared game state.
+- The middle section shows classic AI-game bugs: controls breaking, too much context, unclear movement, multiplayer syncing problems, and overcomplicated generated code.
+- Riley explains how to prompt database-backed apps by repeatedly giving documentation and keeping the AI focused on the current system.
+- The final prompts simplify both games, test whether each one is actually playable, and end with a vote-driven comparison of the two finished game demos.
+
+## 6. The 6 Steps to Master AI
+
+- URL: https://www.youtube.com/watch?v=2itM7IdThvA
+- Published: 2025-04-21
+- Public views checked: 245,766
+- Duration: 1:50:52
+
+### Intro
+
+```text
+Do you ever feel like you're falling behind the most important revolution the world has ever
+seen? Well, you're in the right place. This is the beginner's guide to AI. This is going to be
+the most in-depth video on the entire AI space on the entire internet. In fact, if you had been
+sleeping under a rock for the past 2.5 years and this was the only video you'd watched on AI,
+you'd be ahead of the curve. In this video you're going to see over 100 useful, practical, and
+fun ways to use AI. This video is going to be divided into three sections. Section number one is
+called the vibe stack, which are all of the popular use cases for AI tools and popular
+platforms. It's important that you understand this so that you know how to create automations
+and agents that actually do useful, cool, and fun things. Then we're going to move on to section
+three, and we're going to build an app with all of this in mind. We're going to build an app
+that leverages the vibe stack tools. We're going to mix and match tools and you are going to
+have a better understanding of how to create apps without writing a single line of code using
+these popular tools. You do not need to be technical in order to code and build applications
+that you can use to make money, that you can use in your business, for whatever use case you
+want. This is going to be the ultimate AI video from ChatGPT all the way up to the most intense
+vibe coding tools. I'm going to break it down very simply. And by the end of this video, you are
+going to be able to tackle problems 10 times better than you could before knowing that you have
+all of these tools at your disposal that you can use at any time to dominate whatever field that
+you're in. So, let's go ahead and start with the chat AI tools.
+```
+
+### Rest of video
+
+- Starts with chat AI tools like ChatGPT and Gemini, showing how to ask questions, write, brainstorm, summarize, and generate useful work quickly.
+- Moves into visual AI, image generation, and image editing, including examples of generating many image options and refining outputs.
+- Demonstrates video and creative workflows using tools like Krea, combining images, video, music, and sound effects into higher-quality creative assets.
+- Covers AI avatars and generated media, showing both the promise and the weirdness of synthetic video and voice.
+- Introduces workflow automation as "vibe flows", using tools like Zapier to connect AI outputs to repeatable actions.
+- Shows deeper agent workflows, including ChatGPT deep research and Manus-style agents that browse, select sources, and complete multi-step tasks.
+- Explains the future of agents as systems that can choose from a stack of tools, run loops, create outputs, and eventually build richer experiences.
+- Ends by using Cursor to build an app that combines APIs, structured outputs, and AI-generated content, tying the earlier tool stack back into software creation.
+
+## 7. We Vibecoded an $80M App in 60 Minutes (With No Code)
+
+- URL: https://www.youtube.com/watch?v=p-KM4P-6Hmg
+- Published: 2025-07-15
+- Public views checked: 241,572
+- Duration: 47:09
+
+### Intro
+
+```text
+Today, we're going to build a mobile app, 100% with AI. This mobile app is going to be a full
+clone of an iPhone app that did $7 million worth of revenue last month. This app literally does
+$80 million worth of revenue per year. And we are going to build it for iPhone and for iPad in
+one sitting. And then we're going to send it to the App Store. On this channel, we don't waste
+any time. Let's just dive in.
+```
+
+### Rest of video
+
+- Muhammad explains the target app: a phone storage cleaner that feels like Tinder for photos, with swipe-to-delete and categories.
+- The first prompt asks the AI to research Cleanup-style apps, understand the value proposition, and recreate the product for iPhone and iPad.
+- They use VibeCode to generate the native mobile app, then show how the same project syncs between iPhone and iPad.
+- The early build can import photos and show categories, but the delete behavior and UI refresh are not responsive enough.
+- Multiple prompts focus on fixing swipe gestures, deletion state, animation errors, image sizing, aspect ratio handling, and stack behavior.
+- They change the product approach from immediate deletion to a trash-bin flow so swiped photos can be reviewed and deleted in bulk.
+- The app gets more polished with duplicate/blurry categories, folder switching, auto refresh, a custom name, and a generated monkey-style icon.
+- The final section prepares the app for TestFlight/App Store submission, including icon files, plist permissions, Apple login, and native build steps.
+
+## 8. Deepseek Explained
+
+- URL: https://www.youtube.com/watch?v=tR2azlV7RlQ
+- Published: 2025-01-27
+- Public views checked: 206,291
+- Duration: 9:51
+
+### Intro
+
+```text
+Marc Andreessen said that the DeepSeek R1 model, which is the brand new AI model out of China,
+is one of the most amazing, impressive breakthroughs he's ever seen as open source, a profound
+gift to the world. Ethan Mollick said the raw chain of thought from DeepSeek is fascinating,
+really reads like a human thinking out loud, charming and strange. Now, what does that mean?
+Well, just like OpenAI's new o1 model, these are reasoning models. So prior to giving you an
+output, it actually thinks about the user input for a while and it actually shows you the
+thinking. OpenAI actually kind of lies to you because it doesn't give you the raw chain of
+thought thinking. Instead, it transfers it into this summary of the chain of thought because
+they're worried about other companies coming in and training their AI models on those outputs.
+And it turns out it doesn't really matter. I mean look at this. This is the top free apps in
+the world right now. Number one, DeepSeek. Number two, ChatGPT. A little more than a week after
+we tried to ban TikTok, the number one downloaded AI model, which is becoming the primary method
+for people to get information, is now a Chinese company, DeepSeek. And there's no in-app
+purchases in this app. So let's actually update this DeepSeek app right here.
+```
+
+### Rest of video
+
+- Demonstrates DeepSeek as a Perplexity-style search and reasoning tool, including web search, source gathering, and visible thinking.
+- Compares DeepSeek's availability and cost against ChatGPT Plus, o1, and o1 Pro pricing.
+- Explains why Chinese-language and Chinese-history training data could give DeepSeek strengths that Western labs may underweight.
+- Frames the release as a win for competition because cheaper models force all labs to improve and lower prices.
+- Highlights the irony that a non-US company is advancing open frontier AI while OpenAI has become more closed and commercial.
+- Discusses DeepSeek's paper, training efficiency, low reported training cost, and why US AI companies and GPU economics are threatened.
+- Shows that Riley built a Perplexity-style DeepSeek-powered search app in Cursor without writing code.
+- Ends by connecting cheap powerful models to personalized software, agents, and the future of building apps for yourself or your team.
+
+## 9. AI Coding Masterclass: From Beginner to Expert in 90 Minutes
+
+- URL: https://www.youtube.com/watch?v=2FJlhoDYNPE
+- Published: 2025-09-11
+- Public views checked: 205,607
+- Duration: 1:36:02
+
+### Intro
+
+```text
+Vibe coding is one of the most exciting and fast-moving areas of AI. And AI coding models are
+getting more powerful every single month. And beginners are beginning to build more and more
+complex apps with AI writing all of the code. And if you're just watching this from the
+sidelines, it might feel like you're falling behind. But here's the truth. Vibe coding is a lot
+easier to understand if you really just focus for a few hours. Even if you have zero coding
+experience, this is going to be the most comprehensive video on vibe coding. You are going to
+go from an absolute beginner to someone who can build 20 different types of app because that's
+exactly what we're going to do in this video. We are going to build 13 to 15 different apps in
+this video, all of different types, all using the most powerful AI coding models in the world.
+This video is going to be divided into five parts. In part one, we are going to talk about the
+most powerful coding agents in the world and how to set them up. In part two, we're going to be
+building some static pages, things like landing pages, things like lead magnets, things like
+creating a game, building custom dashboards and presentations in your own company style. Then
+in part three, we're going to talk about creating full-on web apps. So, not only are we going to
+create a web app that you can use authentication and database so your friends can sign in, we're
+also going to talk about API, the most powerful AI technology in the world, and actually how to
+use that technology and put it in your app. And you can do this all by vibe coding. And then
+we're going to do this again except with mobile apps. And we're going to build a full mobile app.
+And then in part five, we're going to deploy our apps that we create on the web and on mobile to
+the App Store and to the internet with our own custom domain. So I promise you, you're going to
+go from being a beginner to someone who feels like you have complete control over the next wave
+of AI technology and you're going to be able to vibe code experiences. Because what you'll
+realize throughout this video is vibe coding goes beyond creating apps. You can basically create
+any experience that happens on a computer or a phone. So, if you like videos like these, please
+consider liking the video, subscribing the video, and sharing this video with your friends
+because if this video does well, I'm going to keep doing it because I actually really enjoy
+making videos like these. It just takes like 30 hours. But anyway, let's not waste any more
+time. Let's learn how to vibe code.
+```
+
+### Rest of video
+
+- Introduces the main coding agents used in the course: Claude Code, Codex, Gemini, and browser/cloud sandbox environments.
+- Shows basic setup and explains context windows, slash commands, clearing, compacting, and how to manage long AI coding sessions.
+- Builds static web outputs first, including landing pages, lead magnets, games, dashboards, presentations, and shareable previews.
+- Uses screenshots, company styles, and existing sites as references to guide the AI toward better visual output.
+- Builds fuller web apps with authentication, database, storage, and image upload using InstantDB and similar tools.
+- Adds AI APIs into apps, including image generation and editing flows, API keys, backend calls, and structured outputs.
+- Builds mobile app examples and works through real debugging: recording, transcription, summaries, app errors, and simplifying broken logic.
+- Ends with deployment fundamentals: sharing previews, deploying web apps, publishing mobile apps, domains, app store steps, and the next step of payments.
+
+## 10. Complete Guide to Cursor For Non-Coders (Vibe Coding 101)
+
+- URL: https://www.youtube.com/watch?v=faezjTHA5SU
+- Published: 2025-02-11
+- Public views checked: 177,362
+- Duration: 2:28:17
+
+### Intro
+
+```text
+Today we're talking about building apps with AI. This is a comprehensive guide for you with no
+coding experience. You'll be able to build an app by the end of this video. This is going to be
+the most comprehensive Cursor tutorial for those who want to vibe code. Vibe code is the act of
+speaking or typing into Cursor Composer, which is the smartest AI tool for coding in the world
+by far. In this video, we're going to talk about this in three parts. The first part will be the
+basics of Cursor and so we talk about all of these different things. We're going to go through
+all of the vocabulary, everything that you need to know as someone who doesn't know how to write
+code to communicate with AI-powered coding tools like Cursor. And so in this first basic section
+we're also just going to build an AI image generator and I want you to fully understand how
+relatively easy it is to create really cool apps. You don't need to pay for other people's
+software anymore. The AI image generator that we create looks like this and so we're going to be
+able to say a man riding a bike with an elf hat on and I will show you from scratch how I built
+this very quickly. And boom. So we created this AI image generator. We can copy, we can
+download. And then in part two we built this landing page and we found a library on GitHub that
+had really cool animations and we just remixed it and created this landing page and we also went
+through the process of deploying it and uploading it to our own domain. So I bought a domain,
+agate.com, and that is this site. You can visit this site and I'll show you every step of the
+process to create this. And then finally in part three, we built an AI-powered app and this app
+really targets one of my big pain points with the new OpenAI deep research. I really like how it
+can create 10 to 30 page reports but it doesn't have images built into it, which is why I wanted
+to create an app that allows me to paste in all of my ideas and then I could generate images for
+the different sections. So I can generate charts with AI and this allows me, with one click, to
+generate charts with AI. And if I want to make changes, I can actually talk to an AI and say,
+mention the companies here and explain these more in the chart. And so we used Claude's API to
+allow us to edit these charts. Those are the three apps that we created today and I'm going to
+go through all of the basics getting started with Cursor. We're going to talk about Vercel and
+deploying apps to Vercel. I promise you it'll be worth it. You're going to love vibe coding. I'm
+Riley Brown. Let's dive in.
+```
+
+### Rest of video
+
+- Opens Cursor and compares it to friendlier app builders like Bolt, explaining why Cursor exposes more real project structure.
+- Teaches the basic mental model for non-coders: projects, files, composer, chat context, reducing old context, and asking the agent to generate code.
+- Builds a simple AI image generator, including API selection, environment variables, error fixing, loading states, and image output controls.
+- Uses Whimsical-style diagrams and GitHub inspiration to plan an app before prompting Cursor to build it.
+- Builds and remixes an animated landing page from a GitHub library, then iterates on colors, sections, testimonials, copy, and layout.
+- Deploys the landing page to Vercel and connects it to a custom domain so the site is public.
+- Builds a more complex AI research/chart app using Firebase, Claude API, Mermaid diagrams, saved reports, auth, and database storage.
+- Debugs chart editing, saved state, export behavior, API keys, and environment variable setup while explaining why each system piece matters.

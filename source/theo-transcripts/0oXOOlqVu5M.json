@@ -1,0 +1,1718 @@
+{
+  "successful": true,
+  "data": {
+    "credits": {
+      "charged": 2,
+      "remaining": 34
+    },
+    "data": {
+      "_truncated": {
+        "field": "segments",
+        "reason": "response size limit — lower \"limit\" for full detail",
+        "shown": 282,
+        "total": 1083
+      },
+      "dataRefreshedAt": "2026-09-21T23:59:31.917Z",
+      "fullText": "There is one particular GitHub repo that I've been eyeing for a long time and just never took the time to dive into. It's by a person that I've interacted with a bunch in the past who if you've been around for a while I am sure you're familiar with. I've often called myself the second best TypeScript YouTuber and the reason is because of this individual, the number one Matt HCO. He published a set of AI skills for real engineers that I honestly kind of dismissed initially, but over time he has continued to refine them and be realistic with them. And what he's created is a set of small and simple markdown files that have racked up over 200,000 stars on GitHub, making it one of the 10 most starred projects on all of GitHub. Truly insane. All for markdown files. I've wanted to see what the hype was about for a while here, and I've seen people saying really good things about them, especially the grill me skill. And this has also been a video I've planned for a while to the point where my whole Twitch chat is freaking out. Thank you. I stayed up till 3:00 a.m. for this. Long overdue. Finally, three streams ago. Since this was put in Notion, Matt's updated the skills multiple times. Yeah, you guys have wanted to get my honest thoughts on these skills for a while. In order to do that, I had to use them. So, I did. Over the last week, I installed a bunch of the skills from Matt Poco's skills repo, which is full of gems that are worth talking about, from his process to the actual skills themselves. If I only covered Matt's skills, though, I'd be doing this ecosystem a disservice. The vast majority of these skill repos are absolute slop and should be ignored. But there is one other I'm excited about. PA stack created by Lauren, otherwise known as Potato, one of my old favorite React core team members, who is now at Cursor, and built a wild set of skills that are really fun and surprisingly powerful. I have went through and audited the majority of the skills in both of these suites, pulled in my favorites, and I've been using them actively. I cannot wait to show you everything I've learned after a real quick break for today's sponsor. Let's be honest with ourselves. We've moved past the era of doing one thing at a time. And as great as this is, there's a lot of random problems it's caused. Things like knowing where to run your code when you're working on it. Things like making sure your CI is actually running performantly and well, and that it's doing things in parallel. And just knowing what's going on across all of the projects that are shipping at your company. All of this is obnoxious to do by hand, and it's becoming more and more of my work. Well, it was before I started using today's sponsor. You probably already heard me talk about Depot. They're the best place for your GitHub CI and for your Docker builds, which makes everything way faster, up to 55 times faster for a lot of real world use cases. Their best-in-class runners make everything faster, and their cache helps everyone on the team get started quicker, too. The cache is shared across your entire team and your CI for your Docker builds, which helps a ton with speed. GitHub actions are also way faster, too, up to 10 times faster when you use them on Depot than with traditional GitHub action CI. And if you add the depot CI runners, things go even faster because they can do actual parallelism. But that's not what I promised. I was talking about working in parallel, not just building in parallel. Well, that's where's remote agent sandboxes come in, making it trivial to spin up your real images and your real projects in the cloud with your cloud code. If you already have depot set up, you can just run depot cloud instead of cloud directly and is now running in a remote sandbox instead. Ship faster and unblock yourself at soyv.link/depo. Couple things I want to say upfront before we go too deep into all of these skills that have been provided by these different places. The first thing, and I really want to emphasize this, you do not get anything out of blindly copying other people's setups. You should treat these things not as a set of steps to take, rather as a set of information to consider as you build your own systems for coding with AI. If you just copy paste my codebase and change things, you're not a very good engineer. But if you use my codebase as a reference point to learn and build your skills as you craft your own code bases, then you're a good engineer. The same difference applies here. If you just blindly copy my exact setup, it's like paying a bunch of money for a code template. It's cringe and bad and it means you suck at engineering. Period. So, don't just blindly install all the skills here. At the very least, start with a slightly better entry point. I see my chat realizing that Potato was one of the builders of the React compiler. She's one of the biggest contributors there. She's unbelievably talented. Yeah, Pstack is going to be the underrated gem in this and I think you guys will like it a lot. I want to start first with how I set this all up. I started with a prompt. I want to figure out which potato pack skills would map well to the work that I do. I want you to audit my usage across my main machines which were this MacBook, Leftbook, and BB1. Compare my usage against the skills in Pstack. Make a nice list ranking all of them by how well they fit me and how much they could benefit me. Pull history here first, then break up sub agents to do auditing. Opus 5 for all. I had a bunch of Opus 5 to burn at the time, so that's why I was testing this. and I linked to Pstack. It then created this document for me where it pulled in all the skills and then ranked them based on how strong of a fit they were as well as how beneficial they would be to my work and then a little brief why. So, it immediately called out the interrogate skill, blast radius, technical writing arena, the prove it work skill, and a few others. I will say that this deep dive was inspired by one particular thing. It was the interest I had in the unslop skill because I had seen Lauren posting some of the pros that her agents wrote. I was like, \"Oh, that looks significantly less cringe than I'm used to Claude writing.\" So, I quickly grabbed this unslop skill, which is very, very simple. There's also some fun prompting details here in the descriptions Potato uses because again, as I mentioned before in my like Markdown overhaul video, the description's role isn't to accurately describe everything the skill does because it's just Markdown. The only point of the description is to trigger the skill when it should trigger. You should treat the description as the thing that gets the model to do this rather than as an accurate description of everything the model can do with the skill. I see it kind of similar to a YouTube video thumbnail where the role of the thumbnail isn't to accurately encapsulate everything that the video has in it. It is to get the right person to stop scrolling and click it and watch it. The goal of the description is similar. It's to get the right agent for the right task to decide, \"Oh, that skill is useful. I should pull that in.\" It shouldn't be called a description. It should be called a trigger. All of these standards were written in the old anthropic days before anyone knew what the they were doing. We're stuck with it. It is what it is. Anyways, let's take a look at what the skills actual content is. So, again, if you're not familiar with how skills work, they have a name and a description. The models have access to all of your skills. They just see the name in the description and then they decide, \"Oh, that skill could be useful to me right now based on its description. I'm going to pull it in now.\" And then what it does is it just reads this markdown file into context. So when it pulls in the unslop skill, here's what it reads. Edit text to remove AI patterns and add a human voice. The process is simple. Scan for the patterns, rewrite, preserve meaning, match intended tone, add some soul, and then self audit. Quote, \"What makes this obviously AI generated?\" Then you go and fix the remaining tells. Adding soul. Removing patterns is half the job. Sterile voiceless writing is just as obvious. Have opinions. React to facts instead of neutrally listing pros and cons. Very rhythm. Short sentences then longer ones that take their time. Mix it up. Acknowledge complexity. Quote impressive but also kind of unsettling beats impressive. Use I when it fits. First person isn't unprofessional. Let some mess in. Perfect structure looks machineade. Be specific. Not this is concerning, rather, there's something unsettling about agents churning away at 3:00 a.m. Don't call me out like this. Patterns to detect and fix. This is one of the things LM are really good at is if you give them an example of bad and then show them good, they will follow good very well. But if you don't have certain things in those examples, they will continue to do them bad. So you got to find the balance there. The patterns to detect and fix. The first is in content puffery. So, lots of these phrases. Pivotal moment, testament to evolving landscape. Setting the stage, cut the puffery, say what happened, named dropping, listing media outlets without context, just pick one and say what was said. Superficial ing phrases like highlighting, ensuring, reflecting, showcasing, delete them. Promotional language as well, vague, you get the idea. It also calls out M- overuse. Somehow, I still see a lot of M dashes coming out of Opus. The others have followed this much better. Chat's saying that it's a good thing to point out how good the semantic density is here. I agree. This is not slop. This is very easy to read and the info is communicated very effectively. It's just well written. And when you have good writing in your history, the models are more likely to follow it. And if you tell said models to follow it, they're much more likely to. There's also a whole section here to remove chatbot phrases like, \"I hope this helps. Let me know if found the smoking gun.\" all those types of things. No mention of loadbearing. Sadly, there's a whole section about jargon. This is my favorite piece though. Say what it does, not how it feels. Instead of the database stays close at hand, say something much more direct. SQL returns the exact string sent to the database. That's so much better. Ask what the sentence tells the reader to do or know. Then write that. If you can't restate it as a concise instruction, fact, or number, cut it. One more check. If the sentence could appear unchanged in another project's docs, it says nothing about this one. Cut it. So, let's see how this works. I will just ask with GPT56 high. You know what? We'll give it something harder. I'll use Opus 5. It's going to take too long. I'm going to stick with Soul for this just because it will be done faster. What is this project? Help me understand it and why someone would be interested in using it. Or I can just grab like any of my other existing codeex threads and you'll see the difference. Here is one where I asked it to update my Swift UI app. Build 26 is uploaded to App Store Connect and processing also completed. Bullet point list of the exact things done. Public distribution cannot yet be verified because the app store connect browser session expired. Sign in at link. Then I can assign build 26 to the public beta group if automatic distribution does not handle it. This is so easy to read. It's so much better. And you'll notice when I make new prompts, one of the first things that happen is implying of the unslop skill. I'm also applying the required unslop writing skill so the answer stays direct and easy to scan. And then it did. And now it wrote a very simple, easy to read blob of text. T3 code an open source control center for coding agents. Instead of using codeex, cloud code, cursor, grock or open  …[+29096 chars truncated]",
+      "segments": [
+        {
+          "endMs": 4480,
+          "startMs": 80,
+          "startTime": "0:00",
+          "text": "There is one particular GitHub repo that"
+        },
+        {
+          "endMs": 6960,
+          "startMs": 2399,
+          "startTime": "0:02",
+          "text": "I've been eyeing for a long time and"
+        },
+        {
+          "endMs": 8559,
+          "startMs": 4480,
+          "startTime": "0:04",
+          "text": "just never took the time to dive into."
+        },
+        {
+          "endMs": 10559,
+          "startMs": 6960,
+          "startTime": "0:06",
+          "text": "It's by a person that I've interacted"
+        },
+        {
+          "endMs": 12400,
+          "startMs": 8559,
+          "startTime": "0:08",
+          "text": "with a bunch in the past who if you've"
+        },
+        {
+          "endMs": 14320,
+          "startMs": 10559,
+          "startTime": "0:10",
+          "text": "been around for a while I am sure you're"
+        },
+        {
+          "endMs": 16400,
+          "startMs": 12400,
+          "startTime": "0:12",
+          "text": "familiar with. I've often called myself"
+        },
+        {
+          "endMs": 17600,
+          "startMs": 14320,
+          "startTime": "0:14",
+          "text": "the second best TypeScript YouTuber and"
+        },
+        {
+          "endMs": 20880,
+          "startMs": 16400,
+          "startTime": "0:16",
+          "text": "the reason is because of this"
+        },
+        {
+          "endMs": 23119,
+          "startMs": 17600,
+          "startTime": "0:17",
+          "text": "individual, the number one Matt HCO. He"
+        },
+        {
+          "endMs": 25279,
+          "startMs": 20880,
+          "startTime": "0:20",
+          "text": "published a set of AI skills for real"
+        },
+        {
+          "endMs": 28320,
+          "startMs": 23119,
+          "startTime": "0:23",
+          "text": "engineers that I honestly kind of"
+        },
+        {
+          "endMs": 30000,
+          "startMs": 25279,
+          "startTime": "0:25",
+          "text": "dismissed initially, but over time he"
+        },
+        {
+          "endMs": 31599,
+          "startMs": 28320,
+          "startTime": "0:28",
+          "text": "has continued to refine them and be"
+        },
+        {
+          "endMs": 32880,
+          "startMs": 30000,
+          "startTime": "0:30",
+          "text": "realistic with them. And what he's"
+        },
+        {
+          "endMs": 34800,
+          "startMs": 31599,
+          "startTime": "0:31",
+          "text": "created is a set of small and simple"
+        },
+        {
+          "endMs": 37280,
+          "startMs": 32880,
+          "startTime": "0:32",
+          "text": "markdown files that have racked up over"
+        },
+        {
+          "endMs": 39920,
+          "startMs": 34800,
+          "startTime": "0:34",
+          "text": "200,000 stars on GitHub, making it one"
+        },
+        {
+          "endMs": 42160,
+          "startMs": 37280,
+          "startTime": "0:37",
+          "text": "of the 10 most starred projects on all"
+        },
+        {
+          "endMs": 44719,
+          "startMs": 39920,
+          "startTime": "0:39",
+          "text": "of GitHub. Truly insane. All for"
+        },
+        {
+          "endMs": 47200,
+          "startMs": 42160,
+          "startTime": "0:42",
+          "text": "markdown files. I've wanted to see what"
+        },
+        {
+          "endMs": 48719,
+          "startMs": 44719,
+          "startTime": "0:44",
+          "text": "the hype was about for a while here, and"
+        },
+        {
+          "endMs": 50320,
+          "startMs": 47200,
+          "startTime": "0:47",
+          "text": "I've seen people saying really good"
+        },
+        {
+          "endMs": 52160,
+          "startMs": 48719,
+          "startTime": "0:48",
+          "text": "things about them, especially the grill"
+        },
+        {
+          "endMs": 53840,
+          "startMs": 50320,
+          "startTime": "0:50",
+          "text": "me skill. And this has also been a video"
+        },
+        {
+          "endMs": 55840,
+          "startMs": 52160,
+          "startTime": "0:52",
+          "text": "I've planned for a while to the point"
+        },
+        {
+          "endMs": 57600,
+          "startMs": 53840,
+          "startTime": "0:53",
+          "text": "where my whole Twitch chat is freaking"
+        },
+        {
+          "endMs": 60399,
+          "startMs": 55840,
+          "startTime": "0:55",
+          "text": "out. Thank you. I stayed up till 3:00"
+        },
+        {
+          "endMs": 62640,
+          "startMs": 57600,
+          "startTime": "0:57",
+          "text": "a.m. for this. Long overdue. Finally,"
+        },
+        {
+          "endMs": 64239,
+          "startMs": 60399,
+          "startTime": "1:00",
+          "text": "three streams ago. Since this was put in"
+        },
+        {
+          "endMs": 66000,
+          "startMs": 62640,
+          "startTime": "1:02",
+          "text": "Notion, Matt's updated the skills"
+        },
+        {
+          "endMs": 67280,
+          "startMs": 64239,
+          "startTime": "1:04",
+          "text": "multiple times. Yeah, you guys have"
+        },
+        {
+          "endMs": 69119,
+          "startMs": 66000,
+          "startTime": "1:06",
+          "text": "wanted to get my honest thoughts on"
+        },
+        {
+          "endMs": 72159,
+          "startMs": 67280,
+          "startTime": "1:07",
+          "text": "these skills for a while. In order to do"
+        },
+        {
+          "endMs": 74159,
+          "startMs": 69119,
+          "startTime": "1:09",
+          "text": "that, I had to use them. So, I did. Over"
+        },
+        {
+          "endMs": 77280,
+          "startMs": 72159,
+          "startTime": "1:12",
+          "text": "the last week, I installed a bunch of"
+        },
+        {
+          "endMs": 79439,
+          "startMs": 74159,
+          "startTime": "1:14",
+          "text": "the skills from Matt Poco's skills repo,"
+        },
+        {
+          "endMs": 81200,
+          "startMs": 77280,
+          "startTime": "1:17",
+          "text": "which is full of gems that are worth"
+        },
+        {
+          "endMs": 83040,
+          "startMs": 79439,
+          "startTime": "1:19",
+          "text": "talking about, from his process to the"
+        },
+        {
+          "endMs": 85040,
+          "startMs": 81200,
+          "startTime": "1:21",
+          "text": "actual skills themselves. If I only"
+        },
+        {
+          "endMs": 87200,
+          "startMs": 83040,
+          "startTime": "1:23",
+          "text": "covered Matt's skills, though, I'd be"
+        },
+        {
+          "endMs": 88880,
+          "startMs": 85040,
+          "startTime": "1:25",
+          "text": "doing this ecosystem a disservice. The"
+        },
+        {
+          "endMs": 91040,
+          "startMs": 87200,
+          "startTime": "1:27",
+          "text": "vast majority of these skill repos are"
+        },
+        {
+          "endMs": 93920,
+          "startMs": 88880,
+          "startTime": "1:28",
+          "text": "absolute slop and should be ignored. But"
+        },
+        {
+          "endMs": 96400,
+          "startMs": 91040,
+          "startTime": "1:31",
+          "text": "there is one other I'm excited about. PA"
+        },
+        {
+          "endMs": 98720,
+          "startMs": 93920,
+          "startTime": "1:33",
+          "text": "stack created by Lauren, otherwise known"
+        },
+        {
+          "endMs": 101119,
+          "startMs": 96400,
+          "startTime": "1:36",
+          "text": "as Potato, one of my old favorite React"
+        },
+        {
+          "endMs": 104159,
+          "startMs": 98720,
+          "startTime": "1:38",
+          "text": "core team members, who is now at Cursor,"
+        },
+        {
+          "endMs": 106720,
+          "startMs": 101119,
+          "startTime": "1:41",
+          "text": "and built a wild set of skills that are"
+        },
+        {
+          "endMs": 108240,
+          "startMs": 104159,
+          "startTime": "1:44",
+          "text": "really fun and surprisingly powerful. I"
+        },
+        {
+          "endMs": 110399,
+          "startMs": 106720,
+          "startTime": "1:46",
+          "text": "have went through and audited the"
+        },
+        {
+          "endMs": 112720,
+          "startMs": 108240,
+          "startTime": "1:48",
+          "text": "majority of the skills in both of these"
+        },
+        {
+          "endMs": 114880,
+          "startMs": 110399,
+          "startTime": "1:50",
+          "text": "suites, pulled in my favorites, and I've"
+        },
+        {
+          "endMs": 116240,
+          "startMs": 112720,
+          "startTime": "1:52",
+          "text": "been using them actively. I cannot wait"
+        },
+        {
+          "endMs": 117680,
+          "startMs": 114880,
+          "startTime": "1:54",
+          "text": "to show you everything I've learned"
+        },
+        {
+          "endMs": 119360,
+          "startMs": 116240,
+          "startTime": "1:56",
+          "text": "after a real quick break for today's"
+        },
+        {
+          "endMs": 121200,
+          "startMs": 117680,
+          "startTime": "1:57",
+          "text": "sponsor. Let's be honest with ourselves."
+        },
+        {
+          "endMs": 123119,
+          "startMs": 119360,
+          "startTime": "1:59",
+          "text": "We've moved past the era of doing one"
+        },
+        {
+          "endMs": 124560,
+          "startMs": 121200,
+          "startTime": "2:01",
+          "text": "thing at a time. And as great as this"
+        },
+        {
+          "endMs": 126159,
+          "startMs": 123119,
+          "startTime": "2:03",
+          "text": "is, there's a lot of random problems"
+        },
+        {
+          "endMs": 127520,
+          "startMs": 124560,
+          "startTime": "2:04",
+          "text": "it's caused. Things like knowing where"
+        },
+        {
+          "endMs": 129280,
+          "startMs": 126159,
+          "startTime": "2:06",
+          "text": "to run your code when you're working on"
+        },
+        {
+          "endMs": 130879,
+          "startMs": 127520,
+          "startTime": "2:07",
+          "text": "it. Things like making sure your CI is"
+        },
+        {
+          "endMs": 132560,
+          "startMs": 129280,
+          "startTime": "2:09",
+          "text": "actually running performantly and well,"
+        },
+        {
+          "endMs": 134160,
+          "startMs": 130879,
+          "startTime": "2:10",
+          "text": "and that it's doing things in parallel."
+        },
+        {
+          "endMs": 135680,
+          "startMs": 132560,
+          "startTime": "2:12",
+          "text": "And just knowing what's going on across"
+        },
+        {
+          "endMs": 137520,
+          "startMs": 134160,
+          "startTime": "2:14",
+          "text": "all of the projects that are shipping at"
+        },
+        {
+          "endMs": 138959,
+          "startMs": 135680,
+          "startTime": "2:15",
+          "text": "your company. All of this is obnoxious"
+        },
+        {
+          "endMs": 141040,
+          "startMs": 137520,
+          "startTime": "2:17",
+          "text": "to do by hand, and it's becoming more"
+        },
+        {
+          "endMs": 142480,
+          "startMs": 138959,
+          "startTime": "2:18",
+          "text": "and more of my work. Well, it was before"
+        },
+        {
+          "endMs": 143599,
+          "startMs": 141040,
+          "startTime": "2:21",
+          "text": "I started using today's sponsor. You"
+        },
+        {
+          "endMs": 144800,
+          "startMs": 142480,
+          "startTime": "2:22",
+          "text": "probably already heard me talk about"
+        },
+        {
+          "endMs": 146560,
+          "startMs": 143599,
+          "startTime": "2:23",
+          "text": "Depot. They're the best place for your"
+        },
+        {
+          "endMs": 148480,
+          "startMs": 144800,
+          "startTime": "2:24",
+          "text": "GitHub CI and for your Docker builds,"
+        },
+        {
+          "endMs": 150879,
+          "startMs": 146560,
+          "startTime": "2:26",
+          "text": "which makes everything way faster, up to"
+        },
+        {
+          "endMs": 152640,
+          "startMs": 148480,
+          "startTime": "2:28",
+          "text": "55 times faster for a lot of real world"
+        },
+        {
+          "endMs": 154400,
+          "startMs": 150879,
+          "startTime": "2:30",
+          "text": "use cases. Their best-in-class runners"
+        },
+        {
+          "endMs": 155920,
+          "startMs": 152640,
+          "startTime": "2:32",
+          "text": "make everything faster, and their cache"
+        },
+        {
+          "endMs": 157840,
+          "startMs": 154400,
+          "startTime": "2:34",
+          "text": "helps everyone on the team get started"
+        },
+        {
+          "endMs": 159680,
+          "startMs": 155920,
+          "startTime": "2:35",
+          "text": "quicker, too. The cache is shared across"
+        },
+        {
+          "endMs": 161599,
+          "startMs": 157840,
+          "startTime": "2:37",
+          "text": "your entire team and your CI for your"
+        },
+        {
+          "endMs": 163280,
+          "startMs": 159680,
+          "startTime": "2:39",
+          "text": "Docker builds, which helps a ton with"
+        },
+        {
+          "endMs": 165599,
+          "startMs": 161599,
+          "startTime": "2:41",
+          "text": "speed. GitHub actions are also way"
+        },
+        {
+          "endMs": 166959,
+          "startMs": 163280,
+          "startTime": "2:43",
+          "text": "faster, too, up to 10 times faster when"
+        },
+        {
+          "endMs": 169200,
+          "startMs": 165599,
+          "startTime": "2:45",
+          "text": "you use them on Depot than with"
+        },
+        {
+          "endMs": 171360,
+          "startMs": 166959,
+          "startTime": "2:46",
+          "text": "traditional GitHub action CI. And if you"
+        },
+        {
+          "endMs": 172959,
+          "startMs": 169200,
+          "startTime": "2:49",
+          "text": "add the depot CI runners, things go even"
+        },
+        {
+          "endMs": 174400,
+          "startMs": 171360,
+          "startTime": "2:51",
+          "text": "faster because they can do actual"
+        },
+        {
+          "endMs": 176000,
+          "startMs": 172959,
+          "startTime": "2:52",
+          "text": "parallelism. But that's not what I"
+        },
+        {
+          "endMs": 177680,
+          "startMs": 174400,
+          "startTime": "2:54",
+          "text": "promised. I was talking about working in"
+        },
+        {
+          "endMs": 179040,
+          "startMs": 176000,
+          "startTime": "2:56",
+          "text": "parallel, not just building in parallel."
+        },
+        {
+          "endMs": 180800,
+          "startMs": 177680,
+          "startTime": "2:57",
+          "text": "Well, that's where's remote agent"
+        },
+        {
+          "endMs": 182640,
+          "startMs": 179040,
+          "startTime": "2:59",
+          "text": "sandboxes come in, making it trivial to"
+        },
+        {
+          "endMs": 184640,
+          "startMs": 180800,
+          "startTime": "3:00",
+          "text": "spin up your real images and your real"
+        },
+        {
+          "endMs": 186400,
+          "startMs": 182640,
+          "startTime": "3:02",
+          "text": "projects in the cloud with your cloud"
+        },
+        {
+          "endMs": 188159,
+          "startMs": 184640,
+          "startTime": "3:04",
+          "text": "code. If you already have depot set up,"
+        },
+        {
+          "endMs": 190000,
+          "startMs": 186400,
+          "startTime": "3:06",
+          "text": "you can just run depot cloud instead of"
+        },
+        {
+          "endMs": 191920,
+          "startMs": 188159,
+          "startTime": "3:08",
+          "text": "cloud directly and is now running in a"
+        },
+        {
+          "endMs": 194319,
+          "startMs": 190000,
+          "startTime": "3:10",
+          "text": "remote sandbox instead. Ship faster and"
+        },
+        {
+          "endMs": 195760,
+          "startMs": 191920,
+          "startTime": "3:11",
+          "text": "unblock yourself at soyv.link/depo."
+        },
+        {
+          "endMs": 198319,
+          "startMs": 194319,
+          "startTime": "3:14",
+          "text": "Couple things I want to say upfront"
+        },
+        {
+          "endMs": 199840,
+          "startMs": 195760,
+          "startTime": "3:15",
+          "text": "before we go too deep into all of these"
+        },
+        {
+          "endMs": 201840,
+          "startMs": 198319,
+          "startTime": "3:18",
+          "text": "skills that have been provided by these"
+        },
+        {
+          "endMs": 203680,
+          "startMs": 199840,
+          "startTime": "3:19",
+          "text": "different places. The first thing, and I"
+        },
+        {
+          "endMs": 206080,
+          "startMs": 201840,
+          "startTime": "3:21",
+          "text": "really want to emphasize this, you do"
+        },
+        {
+          "endMs": 208080,
+          "startMs": 203680,
+          "startTime": "3:23",
+          "text": "not get anything out of blindly copying"
+        },
+        {
+          "endMs": 210480,
+          "startMs": 206080,
+          "startTime": "3:26",
+          "text": "other people's setups. You should treat"
+        },
+        {
+          "endMs": 213360,
+          "startMs": 208080,
+          "startTime": "3:28",
+          "text": "these things not as a set of steps to"
+        },
+        {
+          "endMs": 215440,
+          "startMs": 210480,
+          "startTime": "3:30",
+          "text": "take, rather as a set of information to"
+        },
+        {
+          "endMs": 217920,
+          "startMs": 213360,
+          "startTime": "3:33",
+          "text": "consider as you build your own systems"
+        },
+        {
+          "endMs": 219680,
+          "startMs": 215440,
+          "startTime": "3:35",
+          "text": "for coding with AI. If you just copy"
+        },
+        {
+          "endMs": 221360,
+          "startMs": 217920,
+          "startTime": "3:37",
+          "text": "paste my codebase and change things,"
+        },
+        {
+          "endMs": 223599,
+          "startMs": 219680,
+          "startTime": "3:39",
+          "text": "you're not a very good engineer. But if"
+        },
+        {
+          "endMs": 225680,
+          "startMs": 221360,
+          "startTime": "3:41",
+          "text": "you use my codebase as a reference point"
+        },
+        {
+          "endMs": 228080,
+          "startMs": 223599,
+          "startTime": "3:43",
+          "text": "to learn and build your skills as you"
+        },
+        {
+          "endMs": 229840,
+          "startMs": 225680,
+          "startTime": "3:45",
+          "text": "craft your own code bases, then you're a"
+        },
+        {
+          "endMs": 231840,
+          "startMs": 228080,
+          "startTime": "3:48",
+          "text": "good engineer. The same difference"
+        },
+        {
+          "endMs": 233680,
+          "startMs": 229840,
+          "startTime": "3:49",
+          "text": "applies here. If you just blindly copy"
+        },
+        {
+          "endMs": 235200,
+          "startMs": 231840,
+          "startTime": "3:51",
+          "text": "my exact setup, it's like paying a bunch"
+        },
+        {
+          "endMs": 236560,
+          "startMs": 233680,
+          "startTime": "3:53",
+          "text": "of money for a code template. It's"
+        },
+        {
+          "endMs": 239280,
+          "startMs": 235200,
+          "startTime": "3:55",
+          "text": "cringe and bad and it means you suck at"
+        },
+        {
+          "endMs": 241920,
+          "startMs": 236560,
+          "startTime": "3:56",
+          "text": "engineering. Period. So, don't just"
+        },
+        {
+          "endMs": 244080,
+          "startMs": 239280,
+          "startTime": "3:59",
+          "text": "blindly install all the skills here. At"
+        },
+        {
+          "endMs": 245920,
+          "startMs": 241920,
+          "startTime": "4:01",
+          "text": "the very least, start with a slightly"
+        },
+        {
+          "endMs": 247840,
+          "startMs": 244080,
+          "startTime": "4:04",
+          "text": "better entry point. I see my chat"
+        },
+        {
+          "endMs": 250239,
+          "startMs": 245920,
+          "startTime": "4:05",
+          "text": "realizing that Potato was one of the"
+        },
+        {
+          "endMs": 251519,
+          "startMs": 247840,
+          "startTime": "4:07",
+          "text": "builders of the React compiler. She's"
+        },
+        {
+          "endMs": 253200,
+          "startMs": 250239,
+          "startTime": "4:10",
+          "text": "one of the biggest contributors there."
+        },
+        {
+          "endMs": 254799,
+          "startMs": 251519,
+          "startTime": "4:11",
+          "text": "She's unbelievably talented. Yeah,"
+        },
+        {
+          "endMs": 255840,
+          "startMs": 253200,
+          "startTime": "4:13",
+          "text": "Pstack is going to be the underrated gem"
+        },
+        {
+          "endMs": 257759,
+          "startMs": 254799,
+          "startTime": "4:14",
+          "text": "in this and I think you guys will like"
+        },
+        {
+          "endMs": 260639,
+          "startMs": 255840,
+          "startTime": "4:15",
+          "text": "it a lot. I want to start first with how"
+        },
+        {
+          "endMs": 262400,
+          "startMs": 257759,
+          "startTime": "4:17",
+          "text": "I set this all up. I started with a"
+        },
+        {
+          "endMs": 264880,
+          "startMs": 260639,
+          "startTime": "4:20",
+          "text": "prompt. I want to figure out which"
+        },
+        {
+          "endMs": 267280,
+          "startMs": 262400,
+          "startTime": "4:22",
+          "text": "potato pack skills would map well to the"
+        },
+        {
+          "endMs": 269040,
+          "startMs": 264880,
+          "startTime": "4:24",
+          "text": "work that I do. I want you to audit my"
+        },
+        {
+          "endMs": 271280,
+          "startMs": 267280,
+          "startTime": "4:27",
+          "text": "usage across my main machines which were"
+        },
+        {
+          "endMs": 273440,
+          "startMs": 269040,
+          "startTime": "4:29",
+          "text": "this MacBook, Leftbook, and BB1. Compare"
+        },
+        {
+          "endMs": 275600,
+          "startMs": 271280,
+          "startTime": "4:31",
+          "text": "my usage against the skills in Pstack."
+        },
+        {
+          "endMs": 277520,
+          "startMs": 273440,
+          "startTime": "4:33",
+          "text": "Make a nice list ranking all of them by"
+        },
+        {
+          "endMs": 279120,
+          "startMs": 275600,
+          "startTime": "4:35",
+          "text": "how well they fit me and how much they"
+        },
+        {
+          "endMs": 280560,
+          "startMs": 277520,
+          "startTime": "4:37",
+          "text": "could benefit me. Pull history here"
+        },
+        {
+          "endMs": 282240,
+          "startMs": 279120,
+          "startTime": "4:39",
+          "text": "first, then break up sub agents to do"
+        },
+        {
+          "endMs": 284240,
+          "startMs": 280560,
+          "startTime": "4:40",
+          "text": "auditing. Opus 5 for all. I had a bunch"
+        },
+        {
+          "endMs": 285919,
+          "startMs": 282240,
+          "startTime": "4:42",
+          "text": "of Opus 5 to burn at the time, so that's"
+        },
+        {
+          "endMs": 288880,
+          "startMs": 284240,
+          "startTime": "4:44",
+          "text": "why I was testing this. and I linked to"
+        },
+        {
+          "endMs": 291440,
+          "startMs": 285919,
+          "startTime": "4:45",
+          "text": "Pstack. It then created this document"
+        },
+        {
+          "endMs": 294160,
+          "startMs": 288880,
+          "startTime": "4:48",
+          "text": "for me where it pulled in all the skills"
+        },
+        {
+          "endMs": 296240,
+          "startMs": 291440,
+          "startTime": "4:51",
+          "text": "and then ranked them based on how strong"
+        },
+        {
+          "endMs": 298160,
+          "startMs": 294160,
+          "startTime": "4:54",
+          "text": "of a fit they were as well as how"
+        },
+        {
+          "endMs": 300160,
+          "startMs": 296240,
+          "startTime": "4:56",
+          "text": "beneficial they would be to my work and"
+        },
+        {
+          "endMs": 301520,
+          "startMs": 298160,
+          "startTime": "4:58",
+          "text": "then a little brief why. So, it"
+        },
+        {
+          "endMs": 303840,
+          "startMs": 300160,
+          "startTime": "5:00",
+          "text": "immediately called out the interrogate"
+        },
+        {
+          "endMs": 306320,
+          "startMs": 301520,
+          "startTime": "5:01",
+          "text": "skill, blast radius, technical writing"
+        },
+        {
+          "endMs": 308800,
+          "startMs": 303840,
+          "startTime": "5:03",
+          "text": "arena, the prove it work skill, and a"
+        },
+        {
+          "endMs": 311520,
+          "startMs": 306320,
+          "startTime": "5:06",
+          "text": "few others. I will say that this deep"
+        },
+        {
+          "endMs": 314400,
+          "startMs": 308800,
+          "startTime": "5:08",
+          "text": "dive was inspired by one particular"
+        },
+        {
+          "endMs": 317520,
+          "startMs": 311520,
+          "startTime": "5:11",
+          "text": "thing. It was the interest I had in the"
+        },
+        {
+          "endMs": 319520,
+          "startMs": 314400,
+          "startTime": "5:14",
+          "text": "unslop skill because I had seen Lauren"
+        },
+        {
+          "endMs": 321280,
+          "startMs": 317520,
+          "startTime": "5:17",
+          "text": "posting some of the pros that her agents"
+        },
+        {
+          "endMs": 322880,
+          "startMs": 319520,
+          "startTime": "5:19",
+          "text": "wrote. I was like, \"Oh, that looks"
+        },
+        {
+          "endMs": 324639,
+          "startMs": 321280,
+          "startTime": "5:21",
+          "text": "significantly less cringe than I'm used"
+        },
+        {
+          "endMs": 326800,
+          "startMs": 322880,
+          "startTime": "5:22",
+          "text": "to Claude writing.\" So, I quickly"
+        },
+        {
+          "endMs": 329600,
+          "startMs": 324639,
+          "startTime": "5:24",
+          "text": "grabbed this unslop skill, which is"
+        },
+        {
+          "endMs": 331520,
+          "startMs": 326800,
+          "startTime": "5:26",
+          "text": "very, very simple. There's also some fun"
+        },
+        {
+          "endMs": 333759,
+          "startMs": 329600,
+          "startTime": "5:29",
+          "text": "prompting details here in the"
+        },
+        {
+          "endMs": 334960,
+          "startMs": 331520,
+          "startTime": "5:31",
+          "text": "descriptions Potato uses because again,"
+        },
+        {
+          "endMs": 336639,
+          "startMs": 333759,
+          "startTime": "5:33",
+          "text": "as I mentioned before in my like"
+        },
+        {
+          "endMs": 338800,
+          "startMs": 334960,
+          "startTime": "5:34",
+          "text": "Markdown overhaul video, the"
+        },
+        {
+          "endMs": 340240,
+          "startMs": 336639,
+          "startTime": "5:36",
+          "text": "description's role isn't to accurately"
+        },
+        {
+          "endMs": 341919,
+          "startMs": 338800,
+          "startTime": "5:38",
+          "text": "describe everything the skill does"
+        },
+        {
+          "endMs": 344320,
+          "startMs": 340240,
+          "startTime": "5:40",
+          "text": "because it's just Markdown. The"
+        },
+        {
+          "endMs": 345840,
+          "startMs": 341919,
+          "startTime": "5:41",
+          "text": "only point of the description is to"
+        },
+        {
+          "endMs": 347039,
+          "startMs": 344320,
+          "startTime": "5:44",
+          "text": "trigger the skill when it should"
+        },
+        {
+          "endMs": 349199,
+          "startMs": 345840,
+          "startTime": "5:45",
+          "text": "trigger. You should treat the"
+        },
+        {
+          "endMs": 352560,
+          "startMs": 347039,
+          "startTime": "5:47",
+          "text": "description as the thing that gets the"
+        },
+        {
+          "endMs": 354080,
+          "startMs": 349199,
+          "startTime": "5:49",
+          "text": "model to do this rather than as an"
+        },
+        {
+          "endMs": 356320,
+          "startMs": 352560,
+          "startTime": "5:52",
+          "text": "accurate description of everything the"
+        },
+        {
+          "endMs": 358000,
+          "startMs": 354080,
+          "startTime": "5:54",
+          "text": "model can do with the skill. I see it"
+        },
+        {
+          "endMs": 359199,
+          "startMs": 356320,
+          "startTime": "5:56",
+          "text": "kind of similar to a YouTube video"
+        },
+        {
+          "endMs": 360800,
+          "startMs": 358000,
+          "startTime": "5:58",
+          "text": "thumbnail where the role of the"
+        },
+        {
+          "endMs": 363360,
+          "startMs": 359199,
+          "startTime": "5:59",
+          "text": "thumbnail isn't to accurately"
+        },
+        {
+          "endMs": 365440,
+          "startMs": 360800,
+          "startTime": "6:00",
+          "text": "encapsulate everything that the video"
+        },
+        {
+          "endMs": 367199,
+          "startMs": 363360,
+          "startTime": "6:03",
+          "text": "has in it. It is to get the right person"
+        },
+        {
+          "endMs": 368800,
+          "startMs": 365440,
+          "startTime": "6:05",
+          "text": "to stop scrolling and click it and watch"
+        },
+        {
+          "endMs": 370400,
+          "startMs": 367199,
+          "startTime": "6:07",
+          "text": "it. The goal of the description is"
+        },
+        {
+          "endMs": 372479,
+          "startMs": 368800,
+          "startTime": "6:08",
+          "text": "similar. It's to get the right agent for"
+        },
+        {
+          "endMs": 374319,
+          "startMs": 370400,
+          "startTime": "6:10",
+          "text": "the right task to decide, \"Oh, that"
+        },
+        {
+          "endMs": 375600,
+          "startMs": 372479,
+          "startTime": "6:12",
+          "text": "skill is useful. I should pull that in.\""
+        },
+        {
+          "endMs": 377120,
+          "startMs": 374319,
+          "startTime": "6:14",
+          "text": "It shouldn't be called a description. It"
+        },
+        {
+          "endMs": 378560,
+          "startMs": 375600,
+          "startTime": "6:15",
+          "text": "should be called a trigger. All of these"
+        },
+        {
+          "endMs": 380000,
+          "startMs": 377120,
+          "startTime": "6:17",
+          "text": "standards were written in the old"
+        },
+        {
+          "endMs": 381520,
+          "startMs": 378560,
+          "startTime": "6:18",
+          "text": "anthropic days before anyone knew what"
+        },
+        {
+          "endMs": 383840,
+          "startMs": 380000,
+          "startTime": "6:20",
+          "text": "the they were doing. We're stuck"
+        },
+        {
+          "endMs": 385280,
+          "startMs": 381520,
+          "startTime": "6:21",
+          "text": "with it. It is what it is. Anyways,"
+        },
+        {
+          "endMs": 386880,
+          "startMs": 383840,
+          "startTime": "6:23",
+          "text": "let's take a look at what the skills"
+        },
+        {
+          "endMs": 388240,
+          "startMs": 385280,
+          "startTime": "6:25",
+          "text": "actual content is. So, again, if you're"
+        },
+        {
+          "endMs": 390160,
+          "startMs": 386880,
+          "startTime": "6:26",
+          "text": "not familiar with how skills work, they"
+        },
+        {
+          "endMs": 391840,
+          "startMs": 388240,
+          "startTime": "6:28",
+          "text": "have a name and a description. The"
+        },
+        {
+          "endMs": 393600,
+          "startMs": 390160,
+          "startTime": "6:30",
+          "text": "models have access to all of your"
+        },
+        {
+          "endMs": 396319,
+          "startMs": 391840,
+          "startTime": "6:31",
+          "text": "skills. They just see the name in the"
+        },
+        {
+          "endMs": 398240,
+          "startMs": 393600,
+          "startTime": "6:33",
+          "text": "description and then they decide, \"Oh,"
+        },
+        {
+          "endMs": 399919,
+          "startMs": 396319,
+          "startTime": "6:36",
+          "text": "that skill could be useful to me right"
+        },
+        {
+          "endMs": 401919,
+          "startMs": 398240,
+          "startTime": "6:38",
+          "text": "now based on its description. I'm going"
+        },
+        {
+          "endMs": 403600,
+          "startMs": 399919,
+          "startTime": "6:39",
+          "text": "to pull it in now.\" And then what it"
+        },
+        {
+          "endMs": 405919,
+          "startMs": 401919,
+          "startTime": "6:41",
+          "text": "does is it just reads this markdown file"
+        },
+        {
+          "endMs": 408400,
+          "startMs": 403600,
+          "startTime": "6:43",
+          "text": "into context. So when it pulls in the"
+        },
+        {
+          "endMs": 410800,
+          "startMs": 405919,
+          "startTime": "6:45",
+          "text": "unslop skill, here's what it reads. Edit"
+        },
+        {
+          "endMs": 413360,
+          "startMs": 408400,
+          "startTime": "6:48",
+          "text": "text to remove AI patterns and add a"
+        },
+        {
+          "endMs": 415520,
+          "startMs": 410800,
+          "startTime": "6:50",
+          "text": "human voice. The process is simple. Scan"
+        },
+        {
+          "endMs": 417440,
+          "startMs": 413360,
+          "startTime": "6:53",
+          "text": "for the patterns, rewrite, preserve"
+        },
+        {
+          "endMs": 419919,
+          "startMs": 415520,
+          "startTime": "6:55",
+          "text": "meaning, match intended tone, add some"
+        },
+        {
+          "endMs": 421919,
+          "startMs": 417440,
+          "startTime": "6:57",
+          "text": "soul, and then self audit. Quote, \"What"
+        },
+        {
+          "endMs": 423599,
+          "startMs": 419919,
+          "startTime": "6:59",
+          "text": "makes this obviously AI generated?\" Then"
+        },
+        {
+          "endMs": 425759,
+          "startMs": 421919,
+          "startTime": "7:01",
+          "text": "you go and fix the remaining tells."
+        },
+        {
+          "endMs": 427840,
+          "startMs": 423599,
+          "startTime": "7:03",
+          "text": "Adding soul. Removing patterns is half"
+        },
+        {
+          "endMs": 430240,
+          "startMs": 425759,
+          "startTime": "7:05",
+          "text": "the job. Sterile voiceless writing is"
+        },
+        {
+          "endMs": 432240,
+          "startMs": 427840,
+          "startTime": "7:07",
+          "text": "just as obvious. Have opinions. React to"
+        },
+        {
+          "endMs": 434720,
+          "startMs": 430240,
+          "startTime": "7:10",
+          "text": "facts instead of neutrally listing pros"
+        },
+        {
+          "endMs": 436720,
+          "startMs": 432240,
+          "startTime": "7:12",
+          "text": "and cons. Very rhythm. Short sentences"
+        },
+        {
+          "endMs": 439360,
+          "startMs": 434720,
+          "startTime": "7:14",
+          "text": "then longer ones that take their time."
+        },
+        {
+          "endMs": 441120,
+          "startMs": 436720,
+          "startTime": "7:16",
+          "text": "Mix it up. Acknowledge complexity. Quote"
+        },
+        {
+          "endMs": 443919,
+          "startMs": 439360,
+          "startTime": "7:19",
+          "text": "impressive but also kind of unsettling"
+        },
+        {
+          "endMs": 446240,
+          "startMs": 441120,
+          "startTime": "7:21",
+          "text": "beats impressive. Use I when it fits."
+        },
+        {
+          "endMs": 448560,
+          "startMs": 443919,
+          "startTime": "7:23",
+          "text": "First person isn't unprofessional. Let"
+        },
+        {
+          "endMs": 451360,
+          "startMs": 446240,
+          "startTime": "7:26",
+          "text": "some mess in. Perfect structure looks"
+        },
+        {
+          "endMs": 453280,
+          "startMs": 448560,
+          "startTime": "7:28",
+          "text": "machineade. Be specific. Not this is"
+        },
+        {
+          "endMs": 455199,
+          "startMs": 451360,
+          "startTime": "7:31",
+          "text": "concerning, rather, there's something"
+        },
+        {
+          "endMs": 457919,
+          "startMs": 453280,
+          "startTime": "7:33",
+          "text": "unsettling about agents churning away at"
+        },
+        {
+          "endMs": 459919,
+          "startMs": 455199,
+          "startTime": "7:35",
+          "text": "3:00 a.m. Don't call me out like this."
+        },
+        {
+          "endMs": 461360,
+          "startMs": 457919,
+          "startTime": "7:37",
+          "text": "Patterns to detect and fix. This is one"
+        },
+        {
+          "endMs": 462720,
+          "startMs": 459919,
+          "startTime": "7:39",
+          "text": "of the things LM are really good at is"
+        },
+        {
+          "endMs": 464319,
+          "startMs": 461360,
+          "startTime": "7:41",
+          "text": "if you give them an example of bad and"
+        },
+        {
+          "endMs": 466400,
+          "startMs": 462720,
+          "startTime": "7:42",
+          "text": "then show them good, they will follow"
+        },
+        {
+          "endMs": 468000,
+          "startMs": 464319,
+          "startTime": "7:44",
+          "text": "good very well. But if you don't have"
+        },
+        {
+          "endMs": 469280,
+          "startMs": 466400,
+          "startTime": "7:46",
+          "text": "certain things in those examples, they"
+        },
+        {
+          "endMs": 470800,
+          "startMs": 468000,
+          "startTime": "7:48",
+          "text": "will continue to do them bad. So you got"
+        },
+        {
+          "endMs": 472560,
+          "startMs": 469280,
+          "startTime": "7:49",
+          "text": "to find the balance there. The patterns"
+        },
+        {
+          "endMs": 474879,
+          "startMs": 470800,
+          "startTime": "7:50",
+          "text": "to detect and fix. The first is in"
+        },
+        {
+          "endMs": 477440,
+          "startMs": 472560,
+          "startTime": "7:52",
+          "text": "content puffery. So, lots of these"
+        },
+        {
+          "endMs": 480479,
+          "startMs": 474879,
+          "startTime": "7:54",
+          "text": "phrases. Pivotal moment, testament to"
+        },
+        {
+          "endMs": 482560,
+          "startMs": 477440,
+          "startTime": "7:57",
+          "text": "evolving landscape. Setting the stage,"
+        },
+        {
+          "endMs": 484479,
+          "startMs": 480479,
+          "startTime": "8:00",
+          "text": "cut the puffery, say what happened,"
+        },
+        {
+          "endMs": 486720,
+          "startMs": 482560,
+          "startTime": "8:02",
+          "text": "named dropping, listing media outlets"
+        },
+        {
+          "endMs": 490000,
+          "startMs": 484479,
+          "startTime": "8:04",
+          "text": "without context, just pick one and say"
+        },
+        {
+          "endMs": 491919,
+          "startMs": 486720,
+          "startTime": "8:06",
+          "text": "what was said. Superficial ing phrases"
+        },
+        {
+          "endMs": 494000,
+          "startMs": 490000,
+          "startTime": "8:10",
+          "text": "like highlighting, ensuring, reflecting,"
+        },
+        {
+          "endMs": 496000,
+          "startMs": 491919,
+          "startTime": "8:11",
+          "text": "showcasing, delete them. Promotional"
+        },
+        {
+          "endMs": 498720,
+          "startMs": 494000,
+          "startTime": "8:14",
+          "text": "language as well, vague, you get the"
+        },
+        {
+          "endMs": 500720,
+          "startMs": 496000,
+          "startTime": "8:16",
+          "text": "idea. It also calls out M- overuse."
+        },
+        {
+          "endMs": 502960,
+          "startMs": 498720,
+          "startTime": "8:18",
+          "text": "Somehow, I still see a lot of M dashes"
+        },
+        {
+          "endMs": 504879,
+          "startMs": 500720,
+          "startTime": "8:20",
+          "text": "coming out of Opus. The others have"
+        },
+        {
+          "endMs": 507199,
+          "startMs": 502960,
+          "startTime": "8:22",
+          "text": "followed this much better. Chat's saying"
+        },
+        {
+          "endMs": 509520,
+          "startMs": 504879,
+          "startTime": "8:24",
+          "text": "that it's a good thing to point out how"
+        },
+        {
+          "endMs": 512719,
+          "startMs": 507199,
+          "startTime": "8:27",
+          "text": "good the semantic density is here. I"
+        },
+        {
+          "endMs": 515120,
+          "startMs": 509520,
+          "startTime": "8:29",
+          "text": "agree. This is not slop. This is very"
+        },
+        {
+          "endMs": 517519,
+          "startMs": 512719,
+          "startTime": "8:32",
+          "text": "easy to read and the info is"
+        },
+        {
+          "endMs": 519120,
+          "startMs": 515120,
+          "startTime": "8:35",
+          "text": "communicated very effectively. It's just"
+        },
+        {
+          "endMs": 521039,
+          "startMs": 517519,
+          "startTime": "8:37",
+          "text": "well written. And when you have good"
+        },
+        {
+          "endMs": 522479,
+          "startMs": 519120,
+          "startTime": "8:39",
+          "text": "writing in your history, the models are"
+        },
+        {
+          "endMs": 524159,
+          "startMs": 521039,
+          "startTime": "8:41",
+          "text": "more likely to follow it. And if you"
+        },
+        {
+          "endMs": 525680,
+          "startMs": 522479,
+          "startTime": "8:42",
+          "text": "tell said models to follow it, they're"
+        },
+        {
+          "endMs": 527200,
+          "startMs": 524159,
+          "startTime": "8:44",
+          "text": "much more likely to. There's also a"
+        },
+        {
+          "endMs": 528800,
+          "startMs": 525680,
+          "startTime": "8:45",
+          "text": "whole section here to remove chatbot"
+        },
+        {
+          "endMs": 531120,
+          "startMs": 527200,
+          "startTime": "8:47",
+          "text": "phrases like, \"I hope this helps. Let me"
+        },
+        {
+          "endMs": 532800,
+          "startMs": 528800,
+          "startTime": "8:48",
+          "text": "know if found the smoking gun.\" all"
+        },
+        {
+          "endMs": 534560,
+          "startMs": 531120,
+          "startTime": "8:51",
+          "text": "those types of things. No mention of"
+        },
+        {
+          "endMs": 536640,
+          "startMs": 532800,
+          "startTime": "8:52",
+          "text": "loadbearing. Sadly, there's a whole"
+        },
+        {
+          "endMs": 539120,
+          "startMs": 534560,
+          "startTime": "8:54",
+          "text": "section about jargon. This is my"
+        },
+        {
+          "endMs": 541440,
+          "startMs": 536640,
+          "startTime": "8:56",
+          "text": "favorite piece though. Say what it does,"
+        },
+        {
+          "endMs": 544480,
+          "startMs": 539120,
+          "startTime": "8:59",
+          "text": "not how it feels. Instead of the"
+        },
+        {
+          "endMs": 547680,
+          "startMs": 541440,
+          "startTime": "9:01",
+          "text": "database stays close at hand, say"
+        },
+        {
+          "endMs": 549440,
+          "startMs": 544480,
+          "startTime": "9:04",
+          "text": "something much more direct. SQL returns"
+        },
+        {
+          "endMs": 551120,
+          "startMs": 547680,
+          "startTime": "9:07",
+          "text": "the exact string sent to the database."
+        },
+        {
+          "endMs": 552880,
+          "startMs": 549440,
+          "startTime": "9:09",
+          "text": "That's so much better. Ask what the"
+        },
+        {
+          "endMs": 554880,
+          "startMs": 551120,
+          "startTime": "9:11",
+          "text": "sentence tells the reader to do or know."
+        },
+        {
+          "endMs": 556640,
+          "startMs": 552880,
+          "startTime": "9:12",
+          "text": "Then write that. If you can't restate it"
+        },
+        {
+          "endMs": 559040,
+          "startMs": 554880,
+          "startTime": "9:14",
+          "text": "as a concise instruction, fact, or"
+        },
+        {
+          "endMs": 560480,
+          "startMs": 556640,
+          "startTime": "9:16",
+          "text": "number, cut it. One more check. If the"
+        },
+        {
+          "endMs": 562399,
+          "startMs": 559040,
+          "startTime": "9:19",
+          "text": "sentence could appear unchanged in"
+        },
+        {
+          "endMs": 564880,
+          "startMs": 560480,
+          "startTime": "9:20",
+          "text": "another project's docs, it says nothing"
+        },
+        {
+          "endMs": 569839,
+          "startMs": 562399,
+          "startTime": "9:22",
+          "text": "about this one. Cut it. So, let's see"
+        }
+      ],
+      "source": "live",
+      "totalDurationMs": 2302720,
+      "videoId": "0oXOOlqVu5M"
+    }
+  },
+  "error": null,
+  "logId": "log_wM5Z68IbRMM6"
+}

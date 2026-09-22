@@ -1,0 +1,1592 @@
+{
+  "successful": true,
+  "data": {
+    "credits": {
+      "charged": 2,
+      "remaining": 30
+    },
+    "data": {
+      "_truncated": {
+        "field": "segments",
+        "reason": "response size limit — lower \"limit\" for full detail",
+        "shown": 261,
+        "total": 1250
+      },
+      "dataRefreshedAt": "2026-09-22T00:18:51.355Z",
+      "fullText": "Last week there was a really interesting model drop, and the more I've been using it, the more impressed I've been. The model came out anonymously under the name Aux Alpha, and it was announced by Open Code and Open Router, which was interesting in and of itself because we don't know who made it, but there was one other detail that was even more interesting. We have capacity for 100 trillion tokens per day. That is crazy. That is so much compute, it's hard to even fathom. [snorts] On my absolute heaviest usage days, I'm doing upwards of like 7 billion tokens. All of Google's Gemini traffic in a given day is estimated in the 150 trillion token range. So, for whoever was hosting Aux Alpha to give this to one of a few providers in the trillions, hundred trillions range per day is just hard to fathom. So, either there is some hidden reserve of compute these guys have, or maybe this model's really small and cheap, and even then that's still a ton of compute. So, then we started to get some numbers. You guys might know Ben Davis, he's been in a bunch of my content, he does the podcast with me, helps with the channel a ton, good friend. Him and I were playing with it, and he started benching it against the subset of Deep Sweep problems that were public. It ended up scoring absurdly well. 5 6 [snorts] Soul got a 52%, People 5 got a 65%, and whatever the hell Aux was, somehow got an 80%. Something is up. Well, guess what? We actually know what the model is now, and it's definitely not what I expected when I first started playing with it. I will also say that the numbers being shared here are misleading, but it doesn't mean the model is bad. In fact, Aux Alpha has quickly become one of my most used models, and I really, really like using it. But, I bet you wouldn't have guessed it's a flash model. GLM 5.3 flash. It behaves better than 5 3, it behaves on par with models like Opus 4.8 at a 10th to a 100th the price. This is a wild model launch and there are so many fun details for us to dive into. I can't wait to show you everything that makes this model cool and all the things I've been using it for after a real quick break for today's sponsor. As models get smarter and companies ship more and more code, the risk around security is only getting bigger. Making sure your apps are written in a way where they are secure and safe is more important now than ever, but it's also harder than ever. And if you ask models like Fable and Salt to come in and do this audit for you, they're going to throw a bunch of errors because the labs won't let you do security work with them. If only there was a tool that understood your code base that could actually give you real useful feedback on what was insecure. You know, something like Code Rabbit but for security. Oh, yeah. Code Rabbit made a security product and it's actually really, really cool. Not only does it do security reviews for every pull request as they come in as well as checking for dependencies and other things that your project relies on that might be insecure. They also introduced a deep audit product that will go through your whole code base end-to-end and find anything that might be going wrong. I decided to run it across T3 Code and I was so impressed with the results I ran it against everything else that I care about as well. I'm blurring these because these are real security issues we're going to have to go fix, but I can let you guys see the medium and low ones because thankfully they have a little toggle here where I can change what you're seeing. Here's a security misconfiguration in my project. I can click here and open it and see exactly what is wrong, what files it is in, how it is reached, and most importantly, I can click the little button that my face is currently covering, Fix with AI. This button will go file a pull request on your real project for you. Since I'm maintaining so many projects, it's great to see the security trends as well, making it easy to know how secure projects are over time. I'm really excited to hopefully see these numbers go down as we get to use the product more. Start your free trial and get your first 10 scans free at swa.link/coderabbit. As I mentioned before, this model came out under the name Aux Alpha originally and I and others got to heavily, heavily use it in that time. And I was beyond impressed. The model has a million token context window. It has full multi-modality, so it can take images, audio, and video, which is crazy. Especially considering that 5.3 non-flash couldn't even take a screenshot. It is mind-bogglingly cool. So, I obviously had to play with it, and since I'm mostly using Codex and Claude code via T3 code, I didn't feel like trying to get it working in other things. And I also was told by Open Router this is worth trying for agent stuff. So, I started setting up the Open Router binding inside of Codex through my weird proxy layer for Aux Alpha. And I was immediately really impressed when I started using it. Took a bit of back and forth, but I now have 5.3 flash working inside of T3 code. One of my favorite first tasks when I get access to a new model like this is to ask it to just go over the work I already have going. So, let's give that a shot. Take a look at all the pull requests that currently have open in this repo. Help me prioritize them based on ease of merge and the value that they provide to our users. Also, thanks to the cast I've been voice to texting a hell of a lot more. Thank you, Whisper flow. Good start using the file system MCP resource read tool and failing from that. Now, it's going back to just using commands. This is what happens when your models are RL'd on the specific behaviors of a harness. This model clearly isn't RL'd on the weird stuff in Codex, but it still works totally fine in it, which is what's been really impressive for me. Here, it's calling the GitHub fetch in order to get all of this info of the PRs I currently have open so that it's able to go through them. But, everything you're seeing here is possible with various different models that are currently available. So, let's push it a little bit more. Also, love the GitHub error connection issues. As always, GitHub's APIs being garbage. I'm going to ask you to do things a little bit different here. Ignore all the pull requests that were made by Codex. It should be indicated in the body. I I want you to go through the ones that were made by Fable and Claude Code. This is the type of thing that throws a lot of models off. If you give them a steer in a different direction when they're deep in a agentic task like this, they'll get lost. But, you can go even further with this. You can ask it to do something else with the PRs once it finds them. Like, leave a comment on the PRs that you care about or what I'll do here. Put your findings in HTML so that I can more easily look at them on my phone. This is now going to go in as additional steering context, and I cannot tell you how many times I sent something like this to another model, especially like open weight agentic models, and it would respond immediately to that saying, \"Okay, I'll let you know when the findings are done so I can put in HTML.\" And then send a stop signal. And then not keep going until you say, \"Hey, you should finish the work you were just doing.\" I'll narrow the portfolio to open PRs to subscriptions credit Fable and Claude Code excluding Codex builds. And it's already getting to work doing just that. Something is causing the skill file reads to fail. Again, I've been hacking the hell out of my Codex and I'm suffering for it. This demo would have been a lot cooler if GitHub wasn't rate limiting us and Codex's change to how skills are read wasn't breaking things so badly. I could sit here and wait forever, but I ended up finding a run I did when I first got access to the model 5 days ago, and I was very, very impressed. Here, I didn't just ask it to audit my PRs. I asked it to audit all of the PRs in T3 Code that have been updated in the last 5 days. It told these lots of sub agents to break up the work. What PRs does it overlap with? What issues does it fix? How risky is it to merge? How confident are you that it's mergeable? Should we close it? Rank them by ease of action. It successfully spun up and ran six sub agents. Three failed cuz of API call issues, but it was successfully able to recover them and keep going. Yeah, the first worker wave hit a model off failure. Again, I am hacking the hell out of Codex to make all of this stuff work, but once it was fixed, it was fine and it realized this though. This is probably the coolest part. It realized that the sub agent off failures were consistently happening, so fell back to just audit directly rather than waiting on the broken delegation. I'll use the GitHub inspection skill and machine generated summaries, then manually review the highest risk and easiest action PRs. This is phenomenal. This is really really good debugging work that the agent is doing. Not to debug things in my code base, but to debug its own flows. The agent can unblock itself. Autocomplete, the repo's unchanged. Subagent delegation failed with provider off error, so I completed it directly from the GitHub metadata diffs, review CI comments, and local source context. It wrote up the report. It gave me a breakdown of what should be merged or how much should be merged now, how much should be merged after a better review, yada yada. And this was for every PR in the last 5 days. There were hundreds, and it got through all of this in like 20 minutes. It gave me the links to the easiest to merge. And this is a silly little thing, but I cannot tell you how many models, even frontier models, don't make these links. They make them just the PR number, which is obnoxious. And I have to tell it, \"Hey, can you redo that output, but with links for the PRs instead?\" This model just did it. Small thing, but like these little things you start to notice a lot as you do more and more of this work. I ended up going through and merging all eight of these because they were actually very easy. It did a great job of identifying PRs that were easy merges and letting me go do them. And this is all for free, remember. This model, for free, made really good outputs, was able to audit hundreds of PRs, find a pile of things that were easy merges worth doing quickly, and I went through and did it. It was awesome. I did not yet know this was a flash model, but god damn, it was very nice to work with. I followed up. Merge pretty much everything you said was an easy merge. Do another pass with those changes in. Let me know what should be closed, what is still worth merging, etc. Make sure all issues that we have addressed are listed as well. Ignore draft PRs, please. I don't care about those. Scope is the same 5-day cohort with drafts ignored. After your merges, 352 non-draft PRs remain. It noticed the issues that were fixed by those PRs and closed them. The other merged PRs had no linked GitHub issues, no open PR claims 5276, 5289, or 7233. Still worth merging. Another pile of things that it thought I should merge. And then a bunch of things I thought I should close. Very genuinely good outputs. Oh, it finally got my skill read to work. We have successfully got it into deep free code now. Hurrah. And that's using my ZAI plan too, by the way, which I somehow managed to get set up in Vibe proxy. So, now the I think it's 80 bucks a month I was paying from the legacy V2 ZAI code plan. And I believe I should get pretty close to unlimited inference there. I promise you guys this bottle was much faster when I was testing it last week. I'll look into what's making it slow. We could also just look at open router because that'll reveal other very fun things. That's Qwen 38 flash. No, didn't know Qwen 38 flash also dropped today. That's hilarious. Here we are at open router. We can take a look at the speeds. They did release it as open wei …[+33742 chars truncated]",
+      "segments": [
+        {
+          "endMs": 3560,
+          "startMs": 0,
+          "startTime": "0:00",
+          "text": "Last week there was a really interesting"
+        },
+        {
+          "endMs": 5040,
+          "startMs": 1840,
+          "startTime": "0:01",
+          "text": "model drop, and the more I've been using"
+        },
+        {
+          "endMs": 6800,
+          "startMs": 3560,
+          "startTime": "0:03",
+          "text": "it, the more impressed I've been. The"
+        },
+        {
+          "endMs": 9440,
+          "startMs": 5040,
+          "startTime": "0:05",
+          "text": "model came out anonymously under the"
+        },
+        {
+          "endMs": 11920,
+          "startMs": 6800,
+          "startTime": "0:06",
+          "text": "name Aux Alpha, and it was announced by"
+        },
+        {
+          "endMs": 13640,
+          "startMs": 9440,
+          "startTime": "0:09",
+          "text": "Open Code and Open Router, which was"
+        },
+        {
+          "endMs": 15520,
+          "startMs": 11920,
+          "startTime": "0:11",
+          "text": "interesting in and of itself because we"
+        },
+        {
+          "endMs": 17880,
+          "startMs": 13640,
+          "startTime": "0:13",
+          "text": "don't know who made it, but there was"
+        },
+        {
+          "endMs": 21280,
+          "startMs": 15520,
+          "startTime": "0:15",
+          "text": "one other detail that was even more"
+        },
+        {
+          "endMs": 25240,
+          "startMs": 17880,
+          "startTime": "0:17",
+          "text": "interesting. We have capacity for 100"
+        },
+        {
+          "endMs": 28200,
+          "startMs": 21280,
+          "startTime": "0:21",
+          "text": "trillion tokens per day. That is crazy."
+        },
+        {
+          "endMs": 29880,
+          "startMs": 25240,
+          "startTime": "0:25",
+          "text": "That is so much compute, it's hard to"
+        },
+        {
+          "endMs": 33400,
+          "startMs": 28200,
+          "startTime": "0:28",
+          "text": "even fathom. [snorts]"
+        },
+        {
+          "endMs": 36920,
+          "startMs": 29880,
+          "startTime": "0:29",
+          "text": "On my absolute heaviest usage days, I'm"
+        },
+        {
+          "endMs": 38600,
+          "startMs": 33400,
+          "startTime": "0:33",
+          "text": "doing upwards of like 7 billion tokens."
+        },
+        {
+          "endMs": 41200,
+          "startMs": 36920,
+          "startTime": "0:36",
+          "text": "All of Google's Gemini traffic in a"
+        },
+        {
+          "endMs": 44160,
+          "startMs": 38600,
+          "startTime": "0:38",
+          "text": "given day is estimated in the 150"
+        },
+        {
+          "endMs": 47360,
+          "startMs": 41200,
+          "startTime": "0:41",
+          "text": "trillion token range. So, for whoever"
+        },
+        {
+          "endMs": 51040,
+          "startMs": 44160,
+          "startTime": "0:44",
+          "text": "was hosting Aux Alpha to give this to"
+        },
+        {
+          "endMs": 54000,
+          "startMs": 47360,
+          "startTime": "0:47",
+          "text": "one of a few providers in the trillions,"
+        },
+        {
+          "endMs": 57080,
+          "startMs": 51040,
+          "startTime": "0:51",
+          "text": "hundred trillions range per day is just"
+        },
+        {
+          "endMs": 58880,
+          "startMs": 54000,
+          "startTime": "0:54",
+          "text": "hard to fathom. So, either there is some"
+        },
+        {
+          "endMs": 61680,
+          "startMs": 57080,
+          "startTime": "0:57",
+          "text": "hidden reserve of compute these guys"
+        },
+        {
+          "endMs": 63360,
+          "startMs": 58880,
+          "startTime": "0:58",
+          "text": "have, or maybe this model's really small"
+        },
+        {
+          "endMs": 65160,
+          "startMs": 61680,
+          "startTime": "1:01",
+          "text": "and cheap, and even then that's still a"
+        },
+        {
+          "endMs": 67000,
+          "startMs": 63360,
+          "startTime": "1:03",
+          "text": "ton of compute. So, then we started to"
+        },
+        {
+          "endMs": 68560,
+          "startMs": 65160,
+          "startTime": "1:05",
+          "text": "get some numbers. You guys might know"
+        },
+        {
+          "endMs": 69960,
+          "startMs": 67000,
+          "startTime": "1:07",
+          "text": "Ben Davis, he's been in a bunch of my"
+        },
+        {
+          "endMs": 71120,
+          "startMs": 68560,
+          "startTime": "1:08",
+          "text": "content, he does the podcast with me,"
+        },
+        {
+          "endMs": 72640,
+          "startMs": 69960,
+          "startTime": "1:09",
+          "text": "helps with the channel a ton, good"
+        },
+        {
+          "endMs": 74000,
+          "startMs": 71120,
+          "startTime": "1:11",
+          "text": "friend. Him and I were playing with it,"
+        },
+        {
+          "endMs": 75920,
+          "startMs": 72640,
+          "startTime": "1:12",
+          "text": "and he started benching it against the"
+        },
+        {
+          "endMs": 78920,
+          "startMs": 74000,
+          "startTime": "1:14",
+          "text": "subset of Deep Sweep problems that were"
+        },
+        {
+          "endMs": 81480,
+          "startMs": 75920,
+          "startTime": "1:15",
+          "text": "public. It ended up scoring absurdly"
+        },
+        {
+          "endMs": 84160,
+          "startMs": 78920,
+          "startTime": "1:18",
+          "text": "well. 5 6 [snorts] Soul got a 52%,"
+        },
+        {
+          "endMs": 89080,
+          "startMs": 81480,
+          "startTime": "1:21",
+          "text": "People 5 got a 65%, and whatever the"
+        },
+        {
+          "endMs": 91600,
+          "startMs": 84160,
+          "startTime": "1:24",
+          "text": "hell Aux was, somehow got an 80%."
+        },
+        {
+          "endMs": 93400,
+          "startMs": 89080,
+          "startTime": "1:29",
+          "text": "Something is up. Well, guess what? We"
+        },
+        {
+          "endMs": 95800,
+          "startMs": 91600,
+          "startTime": "1:31",
+          "text": "actually know what the model is now, and"
+        },
+        {
+          "endMs": 98200,
+          "startMs": 93400,
+          "startTime": "1:33",
+          "text": "it's definitely not what I expected when"
+        },
+        {
+          "endMs": 99960,
+          "startMs": 95800,
+          "startTime": "1:35",
+          "text": "I first started playing with it. I will"
+        },
+        {
+          "endMs": 102920,
+          "startMs": 98200,
+          "startTime": "1:38",
+          "text": "also say that the numbers being shared"
+        },
+        {
+          "endMs": 105640,
+          "startMs": 99960,
+          "startTime": "1:39",
+          "text": "here are misleading, but it doesn't mean"
+        },
+        {
+          "endMs": 107280,
+          "startMs": 102920,
+          "startTime": "1:42",
+          "text": "the model is bad. In fact, Aux Alpha has"
+        },
+        {
+          "endMs": 109680,
+          "startMs": 105640,
+          "startTime": "1:45",
+          "text": "quickly become one of my most used"
+        },
+        {
+          "endMs": 112080,
+          "startMs": 107280,
+          "startTime": "1:47",
+          "text": "models, and I really, really like using"
+        },
+        {
+          "endMs": 115800,
+          "startMs": 109680,
+          "startTime": "1:49",
+          "text": "it. But, I bet you wouldn't have guessed"
+        },
+        {
+          "endMs": 118640,
+          "startMs": 112080,
+          "startTime": "1:52",
+          "text": "it's a flash model. GLM 5.3 flash. It"
+        },
+        {
+          "endMs": 122000,
+          "startMs": 115800,
+          "startTime": "1:55",
+          "text": "behaves better than 5 3, it behaves on"
+        },
+        {
+          "endMs": 124920,
+          "startMs": 118640,
+          "startTime": "1:58",
+          "text": "par with models like Opus 4.8 at a 10th"
+        },
+        {
+          "endMs": 127000,
+          "startMs": 122000,
+          "startTime": "2:02",
+          "text": "to a 100th the price. This is a wild"
+        },
+        {
+          "endMs": 129039,
+          "startMs": 124920,
+          "startTime": "2:04",
+          "text": "model launch and there are so many fun"
+        },
+        {
+          "endMs": 130280,
+          "startMs": 127000,
+          "startTime": "2:07",
+          "text": "details for us to dive into. I can't"
+        },
+        {
+          "endMs": 131440,
+          "startMs": 129039,
+          "startTime": "2:09",
+          "text": "wait to show you everything that makes"
+        },
+        {
+          "endMs": 133080,
+          "startMs": 130280,
+          "startTime": "2:10",
+          "text": "this model cool and all the things I've"
+        },
+        {
+          "endMs": 134840,
+          "startMs": 131440,
+          "startTime": "2:11",
+          "text": "been using it for after a real quick"
+        },
+        {
+          "endMs": 136400,
+          "startMs": 133080,
+          "startTime": "2:13",
+          "text": "break for today's sponsor. As models get"
+        },
+        {
+          "endMs": 138680,
+          "startMs": 134840,
+          "startTime": "2:14",
+          "text": "smarter and companies ship more and more"
+        },
+        {
+          "endMs": 140360,
+          "startMs": 136400,
+          "startTime": "2:16",
+          "text": "code, the risk around security is only"
+        },
+        {
+          "endMs": 141360,
+          "startMs": 138680,
+          "startTime": "2:18",
+          "text": "getting bigger. Making sure your apps"
+        },
+        {
+          "endMs": 143400,
+          "startMs": 140360,
+          "startTime": "2:20",
+          "text": "are written in a way where they are"
+        },
+        {
+          "endMs": 145160,
+          "startMs": 141360,
+          "startTime": "2:21",
+          "text": "secure and safe is more important now"
+        },
+        {
+          "endMs": 146959,
+          "startMs": 143400,
+          "startTime": "2:23",
+          "text": "than ever, but it's also harder than"
+        },
+        {
+          "endMs": 148520,
+          "startMs": 145160,
+          "startTime": "2:25",
+          "text": "ever. And if you ask models like Fable"
+        },
+        {
+          "endMs": 149880,
+          "startMs": 146959,
+          "startTime": "2:26",
+          "text": "and Salt to come in and do this audit"
+        },
+        {
+          "endMs": 151480,
+          "startMs": 148520,
+          "startTime": "2:28",
+          "text": "for you, they're going to throw a bunch"
+        },
+        {
+          "endMs": 153200,
+          "startMs": 149880,
+          "startTime": "2:29",
+          "text": "of errors because the labs won't let you"
+        },
+        {
+          "endMs": 154600,
+          "startMs": 151480,
+          "startTime": "2:31",
+          "text": "do security work with them. If only"
+        },
+        {
+          "endMs": 156120,
+          "startMs": 153200,
+          "startTime": "2:33",
+          "text": "there was a tool that understood your"
+        },
+        {
+          "endMs": 157959,
+          "startMs": 154600,
+          "startTime": "2:34",
+          "text": "code base that could actually give you"
+        },
+        {
+          "endMs": 160080,
+          "startMs": 156120,
+          "startTime": "2:36",
+          "text": "real useful feedback on what was"
+        },
+        {
+          "endMs": 163240,
+          "startMs": 157959,
+          "startTime": "2:37",
+          "text": "insecure. You know, something like Code"
+        },
+        {
+          "endMs": 164640,
+          "startMs": 160080,
+          "startTime": "2:40",
+          "text": "Rabbit but for security. Oh, yeah. Code"
+        },
+        {
+          "endMs": 166640,
+          "startMs": 163240,
+          "startTime": "2:43",
+          "text": "Rabbit made a security product and it's"
+        },
+        {
+          "endMs": 168360,
+          "startMs": 164640,
+          "startTime": "2:44",
+          "text": "actually really, really cool. Not only"
+        },
+        {
+          "endMs": 169959,
+          "startMs": 166640,
+          "startTime": "2:46",
+          "text": "does it do security reviews for every"
+        },
+        {
+          "endMs": 171400,
+          "startMs": 168360,
+          "startTime": "2:48",
+          "text": "pull request as they come in as well as"
+        },
+        {
+          "endMs": 172920,
+          "startMs": 169959,
+          "startTime": "2:49",
+          "text": "checking for dependencies and other"
+        },
+        {
+          "endMs": 175000,
+          "startMs": 171400,
+          "startTime": "2:51",
+          "text": "things that your project relies on that"
+        },
+        {
+          "endMs": 176600,
+          "startMs": 172920,
+          "startTime": "2:52",
+          "text": "might be insecure. They also introduced"
+        },
+        {
+          "endMs": 178840,
+          "startMs": 175000,
+          "startTime": "2:55",
+          "text": "a deep audit product that will go"
+        },
+        {
+          "endMs": 180560,
+          "startMs": 176600,
+          "startTime": "2:56",
+          "text": "through your whole code base end-to-end"
+        },
+        {
+          "endMs": 182560,
+          "startMs": 178840,
+          "startTime": "2:58",
+          "text": "and find anything that might be going"
+        },
+        {
+          "endMs": 183880,
+          "startMs": 180560,
+          "startTime": "3:00",
+          "text": "wrong. I decided to run it across T3"
+        },
+        {
+          "endMs": 185640,
+          "startMs": 182560,
+          "startTime": "3:02",
+          "text": "Code and I was so impressed with the"
+        },
+        {
+          "endMs": 187400,
+          "startMs": 183880,
+          "startTime": "3:03",
+          "text": "results I ran it against everything else"
+        },
+        {
+          "endMs": 188800,
+          "startMs": 185640,
+          "startTime": "3:05",
+          "text": "that I care about as well. I'm blurring"
+        },
+        {
+          "endMs": 190480,
+          "startMs": 187400,
+          "startTime": "3:07",
+          "text": "these because these are real security"
+        },
+        {
+          "endMs": 191800,
+          "startMs": 188800,
+          "startTime": "3:08",
+          "text": "issues we're going to have to go fix,"
+        },
+        {
+          "endMs": 193120,
+          "startMs": 190480,
+          "startTime": "3:10",
+          "text": "but I can let you guys see the medium"
+        },
+        {
+          "endMs": 194320,
+          "startMs": 191800,
+          "startTime": "3:11",
+          "text": "and low ones because thankfully they"
+        },
+        {
+          "endMs": 195959,
+          "startMs": 193120,
+          "startTime": "3:13",
+          "text": "have a little toggle here where I can"
+        },
+        {
+          "endMs": 198320,
+          "startMs": 194320,
+          "startTime": "3:14",
+          "text": "change what you're seeing. Here's a"
+        },
+        {
+          "endMs": 200000,
+          "startMs": 195959,
+          "startTime": "3:15",
+          "text": "security misconfiguration in my project."
+        },
+        {
+          "endMs": 202000,
+          "startMs": 198320,
+          "startTime": "3:18",
+          "text": "I can click here and open it and see"
+        },
+        {
+          "endMs": 204120,
+          "startMs": 200000,
+          "startTime": "3:20",
+          "text": "exactly what is wrong, what files it is"
+        },
+        {
+          "endMs": 205880,
+          "startMs": 202000,
+          "startTime": "3:22",
+          "text": "in, how it is reached, and most"
+        },
+        {
+          "endMs": 207160,
+          "startMs": 204120,
+          "startTime": "3:24",
+          "text": "importantly, I can click the little"
+        },
+        {
+          "endMs": 209480,
+          "startMs": 205880,
+          "startTime": "3:25",
+          "text": "button that my face is currently"
+        },
+        {
+          "endMs": 211480,
+          "startMs": 207160,
+          "startTime": "3:27",
+          "text": "covering, Fix with AI. This button will"
+        },
+        {
+          "endMs": 213200,
+          "startMs": 209480,
+          "startTime": "3:29",
+          "text": "go file a pull request on your real"
+        },
+        {
+          "endMs": 214600,
+          "startMs": 211480,
+          "startTime": "3:31",
+          "text": "project for you. Since I'm maintaining"
+        },
+        {
+          "endMs": 216440,
+          "startMs": 213200,
+          "startTime": "3:33",
+          "text": "so many projects, it's great to see the"
+        },
+        {
+          "endMs": 218480,
+          "startMs": 214600,
+          "startTime": "3:34",
+          "text": "security trends as well, making it easy"
+        },
+        {
+          "endMs": 220200,
+          "startMs": 216440,
+          "startTime": "3:36",
+          "text": "to know how secure projects are over"
+        },
+        {
+          "endMs": 222360,
+          "startMs": 218480,
+          "startTime": "3:38",
+          "text": "time. I'm really excited to hopefully"
+        },
+        {
+          "endMs": 223959,
+          "startMs": 220200,
+          "startTime": "3:40",
+          "text": "see these numbers go down as we get to"
+        },
+        {
+          "endMs": 225600,
+          "startMs": 222360,
+          "startTime": "3:42",
+          "text": "use the product more. Start your free"
+        },
+        {
+          "endMs": 227320,
+          "startMs": 223959,
+          "startTime": "3:43",
+          "text": "trial and get your first 10 scans free"
+        },
+        {
+          "endMs": 229000,
+          "startMs": 225600,
+          "startTime": "3:45",
+          "text": "at swa.link/coderabbit."
+        },
+        {
+          "endMs": 231280,
+          "startMs": 227320,
+          "startTime": "3:47",
+          "text": "As I mentioned before, this model came"
+        },
+        {
+          "endMs": 233760,
+          "startMs": 229000,
+          "startTime": "3:49",
+          "text": "out under the name Aux Alpha originally"
+        },
+        {
+          "endMs": 235360,
+          "startMs": 231280,
+          "startTime": "3:51",
+          "text": "and I and others got to heavily, heavily"
+        },
+        {
+          "endMs": 237240,
+          "startMs": 233760,
+          "startTime": "3:53",
+          "text": "use it in that time."
+        },
+        {
+          "endMs": 239480,
+          "startMs": 235360,
+          "startTime": "3:55",
+          "text": "And I was beyond impressed. The model"
+        },
+        {
+          "endMs": 241720,
+          "startMs": 237240,
+          "startTime": "3:57",
+          "text": "has a million token context window. It"
+        },
+        {
+          "endMs": 244040,
+          "startMs": 239480,
+          "startTime": "3:59",
+          "text": "has full multi-modality, so it can take"
+        },
+        {
+          "endMs": 246880,
+          "startMs": 241720,
+          "startTime": "4:01",
+          "text": "images, audio, and video, which is"
+        },
+        {
+          "endMs": 248640,
+          "startMs": 244040,
+          "startTime": "4:04",
+          "text": "crazy. Especially considering that 5.3"
+        },
+        {
+          "endMs": 252840,
+          "startMs": 246880,
+          "startTime": "4:06",
+          "text": "non-flash couldn't even take a"
+        },
+        {
+          "endMs": 254120,
+          "startMs": 248640,
+          "startTime": "4:08",
+          "text": "screenshot. It is mind-bogglingly cool."
+        },
+        {
+          "endMs": 256079,
+          "startMs": 252840,
+          "startTime": "4:12",
+          "text": "So, I obviously had to play with it, and"
+        },
+        {
+          "endMs": 258400,
+          "startMs": 254120,
+          "startTime": "4:14",
+          "text": "since I'm mostly using Codex and Claude"
+        },
+        {
+          "endMs": 259359,
+          "startMs": 256079,
+          "startTime": "4:16",
+          "text": "code via T3 code, I didn't feel like"
+        },
+        {
+          "endMs": 261440,
+          "startMs": 258400,
+          "startTime": "4:18",
+          "text": "trying to get it working in other"
+        },
+        {
+          "endMs": 262960,
+          "startMs": 259359,
+          "startTime": "4:19",
+          "text": "things. And I also was told by Open"
+        },
+        {
+          "endMs": 265000,
+          "startMs": 261440,
+          "startTime": "4:21",
+          "text": "Router this is worth trying for agent"
+        },
+        {
+          "endMs": 267520,
+          "startMs": 262960,
+          "startTime": "4:22",
+          "text": "stuff. So, I started setting up the Open"
+        },
+        {
+          "endMs": 270160,
+          "startMs": 265000,
+          "startTime": "4:25",
+          "text": "Router binding inside of Codex through"
+        },
+        {
+          "endMs": 271680,
+          "startMs": 267520,
+          "startTime": "4:27",
+          "text": "my weird proxy layer for Aux Alpha. And"
+        },
+        {
+          "endMs": 273600,
+          "startMs": 270160,
+          "startTime": "4:30",
+          "text": "I was immediately really impressed when"
+        },
+        {
+          "endMs": 275440,
+          "startMs": 271680,
+          "startTime": "4:31",
+          "text": "I started using it. Took a bit of back"
+        },
+        {
+          "endMs": 277919,
+          "startMs": 273600,
+          "startTime": "4:33",
+          "text": "and forth, but I now have 5.3 flash"
+        },
+        {
+          "endMs": 280000,
+          "startMs": 275440,
+          "startTime": "4:35",
+          "text": "working inside of T3 code. One of my"
+        },
+        {
+          "endMs": 281880,
+          "startMs": 277919,
+          "startTime": "4:37",
+          "text": "favorite first tasks when I get access"
+        },
+        {
+          "endMs": 283520,
+          "startMs": 280000,
+          "startTime": "4:40",
+          "text": "to a new model like this is to ask it to"
+        },
+        {
+          "endMs": 285520,
+          "startMs": 281880,
+          "startTime": "4:41",
+          "text": "just go over the work I already have"
+        },
+        {
+          "endMs": 286680,
+          "startMs": 283520,
+          "startTime": "4:43",
+          "text": "going. So, let's give that a shot. Take"
+        },
+        {
+          "endMs": 288600,
+          "startMs": 285520,
+          "startTime": "4:45",
+          "text": "a look at all the pull requests that"
+        },
+        {
+          "endMs": 290919,
+          "startMs": 286680,
+          "startTime": "4:46",
+          "text": "currently have open in this repo. Help"
+        },
+        {
+          "endMs": 292960,
+          "startMs": 288600,
+          "startTime": "4:48",
+          "text": "me prioritize them based on ease of"
+        },
+        {
+          "endMs": 295160,
+          "startMs": 290919,
+          "startTime": "4:50",
+          "text": "merge and the value that they provide to"
+        },
+        {
+          "endMs": 296960,
+          "startMs": 292960,
+          "startTime": "4:52",
+          "text": "our users. Also, thanks to the cast I've"
+        },
+        {
+          "endMs": 298560,
+          "startMs": 295160,
+          "startTime": "4:55",
+          "text": "been voice to texting a hell of a lot"
+        },
+        {
+          "endMs": 301760,
+          "startMs": 296960,
+          "startTime": "4:56",
+          "text": "more. Thank you, Whisper flow. Good"
+        },
+        {
+          "endMs": 304400,
+          "startMs": 298560,
+          "startTime": "4:58",
+          "text": "start using the file system MCP resource"
+        },
+        {
+          "endMs": 306600,
+          "startMs": 301760,
+          "startTime": "5:01",
+          "text": "read tool and failing from that. Now,"
+        },
+        {
+          "endMs": 308720,
+          "startMs": 304400,
+          "startTime": "5:04",
+          "text": "it's going back to just using commands."
+        },
+        {
+          "endMs": 310600,
+          "startMs": 306600,
+          "startTime": "5:06",
+          "text": "This is what happens when your models"
+        },
+        {
+          "endMs": 312520,
+          "startMs": 308720,
+          "startTime": "5:08",
+          "text": "are RL'd on the specific behaviors of a"
+        },
+        {
+          "endMs": 314000,
+          "startMs": 310600,
+          "startTime": "5:10",
+          "text": "harness. This model clearly isn't RL'd"
+        },
+        {
+          "endMs": 315919,
+          "startMs": 312520,
+          "startTime": "5:12",
+          "text": "on the weird stuff in Codex, but it"
+        },
+        {
+          "endMs": 317320,
+          "startMs": 314000,
+          "startTime": "5:14",
+          "text": "still works totally fine in it, which is"
+        },
+        {
+          "endMs": 319080,
+          "startMs": 315919,
+          "startTime": "5:15",
+          "text": "what's been really impressive for me."
+        },
+        {
+          "endMs": 321640,
+          "startMs": 317320,
+          "startTime": "5:17",
+          "text": "Here, it's calling the GitHub fetch in"
+        },
+        {
+          "endMs": 323720,
+          "startMs": 319080,
+          "startTime": "5:19",
+          "text": "order to get all of this info of the PRs"
+        },
+        {
+          "endMs": 325160,
+          "startMs": 321640,
+          "startTime": "5:21",
+          "text": "I currently have open so that it's able"
+        },
+        {
+          "endMs": 326840,
+          "startMs": 323720,
+          "startTime": "5:23",
+          "text": "to go through them. But, everything"
+        },
+        {
+          "endMs": 328520,
+          "startMs": 325160,
+          "startTime": "5:25",
+          "text": "you're seeing here is possible with"
+        },
+        {
+          "endMs": 330840,
+          "startMs": 326840,
+          "startTime": "5:26",
+          "text": "various different models that are"
+        },
+        {
+          "endMs": 333280,
+          "startMs": 328520,
+          "startTime": "5:28",
+          "text": "currently available. So, let's push it a"
+        },
+        {
+          "endMs": 335480,
+          "startMs": 330840,
+          "startTime": "5:30",
+          "text": "little bit more. Also, love the GitHub"
+        },
+        {
+          "endMs": 337720,
+          "startMs": 333280,
+          "startTime": "5:33",
+          "text": "error connection issues. As always,"
+        },
+        {
+          "endMs": 339200,
+          "startMs": 335480,
+          "startTime": "5:35",
+          "text": "GitHub's APIs being garbage. I'm going"
+        },
+        {
+          "endMs": 341120,
+          "startMs": 337720,
+          "startTime": "5:37",
+          "text": "to ask you to do things a little bit"
+        },
+        {
+          "endMs": 343240,
+          "startMs": 339200,
+          "startTime": "5:39",
+          "text": "different here. Ignore all the pull"
+        },
+        {
+          "endMs": 345160,
+          "startMs": 341120,
+          "startTime": "5:41",
+          "text": "requests that were made by Codex. It"
+        },
+        {
+          "endMs": 346520,
+          "startMs": 343240,
+          "startTime": "5:43",
+          "text": "should be indicated in the body. I I"
+        },
+        {
+          "endMs": 348840,
+          "startMs": 345160,
+          "startTime": "5:45",
+          "text": "want you to go through the ones that"
+        },
+        {
+          "endMs": 350800,
+          "startMs": 346520,
+          "startTime": "5:46",
+          "text": "were made by Fable and Claude Code. This"
+        },
+        {
+          "endMs": 353960,
+          "startMs": 348840,
+          "startTime": "5:48",
+          "text": "is the type of thing that throws a lot"
+        },
+        {
+          "endMs": 355240,
+          "startMs": 350800,
+          "startTime": "5:50",
+          "text": "of models off. If you give them a steer"
+        },
+        {
+          "endMs": 358800,
+          "startMs": 353960,
+          "startTime": "5:53",
+          "text": "in a different direction when they're"
+        },
+        {
+          "endMs": 360720,
+          "startMs": 355240,
+          "startTime": "5:55",
+          "text": "deep in a agentic task like this,"
+        },
+        {
+          "endMs": 363760,
+          "startMs": 358800,
+          "startTime": "5:58",
+          "text": "they'll get lost. But, you can go even"
+        },
+        {
+          "endMs": 365840,
+          "startMs": 360720,
+          "startTime": "6:00",
+          "text": "further with this. You can ask it to do"
+        },
+        {
+          "endMs": 367800,
+          "startMs": 363760,
+          "startTime": "6:03",
+          "text": "something else with the PRs once it"
+        },
+        {
+          "endMs": 369960,
+          "startMs": 365840,
+          "startTime": "6:05",
+          "text": "finds them. Like, leave a comment on the"
+        },
+        {
+          "endMs": 372760,
+          "startMs": 367800,
+          "startTime": "6:07",
+          "text": "PRs that you care about or what I'll do"
+        },
+        {
+          "endMs": 374040,
+          "startMs": 369960,
+          "startTime": "6:09",
+          "text": "here. Put your findings in HTML so that"
+        },
+        {
+          "endMs": 376040,
+          "startMs": 372760,
+          "startTime": "6:12",
+          "text": "I can more easily look at them on my"
+        },
+        {
+          "endMs": 378080,
+          "startMs": 374040,
+          "startTime": "6:14",
+          "text": "phone. This is now going to go in as"
+        },
+        {
+          "endMs": 379440,
+          "startMs": 376040,
+          "startTime": "6:16",
+          "text": "additional steering context, and I"
+        },
+        {
+          "endMs": 381400,
+          "startMs": 378080,
+          "startTime": "6:18",
+          "text": "cannot tell you how many times I sent"
+        },
+        {
+          "endMs": 383200,
+          "startMs": 379440,
+          "startTime": "6:19",
+          "text": "something like this to another model,"
+        },
+        {
+          "endMs": 385440,
+          "startMs": 381400,
+          "startTime": "6:21",
+          "text": "especially like open weight agentic"
+        },
+        {
+          "endMs": 387360,
+          "startMs": 383200,
+          "startTime": "6:23",
+          "text": "models, and it would respond immediately"
+        },
+        {
+          "endMs": 388640,
+          "startMs": 385440,
+          "startTime": "6:25",
+          "text": "to that saying, \"Okay, I'll let you know"
+        },
+        {
+          "endMs": 391080,
+          "startMs": 387360,
+          "startTime": "6:27",
+          "text": "when the findings are done so I can put"
+        },
+        {
+          "endMs": 392840,
+          "startMs": 388640,
+          "startTime": "6:28",
+          "text": "in HTML.\" And then send a stop signal."
+        },
+        {
+          "endMs": 394200,
+          "startMs": 391080,
+          "startTime": "6:31",
+          "text": "And then not keep going until you say,"
+        },
+        {
+          "endMs": 395720,
+          "startMs": 392840,
+          "startTime": "6:32",
+          "text": "\"Hey, you should finish the work you"
+        },
+        {
+          "endMs": 397440,
+          "startMs": 394200,
+          "startTime": "6:34",
+          "text": "were just doing.\" I'll narrow the"
+        },
+        {
+          "endMs": 398760,
+          "startMs": 395720,
+          "startTime": "6:35",
+          "text": "portfolio to open PRs to subscriptions"
+        },
+        {
+          "endMs": 400760,
+          "startMs": 397440,
+          "startTime": "6:37",
+          "text": "credit Fable and Claude Code excluding"
+        },
+        {
+          "endMs": 402880,
+          "startMs": 398760,
+          "startTime": "6:38",
+          "text": "Codex builds. And it's already getting"
+        },
+        {
+          "endMs": 405560,
+          "startMs": 400760,
+          "startTime": "6:40",
+          "text": "to work doing just that. Something is"
+        },
+        {
+          "endMs": 407560,
+          "startMs": 402880,
+          "startTime": "6:42",
+          "text": "causing the skill file reads to fail."
+        },
+        {
+          "endMs": 409600,
+          "startMs": 405560,
+          "startTime": "6:45",
+          "text": "Again, I've been hacking the hell out of"
+        },
+        {
+          "endMs": 411120,
+          "startMs": 407560,
+          "startTime": "6:47",
+          "text": "my Codex and I'm suffering for it. This"
+        },
+        {
+          "endMs": 413360,
+          "startMs": 409600,
+          "startTime": "6:49",
+          "text": "demo would have been a lot cooler if"
+        },
+        {
+          "endMs": 415320,
+          "startMs": 411120,
+          "startTime": "6:51",
+          "text": "GitHub wasn't rate limiting us and"
+        },
+        {
+          "endMs": 417480,
+          "startMs": 413360,
+          "startTime": "6:53",
+          "text": "Codex's change to how skills are read"
+        },
+        {
+          "endMs": 418760,
+          "startMs": 415320,
+          "startTime": "6:55",
+          "text": "wasn't breaking things so badly. I could"
+        },
+        {
+          "endMs": 420760,
+          "startMs": 417480,
+          "startTime": "6:57",
+          "text": "sit here and wait forever, but I ended"
+        },
+        {
+          "endMs": 423000,
+          "startMs": 418760,
+          "startTime": "6:58",
+          "text": "up finding a run I did when I first got"
+        },
+        {
+          "endMs": 425440,
+          "startMs": 420760,
+          "startTime": "7:00",
+          "text": "access to the model 5 days ago, and I"
+        },
+        {
+          "endMs": 427160,
+          "startMs": 423000,
+          "startTime": "7:03",
+          "text": "was very, very impressed. Here, I didn't"
+        },
+        {
+          "endMs": 429280,
+          "startMs": 425440,
+          "startTime": "7:05",
+          "text": "just ask it to audit my PRs. I asked it"
+        },
+        {
+          "endMs": 431320,
+          "startMs": 427160,
+          "startTime": "7:07",
+          "text": "to audit all of the PRs in T3 Code that"
+        },
+        {
+          "endMs": 432560,
+          "startMs": 429280,
+          "startTime": "7:09",
+          "text": "have been updated in the last 5 days."
+        },
+        {
+          "endMs": 434040,
+          "startMs": 431320,
+          "startTime": "7:11",
+          "text": "It told these lots of sub agents to"
+        },
+        {
+          "endMs": 435480,
+          "startMs": 432560,
+          "startTime": "7:12",
+          "text": "break up the work."
+        },
+        {
+          "endMs": 436880,
+          "startMs": 434040,
+          "startTime": "7:14",
+          "text": "What PRs does it overlap with? What"
+        },
+        {
+          "endMs": 438080,
+          "startMs": 435480,
+          "startTime": "7:15",
+          "text": "issues does it fix? How risky is it to"
+        },
+        {
+          "endMs": 440280,
+          "startMs": 436880,
+          "startTime": "7:16",
+          "text": "merge? How confident are you that it's"
+        },
+        {
+          "endMs": 442280,
+          "startMs": 438080,
+          "startTime": "7:18",
+          "text": "mergeable? Should we close it? Rank them"
+        },
+        {
+          "endMs": 444760,
+          "startMs": 440280,
+          "startTime": "7:20",
+          "text": "by ease of action."
+        },
+        {
+          "endMs": 447040,
+          "startMs": 442280,
+          "startTime": "7:22",
+          "text": "It successfully spun up and ran six sub"
+        },
+        {
+          "endMs": 448600,
+          "startMs": 444760,
+          "startTime": "7:24",
+          "text": "agents. Three failed cuz of API call"
+        },
+        {
+          "endMs": 450360,
+          "startMs": 447040,
+          "startTime": "7:27",
+          "text": "issues, but it was successfully able to"
+        },
+        {
+          "endMs": 451960,
+          "startMs": 448600,
+          "startTime": "7:28",
+          "text": "recover them and keep going. Yeah, the"
+        },
+        {
+          "endMs": 453400,
+          "startMs": 450360,
+          "startTime": "7:30",
+          "text": "first worker wave hit a model off"
+        },
+        {
+          "endMs": 454440,
+          "startMs": 451960,
+          "startTime": "7:31",
+          "text": "failure. Again, I am hacking the hell"
+        },
+        {
+          "endMs": 457000,
+          "startMs": 453400,
+          "startTime": "7:33",
+          "text": "out of Codex to make all of this stuff"
+        },
+        {
+          "endMs": 458080,
+          "startMs": 454440,
+          "startTime": "7:34",
+          "text": "work, but once it was fixed, it was fine"
+        },
+        {
+          "endMs": 459720,
+          "startMs": 457000,
+          "startTime": "7:37",
+          "text": "and it realized this though. This is"
+        },
+        {
+          "endMs": 461360,
+          "startMs": 458080,
+          "startTime": "7:38",
+          "text": "probably the coolest part. It realized"
+        },
+        {
+          "endMs": 463840,
+          "startMs": 459720,
+          "startTime": "7:39",
+          "text": "that the sub agent off failures were"
+        },
+        {
+          "endMs": 465560,
+          "startMs": 461360,
+          "startTime": "7:41",
+          "text": "consistently happening, so fell back to"
+        },
+        {
+          "endMs": 467360,
+          "startMs": 463840,
+          "startTime": "7:43",
+          "text": "just audit directly rather than waiting"
+        },
+        {
+          "endMs": 468720,
+          "startMs": 465560,
+          "startTime": "7:45",
+          "text": "on the broken delegation. I'll use the"
+        },
+        {
+          "endMs": 470400,
+          "startMs": 467360,
+          "startTime": "7:47",
+          "text": "GitHub inspection skill and machine"
+        },
+        {
+          "endMs": 471800,
+          "startMs": 468720,
+          "startTime": "7:48",
+          "text": "generated summaries, then manually"
+        },
+        {
+          "endMs": 474840,
+          "startMs": 470400,
+          "startTime": "7:50",
+          "text": "review the highest risk and easiest"
+        },
+        {
+          "endMs": 478280,
+          "startMs": 471800,
+          "startTime": "7:51",
+          "text": "action PRs. This is phenomenal."
+        },
+        {
+          "endMs": 479800,
+          "startMs": 474840,
+          "startTime": "7:54",
+          "text": "This is really really good debugging"
+        },
+        {
+          "endMs": 481360,
+          "startMs": 478280,
+          "startTime": "7:58",
+          "text": "work that the agent is doing. Not to"
+        },
+        {
+          "endMs": 484000,
+          "startMs": 479800,
+          "startTime": "7:59",
+          "text": "debug things in my code base, but to"
+        },
+        {
+          "endMs": 486800,
+          "startMs": 481360,
+          "startTime": "8:01",
+          "text": "debug its own flows. The agent can"
+        },
+        {
+          "endMs": 488560,
+          "startMs": 484000,
+          "startTime": "8:04",
+          "text": "unblock itself. Autocomplete, the repo's"
+        },
+        {
+          "endMs": 490000,
+          "startMs": 486800,
+          "startTime": "8:06",
+          "text": "unchanged. Subagent delegation failed"
+        },
+        {
+          "endMs": 491240,
+          "startMs": 488560,
+          "startTime": "8:08",
+          "text": "with provider off error, so I completed"
+        },
+        {
+          "endMs": 492720,
+          "startMs": 490000,
+          "startTime": "8:10",
+          "text": "it directly from the GitHub metadata"
+        },
+        {
+          "endMs": 495640,
+          "startMs": 491240,
+          "startTime": "8:11",
+          "text": "diffs, review CI comments, and local"
+        },
+        {
+          "endMs": 497480,
+          "startMs": 492720,
+          "startTime": "8:12",
+          "text": "source context. It wrote up the report."
+        },
+        {
+          "endMs": 498880,
+          "startMs": 495640,
+          "startTime": "8:15",
+          "text": "It gave me a breakdown of what should be"
+        },
+        {
+          "endMs": 500120,
+          "startMs": 497480,
+          "startTime": "8:17",
+          "text": "merged or how much should be merged now,"
+        },
+        {
+          "endMs": 501880,
+          "startMs": 498880,
+          "startTime": "8:18",
+          "text": "how much should be merged after a better"
+        },
+        {
+          "endMs": 503760,
+          "startMs": 500120,
+          "startTime": "8:20",
+          "text": "review, yada yada."
+        },
+        {
+          "endMs": 505280,
+          "startMs": 501880,
+          "startTime": "8:21",
+          "text": "And this was for every PR in the last 5"
+        },
+        {
+          "endMs": 507560,
+          "startMs": 503760,
+          "startTime": "8:23",
+          "text": "days. There were hundreds, and it got"
+        },
+        {
+          "endMs": 509440,
+          "startMs": 505280,
+          "startTime": "8:25",
+          "text": "through all of this in like 20 minutes."
+        },
+        {
+          "endMs": 511680,
+          "startMs": 507560,
+          "startTime": "8:27",
+          "text": "It gave me the links to the easiest to"
+        },
+        {
+          "endMs": 513560,
+          "startMs": 509440,
+          "startTime": "8:29",
+          "text": "merge. And this is a silly little thing,"
+        },
+        {
+          "endMs": 516440,
+          "startMs": 511680,
+          "startTime": "8:31",
+          "text": "but I cannot tell you how many models,"
+        },
+        {
+          "endMs": 518800,
+          "startMs": 513560,
+          "startTime": "8:33",
+          "text": "even frontier models, don't make these"
+        },
+        {
+          "endMs": 520760,
+          "startMs": 516440,
+          "startTime": "8:36",
+          "text": "links. They make them just the PR"
+        },
+        {
+          "endMs": 522039,
+          "startMs": 518800,
+          "startTime": "8:38",
+          "text": "number, which is obnoxious. And I have"
+        },
+        {
+          "endMs": 523599,
+          "startMs": 520760,
+          "startTime": "8:40",
+          "text": "to tell it, \"Hey, can you redo that"
+        },
+        {
+          "endMs": 524680,
+          "startMs": 522039,
+          "startTime": "8:42",
+          "text": "output, but with links for the PRs"
+        }
+      ],
+      "source": "live",
+      "totalDurationMs": 2595920,
+      "videoId": "Xdxp3lbQKyQ"
+    }
+  },
+  "error": null,
+  "logId": "log_mAbMU911HPKS"
+}

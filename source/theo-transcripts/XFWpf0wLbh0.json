@@ -1,0 +1,1694 @@
+{
+  "successful": true,
+  "data": {
+    "credits": {
+      "charged": 2,
+      "remaining": 32
+    },
+    "data": {
+      "_truncated": {
+        "field": "segments",
+        "reason": "response size limit — lower \"limit\" for full detail",
+        "shown": 278,
+        "total": 1331
+      },
+      "dataRefreshedAt": "2026-09-22T00:18:44.745Z",
+      "fullText": "There's a model we've all been waiting for for quite a while now, and it's finally here. This is where I want to make a joke about how it's Gemini 3.8 Flash, but my new retention guy said I'm not allowed to. He instead said I should just show you guys this, my actual usage with said models. Of course, my terminal is refreshing right when I pick it up. It's uh annoying like that. But the point I'm trying to make is I've done about $330,000 of inference over the last few weeks and the vast majority of it has been with the model that we're here to talk about today. As you probably guessed, the model we're actually talking about today is GPT6 Astra. Yes, it's actually getting the six moniker. We don't have other models in the GPT6 line yet, like the Soul and Luna and Terra equivalents, but we do have Astra kind of. We'll talk about that in just a second. I've been using it for a bit and it truly is revolutionary in a ton of different ways. There are so many things I just never thought LLMs would be able to do that 6 does incredibly well. It is such a massive leap over soul. It does feel generational. I talked before about how GPT 5.6 felt like the best possible version of a lastg game whereas Fable 5 felt like a reasonable version of a nextg game. GBT6 is the next gen. OpenAI has done it. This model is incredible, but it also still has its rough edges. From code to computer use to 3D modeling to office work, this model truly is just built different. That is far from the whole story, though, because we have to cover availability, cost, security, safety, how it actually works in the day-to-day experience using it for code, and of course, all the fun things I've been building with it, as well as the weird restrictions they have with the model releasing currently. I can't wait to show you guys what this model can do after a real quick break for today's sponsor. You've heard me talk about today's sponsor before. It's Code Rabbit, the AI bot that reviews your code for you. But that's not what I want to talk about. If you're not already using an AI code reviewer, you really, really should be. But Code Rabbit goes so much further than that. First off, on the code review side, they're not just for GitHub. They work in your IDE and the CLI as well. So whether you're in VS Code Cursor or something like that, the plug-in is great. And if you want to use agents and let them have the reviews happen themselves, the CLI is even better. For those of us who like to know what's going on in the codebase, change stack's been awesome. It's a new code rabbit feature that lets you look at your PR as separate chunks with a timeline and a really good summary from the top, making it way easier to review the code and actually see what's going on. When I started using Chainstack heavily, I noticed a few bugs which I forwarded over to the team at Code Rabbit and they used their own agent to fix it because they built one of the best Slack agents as well. This isn't your usual tag claw and it will make some changes. It's a full endto-end solution that happens to work through Slack that has access to the context in Slack, linear, Jira, whatever else on the ticket side, as well as your data, your email, and more. So, if you get an alert from Data Dog, you can tag in Code Rabbit, it will find the PR that caused the issue, read the logs in Data Dog, and then file the follow-up all by itself. When you give an agent this type of context, the things it does are magical. And Code Rabbit already has all the context it needs. Ship with more confidence and less bugs at soy.link/codabbit. I'm going to be so incredibly real with you guys. I could probably go off for five plus hours about this model, but instead of doing all of that today, I'm going to try to give you guys the best possible overview of what the model is, what it does, what makes it special, and when we can use it, and what it's going to cost when you do. I like the way I structured the Fable 5.1 video, so I'll do my best to honor a lot of that here by going through in a reasonable order the core pieces that we all care most about. And with that, we need to start with the cost and availability. This ended up surprising me in multiple ways. First off with the cost. The price is nearly identical to using Fable in terms of the tokens in and out at $10 per million in and $50 per million out. There are some edges here that are worth noting. For example, they do actually offer fast mode on it, which Anthropic doesn't for Fable. They only offer for Opus. You'll get up to two times the speed of the standard processing at around two times the standard price. I like that this is an option for those who need it because this model, I'll be frank, can be slow. We'll talk plenty about that in just a bit. But this is only one dimension of the cost. There is also the token efficiency which fundamentally changes what the costs actually end up being. As you can guess, it's an OpenAI model, so it's insanely efficient. It's sometimes even cheaper than Soul for similar like for-like tasks. But it also can be expensive because it runs for so long and can complete crazy endto-end work. There are other dimensions for costs we need to be considerate of though, like how expensive are cashed reads? Anthropic cut cash read pricing by 75% with Fable 5.1. And there is no equivalent here with Astra. You are still paying the full price for cash reads, which is a tenth of the normal read price. So, it's a dollar per million cashed token reads versus the 25 cents for Fable. In the end, Astra is still cheaper just due to the huge efficiency difference. But thought that was worth knowing. There is one other pricing catch though, and this catch has to do with the context window size. This model can go up to a million token context which is huge but also has been available for the other open models for a bit now. That said, it's not available by default in codeex. Unlike cloud code where it now defaults to a million token context window for feeble and opus, Astra doesn't. I believe the plan is to release it in the 370k token range or so in codeex. But it is worth noting that if you go over 272K for your context window size, your input tokens get two times more expensive and your output tokens get 50% more expensive. I also recently learned that they're actually implementing an exception in codecs for when you go over the 272k input token limit. So if you do end up bumping in codecs, you're not going to have the multiplicative increase in cost that I was talking about before. It will still be more expensive though because you're using more tokens for every single request, tool call, etc. That mostly covers the cost stuff I wanted to for now at least. But now we have to talk more about availability because this is where there's something I really don't like. GBD6 Astra is rolling out today to a limited set of organizations and over the coming days will become available to all chatbt plus pro business and enterprise. There is one good piece here which is that plus and pro accounts will all be getting Astra and they're not going to implement some weird 50% limit like they do with fable in your cloud code sub. But it's also not actually out. This is genuinely frustrating for me because I want to show you guys all the cool things I did with the model and you can go replicate them and try them yourself, but you can't. That sucks. It just It just sucks. I hate this. I know there's a lot of layers and chaos and reasoning to it. It's not as simple as they just want to announce it and then give it out later. I wish I had more details. I've been trying to get them all day. I do not love the way that they chose to announce this as though it is out for everyone, but in reality it's only a small subset of people that are now allowed to talk about it. They also are providing proper zero data retention. So all the enterprises that were concerned about Fable due to the different policies there have nothing to worry about. OpenAI has maintained their high bar for enterprise support with their ZDR stuff. There's a call out at the end here that it will be available over the OpenAI API as well as in Amazon Bedrock. Notably, no mention of Azure here. It seems like that Microsoft OpenAI breakup is truly finalized. Okay, one last tiny thing on availability before we can dive into the model itself. OpenAI clearly is not happy about the limitation to who has access and they're choosing to do some pretty generous stuff around that. Hebo tweeted that they'll be giving one banked reset for your codec sub for every single day that we don't have access to Astra on our page HGBT accounts. This is pretty generous and everyone in the replies seems to agree. In fact, I've even seen people saying that it's okay if they delay Astra indefinitely if they keep giving out resets. So, personally, I don't think this is a big enough solution to what is, in my opinion, a quite large problem, but at least they're doing something. And I do have confirmation from people at OpenAI that this is a temporary measure. They don't expect future model releases to have this weird window like we do right now. Yeah, it is what it is. Could be government, could be something weird with their compute layer, could be some enterprise customers or Microsoft being upset. I have no idea. I honestly, I'll be real. kind of thinking it's Microsoft, but we don't know. We can wait. We'll have answers soon. Might even be AWS being upset that they're not ready yet and they don't want OpenAI offering it before them. I don't know. It is what it is. Enough yapping. Let's actually take a look at what this model can do. They start off with a small set of benchmarks that it absolutely seems to slaughter. I have noticed that in a handful of these benches, it performed slightly worse on X high than it did on regular high. Sometimes max comes out and beats it out, sometimes it doesn't. I does seem to be one of the best options with this model, though. So, here in Terminal Bench, it crushed other models, including Fable 5.1, getting way higher scores at similar costs. This is the science version of Terminal Bench, but the numbers we're seeing here are pretty crazy, where Claude Fable 5.1 on medium cost $15 and got a 36% and six Astra on low cost $11 and got a 54%. The gap here is massive. The science side, as I mentioned before, really seems to be something OpenAI is focused on. And this is particularly funny because Anthropic was just bragging about how good Fable 5.1 did on the same exact bench just to be slaughtered by OpenAI two days later. Speaking of OpenAI slaughtering Anthropic, Arc AGI is uh yeah, I'm going to be real with you guys. I thought this bench was malicious. It was so absurdly built to be anti-AII, it was almost funny because it wasn't just measuring if the AI could complete the tasks the way a human could. It was also measuring how many steps it took to do it. So every time it had a tool call or reasoned that was held against the model if the human had done it in fewer perceived steps. That scoring rate was pretty insane especially because the model could never outperform the human. So if the human took 20 steps and the model took five, it still just got a regular neutral score. But if it took one step more than the human, it was penalized massively. And despite all of that, it is now saturated at 99.9% on a bench that was literally straight zeros when it came out just under a year ago. Then we have Frontier Math where it again slaughtered. Fable's best score was an 87.8% with Fable 5.1 and that got matched by Astra on low and then everything medium upwards pretty much got 100%. They all flatlined at 97.6, which is interesting, but yeah, very good scores. Turtle Bench 4 also got crushed previously. Fable 5.1 actually looked very promising here. When combined with Soul, it almost felt like a semicontinuous line of more cost means better performance. But n …[+38883 chars truncated]",
+      "segments": [
+        {
+          "endMs": 2879,
+          "startMs": 0,
+          "startTime": "0:00",
+          "text": "There's a model we've all been waiting"
+        },
+        {
+          "endMs": 4720,
+          "startMs": 1199,
+          "startTime": "0:01",
+          "text": "for for quite a while now, and it's"
+        },
+        {
+          "endMs": 6560,
+          "startMs": 2879,
+          "startTime": "0:02",
+          "text": "finally here. This is where I want to"
+        },
+        {
+          "endMs": 8320,
+          "startMs": 4720,
+          "startTime": "0:04",
+          "text": "make a joke about how it's Gemini 3.8"
+        },
+        {
+          "endMs": 10000,
+          "startMs": 6560,
+          "startTime": "0:06",
+          "text": "Flash, but my new retention guy said I'm"
+        },
+        {
+          "endMs": 12880,
+          "startMs": 8320,
+          "startTime": "0:08",
+          "text": "not allowed to. He instead said I should"
+        },
+        {
+          "endMs": 15839,
+          "startMs": 10000,
+          "startTime": "0:10",
+          "text": "just show you guys this,"
+        },
+        {
+          "endMs": 17440,
+          "startMs": 12880,
+          "startTime": "0:12",
+          "text": "my actual usage with said models. Of"
+        },
+        {
+          "endMs": 20160,
+          "startMs": 15839,
+          "startTime": "0:15",
+          "text": "course, my terminal is refreshing right"
+        },
+        {
+          "endMs": 21600,
+          "startMs": 17440,
+          "startTime": "0:17",
+          "text": "when I pick it up. It's uh annoying like"
+        },
+        {
+          "endMs": 25039,
+          "startMs": 20160,
+          "startTime": "0:20",
+          "text": "that. But the point I'm trying to make"
+        },
+        {
+          "endMs": 27519,
+          "startMs": 21600,
+          "startTime": "0:21",
+          "text": "is I've done about $330,000"
+        },
+        {
+          "endMs": 29199,
+          "startMs": 25039,
+          "startTime": "0:25",
+          "text": "of inference over the last few weeks and"
+        },
+        {
+          "endMs": 30640,
+          "startMs": 27519,
+          "startTime": "0:27",
+          "text": "the vast majority of it has been with"
+        },
+        {
+          "endMs": 31920,
+          "startMs": 29199,
+          "startTime": "0:29",
+          "text": "the model that we're here to talk about"
+        },
+        {
+          "endMs": 33360,
+          "startMs": 30640,
+          "startTime": "0:30",
+          "text": "today. As you probably guessed, the"
+        },
+        {
+          "endMs": 35760,
+          "startMs": 31920,
+          "startTime": "0:31",
+          "text": "model we're actually talking about today"
+        },
+        {
+          "endMs": 37520,
+          "startMs": 33360,
+          "startTime": "0:33",
+          "text": "is GPT6 Astra. Yes, it's actually"
+        },
+        {
+          "endMs": 39440,
+          "startMs": 35760,
+          "startTime": "0:35",
+          "text": "getting the six moniker. We don't have"
+        },
+        {
+          "endMs": 42079,
+          "startMs": 37520,
+          "startTime": "0:37",
+          "text": "other models in the GPT6 line yet, like"
+        },
+        {
+          "endMs": 44559,
+          "startMs": 39440,
+          "startTime": "0:39",
+          "text": "the Soul and Luna and Terra equivalents,"
+        },
+        {
+          "endMs": 46079,
+          "startMs": 42079,
+          "startTime": "0:42",
+          "text": "but we do have Astra kind of. We'll talk"
+        },
+        {
+          "endMs": 48320,
+          "startMs": 44559,
+          "startTime": "0:44",
+          "text": "about that in just a second. I've been"
+        },
+        {
+          "endMs": 50399,
+          "startMs": 46079,
+          "startTime": "0:46",
+          "text": "using it for a bit and it truly is"
+        },
+        {
+          "endMs": 52320,
+          "startMs": 48320,
+          "startTime": "0:48",
+          "text": "revolutionary in a ton of different"
+        },
+        {
+          "endMs": 54399,
+          "startMs": 50399,
+          "startTime": "0:50",
+          "text": "ways. There are so many things I just"
+        },
+        {
+          "endMs": 57039,
+          "startMs": 52320,
+          "startTime": "0:52",
+          "text": "never thought LLMs would be able to do"
+        },
+        {
+          "endMs": 59680,
+          "startMs": 54399,
+          "startTime": "0:54",
+          "text": "that 6 does incredibly well. It is such"
+        },
+        {
+          "endMs": 61840,
+          "startMs": 57039,
+          "startTime": "0:57",
+          "text": "a massive leap over soul. It does feel"
+        },
+        {
+          "endMs": 64479,
+          "startMs": 59680,
+          "startTime": "0:59",
+          "text": "generational. I talked before about how"
+        },
+        {
+          "endMs": 67680,
+          "startMs": 61840,
+          "startTime": "1:01",
+          "text": "GPT 5.6 felt like the best possible"
+        },
+        {
+          "endMs": 69439,
+          "startMs": 64479,
+          "startTime": "1:04",
+          "text": "version of a lastg game whereas Fable 5"
+        },
+        {
+          "endMs": 73200,
+          "startMs": 67680,
+          "startTime": "1:07",
+          "text": "felt like a reasonable version of a"
+        },
+        {
+          "endMs": 75520,
+          "startMs": 69439,
+          "startTime": "1:09",
+          "text": "nextg game. GBT6 is the next gen. OpenAI"
+        },
+        {
+          "endMs": 77920,
+          "startMs": 73200,
+          "startTime": "1:13",
+          "text": "has done it. This model is incredible,"
+        },
+        {
+          "endMs": 79920,
+          "startMs": 75520,
+          "startTime": "1:15",
+          "text": "but it also still has its rough edges."
+        },
+        {
+          "endMs": 82960,
+          "startMs": 77920,
+          "startTime": "1:17",
+          "text": "From code to computer use to 3D modeling"
+        },
+        {
+          "endMs": 85119,
+          "startMs": 79920,
+          "startTime": "1:19",
+          "text": "to office work, this model truly is just"
+        },
+        {
+          "endMs": 86400,
+          "startMs": 82960,
+          "startTime": "1:22",
+          "text": "built different. That is far from the"
+        },
+        {
+          "endMs": 88640,
+          "startMs": 85119,
+          "startTime": "1:25",
+          "text": "whole story, though, because we have to"
+        },
+        {
+          "endMs": 90799,
+          "startMs": 86400,
+          "startTime": "1:26",
+          "text": "cover availability, cost, security,"
+        },
+        {
+          "endMs": 92640,
+          "startMs": 88640,
+          "startTime": "1:28",
+          "text": "safety, how it actually works in the"
+        },
+        {
+          "endMs": 94240,
+          "startMs": 90799,
+          "startTime": "1:30",
+          "text": "day-to-day experience using it for code,"
+        },
+        {
+          "endMs": 95920,
+          "startMs": 92640,
+          "startTime": "1:32",
+          "text": "and of course, all the fun things I've"
+        },
+        {
+          "endMs": 97759,
+          "startMs": 94240,
+          "startTime": "1:34",
+          "text": "been building with it, as well as the"
+        },
+        {
+          "endMs": 100000,
+          "startMs": 95920,
+          "startTime": "1:35",
+          "text": "weird restrictions they have with the"
+        },
+        {
+          "endMs": 101600,
+          "startMs": 97759,
+          "startTime": "1:37",
+          "text": "model releasing currently. I can't wait"
+        },
+        {
+          "endMs": 103119,
+          "startMs": 100000,
+          "startTime": "1:40",
+          "text": "to show you guys what this model can do"
+        },
+        {
+          "endMs": 104240,
+          "startMs": 101600,
+          "startTime": "1:41",
+          "text": "after a real quick break for today's"
+        },
+        {
+          "endMs": 106000,
+          "startMs": 103119,
+          "startTime": "1:43",
+          "text": "sponsor. You've heard me talk about"
+        },
+        {
+          "endMs": 107520,
+          "startMs": 104240,
+          "startTime": "1:44",
+          "text": "today's sponsor before. It's Code"
+        },
+        {
+          "endMs": 109119,
+          "startMs": 106000,
+          "startTime": "1:46",
+          "text": "Rabbit, the AI bot that reviews your"
+        },
+        {
+          "endMs": 110240,
+          "startMs": 107520,
+          "startTime": "1:47",
+          "text": "code for you. But that's not what I want"
+        },
+        {
+          "endMs": 111920,
+          "startMs": 109119,
+          "startTime": "1:49",
+          "text": "to talk about. If you're not already"
+        },
+        {
+          "endMs": 113520,
+          "startMs": 110240,
+          "startTime": "1:50",
+          "text": "using an AI code reviewer, you really,"
+        },
+        {
+          "endMs": 115040,
+          "startMs": 111920,
+          "startTime": "1:51",
+          "text": "really should be. But Code Rabbit goes"
+        },
+        {
+          "endMs": 116479,
+          "startMs": 113520,
+          "startTime": "1:53",
+          "text": "so much further than that. First off, on"
+        },
+        {
+          "endMs": 118479,
+          "startMs": 115040,
+          "startTime": "1:55",
+          "text": "the code review side, they're not just"
+        },
+        {
+          "endMs": 120320,
+          "startMs": 116479,
+          "startTime": "1:56",
+          "text": "for GitHub. They work in your IDE and"
+        },
+        {
+          "endMs": 121759,
+          "startMs": 118479,
+          "startTime": "1:58",
+          "text": "the CLI as well. So whether you're in VS"
+        },
+        {
+          "endMs": 123280,
+          "startMs": 120320,
+          "startTime": "2:00",
+          "text": "Code Cursor or something like that, the"
+        },
+        {
+          "endMs": 124799,
+          "startMs": 121759,
+          "startTime": "2:01",
+          "text": "plug-in is great. And if you want to use"
+        },
+        {
+          "endMs": 126079,
+          "startMs": 123280,
+          "startTime": "2:03",
+          "text": "agents and let them have the reviews"
+        },
+        {
+          "endMs": 127119,
+          "startMs": 124799,
+          "startTime": "2:04",
+          "text": "happen themselves, the CLI is even"
+        },
+        {
+          "endMs": 128640,
+          "startMs": 126079,
+          "startTime": "2:06",
+          "text": "better. For those of us who like to know"
+        },
+        {
+          "endMs": 130399,
+          "startMs": 127119,
+          "startTime": "2:07",
+          "text": "what's going on in the codebase, change"
+        },
+        {
+          "endMs": 131680,
+          "startMs": 128640,
+          "startTime": "2:08",
+          "text": "stack's been awesome. It's a new code"
+        },
+        {
+          "endMs": 133599,
+          "startMs": 130399,
+          "startTime": "2:10",
+          "text": "rabbit feature that lets you look at"
+        },
+        {
+          "endMs": 135280,
+          "startMs": 131680,
+          "startTime": "2:11",
+          "text": "your PR as separate chunks with a"
+        },
+        {
+          "endMs": 137360,
+          "startMs": 133599,
+          "startTime": "2:13",
+          "text": "timeline and a really good summary from"
+        },
+        {
+          "endMs": 138879,
+          "startMs": 135280,
+          "startTime": "2:15",
+          "text": "the top, making it way easier to review"
+        },
+        {
+          "endMs": 140400,
+          "startMs": 137360,
+          "startTime": "2:17",
+          "text": "the code and actually see what's going"
+        },
+        {
+          "endMs": 141920,
+          "startMs": 138879,
+          "startTime": "2:18",
+          "text": "on. When I started using Chainstack"
+        },
+        {
+          "endMs": 143360,
+          "startMs": 140400,
+          "startTime": "2:20",
+          "text": "heavily, I noticed a few bugs which I"
+        },
+        {
+          "endMs": 145440,
+          "startMs": 141920,
+          "startTime": "2:21",
+          "text": "forwarded over to the team at Code"
+        },
+        {
+          "endMs": 146959,
+          "startMs": 143360,
+          "startTime": "2:23",
+          "text": "Rabbit and they used their own agent to"
+        },
+        {
+          "endMs": 149040,
+          "startMs": 145440,
+          "startTime": "2:25",
+          "text": "fix it because they built one of the"
+        },
+        {
+          "endMs": 150720,
+          "startMs": 146959,
+          "startTime": "2:26",
+          "text": "best Slack agents as well. This isn't"
+        },
+        {
+          "endMs": 152560,
+          "startMs": 149040,
+          "startTime": "2:29",
+          "text": "your usual tag claw and it will make"
+        },
+        {
+          "endMs": 154000,
+          "startMs": 150720,
+          "startTime": "2:30",
+          "text": "some changes. It's a full endto-end"
+        },
+        {
+          "endMs": 155840,
+          "startMs": 152560,
+          "startTime": "2:32",
+          "text": "solution that happens to work through"
+        },
+        {
+          "endMs": 157840,
+          "startMs": 154000,
+          "startTime": "2:34",
+          "text": "Slack that has access to the context in"
+        },
+        {
+          "endMs": 159680,
+          "startMs": 155840,
+          "startTime": "2:35",
+          "text": "Slack, linear, Jira, whatever else on"
+        },
+        {
+          "endMs": 161440,
+          "startMs": 157840,
+          "startTime": "2:37",
+          "text": "the ticket side, as well as your data,"
+        },
+        {
+          "endMs": 163200,
+          "startMs": 159680,
+          "startTime": "2:39",
+          "text": "your email, and more. So, if you get an"
+        },
+        {
+          "endMs": 164959,
+          "startMs": 161440,
+          "startTime": "2:41",
+          "text": "alert from Data Dog, you can tag in Code"
+        },
+        {
+          "endMs": 167280,
+          "startMs": 163200,
+          "startTime": "2:43",
+          "text": "Rabbit, it will find the PR that caused"
+        },
+        {
+          "endMs": 169360,
+          "startMs": 164959,
+          "startTime": "2:44",
+          "text": "the issue, read the logs in Data Dog,"
+        },
+        {
+          "endMs": 171280,
+          "startMs": 167280,
+          "startTime": "2:47",
+          "text": "and then file the follow-up all by"
+        },
+        {
+          "endMs": 172720,
+          "startMs": 169360,
+          "startTime": "2:49",
+          "text": "itself. When you give an agent this type"
+        },
+        {
+          "endMs": 174800,
+          "startMs": 171280,
+          "startTime": "2:51",
+          "text": "of context, the things it does are"
+        },
+        {
+          "endMs": 176560,
+          "startMs": 172720,
+          "startTime": "2:52",
+          "text": "magical. And Code Rabbit already has all"
+        },
+        {
+          "endMs": 177680,
+          "startMs": 174800,
+          "startTime": "2:54",
+          "text": "the context it needs. Ship with more"
+        },
+        {
+          "endMs": 179200,
+          "startMs": 176560,
+          "startTime": "2:56",
+          "text": "confidence and less bugs at"
+        },
+        {
+          "endMs": 180720,
+          "startMs": 177680,
+          "startTime": "2:57",
+          "text": "soy.link/codabbit."
+        },
+        {
+          "endMs": 182879,
+          "startMs": 179200,
+          "startTime": "2:59",
+          "text": "I'm going to be so incredibly real with"
+        },
+        {
+          "endMs": 185120,
+          "startMs": 180720,
+          "startTime": "3:00",
+          "text": "you guys. I could probably go off for"
+        },
+        {
+          "endMs": 186319,
+          "startMs": 182879,
+          "startTime": "3:02",
+          "text": "five plus hours about this model, but"
+        },
+        {
+          "endMs": 187519,
+          "startMs": 185120,
+          "startTime": "3:05",
+          "text": "instead of doing all of that today, I'm"
+        },
+        {
+          "endMs": 189360,
+          "startMs": 186319,
+          "startTime": "3:06",
+          "text": "going to try to give you guys the best"
+        },
+        {
+          "endMs": 191280,
+          "startMs": 187519,
+          "startTime": "3:07",
+          "text": "possible overview of what the model is,"
+        },
+        {
+          "endMs": 192959,
+          "startMs": 189360,
+          "startTime": "3:09",
+          "text": "what it does, what makes it special, and"
+        },
+        {
+          "endMs": 194560,
+          "startMs": 191280,
+          "startTime": "3:11",
+          "text": "when we can use it, and what it's going"
+        },
+        {
+          "endMs": 196319,
+          "startMs": 192959,
+          "startTime": "3:12",
+          "text": "to cost when you do. I like the way I"
+        },
+        {
+          "endMs": 198000,
+          "startMs": 194560,
+          "startTime": "3:14",
+          "text": "structured the Fable 5.1 video, so I'll"
+        },
+        {
+          "endMs": 200000,
+          "startMs": 196319,
+          "startTime": "3:16",
+          "text": "do my best to honor a lot of that here"
+        },
+        {
+          "endMs": 201760,
+          "startMs": 198000,
+          "startTime": "3:18",
+          "text": "by going through in a reasonable order"
+        },
+        {
+          "endMs": 203440,
+          "startMs": 200000,
+          "startTime": "3:20",
+          "text": "the core pieces that we all care most"
+        },
+        {
+          "endMs": 205680,
+          "startMs": 201760,
+          "startTime": "3:21",
+          "text": "about. And with that, we need to start"
+        },
+        {
+          "endMs": 208080,
+          "startMs": 203440,
+          "startTime": "3:23",
+          "text": "with the cost and availability. This"
+        },
+        {
+          "endMs": 210400,
+          "startMs": 205680,
+          "startTime": "3:25",
+          "text": "ended up surprising me in multiple ways."
+        },
+        {
+          "endMs": 213120,
+          "startMs": 208080,
+          "startTime": "3:28",
+          "text": "First off with the cost. The price is"
+        },
+        {
+          "endMs": 215599,
+          "startMs": 210400,
+          "startTime": "3:30",
+          "text": "nearly identical to using Fable in terms"
+        },
+        {
+          "endMs": 217840,
+          "startMs": 213120,
+          "startTime": "3:33",
+          "text": "of the tokens in and out at $10 per"
+        },
+        {
+          "endMs": 219599,
+          "startMs": 215599,
+          "startTime": "3:35",
+          "text": "million in and $50 per million out."
+        },
+        {
+          "endMs": 221599,
+          "startMs": 217840,
+          "startTime": "3:37",
+          "text": "There are some edges here that are worth"
+        },
+        {
+          "endMs": 223760,
+          "startMs": 219599,
+          "startTime": "3:39",
+          "text": "noting. For example, they do actually"
+        },
+        {
+          "endMs": 225200,
+          "startMs": 221599,
+          "startTime": "3:41",
+          "text": "offer fast mode on it, which Anthropic"
+        },
+        {
+          "endMs": 227200,
+          "startMs": 223760,
+          "startTime": "3:43",
+          "text": "doesn't for Fable. They only offer for"
+        },
+        {
+          "endMs": 228959,
+          "startMs": 225200,
+          "startTime": "3:45",
+          "text": "Opus. You'll get up to two times the"
+        },
+        {
+          "endMs": 231280,
+          "startMs": 227200,
+          "startTime": "3:47",
+          "text": "speed of the standard processing at"
+        },
+        {
+          "endMs": 232560,
+          "startMs": 228959,
+          "startTime": "3:48",
+          "text": "around two times the standard price. I"
+        },
+        {
+          "endMs": 234159,
+          "startMs": 231280,
+          "startTime": "3:51",
+          "text": "like that this is an option for those"
+        },
+        {
+          "endMs": 236000,
+          "startMs": 232560,
+          "startTime": "3:52",
+          "text": "who need it because this model, I'll be"
+        },
+        {
+          "endMs": 237920,
+          "startMs": 234159,
+          "startTime": "3:54",
+          "text": "frank, can be slow. We'll talk plenty"
+        },
+        {
+          "endMs": 239760,
+          "startMs": 236000,
+          "startTime": "3:56",
+          "text": "about that in just a bit. But this is"
+        },
+        {
+          "endMs": 241439,
+          "startMs": 237920,
+          "startTime": "3:57",
+          "text": "only one dimension of the cost. There is"
+        },
+        {
+          "endMs": 243280,
+          "startMs": 239760,
+          "startTime": "3:59",
+          "text": "also the token efficiency which"
+        },
+        {
+          "endMs": 245040,
+          "startMs": 241439,
+          "startTime": "4:01",
+          "text": "fundamentally changes what the costs"
+        },
+        {
+          "endMs": 246799,
+          "startMs": 243280,
+          "startTime": "4:03",
+          "text": "actually end up being. As you can guess,"
+        },
+        {
+          "endMs": 248080,
+          "startMs": 245040,
+          "startTime": "4:05",
+          "text": "it's an OpenAI model, so it's insanely"
+        },
+        {
+          "endMs": 249680,
+          "startMs": 246799,
+          "startTime": "4:06",
+          "text": "efficient. It's sometimes even cheaper"
+        },
+        {
+          "endMs": 251599,
+          "startMs": 248080,
+          "startTime": "4:08",
+          "text": "than Soul for similar like for-like"
+        },
+        {
+          "endMs": 253760,
+          "startMs": 249680,
+          "startTime": "4:09",
+          "text": "tasks. But it also can be expensive"
+        },
+        {
+          "endMs": 256239,
+          "startMs": 251599,
+          "startTime": "4:11",
+          "text": "because it runs for so long and can"
+        },
+        {
+          "endMs": 257680,
+          "startMs": 253760,
+          "startTime": "4:13",
+          "text": "complete crazy endto-end work. There are"
+        },
+        {
+          "endMs": 259040,
+          "startMs": 256239,
+          "startTime": "4:16",
+          "text": "other dimensions for costs we need to be"
+        },
+        {
+          "endMs": 261440,
+          "startMs": 257680,
+          "startTime": "4:17",
+          "text": "considerate of though, like how"
+        },
+        {
+          "endMs": 264400,
+          "startMs": 259040,
+          "startTime": "4:19",
+          "text": "expensive are cashed reads? Anthropic"
+        },
+        {
+          "endMs": 266240,
+          "startMs": 261440,
+          "startTime": "4:21",
+          "text": "cut cash read pricing by 75% with Fable"
+        },
+        {
+          "endMs": 267919,
+          "startMs": 264400,
+          "startTime": "4:24",
+          "text": "5.1. And there is no equivalent here"
+        },
+        {
+          "endMs": 269680,
+          "startMs": 266240,
+          "startTime": "4:26",
+          "text": "with Astra. You are still paying the"
+        },
+        {
+          "endMs": 271440,
+          "startMs": 267919,
+          "startTime": "4:27",
+          "text": "full price for cash reads, which is a"
+        },
+        {
+          "endMs": 273600,
+          "startMs": 269680,
+          "startTime": "4:29",
+          "text": "tenth of the normal read price. So, it's"
+        },
+        {
+          "endMs": 276080,
+          "startMs": 271440,
+          "startTime": "4:31",
+          "text": "a dollar per million cashed token reads"
+        },
+        {
+          "endMs": 277680,
+          "startMs": 273600,
+          "startTime": "4:33",
+          "text": "versus the 25 cents for Fable. In the"
+        },
+        {
+          "endMs": 280160,
+          "startMs": 276080,
+          "startTime": "4:36",
+          "text": "end, Astra is still cheaper just due to"
+        },
+        {
+          "endMs": 281919,
+          "startMs": 277680,
+          "startTime": "4:37",
+          "text": "the huge efficiency difference. But"
+        },
+        {
+          "endMs": 284400,
+          "startMs": 280160,
+          "startTime": "4:40",
+          "text": "thought that was worth knowing. There is"
+        },
+        {
+          "endMs": 286400,
+          "startMs": 281919,
+          "startTime": "4:41",
+          "text": "one other pricing catch though, and this"
+        },
+        {
+          "endMs": 288560,
+          "startMs": 284400,
+          "startTime": "4:44",
+          "text": "catch has to do with the context window"
+        },
+        {
+          "endMs": 291040,
+          "startMs": 286400,
+          "startTime": "4:46",
+          "text": "size. This model can go up to a million"
+        },
+        {
+          "endMs": 292639,
+          "startMs": 288560,
+          "startTime": "4:48",
+          "text": "token context which is huge but also has"
+        },
+        {
+          "endMs": 294720,
+          "startMs": 291040,
+          "startTime": "4:51",
+          "text": "been available for the other open models"
+        },
+        {
+          "endMs": 297120,
+          "startMs": 292639,
+          "startTime": "4:52",
+          "text": "for a bit now. That said, it's not"
+        },
+        {
+          "endMs": 299280,
+          "startMs": 294720,
+          "startTime": "4:54",
+          "text": "available by default in codeex. Unlike"
+        },
+        {
+          "endMs": 300960,
+          "startMs": 297120,
+          "startTime": "4:57",
+          "text": "cloud code where it now defaults to a"
+        },
+        {
+          "endMs": 303520,
+          "startMs": 299280,
+          "startTime": "4:59",
+          "text": "million token context window for feeble"
+        },
+        {
+          "endMs": 306400,
+          "startMs": 300960,
+          "startTime": "5:00",
+          "text": "and opus, Astra doesn't. I believe the"
+        },
+        {
+          "endMs": 308479,
+          "startMs": 303520,
+          "startTime": "5:03",
+          "text": "plan is to release it in the 370k token"
+        },
+        {
+          "endMs": 310479,
+          "startMs": 306400,
+          "startTime": "5:06",
+          "text": "range or so in codeex. But it is worth"
+        },
+        {
+          "endMs": 312560,
+          "startMs": 308479,
+          "startTime": "5:08",
+          "text": "noting that if you go over 272K for your"
+        },
+        {
+          "endMs": 314479,
+          "startMs": 310479,
+          "startTime": "5:10",
+          "text": "context window size, your input tokens"
+        },
+        {
+          "endMs": 316960,
+          "startMs": 312560,
+          "startTime": "5:12",
+          "text": "get two times more expensive and your"
+        },
+        {
+          "endMs": 318160,
+          "startMs": 314479,
+          "startTime": "5:14",
+          "text": "output tokens get 50% more expensive. I"
+        },
+        {
+          "endMs": 319680,
+          "startMs": 316960,
+          "startTime": "5:16",
+          "text": "also recently learned that they're"
+        },
+        {
+          "endMs": 322240,
+          "startMs": 318160,
+          "startTime": "5:18",
+          "text": "actually implementing an exception in"
+        },
+        {
+          "endMs": 324320,
+          "startMs": 319680,
+          "startTime": "5:19",
+          "text": "codecs for when you go over the 272k"
+        },
+        {
+          "endMs": 325680,
+          "startMs": 322240,
+          "startTime": "5:22",
+          "text": "input token limit. So if you do end up"
+        },
+        {
+          "endMs": 327680,
+          "startMs": 324320,
+          "startTime": "5:24",
+          "text": "bumping in codecs, you're not going to"
+        },
+        {
+          "endMs": 329440,
+          "startMs": 325680,
+          "startTime": "5:25",
+          "text": "have the multiplicative increase in cost"
+        },
+        {
+          "endMs": 330639,
+          "startMs": 327680,
+          "startTime": "5:27",
+          "text": "that I was talking about before. It will"
+        },
+        {
+          "endMs": 332080,
+          "startMs": 329440,
+          "startTime": "5:29",
+          "text": "still be more expensive though because"
+        },
+        {
+          "endMs": 334160,
+          "startMs": 330639,
+          "startTime": "5:30",
+          "text": "you're using more tokens for every"
+        },
+        {
+          "endMs": 336080,
+          "startMs": 332080,
+          "startTime": "5:32",
+          "text": "single request, tool call, etc. That"
+        },
+        {
+          "endMs": 337919,
+          "startMs": 334160,
+          "startTime": "5:34",
+          "text": "mostly covers the cost stuff I wanted to"
+        },
+        {
+          "endMs": 340240,
+          "startMs": 336080,
+          "startTime": "5:36",
+          "text": "for now at least. But now we have to"
+        },
+        {
+          "endMs": 342240,
+          "startMs": 337919,
+          "startTime": "5:37",
+          "text": "talk more about availability because"
+        },
+        {
+          "endMs": 344479,
+          "startMs": 340240,
+          "startTime": "5:40",
+          "text": "this is where there's something I really"
+        },
+        {
+          "endMs": 347440,
+          "startMs": 342240,
+          "startTime": "5:42",
+          "text": "don't like. GBD6 Astra is rolling out"
+        },
+        {
+          "endMs": 349360,
+          "startMs": 344479,
+          "startTime": "5:44",
+          "text": "today to a limited set of organizations"
+        },
+        {
+          "endMs": 351199,
+          "startMs": 347440,
+          "startTime": "5:47",
+          "text": "and over the coming days will become"
+        },
+        {
+          "endMs": 352880,
+          "startMs": 349360,
+          "startTime": "5:49",
+          "text": "available to all chatbt plus pro"
+        },
+        {
+          "endMs": 354800,
+          "startMs": 351199,
+          "startTime": "5:51",
+          "text": "business and enterprise. There is one"
+        },
+        {
+          "endMs": 356880,
+          "startMs": 352880,
+          "startTime": "5:52",
+          "text": "good piece here which is that plus and"
+        },
+        {
+          "endMs": 358400,
+          "startMs": 354800,
+          "startTime": "5:54",
+          "text": "pro accounts will all be getting Astra"
+        },
+        {
+          "endMs": 360800,
+          "startMs": 356880,
+          "startTime": "5:56",
+          "text": "and they're not going to implement some"
+        },
+        {
+          "endMs": 362960,
+          "startMs": 358400,
+          "startTime": "5:58",
+          "text": "weird 50% limit like they do with fable"
+        },
+        {
+          "endMs": 366080,
+          "startMs": 360800,
+          "startTime": "6:00",
+          "text": "in your cloud code sub. But it's also"
+        },
+        {
+          "endMs": 368080,
+          "startMs": 362960,
+          "startTime": "6:02",
+          "text": "not actually out. This is genuinely"
+        },
+        {
+          "endMs": 369919,
+          "startMs": 366080,
+          "startTime": "6:06",
+          "text": "frustrating for me because I want to"
+        },
+        {
+          "endMs": 371520,
+          "startMs": 368080,
+          "startTime": "6:08",
+          "text": "show you guys all the cool things I did"
+        },
+        {
+          "endMs": 373280,
+          "startMs": 369919,
+          "startTime": "6:09",
+          "text": "with the model and you can go replicate"
+        },
+        {
+          "endMs": 376000,
+          "startMs": 371520,
+          "startTime": "6:11",
+          "text": "them and try them yourself, but you"
+        },
+        {
+          "endMs": 378560,
+          "startMs": 373280,
+          "startTime": "6:13",
+          "text": "can't. That sucks. It just It just"
+        },
+        {
+          "endMs": 380560,
+          "startMs": 376000,
+          "startTime": "6:16",
+          "text": "sucks. I hate this. I know there's a lot"
+        },
+        {
+          "endMs": 382080,
+          "startMs": 378560,
+          "startTime": "6:18",
+          "text": "of layers and chaos and reasoning to it."
+        },
+        {
+          "endMs": 384000,
+          "startMs": 380560,
+          "startTime": "6:20",
+          "text": "It's not as simple as they just want to"
+        },
+        {
+          "endMs": 385759,
+          "startMs": 382080,
+          "startTime": "6:22",
+          "text": "announce it and then give it out later."
+        },
+        {
+          "endMs": 387919,
+          "startMs": 384000,
+          "startTime": "6:24",
+          "text": "I wish I had more details. I've been"
+        },
+        {
+          "endMs": 389919,
+          "startMs": 385759,
+          "startTime": "6:25",
+          "text": "trying to get them all day. I do not"
+        },
+        {
+          "endMs": 391919,
+          "startMs": 387919,
+          "startTime": "6:27",
+          "text": "love the way that they chose to announce"
+        },
+        {
+          "endMs": 394160,
+          "startMs": 389919,
+          "startTime": "6:29",
+          "text": "this as though it is out for everyone,"
+        },
+        {
+          "endMs": 395840,
+          "startMs": 391919,
+          "startTime": "6:31",
+          "text": "but in reality it's only a small subset"
+        },
+        {
+          "endMs": 397840,
+          "startMs": 394160,
+          "startTime": "6:34",
+          "text": "of people that are now allowed to talk"
+        },
+        {
+          "endMs": 399440,
+          "startMs": 395840,
+          "startTime": "6:35",
+          "text": "about it. They also are providing proper"
+        },
+        {
+          "endMs": 400720,
+          "startMs": 397840,
+          "startTime": "6:37",
+          "text": "zero data retention. So all the"
+        },
+        {
+          "endMs": 402319,
+          "startMs": 399440,
+          "startTime": "6:39",
+          "text": "enterprises that were concerned about"
+        },
+        {
+          "endMs": 403600,
+          "startMs": 400720,
+          "startTime": "6:40",
+          "text": "Fable due to the different policies"
+        },
+        {
+          "endMs": 406400,
+          "startMs": 402319,
+          "startTime": "6:42",
+          "text": "there have nothing to worry about."
+        },
+        {
+          "endMs": 408720,
+          "startMs": 403600,
+          "startTime": "6:43",
+          "text": "OpenAI has maintained their high bar for"
+        },
+        {
+          "endMs": 410000,
+          "startMs": 406400,
+          "startTime": "6:46",
+          "text": "enterprise support with their ZDR stuff."
+        },
+        {
+          "endMs": 412080,
+          "startMs": 408720,
+          "startTime": "6:48",
+          "text": "There's a call out at the end here that"
+        },
+        {
+          "endMs": 414560,
+          "startMs": 410000,
+          "startTime": "6:50",
+          "text": "it will be available over the OpenAI API"
+        },
+        {
+          "endMs": 416400,
+          "startMs": 412080,
+          "startTime": "6:52",
+          "text": "as well as in Amazon Bedrock. Notably,"
+        },
+        {
+          "endMs": 418960,
+          "startMs": 414560,
+          "startTime": "6:54",
+          "text": "no mention of Azure here. It seems like"
+        },
+        {
+          "endMs": 421440,
+          "startMs": 416400,
+          "startTime": "6:56",
+          "text": "that Microsoft OpenAI breakup is truly"
+        },
+        {
+          "endMs": 422880,
+          "startMs": 418960,
+          "startTime": "6:58",
+          "text": "finalized. Okay, one last tiny thing on"
+        },
+        {
+          "endMs": 424800,
+          "startMs": 421440,
+          "startTime": "7:01",
+          "text": "availability before we can dive into the"
+        },
+        {
+          "endMs": 426800,
+          "startMs": 422880,
+          "startTime": "7:02",
+          "text": "model itself. OpenAI clearly is not"
+        },
+        {
+          "endMs": 428880,
+          "startMs": 424800,
+          "startTime": "7:04",
+          "text": "happy about the limitation to who has"
+        },
+        {
+          "endMs": 430880,
+          "startMs": 426800,
+          "startTime": "7:06",
+          "text": "access and they're choosing to do some"
+        },
+        {
+          "endMs": 432240,
+          "startMs": 428880,
+          "startTime": "7:08",
+          "text": "pretty generous stuff around that. Hebo"
+        },
+        {
+          "endMs": 434240,
+          "startMs": 430880,
+          "startTime": "7:10",
+          "text": "tweeted that they'll be giving one"
+        },
+        {
+          "endMs": 436080,
+          "startMs": 432240,
+          "startTime": "7:12",
+          "text": "banked reset for your codec sub for"
+        },
+        {
+          "endMs": 438400,
+          "startMs": 434240,
+          "startTime": "7:14",
+          "text": "every single day that we don't have"
+        },
+        {
+          "endMs": 440160,
+          "startMs": 436080,
+          "startTime": "7:16",
+          "text": "access to Astra on our page HGBT"
+        },
+        {
+          "endMs": 442080,
+          "startMs": 438400,
+          "startTime": "7:18",
+          "text": "accounts. This is pretty generous and"
+        },
+        {
+          "endMs": 443520,
+          "startMs": 440160,
+          "startTime": "7:20",
+          "text": "everyone in the replies seems to agree."
+        },
+        {
+          "endMs": 445440,
+          "startMs": 442080,
+          "startTime": "7:22",
+          "text": "In fact, I've even seen people saying"
+        },
+        {
+          "endMs": 446800,
+          "startMs": 443520,
+          "startTime": "7:23",
+          "text": "that it's okay if they delay Astra"
+        },
+        {
+          "endMs": 448720,
+          "startMs": 445440,
+          "startTime": "7:25",
+          "text": "indefinitely if they keep giving out"
+        },
+        {
+          "endMs": 451039,
+          "startMs": 446800,
+          "startTime": "7:26",
+          "text": "resets. So, personally, I don't think"
+        },
+        {
+          "endMs": 452720,
+          "startMs": 448720,
+          "startTime": "7:28",
+          "text": "this is a big enough solution to what"
+        },
+        {
+          "endMs": 454160,
+          "startMs": 451039,
+          "startTime": "7:31",
+          "text": "is, in my opinion, a quite large"
+        },
+        {
+          "endMs": 455440,
+          "startMs": 452720,
+          "startTime": "7:32",
+          "text": "problem, but at least they're doing"
+        },
+        {
+          "endMs": 457120,
+          "startMs": 454160,
+          "startTime": "7:34",
+          "text": "something. And I do have confirmation"
+        },
+        {
+          "endMs": 458639,
+          "startMs": 455440,
+          "startTime": "7:35",
+          "text": "from people at OpenAI that this is a"
+        },
+        {
+          "endMs": 460400,
+          "startMs": 457120,
+          "startTime": "7:37",
+          "text": "temporary measure. They don't expect"
+        },
+        {
+          "endMs": 462880,
+          "startMs": 458639,
+          "startTime": "7:38",
+          "text": "future model releases to have this weird"
+        },
+        {
+          "endMs": 464720,
+          "startMs": 460400,
+          "startTime": "7:40",
+          "text": "window like we do right now. Yeah, it is"
+        },
+        {
+          "endMs": 466160,
+          "startMs": 462880,
+          "startTime": "7:42",
+          "text": "what it is. Could be government, could"
+        },
+        {
+          "endMs": 467680,
+          "startMs": 464720,
+          "startTime": "7:44",
+          "text": "be something weird with their compute"
+        },
+        {
+          "endMs": 469360,
+          "startMs": 466160,
+          "startTime": "7:46",
+          "text": "layer, could be some enterprise"
+        },
+        {
+          "endMs": 471599,
+          "startMs": 467680,
+          "startTime": "7:47",
+          "text": "customers or Microsoft being upset. I"
+        },
+        {
+          "endMs": 473360,
+          "startMs": 469360,
+          "startTime": "7:49",
+          "text": "have no idea. I honestly, I'll be real."
+        },
+        {
+          "endMs": 474879,
+          "startMs": 471599,
+          "startTime": "7:51",
+          "text": "kind of thinking it's Microsoft, but we"
+        },
+        {
+          "endMs": 477039,
+          "startMs": 473360,
+          "startTime": "7:53",
+          "text": "don't know. We can wait. We'll have"
+        },
+        {
+          "endMs": 478319,
+          "startMs": 474879,
+          "startTime": "7:54",
+          "text": "answers soon. Might even be AWS being"
+        },
+        {
+          "endMs": 479680,
+          "startMs": 477039,
+          "startTime": "7:57",
+          "text": "upset that they're not ready yet and"
+        },
+        {
+          "endMs": 481840,
+          "startMs": 478319,
+          "startTime": "7:58",
+          "text": "they don't want OpenAI offering it"
+        },
+        {
+          "endMs": 483680,
+          "startMs": 479680,
+          "startTime": "7:59",
+          "text": "before them. I don't know. It is what it"
+        },
+        {
+          "endMs": 485520,
+          "startMs": 481840,
+          "startTime": "8:01",
+          "text": "is. Enough yapping. Let's actually take"
+        },
+        {
+          "endMs": 487199,
+          "startMs": 483680,
+          "startTime": "8:03",
+          "text": "a look at what this model can do. They"
+        },
+        {
+          "endMs": 489360,
+          "startMs": 485520,
+          "startTime": "8:05",
+          "text": "start off with a small set of benchmarks"
+        },
+        {
+          "endMs": 490800,
+          "startMs": 487199,
+          "startTime": "8:07",
+          "text": "that it absolutely seems to slaughter. I"
+        },
+        {
+          "endMs": 492879,
+          "startMs": 489360,
+          "startTime": "8:09",
+          "text": "have noticed that in a handful of these"
+        },
+        {
+          "endMs": 495680,
+          "startMs": 490800,
+          "startTime": "8:10",
+          "text": "benches, it performed slightly worse on"
+        },
+        {
+          "endMs": 497599,
+          "startMs": 492879,
+          "startTime": "8:12",
+          "text": "X high than it did on regular high."
+        },
+        {
+          "endMs": 499759,
+          "startMs": 495680,
+          "startTime": "8:15",
+          "text": "Sometimes max comes out and beats it"
+        },
+        {
+          "endMs": 501440,
+          "startMs": 497599,
+          "startTime": "8:17",
+          "text": "out, sometimes it doesn't. I does seem"
+        },
+        {
+          "endMs": 502960,
+          "startMs": 499759,
+          "startTime": "8:19",
+          "text": "to be one of the best options with this"
+        },
+        {
+          "endMs": 504879,
+          "startMs": 501440,
+          "startTime": "8:21",
+          "text": "model, though. So, here in Terminal"
+        },
+        {
+          "endMs": 507360,
+          "startMs": 502960,
+          "startTime": "8:22",
+          "text": "Bench, it crushed other models,"
+        },
+        {
+          "endMs": 509759,
+          "startMs": 504879,
+          "startTime": "8:24",
+          "text": "including Fable 5.1, getting way higher"
+        },
+        {
+          "endMs": 511280,
+          "startMs": 507360,
+          "startTime": "8:27",
+          "text": "scores at similar costs. This is the"
+        },
+        {
+          "endMs": 512560,
+          "startMs": 509759,
+          "startTime": "8:29",
+          "text": "science version of Terminal Bench, but"
+        },
+        {
+          "endMs": 515360,
+          "startMs": 511280,
+          "startTime": "8:31",
+          "text": "the numbers we're seeing here are pretty"
+        },
+        {
+          "endMs": 519200,
+          "startMs": 512560,
+          "startTime": "8:32",
+          "text": "crazy, where Claude Fable 5.1 on medium"
+        },
+        {
+          "endMs": 523680,
+          "startMs": 515360,
+          "startTime": "8:35",
+          "text": "cost $15 and got a 36% and six Astra on"
+        },
+        {
+          "endMs": 525279,
+          "startMs": 519200,
+          "startTime": "8:39",
+          "text": "low cost $11 and got a 54%. The gap here"
+        },
+        {
+          "endMs": 526640,
+          "startMs": 523680,
+          "startTime": "8:43",
+          "text": "is massive. The science side, as I"
+        },
+        {
+          "endMs": 528560,
+          "startMs": 525279,
+          "startTime": "8:45",
+          "text": "mentioned before, really seems to be"
+        },
+        {
+          "endMs": 530240,
+          "startMs": 526640,
+          "startTime": "8:46",
+          "text": "something OpenAI is focused on. And this"
+        },
+        {
+          "endMs": 531839,
+          "startMs": 528560,
+          "startTime": "8:48",
+          "text": "is particularly funny because Anthropic"
+        },
+        {
+          "endMs": 534640,
+          "startMs": 530240,
+          "startTime": "8:50",
+          "text": "was just bragging about how good Fable"
+        },
+        {
+          "endMs": 536959,
+          "startMs": 531839,
+          "startTime": "8:51",
+          "text": "5.1 did on the same exact bench just to"
+        },
+        {
+          "endMs": 538240,
+          "startMs": 534640,
+          "startTime": "8:54",
+          "text": "be slaughtered by OpenAI two days later."
+        }
+      ],
+      "source": "live",
+      "totalDurationMs": 2653760,
+      "videoId": "XFWpf0wLbh0"
+    }
+  },
+  "error": null,
+  "logId": "log_s_2o58wnTTJQ"
+}

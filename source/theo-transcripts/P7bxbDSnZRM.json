@@ -1,0 +1,1670 @@
+{
+  "successful": true,
+  "data": {
+    "credits": {
+      "charged": 2,
+      "remaining": 20
+    },
+    "data": {
+      "_truncated": {
+        "field": "segments",
+        "reason": "response size limit — lower \"limit\" for full detail",
+        "shown": 274,
+        "total": 2054
+      },
+      "dataRefreshedAt": "2026-09-22T00:19:25.874Z",
+      "fullText": "Last week was pretty crazy for new AI models. We got two new heavy hitters that are truly changing the game. Gemini 38 Flash and Muse Spark 1.3. How can you ever decide between those two? They're both so incredible. Obviously, I'm joking. We're actually here to talk about Fable 5.1 versus GPD6 Astra, the two actual models that matter. And I'm sure my attention guy already wants to kill me for doing that joke and confusing people. So, sorry. Well, let me have some fun. Okay, everyone's going to watch this video anyways cuz they all want to know what model to choose. And these two models are unbelievable. I went in with pretty high hopes on Fable 5.1, but didn't expect too much and I still managed to be absolutely blown away. It's an incredible model and I use it every day. GBD6 Astra is the future. It is such a crazy leap in so many different ways. I love using it. I'm doing thousands of dollars of inference a day with it. These models are both incredible. If you want to just skip to the end to see which model's better, I guess you could do that, but you'd miss all of the different ways we can compare them because these models are very different in their capabilities and the things you can do with them. And there's a lot to be learned from the various skills these models do and don't have. I'm doing nearly a billion tokens a day across both of these models consistently. And I've seen their strengths and weaknesses in all sorts of different places, many of which have surprised me a ton. So, if you want to understand what these are good at, what they are bad at, how efficient they are with token usage, how hard the subscription limits will hit you, all of those types of things and more, and of course, the most important question, which sub should you buy today? I'll do my best to answer all of that after a real quick break for today's sponsor. Writing code has never been easier, but as more agents spam more slop at projects, it's ever been harder to maintain a cohesive, coherent project. Your actual repos are slowly falling apart as more and more agents spam code at them that isn't really verifiable with things as simple as lint rules and static checks. How do you know that the code coming in is actually following your architecture or doesn't have some small annoying quirk that a bunch of other code did in the past or that it's following your UI system and guidance the way that you want it to. You could add all of these things into your agent MD, but that only guarantees that your agent knows about them, not that it's actually going to follow. How do you make sure at code review time that all of these things are done properly? Wouldn't it be nice if you could control the agents reviewing your code and maybe spawn specific ones that will only approve if certain conditions are met? Wouldn't it be nice if you could just throw a markdown file in your repo that describes a specific behavior or pattern that you want to make sure exists in all code coming in and won't approve it if it doesn't match? Maybe you even choose which paths in the codebase need this review. Well, spoiler, this is a real file in the T3 Code codebase, and it's powered by today's sponsor, Macroscope. Not only do they have some of the fastest and most reliable code reviews of any of the review agents available, they also have an approval system that actually makes sense for projects that are moving as fast as something like T3 Code. We're about to break a thousand open PRs, which is just unfathomable. I'd be a lot more stressed about that number if we didn't have these custom agents checking through Macroscope whenever a PR comes in. The team was added one a few days ago because a lot of my slop was breaking the UI by making things like the tool tip patterns inconsistent across different elements. So now we have a UI consistency agent that will actually check during code review if any of the files for UI are touched to make sure we're being consistent with how we actually style things in our app. Now all pull requests get checked by the effect service conventions and the UI consistency runtime agents that we've introduced. And as you see, they're hilariously fast, taking 12 seconds and 21 seconds, respectively, roughly the same length as our also very fast CI. Once all the agents come back with their thoughts, the top level macroscope agent will give its approval rating if it thinks the PR is good to merge or not. And I'm going to be real with you guys, it's incredibly rare I bother merging PRs that haven't been approved by Macroscope. The slop is coming and it's trying to destroy your codebase. The best way to stop it is atvive.link/microscope. So, we have all the different ways we want to compare these models. Let's start with what I'm sure everyone is here for, science, because this is a science channel, right? Okay. Seriously though, this one of my favorite things to cover, not just cuz I think the 3D stuff is really cool, but there were some funny things in this launch. I'm going to start with the official Fable 5.1 launch notes because they were very excited to show off their progress in terminal bench science 0.1, a very difficult realworld science bench using tools to solve real world problems. And they had a huge jump here both in the efficiency for cost as well as the success rate overall where their best case previously was on high with Fable 5. It cost $34 and it got a 25%. Now 5.1 on XH high is even cheaper and got a 50%. Huge improvement. I see why they put this here. These numbers look awesome. At least they looked awesome until you went to the GBT6 Astra launch because Astra on low gets a 54.3 and only costs $11, putting low Astra higher than Max Fable 5.1 at under a third the price for the first benchmark that Anthropic had listed. What I'm trying to say here is if your job is science, you should probably go get a codec subscription. You can do some pretty crazy things with it, like mindblowing ones. Both of these models have been massive leaps in science. My assumption is there's either some new training data or some new RL tooling that has been given out or sold to the different labs and if it is something useful in post- trainining then open AAI got it and is using it heavily there and since OpenAI are the goats of post training they were able to apply that better. On the note of overlapping data, 3D rendering, both Fable 5.1 and GPD6 Astra made massive leaps in their 3D rendering capabilities. Astr was way bigger, though, like hilariously bigger. Where better to start than Fish Slop? This is Fable 5.1's version of fish slop. It is a 3D game where you have a submarine and some fish that you can feed and a mini economy as well as a little bit of combat. And this was the most impressive version of fish slop at the time because this version of fish slop had real models that were surprisingly good. Like the fish actually kind of looks like a fish has eyes placed in the right place. That is a lot harder than it sounds. There are like coral and rocks and lights that work. And most importantly though, the movement is actually very nice. It feels good to move around in this version of the game. like flying around or not really flying. Floating around with the sub feels awesome. It controls great. It plays great. It's surprisingly decent overall, but there's definitely room to improve. I say this with confidence because of the version Astromeade. I'd say this looks slightly better, just a little. It's a generational gap here. This is nextG and the other version was not. What's the hit button to shoot? Okay, left click. There we go. Killed the guy. This does have its flaws. The movement doesn't feel anywhere near as good, and I had to like go back and forth to refine it a bit. The core loop isn't quite as well refined overall, and the performance was bad until I told to fix it. But it is stunning. Like it's actually decent looking to the point where I might have to drop slop from fish slop in the not too distant future. It is a massive leap. And if you think I'm just showing this and saying this now because I'm trying to glaze Astra, go watch my video on Kimmy K3 where I was for the first time ever genuinely really impressed with the 3D modeling capabilities of an LLM. This is a world of a difference. This is like multiple generational difference. So, while I definitely want to give this without any question to Astra, I actually think I have in my notes here a bunch of examples of crazy 3D stuff people did with the model. Here, Dra made a copy of the Amazon spheres that he was working in during his internship, all with Blender using Astra, which is just insane. or this demo home that Thomas built using Astra. All also with Blender where I can make a real environment with good furniture, a nice backdrop for the window and like it's good. It's like actually usable. You could use this to make real world mocks for real world 3D stuff. It's not a hypothetical anymore. This is in my opinion the equivalent of the jump from autocomplete agents to actually using your agent to complete tasks. And this all happened from Fable 5.1 to GBD6 Astra. The 3D capabilities in Astra are unbelievable. Which is why you might be confused when I move the arrow over here to gamedev for a sec. The reason I'm doing this is that as much as I am truly genuinely blown away with the 3D rendering capabilities of Astra. It is a like generational gap. It's the biggest gap of anything here between the models. 3D with Astra is comically better than 3D with Fable until you start interacting with it. And this is where Fable still just absolutely moss. Fable is so much better at interaction in general, at things like handling animations moving the right way when your cursor goes in a certain place or making the camera move the right amount when you move your mouse in a 3D world. For my silly 3D demos that I've been working on, I find that the best way to build them is to make the first prototype with Astra to get everything roughly looking and feeling how you wantish and then have Fable come in and clean it up and do all of the like detailoriented work. Astra, in my experience, does not handle the delicacy of that type of stuff anywhere near as well. It really does feel like a sledgehammer. Babel can apply things more gently in a way that makes things that work better. Back to non-code though, because there are layers to this one. Computer use. Realistically speaking, a lot of these categories are going to see a sway one way or the other where like certain things are better with Fable, certain things are better with Astra. The biggest gaps by far are the 3D rendering where Astra clears and computer use where Astra also clears. It is so much faster than 5.6 was for computer use. It's crazy. It just flies through things on your machine. Computer use of 56 soul was a big enough jump that I started to actually use it dayto-day for various different things. With GBD6 Astra, I've been using it so much that I got another Mac Mini just to let it run with computer use 247 to do all sorts of different tasks. It's so good at realworld computer use. It can do things much faster. understands them much better and the benchmarks don't in my opinion accurately measure the gap here. And the gap isn't just the model either. A lot of the improvements have been through the changes they've been making to codeex, especially on Mac OS to make the computer use spin up faster, get context more easily, move around your computer faster, and do things in the background better. 5.6 Soul would do tedious things I didn't feel like doing for me. Astra can often do tasks faster than I would have, which is very convenient because I'm currently down a hand. Astro computer use is so far ahead, it's kind of hilarious. Fable can do it decently when given the right tools, but it's just not even comparable to computer use. Funny enough, the weird misses that I'm used to OpenAI …[+66148 chars truncated]",
+      "segments": [
+        {
+          "endMs": 4319,
+          "startMs": 80,
+          "startTime": "0:00",
+          "text": "Last week was pretty crazy for new AI"
+        },
+        {
+          "endMs": 6400,
+          "startMs": 2240,
+          "startTime": "0:02",
+          "text": "models. We got two new heavy hitters"
+        },
+        {
+          "endMs": 9440,
+          "startMs": 4319,
+          "startTime": "0:04",
+          "text": "that are truly changing the game. Gemini"
+        },
+        {
+          "endMs": 11280,
+          "startMs": 6400,
+          "startTime": "0:06",
+          "text": "38 Flash and Muse Spark 1.3. How can you"
+        },
+        {
+          "endMs": 13440,
+          "startMs": 9440,
+          "startTime": "0:09",
+          "text": "ever decide between those two? They're"
+        },
+        {
+          "endMs": 14880,
+          "startMs": 11280,
+          "startTime": "0:11",
+          "text": "both so incredible. Obviously, I'm"
+        },
+        {
+          "endMs": 17680,
+          "startMs": 13440,
+          "startTime": "0:13",
+          "text": "joking. We're actually here to talk"
+        },
+        {
+          "endMs": 19279,
+          "startMs": 14880,
+          "startTime": "0:14",
+          "text": "about Fable 5.1 versus GPD6 Astra, the"
+        },
+        {
+          "endMs": 20800,
+          "startMs": 17680,
+          "startTime": "0:17",
+          "text": "two actual models that matter. And I'm"
+        },
+        {
+          "endMs": 22000,
+          "startMs": 19279,
+          "startTime": "0:19",
+          "text": "sure my attention guy already wants to"
+        },
+        {
+          "endMs": 24160,
+          "startMs": 20800,
+          "startTime": "0:20",
+          "text": "kill me for doing that joke and"
+        },
+        {
+          "endMs": 25600,
+          "startMs": 22000,
+          "startTime": "0:22",
+          "text": "confusing people. So, sorry. Well, let"
+        },
+        {
+          "endMs": 26880,
+          "startMs": 24160,
+          "startTime": "0:24",
+          "text": "me have some fun. Okay, everyone's going"
+        },
+        {
+          "endMs": 29439,
+          "startMs": 25600,
+          "startTime": "0:25",
+          "text": "to watch this video anyways cuz they all"
+        },
+        {
+          "endMs": 32480,
+          "startMs": 26880,
+          "startTime": "0:26",
+          "text": "want to know what model to choose. And"
+        },
+        {
+          "endMs": 34399,
+          "startMs": 29439,
+          "startTime": "0:29",
+          "text": "these two models are unbelievable. I"
+        },
+        {
+          "endMs": 37280,
+          "startMs": 32480,
+          "startTime": "0:32",
+          "text": "went in with pretty high hopes on Fable"
+        },
+        {
+          "endMs": 39760,
+          "startMs": 34399,
+          "startTime": "0:34",
+          "text": "5.1, but didn't expect too much and I"
+        },
+        {
+          "endMs": 41840,
+          "startMs": 37280,
+          "startTime": "0:37",
+          "text": "still managed to be absolutely blown"
+        },
+        {
+          "endMs": 45360,
+          "startMs": 39760,
+          "startTime": "0:39",
+          "text": "away. It's an incredible model and I use"
+        },
+        {
+          "endMs": 48480,
+          "startMs": 41840,
+          "startTime": "0:41",
+          "text": "it every day. GBD6 Astra is the future."
+        },
+        {
+          "endMs": 50160,
+          "startMs": 45360,
+          "startTime": "0:45",
+          "text": "It is such a crazy leap in so many"
+        },
+        {
+          "endMs": 51600,
+          "startMs": 48480,
+          "startTime": "0:48",
+          "text": "different ways. I love using it. I'm"
+        },
+        {
+          "endMs": 53600,
+          "startMs": 50160,
+          "startTime": "0:50",
+          "text": "doing thousands of dollars of inference"
+        },
+        {
+          "endMs": 55360,
+          "startMs": 51600,
+          "startTime": "0:51",
+          "text": "a day with it. These models are both"
+        },
+        {
+          "endMs": 57039,
+          "startMs": 53600,
+          "startTime": "0:53",
+          "text": "incredible. If you want to just skip to"
+        },
+        {
+          "endMs": 59120,
+          "startMs": 55360,
+          "startTime": "0:55",
+          "text": "the end to see which model's better, I"
+        },
+        {
+          "endMs": 61039,
+          "startMs": 57039,
+          "startTime": "0:57",
+          "text": "guess you could do that, but you'd miss"
+        },
+        {
+          "endMs": 63520,
+          "startMs": 59120,
+          "startTime": "0:59",
+          "text": "all of the different ways we can compare"
+        },
+        {
+          "endMs": 64879,
+          "startMs": 61039,
+          "startTime": "1:01",
+          "text": "them because these models are very"
+        },
+        {
+          "endMs": 66400,
+          "startMs": 63520,
+          "startTime": "1:03",
+          "text": "different in their capabilities and the"
+        },
+        {
+          "endMs": 68080,
+          "startMs": 64879,
+          "startTime": "1:04",
+          "text": "things you can do with them. And there's"
+        },
+        {
+          "endMs": 70400,
+          "startMs": 66400,
+          "startTime": "1:06",
+          "text": "a lot to be learned from the various"
+        },
+        {
+          "endMs": 72240,
+          "startMs": 68080,
+          "startTime": "1:08",
+          "text": "skills these models do and don't have."
+        },
+        {
+          "endMs": 73680,
+          "startMs": 70400,
+          "startTime": "1:10",
+          "text": "I'm doing nearly a billion tokens a day"
+        },
+        {
+          "endMs": 75360,
+          "startMs": 72240,
+          "startTime": "1:12",
+          "text": "across both of these models"
+        },
+        {
+          "endMs": 77520,
+          "startMs": 73680,
+          "startTime": "1:13",
+          "text": "consistently. And I've seen their"
+        },
+        {
+          "endMs": 79040,
+          "startMs": 75360,
+          "startTime": "1:15",
+          "text": "strengths and weaknesses in all sorts of"
+        },
+        {
+          "endMs": 81280,
+          "startMs": 77520,
+          "startTime": "1:17",
+          "text": "different places, many of which have"
+        },
+        {
+          "endMs": 83119,
+          "startMs": 79040,
+          "startTime": "1:19",
+          "text": "surprised me a ton. So, if you want to"
+        },
+        {
+          "endMs": 84880,
+          "startMs": 81280,
+          "startTime": "1:21",
+          "text": "understand what these are good at, what"
+        },
+        {
+          "endMs": 86799,
+          "startMs": 83119,
+          "startTime": "1:23",
+          "text": "they are bad at, how efficient they are"
+        },
+        {
+          "endMs": 88320,
+          "startMs": 84880,
+          "startTime": "1:24",
+          "text": "with token usage, how hard the"
+        },
+        {
+          "endMs": 90080,
+          "startMs": 86799,
+          "startTime": "1:26",
+          "text": "subscription limits will hit you, all of"
+        },
+        {
+          "endMs": 91840,
+          "startMs": 88320,
+          "startTime": "1:28",
+          "text": "those types of things and more, and of"
+        },
+        {
+          "endMs": 94320,
+          "startMs": 90080,
+          "startTime": "1:30",
+          "text": "course, the most important question,"
+        },
+        {
+          "endMs": 96079,
+          "startMs": 91840,
+          "startTime": "1:31",
+          "text": "which sub should you buy today? I'll do"
+        },
+        {
+          "endMs": 97600,
+          "startMs": 94320,
+          "startTime": "1:34",
+          "text": "my best to answer all of that after a"
+        },
+        {
+          "endMs": 99200,
+          "startMs": 96079,
+          "startTime": "1:36",
+          "text": "real quick break for today's sponsor."
+        },
+        {
+          "endMs": 101200,
+          "startMs": 97600,
+          "startTime": "1:37",
+          "text": "Writing code has never been easier, but"
+        },
+        {
+          "endMs": 102720,
+          "startMs": 99200,
+          "startTime": "1:39",
+          "text": "as more agents spam more slop at"
+        },
+        {
+          "endMs": 105439,
+          "startMs": 101200,
+          "startTime": "1:41",
+          "text": "projects, it's ever been harder to"
+        },
+        {
+          "endMs": 107280,
+          "startMs": 102720,
+          "startTime": "1:42",
+          "text": "maintain a cohesive, coherent project."
+        },
+        {
+          "endMs": 109280,
+          "startMs": 105439,
+          "startTime": "1:45",
+          "text": "Your actual repos are slowly falling"
+        },
+        {
+          "endMs": 111280,
+          "startMs": 107280,
+          "startTime": "1:47",
+          "text": "apart as more and more agents spam code"
+        },
+        {
+          "endMs": 113040,
+          "startMs": 109280,
+          "startTime": "1:49",
+          "text": "at them that isn't really verifiable"
+        },
+        {
+          "endMs": 114720,
+          "startMs": 111280,
+          "startTime": "1:51",
+          "text": "with things as simple as lint rules and"
+        },
+        {
+          "endMs": 116399,
+          "startMs": 113040,
+          "startTime": "1:53",
+          "text": "static checks. How do you know that the"
+        },
+        {
+          "endMs": 118320,
+          "startMs": 114720,
+          "startTime": "1:54",
+          "text": "code coming in is actually following"
+        },
+        {
+          "endMs": 120000,
+          "startMs": 116399,
+          "startTime": "1:56",
+          "text": "your architecture or doesn't have some"
+        },
+        {
+          "endMs": 121759,
+          "startMs": 118320,
+          "startTime": "1:58",
+          "text": "small annoying quirk that a bunch of"
+        },
+        {
+          "endMs": 123439,
+          "startMs": 120000,
+          "startTime": "2:00",
+          "text": "other code did in the past or that it's"
+        },
+        {
+          "endMs": 125119,
+          "startMs": 121759,
+          "startTime": "2:01",
+          "text": "following your UI system and guidance"
+        },
+        {
+          "endMs": 126560,
+          "startMs": 123439,
+          "startTime": "2:03",
+          "text": "the way that you want it to. You could"
+        },
+        {
+          "endMs": 128319,
+          "startMs": 125119,
+          "startTime": "2:05",
+          "text": "add all of these things into your agent"
+        },
+        {
+          "endMs": 130080,
+          "startMs": 126560,
+          "startTime": "2:06",
+          "text": "MD, but that only guarantees that your"
+        },
+        {
+          "endMs": 131920,
+          "startMs": 128319,
+          "startTime": "2:08",
+          "text": "agent knows about them, not that it's"
+        },
+        {
+          "endMs": 133840,
+          "startMs": 130080,
+          "startTime": "2:10",
+          "text": "actually going to follow. How do you"
+        },
+        {
+          "endMs": 135760,
+          "startMs": 131920,
+          "startTime": "2:11",
+          "text": "make sure at code review time that all"
+        },
+        {
+          "endMs": 137280,
+          "startMs": 133840,
+          "startTime": "2:13",
+          "text": "of these things are done properly?"
+        },
+        {
+          "endMs": 139200,
+          "startMs": 135760,
+          "startTime": "2:15",
+          "text": "Wouldn't it be nice if you could control"
+        },
+        {
+          "endMs": 141040,
+          "startMs": 137280,
+          "startTime": "2:17",
+          "text": "the agents reviewing your code and maybe"
+        },
+        {
+          "endMs": 143120,
+          "startMs": 139200,
+          "startTime": "2:19",
+          "text": "spawn specific ones that will only"
+        },
+        {
+          "endMs": 144319,
+          "startMs": 141040,
+          "startTime": "2:21",
+          "text": "approve if certain conditions are met?"
+        },
+        {
+          "endMs": 146560,
+          "startMs": 143120,
+          "startTime": "2:23",
+          "text": "Wouldn't it be nice if you could just"
+        },
+        {
+          "endMs": 148959,
+          "startMs": 144319,
+          "startTime": "2:24",
+          "text": "throw a markdown file in your repo that"
+        },
+        {
+          "endMs": 150879,
+          "startMs": 146560,
+          "startTime": "2:26",
+          "text": "describes a specific behavior or pattern"
+        },
+        {
+          "endMs": 152640,
+          "startMs": 148959,
+          "startTime": "2:28",
+          "text": "that you want to make sure exists in all"
+        },
+        {
+          "endMs": 154319,
+          "startMs": 150879,
+          "startTime": "2:30",
+          "text": "code coming in and won't approve it if"
+        },
+        {
+          "endMs": 156400,
+          "startMs": 152640,
+          "startTime": "2:32",
+          "text": "it doesn't match? Maybe you even choose"
+        },
+        {
+          "endMs": 158640,
+          "startMs": 154319,
+          "startTime": "2:34",
+          "text": "which paths in the codebase need this"
+        },
+        {
+          "endMs": 160879,
+          "startMs": 156400,
+          "startTime": "2:36",
+          "text": "review. Well, spoiler, this is a real"
+        },
+        {
+          "endMs": 162959,
+          "startMs": 158640,
+          "startTime": "2:38",
+          "text": "file in the T3 Code codebase, and it's"
+        },
+        {
+          "endMs": 164239,
+          "startMs": 160879,
+          "startTime": "2:40",
+          "text": "powered by today's sponsor, Macroscope."
+        },
+        {
+          "endMs": 166080,
+          "startMs": 162959,
+          "startTime": "2:42",
+          "text": "Not only do they have some of the"
+        },
+        {
+          "endMs": 168000,
+          "startMs": 164239,
+          "startTime": "2:44",
+          "text": "fastest and most reliable code reviews"
+        },
+        {
+          "endMs": 169680,
+          "startMs": 166080,
+          "startTime": "2:46",
+          "text": "of any of the review agents available,"
+        },
+        {
+          "endMs": 171280,
+          "startMs": 168000,
+          "startTime": "2:48",
+          "text": "they also have an approval system that"
+        },
+        {
+          "endMs": 173200,
+          "startMs": 169680,
+          "startTime": "2:49",
+          "text": "actually makes sense for projects that"
+        },
+        {
+          "endMs": 174800,
+          "startMs": 171280,
+          "startTime": "2:51",
+          "text": "are moving as fast as something like T3"
+        },
+        {
+          "endMs": 177760,
+          "startMs": 173200,
+          "startTime": "2:53",
+          "text": "Code. We're about to break a thousand"
+        },
+        {
+          "endMs": 179040,
+          "startMs": 174800,
+          "startTime": "2:54",
+          "text": "open PRs, which is just unfathomable."
+        },
+        {
+          "endMs": 180720,
+          "startMs": 177760,
+          "startTime": "2:57",
+          "text": "I'd be a lot more stressed about that"
+        },
+        {
+          "endMs": 182560,
+          "startMs": 179040,
+          "startTime": "2:59",
+          "text": "number if we didn't have these custom"
+        },
+        {
+          "endMs": 184319,
+          "startMs": 180720,
+          "startTime": "3:00",
+          "text": "agents checking through Macroscope"
+        },
+        {
+          "endMs": 185680,
+          "startMs": 182560,
+          "startTime": "3:02",
+          "text": "whenever a PR comes in. The team was"
+        },
+        {
+          "endMs": 188480,
+          "startMs": 184319,
+          "startTime": "3:04",
+          "text": "added one a few days ago because a lot"
+        },
+        {
+          "endMs": 189920,
+          "startMs": 185680,
+          "startTime": "3:05",
+          "text": "of my slop was breaking the UI by making"
+        },
+        {
+          "endMs": 191680,
+          "startMs": 188480,
+          "startTime": "3:08",
+          "text": "things like the tool tip patterns"
+        },
+        {
+          "endMs": 193200,
+          "startMs": 189920,
+          "startTime": "3:09",
+          "text": "inconsistent across different elements."
+        },
+        {
+          "endMs": 194640,
+          "startMs": 191680,
+          "startTime": "3:11",
+          "text": "So now we have a UI consistency agent"
+        },
+        {
+          "endMs": 197120,
+          "startMs": 193200,
+          "startTime": "3:13",
+          "text": "that will actually check during code"
+        },
+        {
+          "endMs": 198879,
+          "startMs": 194640,
+          "startTime": "3:14",
+          "text": "review if any of the files for UI are"
+        },
+        {
+          "endMs": 200879,
+          "startMs": 197120,
+          "startTime": "3:17",
+          "text": "touched to make sure we're being"
+        },
+        {
+          "endMs": 202720,
+          "startMs": 198879,
+          "startTime": "3:18",
+          "text": "consistent with how we actually style"
+        },
+        {
+          "endMs": 204080,
+          "startMs": 200879,
+          "startTime": "3:20",
+          "text": "things in our app. Now all pull requests"
+        },
+        {
+          "endMs": 205840,
+          "startMs": 202720,
+          "startTime": "3:22",
+          "text": "get checked by the effect service"
+        },
+        {
+          "endMs": 207519,
+          "startMs": 204080,
+          "startTime": "3:24",
+          "text": "conventions and the UI consistency"
+        },
+        {
+          "endMs": 209280,
+          "startMs": 205840,
+          "startTime": "3:25",
+          "text": "runtime agents that we've introduced."
+        },
+        {
+          "endMs": 211360,
+          "startMs": 207519,
+          "startTime": "3:27",
+          "text": "And as you see, they're hilariously"
+        },
+        {
+          "endMs": 213200,
+          "startMs": 209280,
+          "startTime": "3:29",
+          "text": "fast, taking 12 seconds and 21 seconds,"
+        },
+        {
+          "endMs": 215280,
+          "startMs": 211360,
+          "startTime": "3:31",
+          "text": "respectively, roughly the same length as"
+        },
+        {
+          "endMs": 216799,
+          "startMs": 213200,
+          "startTime": "3:33",
+          "text": "our also very fast CI. Once all the"
+        },
+        {
+          "endMs": 218799,
+          "startMs": 215280,
+          "startTime": "3:35",
+          "text": "agents come back with their thoughts,"
+        },
+        {
+          "endMs": 220720,
+          "startMs": 216799,
+          "startTime": "3:36",
+          "text": "the top level macroscope agent will give"
+        },
+        {
+          "endMs": 222159,
+          "startMs": 218799,
+          "startTime": "3:38",
+          "text": "its approval rating if it thinks the PR"
+        },
+        {
+          "endMs": 223440,
+          "startMs": 220720,
+          "startTime": "3:40",
+          "text": "is good to merge or not. And I'm going"
+        },
+        {
+          "endMs": 225440,
+          "startMs": 222159,
+          "startTime": "3:42",
+          "text": "to be real with you guys, it's"
+        },
+        {
+          "endMs": 226799,
+          "startMs": 223440,
+          "startTime": "3:43",
+          "text": "incredibly rare I bother merging PRs"
+        },
+        {
+          "endMs": 228560,
+          "startMs": 225440,
+          "startTime": "3:45",
+          "text": "that haven't been approved by"
+        },
+        {
+          "endMs": 230000,
+          "startMs": 226799,
+          "startTime": "3:46",
+          "text": "Macroscope. The slop is coming and it's"
+        },
+        {
+          "endMs": 230879,
+          "startMs": 228560,
+          "startTime": "3:48",
+          "text": "trying to destroy your codebase. The"
+        },
+        {
+          "endMs": 233040,
+          "startMs": 230000,
+          "startTime": "3:50",
+          "text": "best way to stop it is"
+        },
+        {
+          "endMs": 234560,
+          "startMs": 230879,
+          "startTime": "3:50",
+          "text": "atvive.link/microscope."
+        },
+        {
+          "endMs": 236000,
+          "startMs": 233040,
+          "startTime": "3:53",
+          "text": "So, we have all the different ways we"
+        },
+        {
+          "endMs": 237599,
+          "startMs": 234560,
+          "startTime": "3:54",
+          "text": "want to compare these models. Let's"
+        },
+        {
+          "endMs": 240319,
+          "startMs": 236000,
+          "startTime": "3:56",
+          "text": "start with what I'm sure everyone is"
+        },
+        {
+          "endMs": 242959,
+          "startMs": 237599,
+          "startTime": "3:57",
+          "text": "here for, science, because this is a"
+        },
+        {
+          "endMs": 244080,
+          "startMs": 240319,
+          "startTime": "4:00",
+          "text": "science channel, right? Okay. Seriously"
+        },
+        {
+          "endMs": 246640,
+          "startMs": 242959,
+          "startTime": "4:02",
+          "text": "though, this one of my favorite things"
+        },
+        {
+          "endMs": 248080,
+          "startMs": 244080,
+          "startTime": "4:04",
+          "text": "to cover, not just cuz I think the 3D"
+        },
+        {
+          "endMs": 250640,
+          "startMs": 246640,
+          "startTime": "4:06",
+          "text": "stuff is really cool, but there were"
+        },
+        {
+          "endMs": 252239,
+          "startMs": 248080,
+          "startTime": "4:08",
+          "text": "some funny things in this launch. I'm"
+        },
+        {
+          "endMs": 254799,
+          "startMs": 250640,
+          "startTime": "4:10",
+          "text": "going to start with the official Fable"
+        },
+        {
+          "endMs": 256720,
+          "startMs": 252239,
+          "startTime": "4:12",
+          "text": "5.1 launch notes because they were very"
+        },
+        {
+          "endMs": 259600,
+          "startMs": 254799,
+          "startTime": "4:14",
+          "text": "excited to show off their progress in"
+        },
+        {
+          "endMs": 261919,
+          "startMs": 256720,
+          "startTime": "4:16",
+          "text": "terminal bench science 0.1, a very"
+        },
+        {
+          "endMs": 264400,
+          "startMs": 259600,
+          "startTime": "4:19",
+          "text": "difficult realworld science bench using"
+        },
+        {
+          "endMs": 266479,
+          "startMs": 261919,
+          "startTime": "4:21",
+          "text": "tools to solve real world problems. And"
+        },
+        {
+          "endMs": 268560,
+          "startMs": 264400,
+          "startTime": "4:24",
+          "text": "they had a huge jump here both in the"
+        },
+        {
+          "endMs": 270880,
+          "startMs": 266479,
+          "startTime": "4:26",
+          "text": "efficiency for cost as well as the"
+        },
+        {
+          "endMs": 273520,
+          "startMs": 268560,
+          "startTime": "4:28",
+          "text": "success rate overall where their best"
+        },
+        {
+          "endMs": 278080,
+          "startMs": 270880,
+          "startTime": "4:30",
+          "text": "case previously was on high with Fable"
+        },
+        {
+          "endMs": 280160,
+          "startMs": 273520,
+          "startTime": "4:33",
+          "text": "5. It cost $34 and it got a 25%. Now 5.1"
+        },
+        {
+          "endMs": 282160,
+          "startMs": 278080,
+          "startTime": "4:38",
+          "text": "on XH high is even cheaper and got a"
+        },
+        {
+          "endMs": 283520,
+          "startMs": 280160,
+          "startTime": "4:40",
+          "text": "50%. Huge improvement. I see why they"
+        },
+        {
+          "endMs": 285199,
+          "startMs": 282160,
+          "startTime": "4:42",
+          "text": "put this here. These numbers look"
+        },
+        {
+          "endMs": 288639,
+          "startMs": 283520,
+          "startTime": "4:43",
+          "text": "awesome. At least they looked awesome"
+        },
+        {
+          "endMs": 292639,
+          "startMs": 285199,
+          "startTime": "4:45",
+          "text": "until you went to the GBT6 Astra launch"
+        },
+        {
+          "endMs": 296479,
+          "startMs": 288639,
+          "startTime": "4:48",
+          "text": "because Astra on low gets a 54.3 and"
+        },
+        {
+          "endMs": 299440,
+          "startMs": 292639,
+          "startTime": "4:52",
+          "text": "only costs $11, putting low Astra higher"
+        },
+        {
+          "endMs": 301919,
+          "startMs": 296479,
+          "startTime": "4:56",
+          "text": "than Max Fable 5.1 at under a third the"
+        },
+        {
+          "endMs": 304160,
+          "startMs": 299440,
+          "startTime": "4:59",
+          "text": "price for the first benchmark that"
+        },
+        {
+          "endMs": 307199,
+          "startMs": 301919,
+          "startTime": "5:01",
+          "text": "Anthropic had listed. What I'm trying to"
+        },
+        {
+          "endMs": 308639,
+          "startMs": 304160,
+          "startTime": "5:04",
+          "text": "say here is if your job is science, you"
+        },
+        {
+          "endMs": 310639,
+          "startMs": 307199,
+          "startTime": "5:07",
+          "text": "should probably go get a codec"
+        },
+        {
+          "endMs": 312720,
+          "startMs": 308639,
+          "startTime": "5:08",
+          "text": "subscription. You can do some pretty"
+        },
+        {
+          "endMs": 314639,
+          "startMs": 310639,
+          "startTime": "5:10",
+          "text": "crazy things with it, like mindblowing"
+        },
+        {
+          "endMs": 316320,
+          "startMs": 312720,
+          "startTime": "5:12",
+          "text": "ones. Both of these models have been"
+        },
+        {
+          "endMs": 318639,
+          "startMs": 314639,
+          "startTime": "5:14",
+          "text": "massive leaps in science. My assumption"
+        },
+        {
+          "endMs": 320960,
+          "startMs": 316320,
+          "startTime": "5:16",
+          "text": "is there's either some new training data"
+        },
+        {
+          "endMs": 322880,
+          "startMs": 318639,
+          "startTime": "5:18",
+          "text": "or some new RL tooling that has been"
+        },
+        {
+          "endMs": 324479,
+          "startMs": 320960,
+          "startTime": "5:20",
+          "text": "given out or sold to the different labs"
+        },
+        {
+          "endMs": 326880,
+          "startMs": 322880,
+          "startTime": "5:22",
+          "text": "and if it is something useful in post-"
+        },
+        {
+          "endMs": 328639,
+          "startMs": 324479,
+          "startTime": "5:24",
+          "text": "trainining then open AAI got it and is"
+        },
+        {
+          "endMs": 330479,
+          "startMs": 326880,
+          "startTime": "5:26",
+          "text": "using it heavily there and since OpenAI"
+        },
+        {
+          "endMs": 332560,
+          "startMs": 328639,
+          "startTime": "5:28",
+          "text": "are the goats of post training they were"
+        },
+        {
+          "endMs": 336639,
+          "startMs": 330479,
+          "startTime": "5:30",
+          "text": "able to apply that better. On the note"
+        },
+        {
+          "endMs": 341120,
+          "startMs": 332560,
+          "startTime": "5:32",
+          "text": "of overlapping data, 3D rendering, both"
+        },
+        {
+          "endMs": 342720,
+          "startMs": 336639,
+          "startTime": "5:36",
+          "text": "Fable 5.1 and GPD6 Astra made massive"
+        },
+        {
+          "endMs": 344800,
+          "startMs": 341120,
+          "startTime": "5:41",
+          "text": "leaps in their 3D rendering"
+        },
+        {
+          "endMs": 348000,
+          "startMs": 342720,
+          "startTime": "5:42",
+          "text": "capabilities. Astr was way bigger,"
+        },
+        {
+          "endMs": 350800,
+          "startMs": 344800,
+          "startTime": "5:44",
+          "text": "though, like hilariously bigger. Where"
+        },
+        {
+          "endMs": 353520,
+          "startMs": 348000,
+          "startTime": "5:48",
+          "text": "better to start than Fish Slop? This is"
+        },
+        {
+          "endMs": 356000,
+          "startMs": 350800,
+          "startTime": "5:50",
+          "text": "Fable 5.1's version of fish slop. It is"
+        },
+        {
+          "endMs": 358320,
+          "startMs": 353520,
+          "startTime": "5:53",
+          "text": "a 3D game where you have a submarine and"
+        },
+        {
+          "endMs": 359600,
+          "startMs": 356000,
+          "startTime": "5:56",
+          "text": "some fish that you can feed and a mini"
+        },
+        {
+          "endMs": 362160,
+          "startMs": 358320,
+          "startTime": "5:58",
+          "text": "economy as well as a little bit of"
+        },
+        {
+          "endMs": 364800,
+          "startMs": 359600,
+          "startTime": "5:59",
+          "text": "combat. And this was the most impressive"
+        },
+        {
+          "endMs": 367440,
+          "startMs": 362160,
+          "startTime": "6:02",
+          "text": "version of fish slop at the time because"
+        },
+        {
+          "endMs": 368960,
+          "startMs": 364800,
+          "startTime": "6:04",
+          "text": "this version of fish slop had real"
+        },
+        {
+          "endMs": 370400,
+          "startMs": 367440,
+          "startTime": "6:07",
+          "text": "models that were surprisingly good. Like"
+        },
+        {
+          "endMs": 372319,
+          "startMs": 368960,
+          "startTime": "6:08",
+          "text": "the fish actually kind of looks like a"
+        },
+        {
+          "endMs": 374240,
+          "startMs": 370400,
+          "startTime": "6:10",
+          "text": "fish has eyes placed in the right place."
+        },
+        {
+          "endMs": 376319,
+          "startMs": 372319,
+          "startTime": "6:12",
+          "text": "That is a lot harder than it sounds."
+        },
+        {
+          "endMs": 379280,
+          "startMs": 374240,
+          "startTime": "6:14",
+          "text": "There are like coral and rocks and"
+        },
+        {
+          "endMs": 381360,
+          "startMs": 376319,
+          "startTime": "6:16",
+          "text": "lights that work. And most importantly"
+        },
+        {
+          "endMs": 383600,
+          "startMs": 379280,
+          "startTime": "6:19",
+          "text": "though, the movement is actually very"
+        },
+        {
+          "endMs": 385600,
+          "startMs": 381360,
+          "startTime": "6:21",
+          "text": "nice. It feels good to move around in"
+        },
+        {
+          "endMs": 387919,
+          "startMs": 383600,
+          "startTime": "6:23",
+          "text": "this version of the game. like flying"
+        },
+        {
+          "endMs": 390400,
+          "startMs": 385600,
+          "startTime": "6:25",
+          "text": "around or not really flying. Floating"
+        },
+        {
+          "endMs": 392080,
+          "startMs": 387919,
+          "startTime": "6:27",
+          "text": "around with the sub feels awesome. It"
+        },
+        {
+          "endMs": 394560,
+          "startMs": 390400,
+          "startTime": "6:30",
+          "text": "controls great. It plays great. It's"
+        },
+        {
+          "endMs": 397199,
+          "startMs": 392080,
+          "startTime": "6:32",
+          "text": "surprisingly decent overall, but there's"
+        },
+        {
+          "endMs": 398639,
+          "startMs": 394560,
+          "startTime": "6:34",
+          "text": "definitely room to improve. I say this"
+        },
+        {
+          "endMs": 400639,
+          "startMs": 397199,
+          "startTime": "6:37",
+          "text": "with confidence because of the version"
+        },
+        {
+          "endMs": 404560,
+          "startMs": 398639,
+          "startTime": "6:38",
+          "text": "Astromeade."
+        },
+        {
+          "endMs": 407960,
+          "startMs": 400639,
+          "startTime": "6:40",
+          "text": "I'd say this looks slightly better,"
+        },
+        {
+          "endMs": 407960,
+          "startMs": 404560,
+          "startTime": "6:44",
+          "text": "just a little."
+        },
+        {
+          "endMs": 415919,
+          "startMs": 408560,
+          "startTime": "6:48",
+          "text": "It's a generational gap here. This is"
+        },
+        {
+          "endMs": 417919,
+          "startMs": 412400,
+          "startTime": "6:52",
+          "text": "nextG and the other version was not."
+        },
+        {
+          "endMs": 420560,
+          "startMs": 415919,
+          "startTime": "6:55",
+          "text": "What's the hit button to shoot? Okay,"
+        },
+        {
+          "endMs": 423199,
+          "startMs": 417919,
+          "startTime": "6:57",
+          "text": "left click."
+        },
+        {
+          "endMs": 424560,
+          "startMs": 420560,
+          "startTime": "7:00",
+          "text": "There we go. Killed the guy. This does"
+        },
+        {
+          "endMs": 425919,
+          "startMs": 423199,
+          "startTime": "7:03",
+          "text": "have its flaws. The movement doesn't"
+        },
+        {
+          "endMs": 427680,
+          "startMs": 424560,
+          "startTime": "7:04",
+          "text": "feel anywhere near as good, and I had to"
+        },
+        {
+          "endMs": 429680,
+          "startMs": 425919,
+          "startTime": "7:05",
+          "text": "like go back and forth to refine it a"
+        },
+        {
+          "endMs": 431280,
+          "startMs": 427680,
+          "startTime": "7:07",
+          "text": "bit. The core loop isn't quite as well"
+        },
+        {
+          "endMs": 433919,
+          "startMs": 429680,
+          "startTime": "7:09",
+          "text": "refined overall, and the performance was"
+        },
+        {
+          "endMs": 436240,
+          "startMs": 431280,
+          "startTime": "7:11",
+          "text": "bad until I told to fix it. But it is"
+        },
+        {
+          "endMs": 439360,
+          "startMs": 433919,
+          "startTime": "7:13",
+          "text": "stunning."
+        },
+        {
+          "endMs": 440880,
+          "startMs": 436240,
+          "startTime": "7:16",
+          "text": "Like it's actually decent looking to the"
+        },
+        {
+          "endMs": 442400,
+          "startMs": 439360,
+          "startTime": "7:19",
+          "text": "point where I might have to drop slop"
+        },
+        {
+          "endMs": 446080,
+          "startMs": 440880,
+          "startTime": "7:20",
+          "text": "from fish slop in the not too distant"
+        },
+        {
+          "endMs": 447440,
+          "startMs": 442400,
+          "startTime": "7:22",
+          "text": "future. It is a massive leap. And if you"
+        },
+        {
+          "endMs": 449120,
+          "startMs": 446080,
+          "startTime": "7:26",
+          "text": "think I'm just showing this and saying"
+        },
+        {
+          "endMs": 452000,
+          "startMs": 447440,
+          "startTime": "7:27",
+          "text": "this now because I'm trying to glaze"
+        },
+        {
+          "endMs": 453840,
+          "startMs": 449120,
+          "startTime": "7:29",
+          "text": "Astra, go watch my video on Kimmy K3"
+        },
+        {
+          "endMs": 455840,
+          "startMs": 452000,
+          "startTime": "7:32",
+          "text": "where I was for the first time ever"
+        },
+        {
+          "endMs": 458560,
+          "startMs": 453840,
+          "startTime": "7:33",
+          "text": "genuinely really impressed with the 3D"
+        },
+        {
+          "endMs": 460160,
+          "startMs": 455840,
+          "startTime": "7:35",
+          "text": "modeling capabilities of an LLM. This is"
+        },
+        {
+          "endMs": 462080,
+          "startMs": 458560,
+          "startTime": "7:38",
+          "text": "a world of a difference. This is like"
+        },
+        {
+          "endMs": 464560,
+          "startMs": 460160,
+          "startTime": "7:40",
+          "text": "multiple generational difference. So,"
+        },
+        {
+          "endMs": 467520,
+          "startMs": 462080,
+          "startTime": "7:42",
+          "text": "while I definitely want to give this"
+        },
+        {
+          "endMs": 470160,
+          "startMs": 464560,
+          "startTime": "7:44",
+          "text": "without any question to Astra, I"
+        },
+        {
+          "endMs": 472000,
+          "startMs": 467520,
+          "startTime": "7:47",
+          "text": "actually think I have in my notes here a"
+        },
+        {
+          "endMs": 474639,
+          "startMs": 470160,
+          "startTime": "7:50",
+          "text": "bunch of examples of crazy 3D stuff"
+        },
+        {
+          "endMs": 478479,
+          "startMs": 472000,
+          "startTime": "7:52",
+          "text": "people did with the model. Here, Dra"
+        },
+        {
+          "endMs": 481199,
+          "startMs": 474639,
+          "startTime": "7:54",
+          "text": "made a copy of the Amazon spheres that"
+        },
+        {
+          "endMs": 483440,
+          "startMs": 478479,
+          "startTime": "7:58",
+          "text": "he was working in during his internship,"
+        },
+        {
+          "endMs": 485840,
+          "startMs": 481199,
+          "startTime": "8:01",
+          "text": "all with Blender using Astra, which is"
+        },
+        {
+          "endMs": 488319,
+          "startMs": 483440,
+          "startTime": "8:03",
+          "text": "just insane. or this demo home that"
+        },
+        {
+          "endMs": 490400,
+          "startMs": 485840,
+          "startTime": "8:05",
+          "text": "Thomas built using Astra. All also with"
+        },
+        {
+          "endMs": 493120,
+          "startMs": 488319,
+          "startTime": "8:08",
+          "text": "Blender where I can make a real"
+        },
+        {
+          "endMs": 495680,
+          "startMs": 490400,
+          "startTime": "8:10",
+          "text": "environment with good furniture, a nice"
+        },
+        {
+          "endMs": 498000,
+          "startMs": 493120,
+          "startTime": "8:13",
+          "text": "backdrop for the window and like it's"
+        },
+        {
+          "endMs": 499840,
+          "startMs": 495680,
+          "startTime": "8:15",
+          "text": "good. It's like actually usable. You"
+        },
+        {
+          "endMs": 501840,
+          "startMs": 498000,
+          "startTime": "8:18",
+          "text": "could use this to make real world mocks"
+        },
+        {
+          "endMs": 504160,
+          "startMs": 499840,
+          "startTime": "8:19",
+          "text": "for real world 3D stuff. It's not a"
+        },
+        {
+          "endMs": 505919,
+          "startMs": 501840,
+          "startTime": "8:21",
+          "text": "hypothetical anymore. This is in my"
+        },
+        {
+          "endMs": 508560,
+          "startMs": 504160,
+          "startTime": "8:24",
+          "text": "opinion the equivalent of the jump from"
+        },
+        {
+          "endMs": 511440,
+          "startMs": 505919,
+          "startTime": "8:25",
+          "text": "autocomplete agents to actually using"
+        },
+        {
+          "endMs": 514479,
+          "startMs": 508560,
+          "startTime": "8:28",
+          "text": "your agent to complete tasks. And this"
+        },
+        {
+          "endMs": 516959,
+          "startMs": 511440,
+          "startTime": "8:31",
+          "text": "all happened from Fable 5.1 to GBD6"
+        },
+        {
+          "endMs": 518640,
+          "startMs": 514479,
+          "startTime": "8:34",
+          "text": "Astra. The 3D capabilities in Astra are"
+        },
+        {
+          "endMs": 521039,
+          "startMs": 516959,
+          "startTime": "8:36",
+          "text": "unbelievable. Which is why you might be"
+        },
+        {
+          "endMs": 523760,
+          "startMs": 518640,
+          "startTime": "8:38",
+          "text": "confused when I move the arrow over here"
+        },
+        {
+          "endMs": 526399,
+          "startMs": 521039,
+          "startTime": "8:41",
+          "text": "to gamedev for a sec. The reason I'm"
+        },
+        {
+          "endMs": 528240,
+          "startMs": 523760,
+          "startTime": "8:43",
+          "text": "doing this is that as much as I am truly"
+        },
+        {
+          "endMs": 530560,
+          "startMs": 526399,
+          "startTime": "8:46",
+          "text": "genuinely blown away with the 3D"
+        },
+        {
+          "endMs": 532720,
+          "startMs": 528240,
+          "startTime": "8:48",
+          "text": "rendering capabilities of Astra. It is a"
+        },
+        {
+          "endMs": 536320,
+          "startMs": 530560,
+          "startTime": "8:50",
+          "text": "like generational gap. It's the biggest"
+        },
+        {
+          "endMs": 539920,
+          "startMs": 532720,
+          "startTime": "8:52",
+          "text": "gap of anything here between the models."
+        },
+        {
+          "endMs": 542000,
+          "startMs": 536320,
+          "startTime": "8:56",
+          "text": "3D with Astra is comically better than"
+        },
+        {
+          "endMs": 544560,
+          "startMs": 539920,
+          "startTime": "8:59",
+          "text": "3D with Fable until you start"
+        },
+        {
+          "endMs": 548560,
+          "startMs": 542000,
+          "startTime": "9:02",
+          "text": "interacting with it. And this is where"
+        },
+        {
+          "endMs": 552160,
+          "startMs": 544560,
+          "startTime": "9:04",
+          "text": "Fable still just absolutely moss. Fable"
+        },
+        {
+          "endMs": 555040,
+          "startMs": 548560,
+          "startTime": "9:08",
+          "text": "is so much better at interaction in"
+        },
+        {
+          "endMs": 556880,
+          "startMs": 552160,
+          "startTime": "9:12",
+          "text": "general, at things like handling"
+        },
+        {
+          "endMs": 559440,
+          "startMs": 555040,
+          "startTime": "9:15",
+          "text": "animations moving the right way when"
+        },
+        {
+          "endMs": 561200,
+          "startMs": 556880,
+          "startTime": "9:16",
+          "text": "your cursor goes in a certain place or"
+        },
+        {
+          "endMs": 563360,
+          "startMs": 559440,
+          "startTime": "9:19",
+          "text": "making the camera move the right amount"
+        },
+        {
+          "endMs": 565120,
+          "startMs": 561200,
+          "startTime": "9:21",
+          "text": "when you move your mouse in a 3D world."
+        },
+        {
+          "endMs": 567519,
+          "startMs": 563360,
+          "startTime": "9:23",
+          "text": "For my silly 3D demos that I've been"
+        },
+        {
+          "endMs": 569839,
+          "startMs": 565120,
+          "startTime": "9:25",
+          "text": "working on, I find that the best way to"
+        },
+        {
+          "endMs": 571760,
+          "startMs": 567519,
+          "startTime": "9:27",
+          "text": "build them is to make the first"
+        },
+        {
+          "endMs": 573360,
+          "startMs": 569839,
+          "startTime": "9:29",
+          "text": "prototype with Astra to get everything"
+        },
+        {
+          "endMs": 576080,
+          "startMs": 571760,
+          "startTime": "9:31",
+          "text": "roughly looking and feeling how you"
+        },
+        {
+          "endMs": 577920,
+          "startMs": 573360,
+          "startTime": "9:33",
+          "text": "wantish and then have Fable come in and"
+        },
+        {
+          "endMs": 580640,
+          "startMs": 576080,
+          "startTime": "9:36",
+          "text": "clean it up and do all of the like"
+        },
+        {
+          "endMs": 582880,
+          "startMs": 577920,
+          "startTime": "9:37",
+          "text": "detailoriented work. Astra, in my"
+        },
+        {
+          "endMs": 585040,
+          "startMs": 580640,
+          "startTime": "9:40",
+          "text": "experience, does not handle the delicacy"
+        },
+        {
+          "endMs": 586000,
+          "startMs": 582880,
+          "startTime": "9:42",
+          "text": "of that type of stuff anywhere near as"
+        },
+        {
+          "endMs": 588800,
+          "startMs": 585040,
+          "startTime": "9:45",
+          "text": "well. It really does feel like a"
+        }
+      ],
+      "source": "live",
+      "totalDurationMs": 4613040,
+      "videoId": "P7bxbDSnZRM"
+    }
+  },
+  "error": null,
+  "logId": "log_clY6_UlpN9xt"
+}

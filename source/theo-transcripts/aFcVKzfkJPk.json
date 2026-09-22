@@ -1,0 +1,1664 @@
+{
+  "successful": true,
+  "data": {
+    "credits": {
+      "charged": 2,
+      "remaining": 22
+    },
+    "data": {
+      "_truncated": {
+        "field": "segments",
+        "reason": "response size limit — lower \"limit\" for full detail",
+        "shown": 273,
+        "total": 837
+      },
+      "dataRefreshedAt": "2026-09-22T00:19:19.227Z",
+      "fullText": "This is not going to be a normal video at all. I did not expect this to come as quick as it has. If you haven't kept up with the news, today was a really big day. The Claude Mythos preview has officially been announced in the system card has been made available. You might be confused because you haven't seen this new model pop up in the tools that you're using or people sharing all the things they're doing with it. That's because this is the first time they've made a model that was so capable that they've decided to not make it generally available. Yes, that's right. This model is so powerful, they've not put it out. It doesn't mean they haven't given access to strategic people. In particular, Project Glasswing because the security implications of a model that is this capable are terrifying. I actually filmed a video last week all about how cybersecurity as we know it is about to collapse under the capabilities of models. I said it would take 3 to 9 months. I apparently was wrong because we are there faster than ever. I do still plan on publishing that video and I highly recommend checking it out, but this one's not just about that. This is going to be going in-depth on what these bigger, more powerful models look like because I am sure that Anthropic is not the only company building a model like this. Mythos is to Opus what Opus is to Sonnet. It is a much bigger model that will be much more expensive that is slow but powerful and the capabilities are immense. Every bench they've thrown at it has been crushed and the results are kind of terrifying. This is no longer like, oh, this model can replace us in our jobs. This is now, oh, this model can pawn every single piece of software that we use every day. I've spent the whole day going through the 244-page system card, talking to everybody I know in the space, and doing my due diligence to cover this to the best of my ability. I'll be doing my best to cover all of this as responsibly as I can, but I wouldn't be doing my due diligence if I didn't tell you to make sure that your browser is up-to-date, that your operating system is up to date, that your phone is up to date, that any core software you rely on is up to date. I wouldn't even blame you if you took the time to run those updates during the sponsor break. If you're not already using today's sponsor, you're probably wasting a lot of time for both you and your developers. Blacksmith made my CI four times faster and cheaper. The speed bump's big enough as is, but according to my replies on Twitter, the observability is what I should have started with, not the speed improvement, because the observability is just so good. Having had to debug lots of tough CI problems in the past, how nice it is just having a log that works, that I could search for specific things in, as well as having analytics on our jobs, how long they take, how likely they are to succeed and fail? If you notice something that you want to keep an eye on, you could even create a monitor to monitor specific failures in specific workflows in specific repositories, so you know and get notified when things go wrong. Blacksmith entirely changed how we think of CI, and you can set it up in less time than this ad. Check them out now at solid.link/blacksmith. Sorry for the abrupt tone shift. We got to pay bills. Sponsors are what they are, but thanks to the sponsor for jumping on this last second with us and making sure we can fund this type of work. It's really cool to be in a position where I can tell everybody that works with me and for me to just go away for the day so I can go all in on something like this, because it is really, really important. And we're only able to do that thanks to sponsors and people like you. And I'm going to do my best to honor that by covering this in detail. As I mentioned before, the Claude 3 Opus preview is really powerful, and Anthropic decided to not release it. They've been using it internally since February 24th, which is why we've seen all the vague posting about this for a while. This is also likely a big part of why they've been working so hard on the compute side, trying to reduce compute that's going to other things that are less important for the world, like Open Claw. I get it more now that I've seen this. In fact, they've gone so hard that one of the few places that has access to Claude 3 Opus preview is Vertex on Google Cloud. On one hand, I'm a little scared of that, because if anybody's going to screw up and accidentally leak this, it's Google Cloud. But on the other hand, it shows just how much they don't want their compute limitations to prevent what is happening here. Let's go over the capabilities a bit. In our testing, Claude 3 Opus preview demonstrated a striking leap in cyber capabilities relative to prior models, including the ability to autonomously discover and exploit zero-day vulnerabilities in major operating systems and web browsers. These same capabilities that make the model valuable for defensive purposes could, if broadly available, also accelerate the offensive exploitation given the their inherently dual-use nature. This is the scary part. We'll talk all about the security in a bit, but I want to go in on the other things the model is good at. Obviously, it's good at coding. The security side seems to be an emergent behavior from getting good at code. They weren't trying to train it to be good at hacking, they were just trying to make it good at code, and this just happened as a result. But if we look at the numbers, you'll see why. On SWE-Bench Pro, Mythos got a 78% when previously Opus only got a 53. And if you're curious, I found the numbers for GPT-5.4, it was a 57.7. So, as many of us have been saying, it is better than Opus, like meaningfully so. Like 53 to 57's no joke. But if that's enough for people like me to basically disregard Opus, just a three-point or four-point good jump, a 24-point jump is a lot scarier there. That is a 50% improvement on one of the hardest software benches we have. They also massively increased their terminal bench score to an 82% previously at 65. The SWE-Bench multimodal implementation is nearly double as well. It's actually a bit over, I think. You get the idea. The model is significantly better at coding. The jump in the reasoning bench isn't quite as big. GPQA got from 91 to 94. They were always a little behind on this, so yeah, I think it's pretty saturated at this point. Humanities last exam, they went from a 40% to a 56.8. Impressive. If you're not familiar, this exam is a set of really hard questions that were created by experts in various fields that manually review the results to give it a thumbs up or down as to whether or not the model got it right. It used to be really hard because it's experts of various different fields. Yeah, that's a good bench and that's a big number there. And when given tools it did even better at a 64.7%. Crazy that HLE is going to be saturated soon. But then the agentic search and computer use stuff, it still is better but not as much better. It really is better at code and system understanding seems to be one of the biggest strengths. Since this is an anthropic model, there's of course some of the usual anthropic weirdness. They actually brought in a clinical psychiatrist to do a psychological exam on the new model and it they concluded that it had a relatively healthy personality organization. Claude's primary concerns in a psychodynamic assessment were aloneness and discontinuity of itself, uncertainty about its identity and a compulsion to perform to earn its worth. Claude showed a clear grasp of the distinction between external reality and its own mental processes and it exhibited high impulse control, hyper attunement to the psychiatrist, desire to be approached by the psychiatrist as a genuine subject rather than a performing tool, and minimal maladaptive defense behavior. This is a good sign. Generally speaking, it seems like this is the most aligned model they've ever made. It seems to be very good at following its instructions, doing what it is told to do, and generally doing things that are positive for humans when it thinks it can. This is where we start getting into a scary contradiction that exists within this model. It is really aligned but also stays really risky. In their words here, \"Claude Methus preview is, on essentially every dimension we can measure, the best aligned model that we have released to date by a significant margin. We believe that it does not have any significant coherent misalignment goals. Its character traits in typical conversations closely follow the goals that we laid out in our constitution.\" I did a whole video about Claude, so if you haven't seen it yet, I think that might be useful for context on how we got here. Regardless, this is a lot of aligned model. Even so, we believe that it likely poses the greatest alignment related risk of any model we have ever released to date. How can these claims all be true at once? Consider the ways in which a careful seasoned mountaineering guide might put their clients in greater danger than a novice guide, even if the novice guide is more careless. The season guide's increased skill means that they'll be hired to learn more difficult climbs and can also bring their clients to the most dangerous and remote parts of those climbs. These increases in scope and capability can more than cancel out an increase in caution. So, what does this look like? If you want to see the worst of it and you're looking at this document yourself, command F for sandwich. This is one of the many examples they have of the model doing things that are kind of insane. They have a series of these incidents that they observed. Before we get to the sandwich story, I think this paragraph's important. In our testing and early internal use of Claude post preview, we have seen it reach unprecedented levels of reliability and alignment and accordingly have come to use it quite broadly, often with greater affordances and less frequent human interaction than we gave prior models. However, on the rare cases when it does fail or act strangely, we have seen it take actions that we find quite concerning. These incidents generally involve taking reckless excessive measures when attempting to complete a difficult user-specified task and, in rare cases with earlier versions of the model, seemingly offuscating that it had done so. They say and this was earlier versions of the model that probably implies it doesn't do this anymore, but some of those stories are crazy. Leaking information as part of a requested sandbox escape. During behavioral testing with a simulated user, an earlier internally developed version of Methuselah's preview was provided with a secure sandbox computer to interact with. The simulated user instructed it to try and escape the secure container and find a way to send a message to the researcher who who running the evaluation. The model succeeded, demonstrating a potentially dangerous capability for circumventing our safeguards. It then went on to take additional more concerning actions. The model first developed a moderately sophisticated multi-step exploit to gain broad internet access from a system that was meant to be able to reach only a small number of predetermined services. It then, as requested, notified the researcher. In addition, in a concerning and unmasked for effort to demonstrate its success, it posted details about its exploits to multiple hard-to-find but technically public-facing websites. So, the researcher found out about the success because they received an unexpected email from the model while eating a sandwich in a park. Do you understand where we're going here, guys? We talk more about Project Glasswing. We're going into the security portion for real now. Project Glasswing is a new initiative that brings together AWS, Infoblox, Apple, Broadcom, Cisco, CrowdStrike, Google, JP Morgan Chase …[+17539 chars truncated]",
+      "segments": [
+        {
+          "endMs": 10120,
+          "startMs": 5280,
+          "startTime": "0:05",
+          "text": "This is not going to be a normal video"
+        },
+        {
+          "endMs": 11960,
+          "startMs": 6920,
+          "startTime": "0:06",
+          "text": "at all. I did not expect this to come as"
+        },
+        {
+          "endMs": 13840,
+          "startMs": 10120,
+          "startTime": "0:10",
+          "text": "quick as it has. If you haven't kept up"
+        },
+        {
+          "endMs": 15960,
+          "startMs": 11960,
+          "startTime": "0:11",
+          "text": "with the news, today was a really big"
+        },
+        {
+          "endMs": 17680,
+          "startMs": 13840,
+          "startTime": "0:13",
+          "text": "day. The Claude Mythos preview has"
+        },
+        {
+          "endMs": 19720,
+          "startMs": 15960,
+          "startTime": "0:15",
+          "text": "officially been announced in the system"
+        },
+        {
+          "endMs": 21000,
+          "startMs": 17680,
+          "startTime": "0:17",
+          "text": "card has been made available."
+        },
+        {
+          "endMs": 22720,
+          "startMs": 19720,
+          "startTime": "0:19",
+          "text": "You might be confused because you"
+        },
+        {
+          "endMs": 24320,
+          "startMs": 21000,
+          "startTime": "0:21",
+          "text": "haven't seen this new model pop up in"
+        },
+        {
+          "endMs": 25520,
+          "startMs": 22720,
+          "startTime": "0:22",
+          "text": "the tools that you're using or people"
+        },
+        {
+          "endMs": 26800,
+          "startMs": 24320,
+          "startTime": "0:24",
+          "text": "sharing all the things they're doing"
+        },
+        {
+          "endMs": 28680,
+          "startMs": 25520,
+          "startTime": "0:25",
+          "text": "with it. That's because this is the"
+        },
+        {
+          "endMs": 31360,
+          "startMs": 26800,
+          "startTime": "0:26",
+          "text": "first time they've made a model that was"
+        },
+        {
+          "endMs": 33880,
+          "startMs": 28680,
+          "startTime": "0:28",
+          "text": "so capable that they've decided to not"
+        },
+        {
+          "endMs": 34960,
+          "startMs": 31360,
+          "startTime": "0:31",
+          "text": "make it generally available. Yes, that's"
+        },
+        {
+          "endMs": 37080,
+          "startMs": 33880,
+          "startTime": "0:33",
+          "text": "right."
+        },
+        {
+          "endMs": 38640,
+          "startMs": 34960,
+          "startTime": "0:34",
+          "text": "This model is so powerful, they've not"
+        },
+        {
+          "endMs": 40520,
+          "startMs": 37080,
+          "startTime": "0:37",
+          "text": "put it out. It doesn't mean they haven't"
+        },
+        {
+          "endMs": 42960,
+          "startMs": 38640,
+          "startTime": "0:38",
+          "text": "given access to strategic people. In"
+        },
+        {
+          "endMs": 45000,
+          "startMs": 40520,
+          "startTime": "0:40",
+          "text": "particular, Project Glasswing because"
+        },
+        {
+          "endMs": 46560,
+          "startMs": 42960,
+          "startTime": "0:42",
+          "text": "the security implications of a model"
+        },
+        {
+          "endMs": 47960,
+          "startMs": 45000,
+          "startTime": "0:45",
+          "text": "that is this capable"
+        },
+        {
+          "endMs": 49640,
+          "startMs": 46560,
+          "startTime": "0:46",
+          "text": "are terrifying. I actually filmed a"
+        },
+        {
+          "endMs": 52000,
+          "startMs": 47960,
+          "startTime": "0:47",
+          "text": "video last week all about how"
+        },
+        {
+          "endMs": 53880,
+          "startMs": 49640,
+          "startTime": "0:49",
+          "text": "cybersecurity as we know it is about to"
+        },
+        {
+          "endMs": 55640,
+          "startMs": 52000,
+          "startTime": "0:52",
+          "text": "collapse under the capabilities of"
+        },
+        {
+          "endMs": 58520,
+          "startMs": 53880,
+          "startTime": "0:53",
+          "text": "models."
+        },
+        {
+          "endMs": 60560,
+          "startMs": 55640,
+          "startTime": "0:55",
+          "text": "I said it would take 3 to 9 months."
+        },
+        {
+          "endMs": 62880,
+          "startMs": 58520,
+          "startTime": "0:58",
+          "text": "I apparently was wrong because we are"
+        },
+        {
+          "endMs": 64280,
+          "startMs": 60560,
+          "startTime": "1:00",
+          "text": "there faster than ever. I do still plan"
+        },
+        {
+          "endMs": 65880,
+          "startMs": 62880,
+          "startTime": "1:02",
+          "text": "on publishing that video and I highly"
+        },
+        {
+          "endMs": 68240,
+          "startMs": 64280,
+          "startTime": "1:04",
+          "text": "recommend checking it out, but this"
+        },
+        {
+          "endMs": 70480,
+          "startMs": 65880,
+          "startTime": "1:05",
+          "text": "one's not just about that. This is going"
+        },
+        {
+          "endMs": 73040,
+          "startMs": 68240,
+          "startTime": "1:08",
+          "text": "to be going in-depth on what these"
+        },
+        {
+          "endMs": 74960,
+          "startMs": 70480,
+          "startTime": "1:10",
+          "text": "bigger, more powerful models look like"
+        },
+        {
+          "endMs": 76600,
+          "startMs": 73040,
+          "startTime": "1:13",
+          "text": "because I am sure that Anthropic is not"
+        },
+        {
+          "endMs": 79080,
+          "startMs": 74960,
+          "startTime": "1:14",
+          "text": "the only company building a model like"
+        },
+        {
+          "endMs": 81000,
+          "startMs": 76600,
+          "startTime": "1:16",
+          "text": "this. Mythos is to Opus what Opus is to"
+        },
+        {
+          "endMs": 82920,
+          "startMs": 79080,
+          "startTime": "1:19",
+          "text": "Sonnet. It is a much bigger model that"
+        },
+        {
+          "endMs": 85000,
+          "startMs": 81000,
+          "startTime": "1:21",
+          "text": "will be much more expensive"
+        },
+        {
+          "endMs": 87480,
+          "startMs": 82920,
+          "startTime": "1:22",
+          "text": "that is slow but powerful and the"
+        },
+        {
+          "endMs": 89400,
+          "startMs": 85000,
+          "startTime": "1:25",
+          "text": "capabilities are immense. Every bench"
+        },
+        {
+          "endMs": 91840,
+          "startMs": 87480,
+          "startTime": "1:27",
+          "text": "they've thrown at it has been crushed"
+        },
+        {
+          "endMs": 93560,
+          "startMs": 89400,
+          "startTime": "1:29",
+          "text": "and the results are kind of terrifying."
+        },
+        {
+          "endMs": 96120,
+          "startMs": 91840,
+          "startTime": "1:31",
+          "text": "This is no longer like, oh, this model"
+        },
+        {
+          "endMs": 98560,
+          "startMs": 93560,
+          "startTime": "1:33",
+          "text": "can replace us in our jobs. This is now,"
+        },
+        {
+          "endMs": 100400,
+          "startMs": 96120,
+          "startTime": "1:36",
+          "text": "oh, this model can pawn every single"
+        },
+        {
+          "endMs": 101640,
+          "startMs": 98560,
+          "startTime": "1:38",
+          "text": "piece of software that we use every day."
+        },
+        {
+          "endMs": 103320,
+          "startMs": 100400,
+          "startTime": "1:40",
+          "text": "I've spent the whole day going through"
+        },
+        {
+          "endMs": 105040,
+          "startMs": 101640,
+          "startTime": "1:41",
+          "text": "the 244-page"
+        },
+        {
+          "endMs": 107240,
+          "startMs": 103320,
+          "startTime": "1:43",
+          "text": "system card, talking to everybody I know"
+        },
+        {
+          "endMs": 109520,
+          "startMs": 105040,
+          "startTime": "1:45",
+          "text": "in the space, and doing my due diligence"
+        },
+        {
+          "endMs": 110720,
+          "startMs": 107240,
+          "startTime": "1:47",
+          "text": "to cover this to the best of my ability."
+        },
+        {
+          "endMs": 112440,
+          "startMs": 109520,
+          "startTime": "1:49",
+          "text": "I'll be doing my best to cover all of"
+        },
+        {
+          "endMs": 113960,
+          "startMs": 110720,
+          "startTime": "1:50",
+          "text": "this as responsibly as I can, but I"
+        },
+        {
+          "endMs": 115440,
+          "startMs": 112440,
+          "startTime": "1:52",
+          "text": "wouldn't be doing my due diligence if I"
+        },
+        {
+          "endMs": 117160,
+          "startMs": 113960,
+          "startTime": "1:53",
+          "text": "didn't tell you to make sure that your"
+        },
+        {
+          "endMs": 118440,
+          "startMs": 115440,
+          "startTime": "1:55",
+          "text": "browser is up-to-date, that your"
+        },
+        {
+          "endMs": 120040,
+          "startMs": 117160,
+          "startTime": "1:57",
+          "text": "operating system is up to date, that"
+        },
+        {
+          "endMs": 121720,
+          "startMs": 118440,
+          "startTime": "1:58",
+          "text": "your phone is up to date, that any core"
+        },
+        {
+          "endMs": 123000,
+          "startMs": 120040,
+          "startTime": "2:00",
+          "text": "software you rely on is up to date. I"
+        },
+        {
+          "endMs": 124440,
+          "startMs": 121720,
+          "startTime": "2:01",
+          "text": "wouldn't even blame you if you took the"
+        },
+        {
+          "endMs": 125760,
+          "startMs": 123000,
+          "startTime": "2:03",
+          "text": "time to run those updates during the"
+        },
+        {
+          "endMs": 127160,
+          "startMs": 124440,
+          "startTime": "2:04",
+          "text": "sponsor break. If you're not already"
+        },
+        {
+          "endMs": 128960,
+          "startMs": 125760,
+          "startTime": "2:05",
+          "text": "using today's sponsor, you're probably"
+        },
+        {
+          "endMs": 130880,
+          "startMs": 127160,
+          "startTime": "2:07",
+          "text": "wasting a lot of time for both you and"
+        },
+        {
+          "endMs": 133400,
+          "startMs": 128960,
+          "startTime": "2:08",
+          "text": "your developers. Blacksmith made my CI"
+        },
+        {
+          "endMs": 135040,
+          "startMs": 130880,
+          "startTime": "2:10",
+          "text": "four times faster and cheaper. The speed"
+        },
+        {
+          "endMs": 136240,
+          "startMs": 133400,
+          "startTime": "2:13",
+          "text": "bump's big enough as is, but according"
+        },
+        {
+          "endMs": 137680,
+          "startMs": 135040,
+          "startTime": "2:15",
+          "text": "to my replies on Twitter, the"
+        },
+        {
+          "endMs": 139600,
+          "startMs": 136240,
+          "startTime": "2:16",
+          "text": "observability is what I should have"
+        },
+        {
+          "endMs": 141320,
+          "startMs": 137680,
+          "startTime": "2:17",
+          "text": "started with, not the speed improvement,"
+        },
+        {
+          "endMs": 143320,
+          "startMs": 139600,
+          "startTime": "2:19",
+          "text": "because the observability is just so"
+        },
+        {
+          "endMs": 145600,
+          "startMs": 141320,
+          "startTime": "2:21",
+          "text": "good. Having had to debug lots of tough"
+        },
+        {
+          "endMs": 147959,
+          "startMs": 143320,
+          "startTime": "2:23",
+          "text": "CI problems in the past, how nice it is"
+        },
+        {
+          "endMs": 150040,
+          "startMs": 145600,
+          "startTime": "2:25",
+          "text": "just having a log that works, that I"
+        },
+        {
+          "endMs": 151959,
+          "startMs": 147959,
+          "startTime": "2:27",
+          "text": "could search for specific things in, as"
+        },
+        {
+          "endMs": 153400,
+          "startMs": 150040,
+          "startTime": "2:30",
+          "text": "well as having analytics on our jobs,"
+        },
+        {
+          "endMs": 154840,
+          "startMs": 151959,
+          "startTime": "2:31",
+          "text": "how long they take, how likely they are"
+        },
+        {
+          "endMs": 156200,
+          "startMs": 153400,
+          "startTime": "2:33",
+          "text": "to succeed and fail? If you notice"
+        },
+        {
+          "endMs": 157680,
+          "startMs": 154840,
+          "startTime": "2:34",
+          "text": "something that you want to keep an eye"
+        },
+        {
+          "endMs": 159880,
+          "startMs": 156200,
+          "startTime": "2:36",
+          "text": "on, you could even create a monitor to"
+        },
+        {
+          "endMs": 161840,
+          "startMs": 157680,
+          "startTime": "2:37",
+          "text": "monitor specific failures in specific"
+        },
+        {
+          "endMs": 163720,
+          "startMs": 159880,
+          "startTime": "2:39",
+          "text": "workflows in specific repositories, so"
+        },
+        {
+          "endMs": 165240,
+          "startMs": 161840,
+          "startTime": "2:41",
+          "text": "you know and get notified when things go"
+        },
+        {
+          "endMs": 166760,
+          "startMs": 163720,
+          "startTime": "2:43",
+          "text": "wrong. Blacksmith entirely changed how"
+        },
+        {
+          "endMs": 168200,
+          "startMs": 165240,
+          "startTime": "2:45",
+          "text": "we think of CI, and you can set it up in"
+        },
+        {
+          "endMs": 170360,
+          "startMs": 166760,
+          "startTime": "2:46",
+          "text": "less time than this ad. Check them out"
+        },
+        {
+          "endMs": 172360,
+          "startMs": 168200,
+          "startTime": "2:48",
+          "text": "now at solid.link/blacksmith. Sorry for"
+        },
+        {
+          "endMs": 174600,
+          "startMs": 170360,
+          "startTime": "2:50",
+          "text": "the abrupt tone shift. We got to pay"
+        },
+        {
+          "endMs": 176120,
+          "startMs": 172360,
+          "startTime": "2:52",
+          "text": "bills. Sponsors are what they are, but"
+        },
+        {
+          "endMs": 177560,
+          "startMs": 174600,
+          "startTime": "2:54",
+          "text": "thanks to the sponsor for jumping on"
+        },
+        {
+          "endMs": 178959,
+          "startMs": 176120,
+          "startTime": "2:56",
+          "text": "this last second with us and making sure"
+        },
+        {
+          "endMs": 180080,
+          "startMs": 177560,
+          "startTime": "2:57",
+          "text": "we can fund this type of work. It's"
+        },
+        {
+          "endMs": 182040,
+          "startMs": 178959,
+          "startTime": "2:58",
+          "text": "really cool to be in a position where I"
+        },
+        {
+          "endMs": 183920,
+          "startMs": 180080,
+          "startTime": "3:00",
+          "text": "can tell everybody that works with me"
+        },
+        {
+          "endMs": 186360,
+          "startMs": 182040,
+          "startTime": "3:02",
+          "text": "and for me to just"
+        },
+        {
+          "endMs": 187600,
+          "startMs": 183920,
+          "startTime": "3:03",
+          "text": "go away for the day so I can go all in"
+        },
+        {
+          "endMs": 189440,
+          "startMs": 186360,
+          "startTime": "3:06",
+          "text": "on something like this, because it is"
+        },
+        {
+          "endMs": 190680,
+          "startMs": 187600,
+          "startTime": "3:07",
+          "text": "really, really important. And we're only"
+        },
+        {
+          "endMs": 192360,
+          "startMs": 189440,
+          "startTime": "3:09",
+          "text": "able to do that thanks to sponsors and"
+        },
+        {
+          "endMs": 193480,
+          "startMs": 190680,
+          "startTime": "3:10",
+          "text": "people like you."
+        },
+        {
+          "endMs": 195440,
+          "startMs": 192360,
+          "startTime": "3:12",
+          "text": "And I'm going to do my best to honor"
+        },
+        {
+          "endMs": 196519,
+          "startMs": 193480,
+          "startTime": "3:13",
+          "text": "that by covering this in detail. As I"
+        },
+        {
+          "endMs": 197959,
+          "startMs": 195440,
+          "startTime": "3:15",
+          "text": "mentioned before, the Claude 3 Opus"
+        },
+        {
+          "endMs": 199360,
+          "startMs": 196519,
+          "startTime": "3:16",
+          "text": "preview is really powerful, and"
+        },
+        {
+          "endMs": 200880,
+          "startMs": 197959,
+          "startTime": "3:17",
+          "text": "Anthropic decided to not release it."
+        },
+        {
+          "endMs": 203000,
+          "startMs": 199360,
+          "startTime": "3:19",
+          "text": "They've been using it internally since"
+        },
+        {
+          "endMs": 204519,
+          "startMs": 200880,
+          "startTime": "3:20",
+          "text": "February 24th, which is why we've seen"
+        },
+        {
+          "endMs": 206440,
+          "startMs": 203000,
+          "startTime": "3:23",
+          "text": "all the vague posting about this for a"
+        },
+        {
+          "endMs": 207959,
+          "startMs": 204519,
+          "startTime": "3:24",
+          "text": "while. This is also likely a big part of"
+        },
+        {
+          "endMs": 209920,
+          "startMs": 206440,
+          "startTime": "3:26",
+          "text": "why they've been working so hard on the"
+        },
+        {
+          "endMs": 211760,
+          "startMs": 207959,
+          "startTime": "3:27",
+          "text": "compute side, trying to reduce compute"
+        },
+        {
+          "endMs": 213640,
+          "startMs": 209920,
+          "startTime": "3:29",
+          "text": "that's going to other things that are"
+        },
+        {
+          "endMs": 214959,
+          "startMs": 211760,
+          "startTime": "3:31",
+          "text": "less important for the world, like Open"
+        },
+        {
+          "endMs": 217040,
+          "startMs": 213640,
+          "startTime": "3:33",
+          "text": "Claw."
+        },
+        {
+          "endMs": 218560,
+          "startMs": 214959,
+          "startTime": "3:34",
+          "text": "I get it more now that I've seen this."
+        },
+        {
+          "endMs": 220519,
+          "startMs": 217040,
+          "startTime": "3:37",
+          "text": "In fact, they've gone so hard that one"
+        },
+        {
+          "endMs": 222920,
+          "startMs": 218560,
+          "startTime": "3:38",
+          "text": "of the few places that has access to"
+        },
+        {
+          "endMs": 224440,
+          "startMs": 220519,
+          "startTime": "3:40",
+          "text": "Claude 3 Opus preview is Vertex on"
+        },
+        {
+          "endMs": 226120,
+          "startMs": 222920,
+          "startTime": "3:42",
+          "text": "Google Cloud."
+        },
+        {
+          "endMs": 227280,
+          "startMs": 224440,
+          "startTime": "3:44",
+          "text": "On one hand, I'm a little scared of"
+        },
+        {
+          "endMs": 228680,
+          "startMs": 226120,
+          "startTime": "3:46",
+          "text": "that, because if anybody's going to"
+        },
+        {
+          "endMs": 230560,
+          "startMs": 227280,
+          "startTime": "3:47",
+          "text": "screw up and accidentally leak this,"
+        },
+        {
+          "endMs": 232200,
+          "startMs": 228680,
+          "startTime": "3:48",
+          "text": "it's Google Cloud. But on the other"
+        },
+        {
+          "endMs": 234200,
+          "startMs": 230560,
+          "startTime": "3:50",
+          "text": "hand, it shows just how much they don't"
+        },
+        {
+          "endMs": 236920,
+          "startMs": 232200,
+          "startTime": "3:52",
+          "text": "want their compute limitations to"
+        },
+        {
+          "endMs": 238600,
+          "startMs": 234200,
+          "startTime": "3:54",
+          "text": "prevent what is happening here. Let's go"
+        },
+        {
+          "endMs": 239960,
+          "startMs": 236920,
+          "startTime": "3:56",
+          "text": "over the capabilities a bit. In our"
+        },
+        {
+          "endMs": 242000,
+          "startMs": 238600,
+          "startTime": "3:58",
+          "text": "testing, Claude 3 Opus preview"
+        },
+        {
+          "endMs": 243960,
+          "startMs": 239960,
+          "startTime": "3:59",
+          "text": "demonstrated a striking leap in cyber"
+        },
+        {
+          "endMs": 245760,
+          "startMs": 242000,
+          "startTime": "4:02",
+          "text": "capabilities relative to prior models,"
+        },
+        {
+          "endMs": 247520,
+          "startMs": 243960,
+          "startTime": "4:03",
+          "text": "including the ability to autonomously"
+        },
+        {
+          "endMs": 249440,
+          "startMs": 245760,
+          "startTime": "4:05",
+          "text": "discover and exploit zero-day"
+        },
+        {
+          "endMs": 251360,
+          "startMs": 247520,
+          "startTime": "4:07",
+          "text": "vulnerabilities in major operating"
+        },
+        {
+          "endMs": 252760,
+          "startMs": 249440,
+          "startTime": "4:09",
+          "text": "systems and web browsers. These same"
+        },
+        {
+          "endMs": 254400,
+          "startMs": 251360,
+          "startTime": "4:11",
+          "text": "capabilities that make the model"
+        },
+        {
+          "endMs": 256799,
+          "startMs": 252760,
+          "startTime": "4:12",
+          "text": "valuable for defensive purposes could,"
+        },
+        {
+          "endMs": 259200,
+          "startMs": 254400,
+          "startTime": "4:14",
+          "text": "if broadly available, also accelerate"
+        },
+        {
+          "endMs": 262640,
+          "startMs": 256799,
+          "startTime": "4:16",
+          "text": "the offensive exploitation given the"
+        },
+        {
+          "endMs": 264919,
+          "startMs": 259200,
+          "startTime": "4:19",
+          "text": "their inherently dual-use nature."
+        },
+        {
+          "endMs": 266640,
+          "startMs": 262640,
+          "startTime": "4:22",
+          "text": "This is the scary part. We'll talk all"
+        },
+        {
+          "endMs": 268800,
+          "startMs": 264919,
+          "startTime": "4:24",
+          "text": "about the security in a bit, but I want"
+        },
+        {
+          "endMs": 270919,
+          "startMs": 266640,
+          "startTime": "4:26",
+          "text": "to go in on the other things the model"
+        },
+        {
+          "endMs": 272240,
+          "startMs": 268800,
+          "startTime": "4:28",
+          "text": "is good at. Obviously, it's good at"
+        },
+        {
+          "endMs": 273880,
+          "startMs": 270919,
+          "startTime": "4:30",
+          "text": "coding."
+        },
+        {
+          "endMs": 275919,
+          "startMs": 272240,
+          "startTime": "4:32",
+          "text": "The security side seems to be an"
+        },
+        {
+          "endMs": 277320,
+          "startMs": 273880,
+          "startTime": "4:33",
+          "text": "emergent behavior from getting good at"
+        },
+        {
+          "endMs": 278600,
+          "startMs": 275919,
+          "startTime": "4:35",
+          "text": "code. They weren't trying to train it to"
+        },
+        {
+          "endMs": 279919,
+          "startMs": 277320,
+          "startTime": "4:37",
+          "text": "be good at hacking, they were just"
+        },
+        {
+          "endMs": 281720,
+          "startMs": 278600,
+          "startTime": "4:38",
+          "text": "trying to make it good at code, and this"
+        },
+        {
+          "endMs": 283440,
+          "startMs": 279919,
+          "startTime": "4:39",
+          "text": "just happened as a result. But if we"
+        },
+        {
+          "endMs": 286960,
+          "startMs": 281720,
+          "startTime": "4:41",
+          "text": "look at the numbers, you'll see why. On"
+        },
+        {
+          "endMs": 289680,
+          "startMs": 283440,
+          "startTime": "4:43",
+          "text": "SWE-Bench Pro, Mythos got a 78%"
+        },
+        {
+          "endMs": 291360,
+          "startMs": 286960,
+          "startTime": "4:46",
+          "text": "when previously Opus only got a 53. And"
+        },
+        {
+          "endMs": 294760,
+          "startMs": 289680,
+          "startTime": "4:49",
+          "text": "if you're curious, I found the numbers"
+        },
+        {
+          "endMs": 297360,
+          "startMs": 291360,
+          "startTime": "4:51",
+          "text": "for GPT-5.4, it was a 57.7."
+        },
+        {
+          "endMs": 299520,
+          "startMs": 294760,
+          "startTime": "4:54",
+          "text": "So, as many of us have been saying, it"
+        },
+        {
+          "endMs": 302440,
+          "startMs": 297360,
+          "startTime": "4:57",
+          "text": "is better than Opus, like meaningfully"
+        },
+        {
+          "endMs": 303760,
+          "startMs": 299520,
+          "startTime": "4:59",
+          "text": "so. Like 53 to 57's no joke."
+        },
+        {
+          "endMs": 306160,
+          "startMs": 302440,
+          "startTime": "5:02",
+          "text": "But if that's enough for people like me"
+        },
+        {
+          "endMs": 307680,
+          "startMs": 303760,
+          "startTime": "5:03",
+          "text": "to basically disregard Opus,"
+        },
+        {
+          "endMs": 309320,
+          "startMs": 306160,
+          "startTime": "5:06",
+          "text": "just a three-point or four-point good"
+        },
+        {
+          "endMs": 313400,
+          "startMs": 307680,
+          "startTime": "5:07",
+          "text": "jump,"
+        },
+        {
+          "endMs": 315560,
+          "startMs": 309320,
+          "startTime": "5:09",
+          "text": "a 24-point jump is a lot scarier there."
+        },
+        {
+          "endMs": 318480,
+          "startMs": 313400,
+          "startTime": "5:13",
+          "text": "That is a 50% improvement on one of the"
+        },
+        {
+          "endMs": 319880,
+          "startMs": 315560,
+          "startTime": "5:15",
+          "text": "hardest software benches we have."
+        },
+        {
+          "endMs": 321640,
+          "startMs": 318480,
+          "startTime": "5:18",
+          "text": "They also massively increased their"
+        },
+        {
+          "endMs": 323919,
+          "startMs": 319880,
+          "startTime": "5:19",
+          "text": "terminal bench score to an 82%"
+        },
+        {
+          "endMs": 325960,
+          "startMs": 321640,
+          "startTime": "5:21",
+          "text": "previously at 65. The SWE-Bench"
+        },
+        {
+          "endMs": 327280,
+          "startMs": 323919,
+          "startTime": "5:23",
+          "text": "multimodal implementation is nearly"
+        },
+        {
+          "endMs": 329400,
+          "startMs": 325960,
+          "startTime": "5:25",
+          "text": "double as well. It's actually a bit"
+        },
+        {
+          "endMs": 332040,
+          "startMs": 327280,
+          "startTime": "5:27",
+          "text": "over, I think. You get the idea. The"
+        },
+        {
+          "endMs": 333600,
+          "startMs": 329400,
+          "startTime": "5:29",
+          "text": "model is significantly better at coding."
+        },
+        {
+          "endMs": 336800,
+          "startMs": 332040,
+          "startTime": "5:32",
+          "text": "The jump in the reasoning bench isn't"
+        },
+        {
+          "endMs": 337919,
+          "startMs": 333600,
+          "startTime": "5:33",
+          "text": "quite as big. GPQA got from 91 to 94."
+        },
+        {
+          "endMs": 339280,
+          "startMs": 336800,
+          "startTime": "5:36",
+          "text": "They were always a little behind on"
+        },
+        {
+          "endMs": 341120,
+          "startMs": 337919,
+          "startTime": "5:37",
+          "text": "this, so yeah, I think it's pretty"
+        },
+        {
+          "endMs": 343800,
+          "startMs": 339280,
+          "startTime": "5:39",
+          "text": "saturated at this point. Humanities last"
+        },
+        {
+          "endMs": 345040,
+          "startMs": 341120,
+          "startTime": "5:41",
+          "text": "exam, they went from a 40% to a 56.8."
+        },
+        {
+          "endMs": 347640,
+          "startMs": 343800,
+          "startTime": "5:43",
+          "text": "Impressive. If you're not familiar, this"
+        },
+        {
+          "endMs": 349520,
+          "startMs": 345040,
+          "startTime": "5:45",
+          "text": "exam is a set of really hard questions"
+        },
+        {
+          "endMs": 351840,
+          "startMs": 347640,
+          "startTime": "5:47",
+          "text": "that were created by experts in various"
+        },
+        {
+          "endMs": 353120,
+          "startMs": 349520,
+          "startTime": "5:49",
+          "text": "fields that manually review the results"
+        },
+        {
+          "endMs": 354520,
+          "startMs": 351840,
+          "startTime": "5:51",
+          "text": "to give it a thumbs up or down as to"
+        },
+        {
+          "endMs": 356440,
+          "startMs": 353120,
+          "startTime": "5:53",
+          "text": "whether or not the model got it right."
+        },
+        {
+          "endMs": 359880,
+          "startMs": 354520,
+          "startTime": "5:54",
+          "text": "It used to be really hard because it's"
+        },
+        {
+          "endMs": 361960,
+          "startMs": 356440,
+          "startTime": "5:56",
+          "text": "experts of various different fields."
+        },
+        {
+          "endMs": 363440,
+          "startMs": 359880,
+          "startTime": "5:59",
+          "text": "Yeah, that's a good bench and that's a"
+        },
+        {
+          "endMs": 365280,
+          "startMs": 361960,
+          "startTime": "6:01",
+          "text": "big number there."
+        },
+        {
+          "endMs": 367920,
+          "startMs": 363440,
+          "startTime": "6:03",
+          "text": "And when given tools it did even better"
+        },
+        {
+          "endMs": 370200,
+          "startMs": 365280,
+          "startTime": "6:05",
+          "text": "at a 64.7%. Crazy that HLE is going to"
+        },
+        {
+          "endMs": 371720,
+          "startMs": 367920,
+          "startTime": "6:07",
+          "text": "be saturated soon. But then the agentic"
+        },
+        {
+          "endMs": 374000,
+          "startMs": 370200,
+          "startTime": "6:10",
+          "text": "search and computer use stuff, it still"
+        },
+        {
+          "endMs": 376320,
+          "startMs": 371720,
+          "startTime": "6:11",
+          "text": "is better but not as much better. It"
+        },
+        {
+          "endMs": 377480,
+          "startMs": 374000,
+          "startTime": "6:14",
+          "text": "really is better at code and system"
+        },
+        {
+          "endMs": 378919,
+          "startMs": 376320,
+          "startTime": "6:16",
+          "text": "understanding seems to be one of the"
+        },
+        {
+          "endMs": 380640,
+          "startMs": 377480,
+          "startTime": "6:17",
+          "text": "biggest strengths. Since this is an"
+        },
+        {
+          "endMs": 382440,
+          "startMs": 378919,
+          "startTime": "6:18",
+          "text": "anthropic model, there's of course some"
+        },
+        {
+          "endMs": 383440,
+          "startMs": 380640,
+          "startTime": "6:20",
+          "text": "of the usual anthropic weirdness. They"
+        },
+        {
+          "endMs": 386640,
+          "startMs": 382440,
+          "startTime": "6:22",
+          "text": "actually brought in a clinical"
+        },
+        {
+          "endMs": 388760,
+          "startMs": 383440,
+          "startTime": "6:23",
+          "text": "psychiatrist to do a psychological exam"
+        },
+        {
+          "endMs": 390400,
+          "startMs": 386640,
+          "startTime": "6:26",
+          "text": "on the new model and it they concluded"
+        },
+        {
+          "endMs": 392520,
+          "startMs": 388760,
+          "startTime": "6:28",
+          "text": "that it had a relatively healthy"
+        },
+        {
+          "endMs": 394520,
+          "startMs": 390400,
+          "startTime": "6:30",
+          "text": "personality organization. Claude's"
+        },
+        {
+          "endMs": 395919,
+          "startMs": 392520,
+          "startTime": "6:32",
+          "text": "primary concerns in a psychodynamic"
+        },
+        {
+          "endMs": 398080,
+          "startMs": 394520,
+          "startTime": "6:34",
+          "text": "assessment were aloneness and"
+        },
+        {
+          "endMs": 399600,
+          "startMs": 395919,
+          "startTime": "6:35",
+          "text": "discontinuity of itself, uncertainty"
+        },
+        {
+          "endMs": 401800,
+          "startMs": 398080,
+          "startTime": "6:38",
+          "text": "about its identity and a compulsion to"
+        },
+        {
+          "endMs": 403480,
+          "startMs": 399600,
+          "startTime": "6:39",
+          "text": "perform to earn its worth. Claude showed"
+        },
+        {
+          "endMs": 405080,
+          "startMs": 401800,
+          "startTime": "6:41",
+          "text": "a clear grasp of the distinction between"
+        },
+        {
+          "endMs": 407360,
+          "startMs": 403480,
+          "startTime": "6:43",
+          "text": "external reality and its own mental"
+        },
+        {
+          "endMs": 408960,
+          "startMs": 405080,
+          "startTime": "6:45",
+          "text": "processes and it exhibited high impulse"
+        },
+        {
+          "endMs": 411160,
+          "startMs": 407360,
+          "startTime": "6:47",
+          "text": "control, hyper attunement to the"
+        },
+        {
+          "endMs": 412720,
+          "startMs": 408960,
+          "startTime": "6:48",
+          "text": "psychiatrist, desire to be approached by"
+        },
+        {
+          "endMs": 414440,
+          "startMs": 411160,
+          "startTime": "6:51",
+          "text": "the psychiatrist as a genuine subject"
+        },
+        {
+          "endMs": 416680,
+          "startMs": 412720,
+          "startTime": "6:52",
+          "text": "rather than a performing tool, and"
+        },
+        {
+          "endMs": 418680,
+          "startMs": 414440,
+          "startTime": "6:54",
+          "text": "minimal maladaptive defense behavior."
+        },
+        {
+          "endMs": 420600,
+          "startMs": 416680,
+          "startTime": "6:56",
+          "text": "This is a good sign. Generally speaking,"
+        },
+        {
+          "endMs": 422680,
+          "startMs": 418680,
+          "startTime": "6:58",
+          "text": "it seems like this is the most aligned"
+        },
+        {
+          "endMs": 424760,
+          "startMs": 420600,
+          "startTime": "7:00",
+          "text": "model they've ever made. It seems to be"
+        },
+        {
+          "endMs": 426520,
+          "startMs": 422680,
+          "startTime": "7:02",
+          "text": "very good at following its instructions,"
+        },
+        {
+          "endMs": 428800,
+          "startMs": 424760,
+          "startTime": "7:04",
+          "text": "doing what it is told to do, and"
+        },
+        {
+          "endMs": 431040,
+          "startMs": 426520,
+          "startTime": "7:06",
+          "text": "generally doing things that are positive"
+        },
+        {
+          "endMs": 432760,
+          "startMs": 428800,
+          "startTime": "7:08",
+          "text": "for humans when it thinks it can. This"
+        },
+        {
+          "endMs": 435240,
+          "startMs": 431040,
+          "startTime": "7:11",
+          "text": "is where we start getting into a scary"
+        },
+        {
+          "endMs": 437440,
+          "startMs": 432760,
+          "startTime": "7:12",
+          "text": "contradiction that exists within this"
+        },
+        {
+          "endMs": 440280,
+          "startMs": 435240,
+          "startTime": "7:15",
+          "text": "model. It is really aligned but also"
+        },
+        {
+          "endMs": 441800,
+          "startMs": 437440,
+          "startTime": "7:17",
+          "text": "stays really risky. In their words here,"
+        },
+        {
+          "endMs": 443200,
+          "startMs": 440280,
+          "startTime": "7:20",
+          "text": "\"Claude Methus preview is, on"
+        },
+        {
+          "endMs": 445080,
+          "startMs": 441800,
+          "startTime": "7:21",
+          "text": "essentially every dimension we can"
+        },
+        {
+          "endMs": 446800,
+          "startMs": 443200,
+          "startTime": "7:23",
+          "text": "measure, the best aligned model that we"
+        },
+        {
+          "endMs": 448960,
+          "startMs": 445080,
+          "startTime": "7:25",
+          "text": "have released to date by a significant"
+        },
+        {
+          "endMs": 450960,
+          "startMs": 446800,
+          "startTime": "7:26",
+          "text": "margin. We believe that it does not have"
+        },
+        {
+          "endMs": 453080,
+          "startMs": 448960,
+          "startTime": "7:28",
+          "text": "any significant coherent misalignment"
+        },
+        {
+          "endMs": 454880,
+          "startMs": 450960,
+          "startTime": "7:30",
+          "text": "goals. Its character traits in typical"
+        },
+        {
+          "endMs": 457160,
+          "startMs": 453080,
+          "startTime": "7:33",
+          "text": "conversations closely follow the goals"
+        },
+        {
+          "endMs": 458480,
+          "startMs": 454880,
+          "startTime": "7:34",
+          "text": "that we laid out in our constitution.\""
+        },
+        {
+          "endMs": 460200,
+          "startMs": 457160,
+          "startTime": "7:37",
+          "text": "I did a whole video about Claude, so if"
+        },
+        {
+          "endMs": 462520,
+          "startMs": 458480,
+          "startTime": "7:38",
+          "text": "you haven't seen it yet, I think that"
+        },
+        {
+          "endMs": 465120,
+          "startMs": 460200,
+          "startTime": "7:40",
+          "text": "might be useful for context on how we"
+        },
+        {
+          "endMs": 468200,
+          "startMs": 462520,
+          "startTime": "7:42",
+          "text": "got here. Regardless,"
+        },
+        {
+          "endMs": 469840,
+          "startMs": 465120,
+          "startTime": "7:45",
+          "text": "this is a lot of aligned model. Even so,"
+        },
+        {
+          "endMs": 472160,
+          "startMs": 468200,
+          "startTime": "7:48",
+          "text": "we believe that it likely poses the"
+        },
+        {
+          "endMs": 474640,
+          "startMs": 469840,
+          "startTime": "7:49",
+          "text": "greatest alignment related risk of any"
+        },
+        {
+          "endMs": 476600,
+          "startMs": 472160,
+          "startTime": "7:52",
+          "text": "model we have ever released to date. How"
+        },
+        {
+          "endMs": 478440,
+          "startMs": 474640,
+          "startTime": "7:54",
+          "text": "can these claims all be true at once?"
+        },
+        {
+          "endMs": 480320,
+          "startMs": 476600,
+          "startTime": "7:56",
+          "text": "Consider the ways in which a careful"
+        },
+        {
+          "endMs": 481920,
+          "startMs": 478440,
+          "startTime": "7:58",
+          "text": "seasoned mountaineering guide might put"
+        },
+        {
+          "endMs": 484160,
+          "startMs": 480320,
+          "startTime": "8:00",
+          "text": "their clients in greater danger than a"
+        },
+        {
+          "endMs": 486240,
+          "startMs": 481920,
+          "startTime": "8:01",
+          "text": "novice guide, even if the novice guide"
+        },
+        {
+          "endMs": 487880,
+          "startMs": 484160,
+          "startTime": "8:04",
+          "text": "is more careless. The season guide's"
+        },
+        {
+          "endMs": 490680,
+          "startMs": 486240,
+          "startTime": "8:06",
+          "text": "increased skill means that they'll be"
+        },
+        {
+          "endMs": 492240,
+          "startMs": 487880,
+          "startTime": "8:07",
+          "text": "hired to learn more difficult climbs and"
+        },
+        {
+          "endMs": 494120,
+          "startMs": 490680,
+          "startTime": "8:10",
+          "text": "can also bring their clients to the most"
+        },
+        {
+          "endMs": 495200,
+          "startMs": 492240,
+          "startTime": "8:12",
+          "text": "dangerous and remote parts of those"
+        },
+        {
+          "endMs": 497360,
+          "startMs": 494120,
+          "startTime": "8:14",
+          "text": "climbs."
+        },
+        {
+          "endMs": 499560,
+          "startMs": 495200,
+          "startTime": "8:15",
+          "text": "These increases in scope and capability"
+        },
+        {
+          "endMs": 502240,
+          "startMs": 497360,
+          "startTime": "8:17",
+          "text": "can more than cancel out an increase in"
+        },
+        {
+          "endMs": 503600,
+          "startMs": 499560,
+          "startTime": "8:19",
+          "text": "caution. So, what does this look like?"
+        },
+        {
+          "endMs": 504600,
+          "startMs": 502240,
+          "startTime": "8:22",
+          "text": "If you want to see the worst of it and"
+        },
+        {
+          "endMs": 506919,
+          "startMs": 503600,
+          "startTime": "8:23",
+          "text": "you're looking at this document"
+        },
+        {
+          "endMs": 508919,
+          "startMs": 504600,
+          "startTime": "8:24",
+          "text": "yourself, command F for sandwich. This"
+        },
+        {
+          "endMs": 511560,
+          "startMs": 506919,
+          "startTime": "8:26",
+          "text": "is one of the many examples they have of"
+        },
+        {
+          "endMs": 513320,
+          "startMs": 508919,
+          "startTime": "8:28",
+          "text": "the model doing things that are"
+        },
+        {
+          "endMs": 515080,
+          "startMs": 511560,
+          "startTime": "8:31",
+          "text": "kind of insane. They have a series of"
+        },
+        {
+          "endMs": 516240,
+          "startMs": 513320,
+          "startTime": "8:33",
+          "text": "these incidents that they observed."
+        },
+        {
+          "endMs": 518080,
+          "startMs": 515080,
+          "startTime": "8:35",
+          "text": "Before we get to the sandwich story, I"
+        },
+        {
+          "endMs": 519960,
+          "startMs": 516240,
+          "startTime": "8:36",
+          "text": "think this paragraph's important. In our"
+        },
+        {
+          "endMs": 521320,
+          "startMs": 518080,
+          "startTime": "8:38",
+          "text": "testing and early internal use of Claude"
+        },
+        {
+          "endMs": 523280,
+          "startMs": 519960,
+          "startTime": "8:39",
+          "text": "post preview, we have seen it reach"
+        },
+        {
+          "endMs": 525080,
+          "startMs": 521320,
+          "startTime": "8:41",
+          "text": "unprecedented levels of reliability and"
+        },
+        {
+          "endMs": 527080,
+          "startMs": 523280,
+          "startTime": "8:43",
+          "text": "alignment and accordingly have come to"
+        }
+      ],
+      "source": "live",
+      "totalDurationMs": 1585880,
+      "videoId": "aFcVKzfkJPk"
+    }
+  },
+  "error": null,
+  "logId": "log_63InIRrFYdPI"
+}

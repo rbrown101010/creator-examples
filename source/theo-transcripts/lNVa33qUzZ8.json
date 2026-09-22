@@ -1,0 +1,1754 @@
+{
+  "successful": true,
+  "data": {
+    "credits": {
+      "charged": 2,
+      "remaining": 16
+    },
+    "data": {
+      "_truncated": {
+        "field": "segments",
+        "reason": "response size limit — lower \"limit\" for full detail",
+        "shown": 288,
+        "total": 1719
+      },
+      "dataRefreshedAt": "2026-09-22T00:19:37.609Z",
+      "fullText": "AI code is here and it's here to stay. Who hasn't seen the productivity gains? We're talking CEOs of companies doing 37,000 lines of code every single day. I mean, what else is there to our lives as developers? If we can put out that much code, why would we do anything else? This totally isn't going to come back to bite our asses, right? It's not like we're going to lose all our skills as we rely on the slot machine more and more and as a result, the slot machine becomes a slot machine and nothing ever works how it's supposed to. This definitely isn't currently happening and people definitely aren't starting to notice, right? Oh. Agent of coding is a trap. This sounds like it's going to be a very, very fun article. I have a lot of thoughts here as you guys can guess. On one hand, I love coding. I love building things. I care about the nitty-gritty of syntax. I've built entire stacks around my specific tech preferences that have went so viral that they helped build my entire career on platforms like this. On the other hand, I very much enjoy these AI coding tools so much so that they fundamentally changed how I think about back and the things that I build and I've never spent less time actually writing code. In fact, if I open up my code editor right now, I'm not even looking at code in it. I'm looking at a prompt file and then a bunch of CSVs for the data for all of the runs that I'm currently doing with agents. I'm barely looking at code anymore. There are things I'm doing more of which is cool. Like I've never gotten so good at get in my life. I've never used SSH and remote boxes as much as I do now. I'm trying out all sorts of new things. I am learning all sorts of new technologies, but I also feel some of my skills atrophy and I find myself when something doesn't work, just rolling the slots again and again hoping that this time might be the one where I get the output I'm looking for. Pulling that lever costs a lot of money. You never know what you're going to get, but at the very least you know what you're going to get in our sponsor break is a really cool company like this one. Are you the type that pays attention to what tool calls your agents make? Because I am and I've noticed that there's one thing they tend to do a lot, curl. The frequency at which I see my agents making curl calls to get information about web pages, documentation, and more is honestly kind of funny, especially because of the frequency at which it fails. Because it turns out a lot of the web doesn't respond with the real contents when you hit it via curl. Whether it's an empty HTML page that requires JavaScript to populate the content or something that's hidden behind a captcha or a firewall or some off layer of some form, there's a good chance your agents are going to struggle if they're relying on doing curl exclusively. It'd be really nice if you could just wrap your curl request in some way where it won't fail on those uh oh, it's on the screen already, isn't it? Yeah, today's sponsor is Browserbase and they just added a new fetch feature that makes it easier than ever to get the real content from any website. If you want it as HTML, JSON, or even markdown, they'll handle it all for you. Instead of curling the site you want directly, you make a post request to the api.browserbase.com/fetch endpoint. You pass it the body with the URL you want, and then all it needs is an API key and it will now be able to scan that site reliably for you and get you what you want. On the pages that require JavaScript to run, they have you handled, too, because Browserbase can spin up real browsers in the cloud. That's why they exist. That's how they got their whole name. They provide real browsers for your agents to do real things on the web. Whether it's clicking buttons, signing in, getting information, running JavaScript, and more, they have you covered. Going to be real with you guys, though, there were some use cases a cloud browser wasn't great for, like search. Oh, is it on the screen again? I need to stop doing that. The search stuff is really cool, too. Adding a real way for your agents to do search and get the context they need to unblock themselves is incredible, and that's why so many companies rely on them for it. So, if your agents need better searching, better fetching, better curling, or just better access to the web through a real browser, look no further than swidev.link/browserbase. Back to where we were. Agentic coding is a trap written by Lars Fey. I'm actually really excited about this one. Multiple people who I trust sent this to me to take a look at. I haven't read it yet, so we get to go through this together and hopefully we'll have interesting things to add. Remaining vigilant about cognitive debt and atrophy. Interesting that the angle here is cognitive debt and not technical debt. I already have a feeling I'm going to like this a lot because I personally found tech debt actually one of the coolest things to deal with with AI. It's actually kind of amazing how willing models are to go after tedious tasks like making a new lint rule work across your whole code base or updating a package that broke the definitions for a thing that occurs in 5,000 places. I have done crazy work for tech debt in my life that just required so much brute force and manpower it wasn't worth it. Like I still vividly remember a time at Twitch where we were doing a migration for our graph QL layer that broke, I think it was 8,000 or so TypeScript files. So we took all the ones that were now broken, put them in a Google sheet and would assign chunks to different engineers to go through and manually update on the shared branch to try and get everything up to date. Like those are the types of things we used to do by hand that often would get left and the tech debt would just sit there because the process of fixing it was too much manpower to be worth it. AI is phenomenal at those things. So whenever I see the like AI causes tech debt argument, I get frustrated because it also solves a lot of the same tech debt that it can potentially cause. But cognitive debt is a much much more interesting idea. So let's see what Lars has to say. Starts with a quote. AI does the coding and the human in the loop is the orchestrator. This is the sentiment being hyped up around the industry currently. Traditional coding is all but dead. Inspector driven development is the future. Okay, I really think we're going to agree. If he's talking on SDD already and we've barely started. Oh boy. You generate a plan and disconnect from writing any code. The agents know better and handle all the implementation. You are there as the expert to provide good taste, review the outputs and constantly steer the agents to execute the plan that you meticulously put together. How meticulous are you guys writing these plans out to be? Cuz I I don't believe you. I don't believe any of you are actually putting that much effort into the plans if you're not watching the agent when it runs after. Yeah. There's There's another angle I could talk about with the expert thing here. I'm not going to go into it yet cuz I want to read a bit more first, but I already have so many thoughts. The workflow takes many shapes at this point, but in general, it's a process where someone defines the project's requirements simultaneously at a micro and a macro level. Very, very good callout here. They generate a plan, and then they pull the slot machine lever over and over, iterating and reiterating with often multiple agent instances until it's done. All the while putting a growing distance between the orchestrator and the code that is actually being generated and committed. Coding agents are helpful and powerful, but there's already some quantifiable tradeoffs that need to be discussed. First, we have an increase in the complexity of the surrounding system to mitigate the increased ambiguity of AI's non-determinism. Very real problem. Second, we have the atrophying of skills for a wide swath of the population. I'm definitely starting to see this. Third, we have vendor lock-in for individuals and entire teams. Bot code outages have already had entire teams at standstills. Yep. And fluctuating and increasing costs to access the tools. An employee's cost is fixed. Tokens are a constantly moving target. Yeah, I do think that the demand going up is causing our brains to fall out a bit with the cost increase. I don't think long-term the cost for agentic work is going to keep going up the same way. I think people are going to do more with AI and use more tokens, but the cost of intelligence at a given level is consistently going down. Flash bang warning. I talk about this a lot with the new GPT models because they are more expensive per token. So, if you're measuring a given input and output that are the same work between the old and new models, 5.5 is 2x more expensive. It's double the cost for input and output tokens. But if you compare per level of intelligence and the number of tokens generated, things get much more interesting. GPT-5.5 is the highest-scoring model on artificial analysis. It is at 60 points, whereas the previous generation with Opus 4.7, Gemini 3.1 Pro, and GPT-5.4 were only at 57 points. Meaningful improvement. But, I'm going to add something to this. GPT-5.5 low, as well as GPT-5.5 medium. And here's what super interesting. 5.5 medium scores the same as 5.4 X high, and 5.5 low still scores very well, too, comparable to Claude Sonnet 4.6. But, when we go back down to the cost efficiency, this is the cost that artificial analysis paid or would have paid if they weren't comped to run their entire benchmark suite. Opus 4.7 is the most expensive by far at 5 grand, even though it's less smart than 5.5. Remember, 5.5 medium and 5.4 X high are the same level of intelligence. 5.4 X high cost $2,800 to run this bench. 5.5 medium cost under 1,200. So, if that level of intelligence was enough for you, your cost just got cut in more than half. You're now at less than 50% of the cost to do those same tasks as you were at before. That is a very, very meaningful change. Sure, the best model in the world got slightly more expensive going from 2,800 to 3,300, but that same tier of intelligence from before, the one that came out 2 months ago that we were totally happy with, is now less than half the price. And if you're okay with going a little bit dumber, not even much dumber, just like Sonnet levels, the price drops all the way to $500, another halving of the price. And this model, 5.5 low, is as smart as 4.6 Sonnet max, which is the second most expensive model at $4,200. And this model came out very recently, as well. So, again, if we look at this based on the intelligence level per dollar. The cost per IQ point here has dropped by 8x in just a few months. Sonnet 4 6 came out earlier this year, $4,200 to run this benchmark, 51 points on the bench. By 5 low, which I would argue is a much smarter and nicer to work with model, same level of intelligence and eighth the price. So, I just wanted to jump on that because I don't necessarily agree that the costs are increasing in the sense that every month, if you do the same thing, the number goes up. It's that we are doing more with tokens, so the amount of tokens we're using is going up, but we're also finding ways to get more intelligence per dollar, so the cost per task and the cost per level of intelligence is going down. So, we need to be realistic about those differences. It doesn't mean that companies aren't getting a little screwed here because they hired a bunch of developers, they pay their devs, I don't know, let's say company pays their devs 5 mil a year. Last year, they paid 100k in cursor. This year, they've already paid a half a mil in cursor and they're only a few months in. That that is a legitimate cost that they are eating, that sucks. So, on the bill, it does look like prices are going up, but by the metrics  …[+52932 chars truncated]",
+      "segments": [
+        {
+          "endMs": 3640,
+          "startMs": 0,
+          "startTime": "0:00",
+          "text": "AI code is here and it's here to stay."
+        },
+        {
+          "endMs": 5680,
+          "startMs": 1760,
+          "startTime": "0:01",
+          "text": "Who hasn't seen the productivity gains?"
+        },
+        {
+          "endMs": 8720,
+          "startMs": 3640,
+          "startTime": "0:03",
+          "text": "We're talking CEOs of companies doing"
+        },
+        {
+          "endMs": 10840,
+          "startMs": 5680,
+          "startTime": "0:05",
+          "text": "37,000 lines of code every single day. I"
+        },
+        {
+          "endMs": 12480,
+          "startMs": 8720,
+          "startTime": "0:08",
+          "text": "mean, what else is there to our lives as"
+        },
+        {
+          "endMs": 14320,
+          "startMs": 10840,
+          "startTime": "0:10",
+          "text": "developers? If we can put out that much"
+        },
+        {
+          "endMs": 15800,
+          "startMs": 12480,
+          "startTime": "0:12",
+          "text": "code, why would we do anything else?"
+        },
+        {
+          "endMs": 17440,
+          "startMs": 14320,
+          "startTime": "0:14",
+          "text": "This totally isn't going to come back to"
+        },
+        {
+          "endMs": 19080,
+          "startMs": 15800,
+          "startTime": "0:15",
+          "text": "bite our asses, right? It's not like"
+        },
+        {
+          "endMs": 20840,
+          "startMs": 17440,
+          "startTime": "0:17",
+          "text": "we're going to lose all our skills as we"
+        },
+        {
+          "endMs": 22440,
+          "startMs": 19080,
+          "startTime": "0:19",
+          "text": "rely on the slot machine more and more"
+        },
+        {
+          "endMs": 24560,
+          "startMs": 20840,
+          "startTime": "0:20",
+          "text": "and as a result, the slot machine"
+        },
+        {
+          "endMs": 26280,
+          "startMs": 22440,
+          "startTime": "0:22",
+          "text": "becomes a slot machine and nothing ever"
+        },
+        {
+          "endMs": 28440,
+          "startMs": 24560,
+          "startTime": "0:24",
+          "text": "works how it's supposed to. This"
+        },
+        {
+          "endMs": 30240,
+          "startMs": 26280,
+          "startTime": "0:26",
+          "text": "definitely isn't currently happening and"
+        },
+        {
+          "endMs": 32439,
+          "startMs": 28440,
+          "startTime": "0:28",
+          "text": "people definitely aren't starting to"
+        },
+        {
+          "endMs": 34760,
+          "startMs": 30240,
+          "startTime": "0:30",
+          "text": "notice, right? Oh."
+        },
+        {
+          "endMs": 36920,
+          "startMs": 32439,
+          "startTime": "0:32",
+          "text": "Agent of coding is a trap. This sounds"
+        },
+        {
+          "endMs": 39400,
+          "startMs": 34760,
+          "startTime": "0:34",
+          "text": "like it's going to be a very, very fun"
+        },
+        {
+          "endMs": 42160,
+          "startMs": 36920,
+          "startTime": "0:36",
+          "text": "article. I have a lot of thoughts here"
+        },
+        {
+          "endMs": 44400,
+          "startMs": 39400,
+          "startTime": "0:39",
+          "text": "as you guys can guess. On one hand, I"
+        },
+        {
+          "endMs": 46240,
+          "startMs": 42160,
+          "startTime": "0:42",
+          "text": "love coding. I love building things. I"
+        },
+        {
+          "endMs": 48000,
+          "startMs": 44400,
+          "startTime": "0:44",
+          "text": "care about the nitty-gritty of syntax."
+        },
+        {
+          "endMs": 50120,
+          "startMs": 46240,
+          "startTime": "0:46",
+          "text": "I've built entire stacks around my"
+        },
+        {
+          "endMs": 51480,
+          "startMs": 48000,
+          "startTime": "0:48",
+          "text": "specific tech preferences that have went"
+        },
+        {
+          "endMs": 54080,
+          "startMs": 50120,
+          "startTime": "0:50",
+          "text": "so viral that they helped build my"
+        },
+        {
+          "endMs": 56160,
+          "startMs": 51480,
+          "startTime": "0:51",
+          "text": "entire career on platforms like this. On"
+        },
+        {
+          "endMs": 58040,
+          "startMs": 54080,
+          "startTime": "0:54",
+          "text": "the other hand, I very much enjoy these"
+        },
+        {
+          "endMs": 60080,
+          "startMs": 56160,
+          "startTime": "0:56",
+          "text": "AI coding tools so much so that they"
+        },
+        {
+          "endMs": 61880,
+          "startMs": 58040,
+          "startTime": "0:58",
+          "text": "fundamentally changed how I think about"
+        },
+        {
+          "endMs": 63680,
+          "startMs": 60080,
+          "startTime": "1:00",
+          "text": "back and the things that I build and"
+        },
+        {
+          "endMs": 65680,
+          "startMs": 61880,
+          "startTime": "1:01",
+          "text": "I've never spent less time actually"
+        },
+        {
+          "endMs": 67520,
+          "startMs": 63680,
+          "startTime": "1:03",
+          "text": "writing code. In fact, if I open up my"
+        },
+        {
+          "endMs": 69000,
+          "startMs": 65680,
+          "startTime": "1:05",
+          "text": "code editor right now, I'm not even"
+        },
+        {
+          "endMs": 71520,
+          "startMs": 67520,
+          "startTime": "1:07",
+          "text": "looking at code in it. I'm looking at a"
+        },
+        {
+          "endMs": 73240,
+          "startMs": 69000,
+          "startTime": "1:09",
+          "text": "prompt file and then a bunch of CSVs for"
+        },
+        {
+          "endMs": 75440,
+          "startMs": 71520,
+          "startTime": "1:11",
+          "text": "the data for all of the runs that I'm"
+        },
+        {
+          "endMs": 77080,
+          "startMs": 73240,
+          "startTime": "1:13",
+          "text": "currently doing with agents. I'm barely"
+        },
+        {
+          "endMs": 78560,
+          "startMs": 75440,
+          "startTime": "1:15",
+          "text": "looking at code anymore. There are"
+        },
+        {
+          "endMs": 80480,
+          "startMs": 77080,
+          "startTime": "1:17",
+          "text": "things I'm doing more of which is cool."
+        },
+        {
+          "endMs": 83080,
+          "startMs": 78560,
+          "startTime": "1:18",
+          "text": "Like I've never gotten so good at get in"
+        },
+        {
+          "endMs": 85400,
+          "startMs": 80480,
+          "startTime": "1:20",
+          "text": "my life. I've never used SSH and remote"
+        },
+        {
+          "endMs": 86600,
+          "startMs": 83080,
+          "startTime": "1:23",
+          "text": "boxes as much as I do now. I'm trying"
+        },
+        {
+          "endMs": 88680,
+          "startMs": 85400,
+          "startTime": "1:25",
+          "text": "out all sorts of new things. I am"
+        },
+        {
+          "endMs": 90440,
+          "startMs": 86600,
+          "startTime": "1:26",
+          "text": "learning all sorts of new technologies,"
+        },
+        {
+          "endMs": 92960,
+          "startMs": 88680,
+          "startTime": "1:28",
+          "text": "but I also feel some of my skills"
+        },
+        {
+          "endMs": 95120,
+          "startMs": 90440,
+          "startTime": "1:30",
+          "text": "atrophy and I find myself when something"
+        },
+        {
+          "endMs": 97320,
+          "startMs": 92960,
+          "startTime": "1:32",
+          "text": "doesn't work, just rolling the slots"
+        },
+        {
+          "endMs": 99680,
+          "startMs": 95120,
+          "startTime": "1:35",
+          "text": "again and again hoping that this time"
+        },
+        {
+          "endMs": 101200,
+          "startMs": 97320,
+          "startTime": "1:37",
+          "text": "might be the one where I get the output"
+        },
+        {
+          "endMs": 102680,
+          "startMs": 99680,
+          "startTime": "1:39",
+          "text": "I'm looking for. Pulling that lever"
+        },
+        {
+          "endMs": 104000,
+          "startMs": 101200,
+          "startTime": "1:41",
+          "text": "costs a lot of money. You never know"
+        },
+        {
+          "endMs": 105360,
+          "startMs": 102680,
+          "startTime": "1:42",
+          "text": "what you're going to get, but at the"
+        },
+        {
+          "endMs": 106680,
+          "startMs": 104000,
+          "startTime": "1:44",
+          "text": "very least you know what you're going to"
+        },
+        {
+          "endMs": 108560,
+          "startMs": 105360,
+          "startTime": "1:45",
+          "text": "get in our sponsor break is a really"
+        },
+        {
+          "endMs": 110080,
+          "startMs": 106680,
+          "startTime": "1:46",
+          "text": "cool company like this one. Are you the"
+        },
+        {
+          "endMs": 112160,
+          "startMs": 108560,
+          "startTime": "1:48",
+          "text": "type that pays attention to what tool"
+        },
+        {
+          "endMs": 113480,
+          "startMs": 110080,
+          "startTime": "1:50",
+          "text": "calls your agents make? Because I am and"
+        },
+        {
+          "endMs": 116080,
+          "startMs": 112160,
+          "startTime": "1:52",
+          "text": "I've noticed that there's one thing they"
+        },
+        {
+          "endMs": 117880,
+          "startMs": 113480,
+          "startTime": "1:53",
+          "text": "tend to do a lot, curl. The frequency at"
+        },
+        {
+          "endMs": 119360,
+          "startMs": 116080,
+          "startTime": "1:56",
+          "text": "which I see my agents making curl calls"
+        },
+        {
+          "endMs": 121360,
+          "startMs": 117880,
+          "startTime": "1:57",
+          "text": "to get information about web pages,"
+        },
+        {
+          "endMs": 122840,
+          "startMs": 119360,
+          "startTime": "1:59",
+          "text": "documentation, and more is honestly kind"
+        },
+        {
+          "endMs": 124920,
+          "startMs": 121360,
+          "startTime": "2:01",
+          "text": "of funny, especially because of the"
+        },
+        {
+          "endMs": 126400,
+          "startMs": 122840,
+          "startTime": "2:02",
+          "text": "frequency at which it fails. Because it"
+        },
+        {
+          "endMs": 128000,
+          "startMs": 124920,
+          "startTime": "2:04",
+          "text": "turns out a lot of the web doesn't"
+        },
+        {
+          "endMs": 129840,
+          "startMs": 126400,
+          "startTime": "2:06",
+          "text": "respond with the real contents when you"
+        },
+        {
+          "endMs": 131680,
+          "startMs": 128000,
+          "startTime": "2:08",
+          "text": "hit it via curl. Whether it's an empty"
+        },
+        {
+          "endMs": 133320,
+          "startMs": 129840,
+          "startTime": "2:09",
+          "text": "HTML page that requires JavaScript to"
+        },
+        {
+          "endMs": 135400,
+          "startMs": 131680,
+          "startTime": "2:11",
+          "text": "populate the content or something that's"
+        },
+        {
+          "endMs": 137200,
+          "startMs": 133320,
+          "startTime": "2:13",
+          "text": "hidden behind a captcha or a firewall or"
+        },
+        {
+          "endMs": 138400,
+          "startMs": 135400,
+          "startTime": "2:15",
+          "text": "some off layer of some form, there's a"
+        },
+        {
+          "endMs": 140080,
+          "startMs": 137200,
+          "startTime": "2:17",
+          "text": "good chance your agents are going to"
+        },
+        {
+          "endMs": 141800,
+          "startMs": 138400,
+          "startTime": "2:18",
+          "text": "struggle if they're relying on doing"
+        },
+        {
+          "endMs": 143440,
+          "startMs": 140080,
+          "startTime": "2:20",
+          "text": "curl exclusively. It'd be really nice if"
+        },
+        {
+          "endMs": 145760,
+          "startMs": 141800,
+          "startTime": "2:21",
+          "text": "you could just wrap your curl request in"
+        },
+        {
+          "endMs": 146680,
+          "startMs": 143440,
+          "startTime": "2:23",
+          "text": "some way where it won't fail on those uh"
+        },
+        {
+          "endMs": 148520,
+          "startMs": 145760,
+          "startTime": "2:25",
+          "text": "oh,"
+        },
+        {
+          "endMs": 150200,
+          "startMs": 146680,
+          "startTime": "2:26",
+          "text": "it's on the screen already, isn't it?"
+        },
+        {
+          "endMs": 151920,
+          "startMs": 148520,
+          "startTime": "2:28",
+          "text": "Yeah, today's sponsor is Browserbase and"
+        },
+        {
+          "endMs": 153480,
+          "startMs": 150200,
+          "startTime": "2:30",
+          "text": "they just added a new fetch feature that"
+        },
+        {
+          "endMs": 155640,
+          "startMs": 151920,
+          "startTime": "2:31",
+          "text": "makes it easier than ever to get the"
+        },
+        {
+          "endMs": 158280,
+          "startMs": 153480,
+          "startTime": "2:33",
+          "text": "real content from any website. If you"
+        },
+        {
+          "endMs": 159800,
+          "startMs": 155640,
+          "startTime": "2:35",
+          "text": "want it as HTML, JSON, or even markdown,"
+        },
+        {
+          "endMs": 161520,
+          "startMs": 158280,
+          "startTime": "2:38",
+          "text": "they'll handle it all for you. Instead"
+        },
+        {
+          "endMs": 162920,
+          "startMs": 159800,
+          "startTime": "2:39",
+          "text": "of curling the site you want directly,"
+        },
+        {
+          "endMs": 165400,
+          "startMs": 161520,
+          "startTime": "2:41",
+          "text": "you make a post request to the"
+        },
+        {
+          "endMs": 167520,
+          "startMs": 162920,
+          "startTime": "2:42",
+          "text": "api.browserbase.com/fetch"
+        },
+        {
+          "endMs": 169640,
+          "startMs": 165400,
+          "startTime": "2:45",
+          "text": "endpoint. You pass it the body with the"
+        },
+        {
+          "endMs": 171600,
+          "startMs": 167520,
+          "startTime": "2:47",
+          "text": "URL you want, and then all it needs is"
+        },
+        {
+          "endMs": 174120,
+          "startMs": 169640,
+          "startTime": "2:49",
+          "text": "an API key and it will now be able to"
+        },
+        {
+          "endMs": 175680,
+          "startMs": 171600,
+          "startTime": "2:51",
+          "text": "scan that site reliably for you and get"
+        },
+        {
+          "endMs": 177440,
+          "startMs": 174120,
+          "startTime": "2:54",
+          "text": "you what you want. On the pages that"
+        },
+        {
+          "endMs": 179120,
+          "startMs": 175680,
+          "startTime": "2:55",
+          "text": "require JavaScript to run, they have you"
+        },
+        {
+          "endMs": 180920,
+          "startMs": 177440,
+          "startTime": "2:57",
+          "text": "handled, too, because Browserbase can"
+        },
+        {
+          "endMs": 182360,
+          "startMs": 179120,
+          "startTime": "2:59",
+          "text": "spin up real browsers in the cloud."
+        },
+        {
+          "endMs": 183959,
+          "startMs": 180920,
+          "startTime": "3:00",
+          "text": "That's why they exist. That's how they"
+        },
+        {
+          "endMs": 185600,
+          "startMs": 182360,
+          "startTime": "3:02",
+          "text": "got their whole name. They provide real"
+        },
+        {
+          "endMs": 187000,
+          "startMs": 183959,
+          "startTime": "3:03",
+          "text": "browsers for your agents to do real"
+        },
+        {
+          "endMs": 188480,
+          "startMs": 185600,
+          "startTime": "3:05",
+          "text": "things on the web. Whether it's clicking"
+        },
+        {
+          "endMs": 190000,
+          "startMs": 187000,
+          "startTime": "3:07",
+          "text": "buttons, signing in, getting"
+        },
+        {
+          "endMs": 191600,
+          "startMs": 188480,
+          "startTime": "3:08",
+          "text": "information, running JavaScript, and"
+        },
+        {
+          "endMs": 192480,
+          "startMs": 190000,
+          "startTime": "3:10",
+          "text": "more, they have you covered. Going to be"
+        },
+        {
+          "endMs": 194040,
+          "startMs": 191600,
+          "startTime": "3:11",
+          "text": "real with you guys, though, there were"
+        },
+        {
+          "endMs": 196760,
+          "startMs": 192480,
+          "startTime": "3:12",
+          "text": "some use cases a cloud browser wasn't"
+        },
+        {
+          "endMs": 198640,
+          "startMs": 194040,
+          "startTime": "3:14",
+          "text": "great for, like search. Oh, is it on the"
+        },
+        {
+          "endMs": 200239,
+          "startMs": 196760,
+          "startTime": "3:16",
+          "text": "screen again? I need to stop doing that."
+        },
+        {
+          "endMs": 202040,
+          "startMs": 198640,
+          "startTime": "3:18",
+          "text": "The search stuff is really cool, too."
+        },
+        {
+          "endMs": 203840,
+          "startMs": 200239,
+          "startTime": "3:20",
+          "text": "Adding a real way for your agents to do"
+        },
+        {
+          "endMs": 205600,
+          "startMs": 202040,
+          "startTime": "3:22",
+          "text": "search and get the context they need to"
+        },
+        {
+          "endMs": 206959,
+          "startMs": 203840,
+          "startTime": "3:23",
+          "text": "unblock themselves is incredible, and"
+        },
+        {
+          "endMs": 208280,
+          "startMs": 205600,
+          "startTime": "3:25",
+          "text": "that's why so many companies rely on"
+        },
+        {
+          "endMs": 209840,
+          "startMs": 206959,
+          "startTime": "3:26",
+          "text": "them for it. So, if your agents need"
+        },
+        {
+          "endMs": 211920,
+          "startMs": 208280,
+          "startTime": "3:28",
+          "text": "better searching, better fetching,"
+        },
+        {
+          "endMs": 213680,
+          "startMs": 209840,
+          "startTime": "3:29",
+          "text": "better curling, or just better access to"
+        },
+        {
+          "endMs": 215880,
+          "startMs": 211920,
+          "startTime": "3:31",
+          "text": "the web through a real browser, look no"
+        },
+        {
+          "endMs": 218959,
+          "startMs": 213680,
+          "startTime": "3:33",
+          "text": "further than swidev.link/browserbase."
+        },
+        {
+          "endMs": 221000,
+          "startMs": 215880,
+          "startTime": "3:35",
+          "text": "Back to where we were. Agentic coding is"
+        },
+        {
+          "endMs": 222360,
+          "startMs": 218959,
+          "startTime": "3:38",
+          "text": "a trap written by Lars Fey. I'm actually"
+        },
+        {
+          "endMs": 224080,
+          "startMs": 221000,
+          "startTime": "3:41",
+          "text": "really excited about this one. Multiple"
+        },
+        {
+          "endMs": 225840,
+          "startMs": 222360,
+          "startTime": "3:42",
+          "text": "people who I trust sent this to me to"
+        },
+        {
+          "endMs": 227519,
+          "startMs": 224080,
+          "startTime": "3:44",
+          "text": "take a look at. I haven't read it yet,"
+        },
+        {
+          "endMs": 229080,
+          "startMs": 225840,
+          "startTime": "3:45",
+          "text": "so we get to go through this together"
+        },
+        {
+          "endMs": 231440,
+          "startMs": 227519,
+          "startTime": "3:47",
+          "text": "and hopefully we'll have interesting"
+        },
+        {
+          "endMs": 234400,
+          "startMs": 229080,
+          "startTime": "3:49",
+          "text": "things to add. Remaining vigilant about"
+        },
+        {
+          "endMs": 236680,
+          "startMs": 231440,
+          "startTime": "3:51",
+          "text": "cognitive debt and atrophy. Interesting"
+        },
+        {
+          "endMs": 238640,
+          "startMs": 234400,
+          "startTime": "3:54",
+          "text": "that the angle here is cognitive debt"
+        },
+        {
+          "endMs": 240320,
+          "startMs": 236680,
+          "startTime": "3:56",
+          "text": "and not technical debt. I already have a"
+        },
+        {
+          "endMs": 241960,
+          "startMs": 238640,
+          "startTime": "3:58",
+          "text": "feeling I'm going to like this a lot"
+        },
+        {
+          "endMs": 243440,
+          "startMs": 240320,
+          "startTime": "4:00",
+          "text": "because I personally found tech debt"
+        },
+        {
+          "endMs": 246480,
+          "startMs": 241960,
+          "startTime": "4:01",
+          "text": "actually one of the coolest things to"
+        },
+        {
+          "endMs": 249200,
+          "startMs": 243440,
+          "startTime": "4:03",
+          "text": "deal with with AI. It's actually kind of"
+        },
+        {
+          "endMs": 252000,
+          "startMs": 246480,
+          "startTime": "4:06",
+          "text": "amazing how willing models are to go"
+        },
+        {
+          "endMs": 253640,
+          "startMs": 249200,
+          "startTime": "4:09",
+          "text": "after tedious tasks like making a new"
+        },
+        {
+          "endMs": 255880,
+          "startMs": 252000,
+          "startTime": "4:12",
+          "text": "lint rule work across your whole code"
+        },
+        {
+          "endMs": 257560,
+          "startMs": 253640,
+          "startTime": "4:13",
+          "text": "base or updating a package that broke"
+        },
+        {
+          "endMs": 260680,
+          "startMs": 255880,
+          "startTime": "4:15",
+          "text": "the definitions for a thing that occurs"
+        },
+        {
+          "endMs": 263520,
+          "startMs": 257560,
+          "startTime": "4:17",
+          "text": "in 5,000 places. I have done crazy work"
+        },
+        {
+          "endMs": 265400,
+          "startMs": 260680,
+          "startTime": "4:20",
+          "text": "for tech debt in my life that just"
+        },
+        {
+          "endMs": 267640,
+          "startMs": 263520,
+          "startTime": "4:23",
+          "text": "required so much brute force and"
+        },
+        {
+          "endMs": 269400,
+          "startMs": 265400,
+          "startTime": "4:25",
+          "text": "manpower it wasn't worth it. Like I"
+        },
+        {
+          "endMs": 270840,
+          "startMs": 267640,
+          "startTime": "4:27",
+          "text": "still vividly remember a time at Twitch"
+        },
+        {
+          "endMs": 273480,
+          "startMs": 269400,
+          "startTime": "4:29",
+          "text": "where we were doing a migration for our"
+        },
+        {
+          "endMs": 276240,
+          "startMs": 270840,
+          "startTime": "4:30",
+          "text": "graph QL layer that broke, I think it"
+        },
+        {
+          "endMs": 278040,
+          "startMs": 273480,
+          "startTime": "4:33",
+          "text": "was 8,000 or so TypeScript files. So we"
+        },
+        {
+          "endMs": 280280,
+          "startMs": 276240,
+          "startTime": "4:36",
+          "text": "took all the ones that were now broken,"
+        },
+        {
+          "endMs": 282400,
+          "startMs": 278040,
+          "startTime": "4:38",
+          "text": "put them in a Google sheet and would"
+        },
+        {
+          "endMs": 284200,
+          "startMs": 280280,
+          "startTime": "4:40",
+          "text": "assign chunks to different engineers to"
+        },
+        {
+          "endMs": 286600,
+          "startMs": 282400,
+          "startTime": "4:42",
+          "text": "go through and manually update on the"
+        },
+        {
+          "endMs": 288919,
+          "startMs": 284200,
+          "startTime": "4:44",
+          "text": "shared branch to try and get everything"
+        },
+        {
+          "endMs": 291200,
+          "startMs": 286600,
+          "startTime": "4:46",
+          "text": "up to date. Like those are the types of"
+        },
+        {
+          "endMs": 292520,
+          "startMs": 288919,
+          "startTime": "4:48",
+          "text": "things we used to do by hand that often"
+        },
+        {
+          "endMs": 294280,
+          "startMs": 291200,
+          "startTime": "4:51",
+          "text": "would get left and the tech debt would"
+        },
+        {
+          "endMs": 297520,
+          "startMs": 292520,
+          "startTime": "4:52",
+          "text": "just sit there because the process of"
+        },
+        {
+          "endMs": 299440,
+          "startMs": 294280,
+          "startTime": "4:54",
+          "text": "fixing it was too much manpower to be"
+        },
+        {
+          "endMs": 301280,
+          "startMs": 297520,
+          "startTime": "4:57",
+          "text": "worth it. AI is phenomenal at those"
+        },
+        {
+          "endMs": 303440,
+          "startMs": 299440,
+          "startTime": "4:59",
+          "text": "things. So whenever I see the like AI"
+        },
+        {
+          "endMs": 305360,
+          "startMs": 301280,
+          "startTime": "5:01",
+          "text": "causes tech debt argument, I get"
+        },
+        {
+          "endMs": 306520,
+          "startMs": 303440,
+          "startTime": "5:03",
+          "text": "frustrated because it also solves a lot"
+        },
+        {
+          "endMs": 308680,
+          "startMs": 305360,
+          "startTime": "5:05",
+          "text": "of the same tech debt that it can"
+        },
+        {
+          "endMs": 310840,
+          "startMs": 306520,
+          "startTime": "5:06",
+          "text": "potentially cause. But cognitive debt is"
+        },
+        {
+          "endMs": 313040,
+          "startMs": 308680,
+          "startTime": "5:08",
+          "text": "a much much more interesting idea. So"
+        },
+        {
+          "endMs": 315040,
+          "startMs": 310840,
+          "startTime": "5:10",
+          "text": "let's see what Lars has to say. Starts"
+        },
+        {
+          "endMs": 317280,
+          "startMs": 313040,
+          "startTime": "5:13",
+          "text": "with a quote. AI does the coding and the"
+        },
+        {
+          "endMs": 318960,
+          "startMs": 315040,
+          "startTime": "5:15",
+          "text": "human in the loop is the orchestrator."
+        },
+        {
+          "endMs": 320480,
+          "startMs": 317280,
+          "startTime": "5:17",
+          "text": "This is the sentiment being hyped up"
+        },
+        {
+          "endMs": 322360,
+          "startMs": 318960,
+          "startTime": "5:18",
+          "text": "around the industry currently."
+        },
+        {
+          "endMs": 323880,
+          "startMs": 320480,
+          "startTime": "5:20",
+          "text": "Traditional coding is all but dead."
+        },
+        {
+          "endMs": 326440,
+          "startMs": 322360,
+          "startTime": "5:22",
+          "text": "Inspector driven development is the"
+        },
+        {
+          "endMs": 328080,
+          "startMs": 323880,
+          "startTime": "5:23",
+          "text": "future. Okay, I really think we're going"
+        },
+        {
+          "endMs": 330320,
+          "startMs": 326440,
+          "startTime": "5:26",
+          "text": "to agree. If he's talking on SDD"
+        },
+        {
+          "endMs": 332960,
+          "startMs": 328080,
+          "startTime": "5:28",
+          "text": "already and we've barely started. Oh"
+        },
+        {
+          "endMs": 334880,
+          "startMs": 330320,
+          "startTime": "5:30",
+          "text": "boy. You generate a plan and disconnect"
+        },
+        {
+          "endMs": 336240,
+          "startMs": 332960,
+          "startTime": "5:32",
+          "text": "from writing any code. The agents know"
+        },
+        {
+          "endMs": 338080,
+          "startMs": 334880,
+          "startTime": "5:34",
+          "text": "better and handle all the"
+        },
+        {
+          "endMs": 340680,
+          "startMs": 336240,
+          "startTime": "5:36",
+          "text": "implementation. You are there as the"
+        },
+        {
+          "endMs": 342840,
+          "startMs": 338080,
+          "startTime": "5:38",
+          "text": "expert to provide good taste, review the"
+        },
+        {
+          "endMs": 344320,
+          "startMs": 340680,
+          "startTime": "5:40",
+          "text": "outputs and constantly steer the agents"
+        },
+        {
+          "endMs": 346520,
+          "startMs": 342840,
+          "startTime": "5:42",
+          "text": "to execute the plan that you"
+        },
+        {
+          "endMs": 348120,
+          "startMs": 344320,
+          "startTime": "5:44",
+          "text": "meticulously put together."
+        },
+        {
+          "endMs": 350360,
+          "startMs": 346520,
+          "startTime": "5:46",
+          "text": "How meticulous are you guys writing"
+        },
+        {
+          "endMs": 352560,
+          "startMs": 348120,
+          "startTime": "5:48",
+          "text": "these plans out to be? Cuz I"
+        },
+        {
+          "endMs": 353840,
+          "startMs": 350360,
+          "startTime": "5:50",
+          "text": "I don't believe you. I don't believe any"
+        },
+        {
+          "endMs": 355400,
+          "startMs": 352560,
+          "startTime": "5:52",
+          "text": "of you are actually putting that much"
+        },
+        {
+          "endMs": 357440,
+          "startMs": 353840,
+          "startTime": "5:53",
+          "text": "effort into the plans if you're not"
+        },
+        {
+          "endMs": 359760,
+          "startMs": 355400,
+          "startTime": "5:55",
+          "text": "watching the agent when it runs after."
+        },
+        {
+          "endMs": 361480,
+          "startMs": 357440,
+          "startTime": "5:57",
+          "text": "Yeah. There's There's another angle I"
+        },
+        {
+          "endMs": 362640,
+          "startMs": 359760,
+          "startTime": "5:59",
+          "text": "could talk about with the expert thing"
+        },
+        {
+          "endMs": 364080,
+          "startMs": 361480,
+          "startTime": "6:01",
+          "text": "here. I'm not going to go into it yet"
+        },
+        {
+          "endMs": 365800,
+          "startMs": 362640,
+          "startTime": "6:02",
+          "text": "cuz I want to read a bit more first, but"
+        },
+        {
+          "endMs": 367200,
+          "startMs": 364080,
+          "startTime": "6:04",
+          "text": "I already have so many thoughts. The"
+        },
+        {
+          "endMs": 369160,
+          "startMs": 365800,
+          "startTime": "6:05",
+          "text": "workflow takes many shapes at this"
+        },
+        {
+          "endMs": 370400,
+          "startMs": 367200,
+          "startTime": "6:07",
+          "text": "point, but in general, it's a process"
+        },
+        {
+          "endMs": 372520,
+          "startMs": 369160,
+          "startTime": "6:09",
+          "text": "where someone defines the project's"
+        },
+        {
+          "endMs": 374560,
+          "startMs": 370400,
+          "startTime": "6:10",
+          "text": "requirements simultaneously at a micro"
+        },
+        {
+          "endMs": 376640,
+          "startMs": 372520,
+          "startTime": "6:12",
+          "text": "and a macro level. Very, very good"
+        },
+        {
+          "endMs": 378360,
+          "startMs": 374560,
+          "startTime": "6:14",
+          "text": "callout here. They generate a plan, and"
+        },
+        {
+          "endMs": 380520,
+          "startMs": 376640,
+          "startTime": "6:16",
+          "text": "then they pull the slot machine lever"
+        },
+        {
+          "endMs": 382760,
+          "startMs": 378360,
+          "startTime": "6:18",
+          "text": "over and over, iterating and reiterating"
+        },
+        {
+          "endMs": 385120,
+          "startMs": 380520,
+          "startTime": "6:20",
+          "text": "with often multiple agent instances"
+        },
+        {
+          "endMs": 386280,
+          "startMs": 382760,
+          "startTime": "6:22",
+          "text": "until it's done. All the while putting a"
+        },
+        {
+          "endMs": 388080,
+          "startMs": 385120,
+          "startTime": "6:25",
+          "text": "growing distance between the"
+        },
+        {
+          "endMs": 390120,
+          "startMs": 386280,
+          "startTime": "6:26",
+          "text": "orchestrator and the code that is"
+        },
+        {
+          "endMs": 392680,
+          "startMs": 388080,
+          "startTime": "6:28",
+          "text": "actually being generated and committed."
+        },
+        {
+          "endMs": 394440,
+          "startMs": 390120,
+          "startTime": "6:30",
+          "text": "Coding agents are helpful and powerful,"
+        },
+        {
+          "endMs": 396919,
+          "startMs": 392680,
+          "startTime": "6:32",
+          "text": "but there's already some quantifiable"
+        },
+        {
+          "endMs": 398200,
+          "startMs": 394440,
+          "startTime": "6:34",
+          "text": "tradeoffs that need to be discussed."
+        },
+        {
+          "endMs": 400000,
+          "startMs": 396919,
+          "startTime": "6:36",
+          "text": "First, we have an increase in the"
+        },
+        {
+          "endMs": 402000,
+          "startMs": 398200,
+          "startTime": "6:38",
+          "text": "complexity of the surrounding system to"
+        },
+        {
+          "endMs": 404200,
+          "startMs": 400000,
+          "startTime": "6:40",
+          "text": "mitigate the increased ambiguity of AI's"
+        },
+        {
+          "endMs": 406120,
+          "startMs": 402000,
+          "startTime": "6:42",
+          "text": "non-determinism. Very real problem."
+        },
+        {
+          "endMs": 408360,
+          "startMs": 404200,
+          "startTime": "6:44",
+          "text": "Second, we have the atrophying of skills"
+        },
+        {
+          "endMs": 410240,
+          "startMs": 406120,
+          "startTime": "6:46",
+          "text": "for a wide swath of the population. I'm"
+        },
+        {
+          "endMs": 412160,
+          "startMs": 408360,
+          "startTime": "6:48",
+          "text": "definitely starting to see this. Third,"
+        },
+        {
+          "endMs": 414400,
+          "startMs": 410240,
+          "startTime": "6:50",
+          "text": "we have vendor lock-in for individuals"
+        },
+        {
+          "endMs": 416560,
+          "startMs": 412160,
+          "startTime": "6:52",
+          "text": "and entire teams. Bot code outages have"
+        },
+        {
+          "endMs": 417520,
+          "startMs": 414400,
+          "startTime": "6:54",
+          "text": "already had entire teams at standstills."
+        },
+        {
+          "endMs": 419480,
+          "startMs": 416560,
+          "startTime": "6:56",
+          "text": "Yep."
+        },
+        {
+          "endMs": 421800,
+          "startMs": 417520,
+          "startTime": "6:57",
+          "text": "And fluctuating and increasing costs to"
+        },
+        {
+          "endMs": 423800,
+          "startMs": 419480,
+          "startTime": "6:59",
+          "text": "access the tools. An employee's cost is"
+        },
+        {
+          "endMs": 426840,
+          "startMs": 421800,
+          "startTime": "7:01",
+          "text": "fixed. Tokens are a constantly moving"
+        },
+        {
+          "endMs": 429640,
+          "startMs": 423800,
+          "startTime": "7:03",
+          "text": "target. Yeah, I do think that the demand"
+        },
+        {
+          "endMs": 432080,
+          "startMs": 426840,
+          "startTime": "7:06",
+          "text": "going up is causing our brains to fall"
+        },
+        {
+          "endMs": 433840,
+          "startMs": 429640,
+          "startTime": "7:09",
+          "text": "out a bit with the cost increase. I"
+        },
+        {
+          "endMs": 435720,
+          "startMs": 432080,
+          "startTime": "7:12",
+          "text": "don't think long-term the cost for"
+        },
+        {
+          "endMs": 437880,
+          "startMs": 433840,
+          "startTime": "7:13",
+          "text": "agentic work is going to keep going up"
+        },
+        {
+          "endMs": 441160,
+          "startMs": 435720,
+          "startTime": "7:15",
+          "text": "the same way. I think people are going"
+        },
+        {
+          "endMs": 442760,
+          "startMs": 437880,
+          "startTime": "7:17",
+          "text": "to do more with AI and use more tokens,"
+        },
+        {
+          "endMs": 445200,
+          "startMs": 441160,
+          "startTime": "7:21",
+          "text": "but the cost of intelligence at a given"
+        },
+        {
+          "endMs": 447400,
+          "startMs": 442760,
+          "startTime": "7:22",
+          "text": "level is consistently going down. Flash"
+        },
+        {
+          "endMs": 449680,
+          "startMs": 445200,
+          "startTime": "7:25",
+          "text": "bang warning. I talk about this a lot"
+        },
+        {
+          "endMs": 451480,
+          "startMs": 447400,
+          "startTime": "7:27",
+          "text": "with the new GPT models because they are"
+        },
+        {
+          "endMs": 453400,
+          "startMs": 449680,
+          "startTime": "7:29",
+          "text": "more expensive per token. So, if you're"
+        },
+        {
+          "endMs": 455520,
+          "startMs": 451480,
+          "startTime": "7:31",
+          "text": "measuring a given input and output that"
+        },
+        {
+          "endMs": 458720,
+          "startMs": 453400,
+          "startTime": "7:33",
+          "text": "are the same work between the old and"
+        },
+        {
+          "endMs": 460080,
+          "startMs": 455520,
+          "startTime": "7:35",
+          "text": "new models, 5.5 is 2x more expensive."
+        },
+        {
+          "endMs": 462120,
+          "startMs": 458720,
+          "startTime": "7:38",
+          "text": "It's double the cost for input and"
+        },
+        {
+          "endMs": 463840,
+          "startMs": 460080,
+          "startTime": "7:40",
+          "text": "output tokens. But if you compare per"
+        },
+        {
+          "endMs": 465680,
+          "startMs": 462120,
+          "startTime": "7:42",
+          "text": "level of intelligence and the number of"
+        },
+        {
+          "endMs": 467560,
+          "startMs": 463840,
+          "startTime": "7:43",
+          "text": "tokens generated, things get much more"
+        },
+        {
+          "endMs": 469080,
+          "startMs": 465680,
+          "startTime": "7:45",
+          "text": "interesting. GPT-5.5 is the"
+        },
+        {
+          "endMs": 471480,
+          "startMs": 467560,
+          "startTime": "7:47",
+          "text": "highest-scoring model on artificial"
+        },
+        {
+          "endMs": 473320,
+          "startMs": 469080,
+          "startTime": "7:49",
+          "text": "analysis. It is at 60 points, whereas"
+        },
+        {
+          "endMs": 476280,
+          "startMs": 471480,
+          "startTime": "7:51",
+          "text": "the previous generation with Opus 4.7,"
+        },
+        {
+          "endMs": 479400,
+          "startMs": 473320,
+          "startTime": "7:53",
+          "text": "Gemini 3.1 Pro, and GPT-5.4 were only at"
+        },
+        {
+          "endMs": 481440,
+          "startMs": 476280,
+          "startTime": "7:56",
+          "text": "57 points. Meaningful improvement. But,"
+        },
+        {
+          "endMs": 483360,
+          "startMs": 479400,
+          "startTime": "7:59",
+          "text": "I'm going to add something to this."
+        },
+        {
+          "endMs": 486720,
+          "startMs": 481440,
+          "startTime": "8:01",
+          "text": "GPT-5.5"
+        },
+        {
+          "endMs": 488480,
+          "startMs": 483360,
+          "startTime": "8:03",
+          "text": "low, as well as GPT-5.5"
+        },
+        {
+          "endMs": 491720,
+          "startMs": 486720,
+          "startTime": "8:06",
+          "text": "medium. And here's what super"
+        },
+        {
+          "endMs": 495440,
+          "startMs": 488480,
+          "startTime": "8:08",
+          "text": "interesting. 5.5 medium scores the same"
+        },
+        {
+          "endMs": 497960,
+          "startMs": 491720,
+          "startTime": "8:11",
+          "text": "as 5.4 X high, and 5.5 low still scores"
+        },
+        {
+          "endMs": 500520,
+          "startMs": 495440,
+          "startTime": "8:15",
+          "text": "very well, too, comparable to Claude"
+        },
+        {
+          "endMs": 503080,
+          "startMs": 497960,
+          "startTime": "8:17",
+          "text": "Sonnet 4.6. But, when we go back down to"
+        },
+        {
+          "endMs": 505240,
+          "startMs": 500520,
+          "startTime": "8:20",
+          "text": "the cost efficiency, this is the cost"
+        },
+        {
+          "endMs": 507200,
+          "startMs": 503080,
+          "startTime": "8:23",
+          "text": "that artificial analysis paid or would"
+        },
+        {
+          "endMs": 509800,
+          "startMs": 505240,
+          "startTime": "8:25",
+          "text": "have paid if they weren't comped to run"
+        },
+        {
+          "endMs": 512120,
+          "startMs": 507200,
+          "startTime": "8:27",
+          "text": "their entire benchmark suite. Opus 4.7"
+        },
+        {
+          "endMs": 514200,
+          "startMs": 509800,
+          "startTime": "8:29",
+          "text": "is the most expensive by far at 5 grand,"
+        },
+        {
+          "endMs": 516719,
+          "startMs": 512120,
+          "startTime": "8:32",
+          "text": "even though it's less smart than 5.5."
+        },
+        {
+          "endMs": 519200,
+          "startMs": 514200,
+          "startTime": "8:34",
+          "text": "Remember, 5.5 medium and 5.4 X high are"
+        },
+        {
+          "endMs": 522000,
+          "startMs": 516719,
+          "startTime": "8:36",
+          "text": "the same level of intelligence. 5.4 X"
+        },
+        {
+          "endMs": 525360,
+          "startMs": 519200,
+          "startTime": "8:39",
+          "text": "high cost $2,800 to run this bench. 5.5"
+        },
+        {
+          "endMs": 527200,
+          "startMs": 522000,
+          "startTime": "8:42",
+          "text": "medium cost under 1,200. So, if that"
+        },
+        {
+          "endMs": 530680,
+          "startMs": 525360,
+          "startTime": "8:45",
+          "text": "level of intelligence was enough for"
+        },
+        {
+          "endMs": 533600,
+          "startMs": 527200,
+          "startTime": "8:47",
+          "text": "you, your cost just got cut in more than"
+        },
+        {
+          "endMs": 535960,
+          "startMs": 530680,
+          "startTime": "8:50",
+          "text": "half. You're now at less than 50% of the"
+        },
+        {
+          "endMs": 538200,
+          "startMs": 533600,
+          "startTime": "8:53",
+          "text": "cost to do those same tasks as you were"
+        },
+        {
+          "endMs": 541400,
+          "startMs": 535960,
+          "startTime": "8:55",
+          "text": "at before. That is a very, very"
+        },
+        {
+          "endMs": 543160,
+          "startMs": 538200,
+          "startTime": "8:58",
+          "text": "meaningful change. Sure, the best model"
+        },
+        {
+          "endMs": 546360,
+          "startMs": 541400,
+          "startTime": "9:01",
+          "text": "in the world got slightly more expensive"
+        },
+        {
+          "endMs": 548240,
+          "startMs": 543160,
+          "startTime": "9:03",
+          "text": "going from 2,800 to 3,300, but that same"
+        },
+        {
+          "endMs": 550000,
+          "startMs": 546360,
+          "startTime": "9:06",
+          "text": "tier of intelligence from before, the"
+        },
+        {
+          "endMs": 552080,
+          "startMs": 548240,
+          "startTime": "9:08",
+          "text": "one that came out 2 months ago that we"
+        },
+        {
+          "endMs": 554120,
+          "startMs": 550000,
+          "startTime": "9:10",
+          "text": "were totally happy with, is now less"
+        },
+        {
+          "endMs": 556120,
+          "startMs": 552080,
+          "startTime": "9:12",
+          "text": "than half the price. And if you're okay"
+        },
+        {
+          "endMs": 558240,
+          "startMs": 554120,
+          "startTime": "9:14",
+          "text": "with going a little bit dumber, not even"
+        },
+        {
+          "endMs": 560400,
+          "startMs": 556120,
+          "startTime": "9:16",
+          "text": "much dumber, just like Sonnet levels,"
+        },
+        {
+          "endMs": 562960,
+          "startMs": 558240,
+          "startTime": "9:18",
+          "text": "the price drops all the way to $500,"
+        },
+        {
+          "endMs": 566160,
+          "startMs": 560400,
+          "startTime": "9:20",
+          "text": "another halving of the price. And this"
+        },
+        {
+          "endMs": 568640,
+          "startMs": 562960,
+          "startTime": "9:22",
+          "text": "model, 5.5 low, is as smart as 4.6"
+        },
+        {
+          "endMs": 571080,
+          "startMs": 566160,
+          "startTime": "9:26",
+          "text": "Sonnet max, which is the second most"
+        },
+        {
+          "endMs": 572560,
+          "startMs": 568640,
+          "startTime": "9:28",
+          "text": "expensive model at $4,200."
+        },
+        {
+          "endMs": 574880,
+          "startMs": 571080,
+          "startTime": "9:31",
+          "text": "And this model came out very recently,"
+        },
+        {
+          "endMs": 577760,
+          "startMs": 572560,
+          "startTime": "9:32",
+          "text": "as well. So, again, if we look at this"
+        },
+        {
+          "endMs": 580960,
+          "startMs": 574880,
+          "startTime": "9:34",
+          "text": "based on the intelligence level per"
+        },
+        {
+          "endMs": 584320,
+          "startMs": 577760,
+          "startTime": "9:37",
+          "text": "dollar. The cost per IQ point here has"
+        },
+        {
+          "endMs": 586920,
+          "startMs": 580960,
+          "startTime": "9:40",
+          "text": "dropped by 8x in just a few months."
+        }
+      ],
+      "source": "live",
+      "totalDurationMs": 3404880,
+      "videoId": "lNVa33qUzZ8"
+    }
+  },
+  "error": null,
+  "logId": "log_nJX4M78fwZ5K"
+}

@@ -1,0 +1,1784 @@
+{
+  "successful": true,
+  "data": {
+    "credits": {
+      "charged": 2,
+      "remaining": 28
+    },
+    "data": {
+      "_truncated": {
+        "field": "segments",
+        "reason": "response size limit — lower \"limit\" for full detail",
+        "shown": 293,
+        "total": 898
+      },
+      "dataRefreshedAt": "2026-09-22T00:18:57.568Z",
+      "fullText": "Oh boy, it's new model time. This one's very different though. This isn't our usual new LLM that's slightly better at code and it's not going to be the type of thing that the model counter guy is going to show up and say, \"Look, best new model.\" If anything, this might take the counter guy out of his job because this model is for data processing. It's by a company called Typesafe AI and it's called Jev. The point of this model isn't to generate text, write code, or do all the things that we expect models to do today. It is classification. This model is the best model ever made to take data and organize it and classify it. It returns JSON perfectly in a type-S safe format. When you give it a format, it does it and it does it well. That means this model isn't going to replace things like Fable or Astra. Well, hopefully not. If you are using Fable and Astra for the stuff you can do with this, I have a lot of questions for you. All that said, this model is incredibly capable, and that's why it's blown up on Twitter. I've seen demos of everything from lightning fast computer use even in like the iOS simulator to the model playing Minecraft at lightning speed to compaction that takes under a second instead of multiple minutes. I can't wait to show you all the best things you can do with this model. But first, we got to classify something. The next section, which is the sponsor break. If you're not a developer, you can skip this ad. But if you are, you should listen close. Have you ever sent a prompt to Cloud Code, Codeex, Cursor, or some other tool and been surprised that it took hours when you expected it to take minutes? Did you check to see why? Because I would bet, good money, there's a very good chance that a handful of things happened. Maybe it took too long to download the Docker image. Maybe it spun up and had some error when it did. Maybe the CI that it was trying to run took forever. Maybe it pushed it up to GitHub and the CI run on there was going to take hours long. I cannot tell you how many times I've run into this. Wouldn't it be nice if your agents could do all of those things way faster and more reliably, and when those things failed, you got insight into it? Imagine taking all of these 8-minute builds and knocking them down to 20 seconds or building and testing three React apps in seven Go binaries in 30 seconds or making your crossplatform builds 10 to 20 times faster. Hopefully, you get the idea now because today's sponsor is depot and they are trying their damnedest to make AI more capable, not by giving it things it can't do already, but by making all of the things it does do more reliable and faster. Whether you're looking for a faster and cheaper alternative to GitHub actions or just a nice place to let your agents run or a cache for all the Docker images you and your team are using, Dep Depot provides all of this and more. Their CI platform is fully compatible with GitHub actions, which means you can swap over trivially. But if you don't want to deal with GitHub's downtime, you can move fully over to depot's platform. Still compatible with actions, but without having to worry about GitHub's reliability. You can also transform those workflows to let them run in parallel, which ends up being comically faster than the alternatives on GitHub. Their CLI is incredible, too. You and your agents will understand it immediately. It makes it trivial to migrate your CI, run it without pushing up code, diagnose things when they go wrong, find secrets and clone them across different places, and more. You can even SSH into a session while it is running to figure out what's going wrong in real time. And when I say you, obviously, I mean your agents. GitHub actions were poorly assembled for humans over 10 years ago. Depot was crafted carefully for agents today. Figure out what that means at soyv.link/depo. Quick breakdown on how this all happened because it's actually been pretty crazy to watch. It feels like it just poof appeared and took over my entire Twitter feed. Like half of what I've been seeing is all of the stuff about Jev. It was created by Dio who used to work at OpenAI, he apparently helped co-invent chat GPT as well as RHF. And as great as RHF is for model behaviors, it is not helping as much with classification, which is the thing he cares about. If you focus more on the classifying side and less on the general usage of text generation side, what you can get is way way faster and way way cheaper. In particular, all output tokens being free. The cost characteristics of this model are almost as insane as the speed. Both are crazy. So, let's read through the announcement. The core concept here is system one models. This is an idea that comes from thinking fast and slow by Daniel Conman. System one is the fast and intuitive judgment of your brain. the part of your brain that can do things without effort that looks at somebody's like, \"Yeah, that shirt's blue.\" System two is slow and deliberate reasoning. In type safe's framing, Jev handles the first kind of task while reasoning models still handle the second. They named it Jeb after Jevan's paradox, which I actually think is pretty cute. The idea is that when the steam engine gets more efficient, it actually increased coal consumption, not decreased, because now that power is cheaper, we can use it for more things. That is really the right way to think of this model. It's not unlocking new capabilities that weren't possible before. It's making them fast and cheap enough that they're way more viable than they've been. But what are those cases? What is this valuable for? Pretty much anything that needs to be classified. Think organizing videos by their topic in my YouTube channel. Figuring out if an email is important or not and what category it should be put under. Things like safety and moderation, identifying what messages are safe and which ones aren't and what makes them unsafe. There's so many things you can use it for. And when it's as insanely fast as this model is, the results are kind of crazy. We'll go to the official announcement in a sec, but first I just want to show you how insanely fast the model is with an example of something it can do. Not saying it can do it well. You'll actually see the type 1, type two distinction here. But this is a game of checkers that I built to use Jev. Jev takes the whole board as an input, as a state, not an image because it doesn't have vision. It takes the board state as data and then it chooses what to move based on the output it gives. So here it might say it wants to move B6 to C5. I go first, so I'll make a move. Watch how fast it responds. I'm clicking now. Yeah, it's practically instant. There is a catch though. It's not very smart. I was able to barely pay attention while playing and crush this model. Yeah, it's just it's not good. I was barely paying attention and I'm going to crush it here. Point I'm trying to make is that it's super fast but it's not using the reasoning part of its brain so to speak. It is just processing the data. Let's take a look at what do models have been superhuman at chat for years. So where's all the automation? This has been my driving question for the last four years. At OpenAI, I help build the methods that make language models useful at following instructions and talking with people. The work ended up as the research behind Chaz GBT. At the time, I thought maybe chat models would lead to AGI. But despite the hype, it became obvious to me that there was something really big missing. After two years in stealth, countless technical challenges, and research breakthroughs, he's beyond excited to announce that today Typesafe AI is releasing its first system 1 model, a new class of frontier model built to make fast structured decisions that software can use directly. This is one of the biggest important pieces to understand. The point of this model is to integrate it into your code. This model isn't even useful if a human triggers it. The model is useful if the human triggers some code to run or something else triggers some code to run and when the code runs it passes certain data to this model and then it comes back with JSON. That's when it's useful when it's integrated almost like a function in your codebase. In order to do this they had to build a new stack entirely focused on automation, new model architectures, parallel samplers for maximum efficiency and training methods that they call reinforcement learning for calibrated decisions. The first public version of this is Jev which is now available in early access. It is invite only, but you can get access to it on things like open route or the versel AI gateway and a couple other places. While Jev gives up string generation, it's optimized for structural outputs and it can't hallucinate. This is a key piece. Since it has to give the output in a certain format, it's not going to change or make up the format, which happens a hilarious amount. Think of Jev as a frontier intelligence function call. Unstructured state in, typed probabilistic decisions out. That's the key piece. You hand it some [ __ ] text data and you get back a type- safe shape. There have been other attempts to do this in various different ways from attempts to train models to act like this to tools to force other models to behave similarly too. One that I really liked once it clicked for me is called BAML. The point of BAML was to make a language that interfaces between agents and real code so that you can define something in a syntax that of course agents understand but also to give a specific format and instruction set to the model to get it to output a certain shape. They frame it kind of like TypeScript but as the interface from the TypeScript to the LLM. For example, here is a text sentiment classifier that they have on their site. You give it a label type which positive, negative or neutral are valid for verdict which has label and confidence which is a float. Then you define the function classify. It takes in text. It outputs a verdict. You use OpenAI GD55 here as the client. You hand it the prompt. You use their special formatting things. And then you can call this in your TypeScript code in order to get a formatted correctly output. BAML is basically a madeup language, but what makes it cool is how well it interfaces with other languages and how it fixes all the things that can go wrong. For example, I was using this a bunch with GBT OSS120B to find comments that mentioned sponsors and things. And when I did that, I had a really good experience with it. It all just worked. And when I tried to move off BAML for another thing I was doing, I learned that apparently GPOSS120B doesn't format JSON correctly half the time. One of the many things they do with BAML is in their runtime, they fix the mal formatting in the JSON outputs to make sure it is guaranteed to match the format it puts on the tin. when you say this is the response format and you call it through BAML that's the format you get sometimes that takes time though because it has to reformat it fix it change it all with code that it's running but and even some high-end models can sometimes screw these things up literally can't if you give it a JSON format you get back that JSON format it doesn't handle things like a message history well as input it's really looking for structured program state like data it can use to make decisions I already see people getting confused so I want to be really really clear here the point of things like BAML, like Jev, and like all structured outputs is because LLMs are not deterministic. If I have code that formats someone's name, it will always do the same thing when I call it with a given name. If I have an LLM that I ask to format the name, it might do something else. If I have a function that returns a user object that has a name colon, string, and an age colon, number, and I write code to get that, it will alway …[+22166 chars truncated]",
+      "segments": [
+        {
+          "endMs": 3439,
+          "startMs": 80,
+          "startTime": "0:00",
+          "text": "Oh boy, it's new model time. This one's"
+        },
+        {
+          "endMs": 5440,
+          "startMs": 1920,
+          "startTime": "0:01",
+          "text": "very different though. This isn't our"
+        },
+        {
+          "endMs": 6960,
+          "startMs": 3439,
+          "startTime": "0:03",
+          "text": "usual new LLM that's slightly better at"
+        },
+        {
+          "endMs": 8559,
+          "startMs": 5440,
+          "startTime": "0:05",
+          "text": "code and it's not going to be the type"
+        },
+        {
+          "endMs": 9840,
+          "startMs": 6960,
+          "startTime": "0:06",
+          "text": "of thing that the model counter guy is"
+        },
+        {
+          "endMs": 11679,
+          "startMs": 8559,
+          "startTime": "0:08",
+          "text": "going to show up and say, \"Look, best"
+        },
+        {
+          "endMs": 13440,
+          "startMs": 9840,
+          "startTime": "0:09",
+          "text": "new model.\" If anything, this might take"
+        },
+        {
+          "endMs": 15839,
+          "startMs": 11679,
+          "startTime": "0:11",
+          "text": "the counter guy out of his job because"
+        },
+        {
+          "endMs": 18000,
+          "startMs": 13440,
+          "startTime": "0:13",
+          "text": "this model is for data processing. It's"
+        },
+        {
+          "endMs": 19840,
+          "startMs": 15839,
+          "startTime": "0:15",
+          "text": "by a company called Typesafe AI and it's"
+        },
+        {
+          "endMs": 22320,
+          "startMs": 18000,
+          "startTime": "0:18",
+          "text": "called Jev. The point of this model"
+        },
+        {
+          "endMs": 23760,
+          "startMs": 19840,
+          "startTime": "0:19",
+          "text": "isn't to generate text, write code, or"
+        },
+        {
+          "endMs": 26800,
+          "startMs": 22320,
+          "startTime": "0:22",
+          "text": "do all the things that we expect models"
+        },
+        {
+          "endMs": 28960,
+          "startMs": 23760,
+          "startTime": "0:23",
+          "text": "to do today. It is classification. This"
+        },
+        {
+          "endMs": 31439,
+          "startMs": 26800,
+          "startTime": "0:26",
+          "text": "model is the best model ever made to"
+        },
+        {
+          "endMs": 33920,
+          "startMs": 28960,
+          "startTime": "0:28",
+          "text": "take data and organize it and classify"
+        },
+        {
+          "endMs": 35360,
+          "startMs": 31439,
+          "startTime": "0:31",
+          "text": "it. It returns JSON perfectly in a"
+        },
+        {
+          "endMs": 37360,
+          "startMs": 33920,
+          "startTime": "0:33",
+          "text": "type-S safe format. When you give it a"
+        },
+        {
+          "endMs": 38800,
+          "startMs": 35360,
+          "startTime": "0:35",
+          "text": "format, it does it and it does it well."
+        },
+        {
+          "endMs": 40559,
+          "startMs": 37360,
+          "startTime": "0:37",
+          "text": "That means this model isn't going to"
+        },
+        {
+          "endMs": 42000,
+          "startMs": 38800,
+          "startTime": "0:38",
+          "text": "replace things like Fable or Astra."
+        },
+        {
+          "endMs": 43520,
+          "startMs": 40559,
+          "startTime": "0:40",
+          "text": "Well, hopefully not. If you are using"
+        },
+        {
+          "endMs": 45520,
+          "startMs": 42000,
+          "startTime": "0:42",
+          "text": "Fable and Astra for the stuff you can do"
+        },
+        {
+          "endMs": 47280,
+          "startMs": 43520,
+          "startTime": "0:43",
+          "text": "with this, I have a lot of questions for"
+        },
+        {
+          "endMs": 48960,
+          "startMs": 45520,
+          "startTime": "0:45",
+          "text": "you. All that said, this model is"
+        },
+        {
+          "endMs": 51120,
+          "startMs": 47280,
+          "startTime": "0:47",
+          "text": "incredibly capable, and that's why it's"
+        },
+        {
+          "endMs": 52719,
+          "startMs": 48960,
+          "startTime": "0:48",
+          "text": "blown up on Twitter. I've seen demos of"
+        },
+        {
+          "endMs": 55039,
+          "startMs": 51120,
+          "startTime": "0:51",
+          "text": "everything from lightning fast computer"
+        },
+        {
+          "endMs": 56960,
+          "startMs": 52719,
+          "startTime": "0:52",
+          "text": "use even in like the iOS simulator to"
+        },
+        {
+          "endMs": 59199,
+          "startMs": 55039,
+          "startTime": "0:55",
+          "text": "the model playing Minecraft at lightning"
+        },
+        {
+          "endMs": 60960,
+          "startMs": 56960,
+          "startTime": "0:56",
+          "text": "speed to compaction that takes under a"
+        },
+        {
+          "endMs": 62320,
+          "startMs": 59199,
+          "startTime": "0:59",
+          "text": "second instead of multiple minutes. I"
+        },
+        {
+          "endMs": 63600,
+          "startMs": 60960,
+          "startTime": "1:00",
+          "text": "can't wait to show you all the best"
+        },
+        {
+          "endMs": 65199,
+          "startMs": 62320,
+          "startTime": "1:02",
+          "text": "things you can do with this model. But"
+        },
+        {
+          "endMs": 66479,
+          "startMs": 63600,
+          "startTime": "1:03",
+          "text": "first, we got to classify something. The"
+        },
+        {
+          "endMs": 67760,
+          "startMs": 65199,
+          "startTime": "1:05",
+          "text": "next section, which is the sponsor"
+        },
+        {
+          "endMs": 69280,
+          "startMs": 66479,
+          "startTime": "1:06",
+          "text": "break. If you're not a developer, you"
+        },
+        {
+          "endMs": 70799,
+          "startMs": 67760,
+          "startTime": "1:07",
+          "text": "can skip this ad. But if you are, you"
+        },
+        {
+          "endMs": 72720,
+          "startMs": 69280,
+          "startTime": "1:09",
+          "text": "should listen close. Have you ever sent"
+        },
+        {
+          "endMs": 74320,
+          "startMs": 70799,
+          "startTime": "1:10",
+          "text": "a prompt to Cloud Code, Codeex, Cursor,"
+        },
+        {
+          "endMs": 75920,
+          "startMs": 72720,
+          "startTime": "1:12",
+          "text": "or some other tool and been surprised"
+        },
+        {
+          "endMs": 77680,
+          "startMs": 74320,
+          "startTime": "1:14",
+          "text": "that it took hours when you expected it"
+        },
+        {
+          "endMs": 79680,
+          "startMs": 75920,
+          "startTime": "1:15",
+          "text": "to take minutes? Did you check to see"
+        },
+        {
+          "endMs": 81040,
+          "startMs": 77680,
+          "startTime": "1:17",
+          "text": "why? Because I would bet, good money,"
+        },
+        {
+          "endMs": 82720,
+          "startMs": 79680,
+          "startTime": "1:19",
+          "text": "there's a very good chance that a"
+        },
+        {
+          "endMs": 84159,
+          "startMs": 81040,
+          "startTime": "1:21",
+          "text": "handful of things happened. Maybe it"
+        },
+        {
+          "endMs": 85920,
+          "startMs": 82720,
+          "startTime": "1:22",
+          "text": "took too long to download the Docker"
+        },
+        {
+          "endMs": 88000,
+          "startMs": 84159,
+          "startTime": "1:24",
+          "text": "image. Maybe it spun up and had some"
+        },
+        {
+          "endMs": 89600,
+          "startMs": 85920,
+          "startTime": "1:25",
+          "text": "error when it did. Maybe the CI that it"
+        },
+        {
+          "endMs": 91439,
+          "startMs": 88000,
+          "startTime": "1:28",
+          "text": "was trying to run took forever. Maybe it"
+        },
+        {
+          "endMs": 93439,
+          "startMs": 89600,
+          "startTime": "1:29",
+          "text": "pushed it up to GitHub and the CI run on"
+        },
+        {
+          "endMs": 94799,
+          "startMs": 91439,
+          "startTime": "1:31",
+          "text": "there was going to take hours long. I"
+        },
+        {
+          "endMs": 96400,
+          "startMs": 93439,
+          "startTime": "1:33",
+          "text": "cannot tell you how many times I've run"
+        },
+        {
+          "endMs": 98320,
+          "startMs": 94799,
+          "startTime": "1:34",
+          "text": "into this. Wouldn't it be nice if your"
+        },
+        {
+          "endMs": 100320,
+          "startMs": 96400,
+          "startTime": "1:36",
+          "text": "agents could do all of those things way"
+        },
+        {
+          "endMs": 102159,
+          "startMs": 98320,
+          "startTime": "1:38",
+          "text": "faster and more reliably, and when those"
+        },
+        {
+          "endMs": 104079,
+          "startMs": 100320,
+          "startTime": "1:40",
+          "text": "things failed, you got insight into it?"
+        },
+        {
+          "endMs": 105759,
+          "startMs": 102159,
+          "startTime": "1:42",
+          "text": "Imagine taking all of these 8-minute"
+        },
+        {
+          "endMs": 108000,
+          "startMs": 104079,
+          "startTime": "1:44",
+          "text": "builds and knocking them down to 20"
+        },
+        {
+          "endMs": 110720,
+          "startMs": 105759,
+          "startTime": "1:45",
+          "text": "seconds or building and testing three"
+        },
+        {
+          "endMs": 112799,
+          "startMs": 108000,
+          "startTime": "1:48",
+          "text": "React apps in seven Go binaries in 30"
+        },
+        {
+          "endMs": 115200,
+          "startMs": 110720,
+          "startTime": "1:50",
+          "text": "seconds or making your crossplatform"
+        },
+        {
+          "endMs": 116560,
+          "startMs": 112799,
+          "startTime": "1:52",
+          "text": "builds 10 to 20 times faster. Hopefully,"
+        },
+        {
+          "endMs": 118240,
+          "startMs": 115200,
+          "startTime": "1:55",
+          "text": "you get the idea now because today's"
+        },
+        {
+          "endMs": 121200,
+          "startMs": 116560,
+          "startTime": "1:56",
+          "text": "sponsor is depot and they are trying"
+        },
+        {
+          "endMs": 122799,
+          "startMs": 118240,
+          "startTime": "1:58",
+          "text": "their damnedest to make AI more capable,"
+        },
+        {
+          "endMs": 124399,
+          "startMs": 121200,
+          "startTime": "2:01",
+          "text": "not by giving it things it can't do"
+        },
+        {
+          "endMs": 126479,
+          "startMs": 122799,
+          "startTime": "2:02",
+          "text": "already, but by making all of the things"
+        },
+        {
+          "endMs": 127840,
+          "startMs": 124399,
+          "startTime": "2:04",
+          "text": "it does do more reliable and faster."
+        },
+        {
+          "endMs": 129520,
+          "startMs": 126479,
+          "startTime": "2:06",
+          "text": "Whether you're looking for a faster and"
+        },
+        {
+          "endMs": 131280,
+          "startMs": 127840,
+          "startTime": "2:07",
+          "text": "cheaper alternative to GitHub actions or"
+        },
+        {
+          "endMs": 133280,
+          "startMs": 129520,
+          "startTime": "2:09",
+          "text": "just a nice place to let your agents run"
+        },
+        {
+          "endMs": 134720,
+          "startMs": 131280,
+          "startTime": "2:11",
+          "text": "or a cache for all the Docker images you"
+        },
+        {
+          "endMs": 136239,
+          "startMs": 133280,
+          "startTime": "2:13",
+          "text": "and your team are using, Dep Depot"
+        },
+        {
+          "endMs": 137920,
+          "startMs": 134720,
+          "startTime": "2:14",
+          "text": "provides all of this and more. Their CI"
+        },
+        {
+          "endMs": 139440,
+          "startMs": 136239,
+          "startTime": "2:16",
+          "text": "platform is fully compatible with GitHub"
+        },
+        {
+          "endMs": 141120,
+          "startMs": 137920,
+          "startTime": "2:17",
+          "text": "actions, which means you can swap over"
+        },
+        {
+          "endMs": 142800,
+          "startMs": 139440,
+          "startTime": "2:19",
+          "text": "trivially. But if you don't want to deal"
+        },
+        {
+          "endMs": 144959,
+          "startMs": 141120,
+          "startTime": "2:21",
+          "text": "with GitHub's downtime, you can move"
+        },
+        {
+          "endMs": 146560,
+          "startMs": 142800,
+          "startTime": "2:22",
+          "text": "fully over to depot's platform. Still"
+        },
+        {
+          "endMs": 148000,
+          "startMs": 144959,
+          "startTime": "2:24",
+          "text": "compatible with actions, but without"
+        },
+        {
+          "endMs": 149520,
+          "startMs": 146560,
+          "startTime": "2:26",
+          "text": "having to worry about GitHub's"
+        },
+        {
+          "endMs": 150959,
+          "startMs": 148000,
+          "startTime": "2:28",
+          "text": "reliability. You can also transform"
+        },
+        {
+          "endMs": 153360,
+          "startMs": 149520,
+          "startTime": "2:29",
+          "text": "those workflows to let them run in"
+        },
+        {
+          "endMs": 155040,
+          "startMs": 150959,
+          "startTime": "2:30",
+          "text": "parallel, which ends up being comically"
+        },
+        {
+          "endMs": 157120,
+          "startMs": 153360,
+          "startTime": "2:33",
+          "text": "faster than the alternatives on GitHub."
+        },
+        {
+          "endMs": 158400,
+          "startMs": 155040,
+          "startTime": "2:35",
+          "text": "Their CLI is incredible, too. You and"
+        },
+        {
+          "endMs": 159760,
+          "startMs": 157120,
+          "startTime": "2:37",
+          "text": "your agents will understand it"
+        },
+        {
+          "endMs": 161760,
+          "startMs": 158400,
+          "startTime": "2:38",
+          "text": "immediately. It makes it trivial to"
+        },
+        {
+          "endMs": 163680,
+          "startMs": 159760,
+          "startTime": "2:39",
+          "text": "migrate your CI, run it without pushing"
+        },
+        {
+          "endMs": 165360,
+          "startMs": 161760,
+          "startTime": "2:41",
+          "text": "up code, diagnose things when they go"
+        },
+        {
+          "endMs": 166959,
+          "startMs": 163680,
+          "startTime": "2:43",
+          "text": "wrong, find secrets and clone them"
+        },
+        {
+          "endMs": 169120,
+          "startMs": 165360,
+          "startTime": "2:45",
+          "text": "across different places, and more. You"
+        },
+        {
+          "endMs": 170480,
+          "startMs": 166959,
+          "startTime": "2:46",
+          "text": "can even SSH into a session while it is"
+        },
+        {
+          "endMs": 171920,
+          "startMs": 169120,
+          "startTime": "2:49",
+          "text": "running to figure out what's going wrong"
+        },
+        {
+          "endMs": 173680,
+          "startMs": 170480,
+          "startTime": "2:50",
+          "text": "in real time. And when I say you,"
+        },
+        {
+          "endMs": 175360,
+          "startMs": 171920,
+          "startTime": "2:51",
+          "text": "obviously, I mean your agents. GitHub"
+        },
+        {
+          "endMs": 177760,
+          "startMs": 173680,
+          "startTime": "2:53",
+          "text": "actions were poorly assembled for humans"
+        },
+        {
+          "endMs": 179599,
+          "startMs": 175360,
+          "startTime": "2:55",
+          "text": "over 10 years ago. Depot was crafted"
+        },
+        {
+          "endMs": 182000,
+          "startMs": 177760,
+          "startTime": "2:57",
+          "text": "carefully for agents today. Figure out"
+        },
+        {
+          "endMs": 183840,
+          "startMs": 179599,
+          "startTime": "2:59",
+          "text": "what that means at soyv.link/depo."
+        },
+        {
+          "endMs": 185120,
+          "startMs": 182000,
+          "startTime": "3:02",
+          "text": "Quick breakdown on how this all happened"
+        },
+        {
+          "endMs": 187280,
+          "startMs": 183840,
+          "startTime": "3:03",
+          "text": "because it's actually been pretty crazy"
+        },
+        {
+          "endMs": 189360,
+          "startMs": 185120,
+          "startTime": "3:05",
+          "text": "to watch. It feels like it just poof"
+        },
+        {
+          "endMs": 191040,
+          "startMs": 187280,
+          "startTime": "3:07",
+          "text": "appeared and took over my entire Twitter"
+        },
+        {
+          "endMs": 193120,
+          "startMs": 189360,
+          "startTime": "3:09",
+          "text": "feed. Like half of what I've been seeing"
+        },
+        {
+          "endMs": 194879,
+          "startMs": 191040,
+          "startTime": "3:11",
+          "text": "is all of the stuff about Jev. It was"
+        },
+        {
+          "endMs": 197200,
+          "startMs": 193120,
+          "startTime": "3:13",
+          "text": "created by Dio who used to work at"
+        },
+        {
+          "endMs": 199920,
+          "startMs": 194879,
+          "startTime": "3:14",
+          "text": "OpenAI, he apparently helped co-invent"
+        },
+        {
+          "endMs": 202879,
+          "startMs": 197200,
+          "startTime": "3:17",
+          "text": "chat GPT as well as RHF. And as great as"
+        },
+        {
+          "endMs": 204480,
+          "startMs": 199920,
+          "startTime": "3:19",
+          "text": "RHF is for model behaviors, it is not"
+        },
+        {
+          "endMs": 206159,
+          "startMs": 202879,
+          "startTime": "3:22",
+          "text": "helping as much with classification,"
+        },
+        {
+          "endMs": 208080,
+          "startMs": 204480,
+          "startTime": "3:24",
+          "text": "which is the thing he cares about. If"
+        },
+        {
+          "endMs": 210159,
+          "startMs": 206159,
+          "startTime": "3:26",
+          "text": "you focus more on the classifying side"
+        },
+        {
+          "endMs": 212480,
+          "startMs": 208080,
+          "startTime": "3:28",
+          "text": "and less on the general usage of text"
+        },
+        {
+          "endMs": 214959,
+          "startMs": 210159,
+          "startTime": "3:30",
+          "text": "generation side, what you can get is way"
+        },
+        {
+          "endMs": 216799,
+          "startMs": 212480,
+          "startTime": "3:32",
+          "text": "way faster and way way cheaper. In"
+        },
+        {
+          "endMs": 218480,
+          "startMs": 214959,
+          "startTime": "3:34",
+          "text": "particular, all output tokens being"
+        },
+        {
+          "endMs": 220239,
+          "startMs": 216799,
+          "startTime": "3:36",
+          "text": "free. The cost characteristics of this"
+        },
+        {
+          "endMs": 222400,
+          "startMs": 218480,
+          "startTime": "3:38",
+          "text": "model are almost as insane as the speed."
+        },
+        {
+          "endMs": 224640,
+          "startMs": 220239,
+          "startTime": "3:40",
+          "text": "Both are crazy. So, let's read through"
+        },
+        {
+          "endMs": 227040,
+          "startMs": 222400,
+          "startTime": "3:42",
+          "text": "the announcement. The core concept here"
+        },
+        {
+          "endMs": 228799,
+          "startMs": 224640,
+          "startTime": "3:44",
+          "text": "is system one models. This is an idea"
+        },
+        {
+          "endMs": 231599,
+          "startMs": 227040,
+          "startTime": "3:47",
+          "text": "that comes from thinking fast and slow"
+        },
+        {
+          "endMs": 233599,
+          "startMs": 228799,
+          "startTime": "3:48",
+          "text": "by Daniel Conman. System one is the fast"
+        },
+        {
+          "endMs": 235040,
+          "startMs": 231599,
+          "startTime": "3:51",
+          "text": "and intuitive judgment of your brain."
+        },
+        {
+          "endMs": 236720,
+          "startMs": 233599,
+          "startTime": "3:53",
+          "text": "the part of your brain that can do"
+        },
+        {
+          "endMs": 237840,
+          "startMs": 235040,
+          "startTime": "3:55",
+          "text": "things without effort that looks at"
+        },
+        {
+          "endMs": 240159,
+          "startMs": 236720,
+          "startTime": "3:56",
+          "text": "somebody's like, \"Yeah, that shirt's"
+        },
+        {
+          "endMs": 242239,
+          "startMs": 237840,
+          "startTime": "3:57",
+          "text": "blue.\" System two is slow and deliberate"
+        },
+        {
+          "endMs": 243760,
+          "startMs": 240159,
+          "startTime": "4:00",
+          "text": "reasoning. In type safe's framing, Jev"
+        },
+        {
+          "endMs": 245120,
+          "startMs": 242239,
+          "startTime": "4:02",
+          "text": "handles the first kind of task while"
+        },
+        {
+          "endMs": 247280,
+          "startMs": 243760,
+          "startTime": "4:03",
+          "text": "reasoning models still handle the"
+        },
+        {
+          "endMs": 248319,
+          "startMs": 245120,
+          "startTime": "4:05",
+          "text": "second. They named it Jeb after Jevan's"
+        },
+        {
+          "endMs": 250159,
+          "startMs": 247280,
+          "startTime": "4:07",
+          "text": "paradox, which I actually think is"
+        },
+        {
+          "endMs": 252080,
+          "startMs": 248319,
+          "startTime": "4:08",
+          "text": "pretty cute. The idea is that when the"
+        },
+        {
+          "endMs": 254400,
+          "startMs": 250159,
+          "startTime": "4:10",
+          "text": "steam engine gets more efficient, it"
+        },
+        {
+          "endMs": 256720,
+          "startMs": 252080,
+          "startTime": "4:12",
+          "text": "actually increased coal consumption, not"
+        },
+        {
+          "endMs": 258560,
+          "startMs": 254400,
+          "startTime": "4:14",
+          "text": "decreased, because now that power is"
+        },
+        {
+          "endMs": 260079,
+          "startMs": 256720,
+          "startTime": "4:16",
+          "text": "cheaper, we can use it for more things."
+        },
+        {
+          "endMs": 262000,
+          "startMs": 258560,
+          "startTime": "4:18",
+          "text": "That is really the right way to think of"
+        },
+        {
+          "endMs": 263600,
+          "startMs": 260079,
+          "startTime": "4:20",
+          "text": "this model. It's not unlocking new"
+        },
+        {
+          "endMs": 265919,
+          "startMs": 262000,
+          "startTime": "4:22",
+          "text": "capabilities that weren't possible"
+        },
+        {
+          "endMs": 267440,
+          "startMs": 263600,
+          "startTime": "4:23",
+          "text": "before. It's making them fast and cheap"
+        },
+        {
+          "endMs": 269680,
+          "startMs": 265919,
+          "startTime": "4:25",
+          "text": "enough that they're way more viable than"
+        },
+        {
+          "endMs": 271840,
+          "startMs": 267440,
+          "startTime": "4:27",
+          "text": "they've been. But what are those cases?"
+        },
+        {
+          "endMs": 274240,
+          "startMs": 269680,
+          "startTime": "4:29",
+          "text": "What is this valuable for? Pretty much"
+        },
+        {
+          "endMs": 276320,
+          "startMs": 271840,
+          "startTime": "4:31",
+          "text": "anything that needs to be classified."
+        },
+        {
+          "endMs": 278479,
+          "startMs": 274240,
+          "startTime": "4:34",
+          "text": "Think organizing videos by their topic"
+        },
+        {
+          "endMs": 280560,
+          "startMs": 276320,
+          "startTime": "4:36",
+          "text": "in my YouTube channel. Figuring out if"
+        },
+        {
+          "endMs": 282400,
+          "startMs": 278479,
+          "startTime": "4:38",
+          "text": "an email is important or not and what"
+        },
+        {
+          "endMs": 284320,
+          "startMs": 280560,
+          "startTime": "4:40",
+          "text": "category it should be put under. Things"
+        },
+        {
+          "endMs": 285840,
+          "startMs": 282400,
+          "startTime": "4:42",
+          "text": "like safety and moderation, identifying"
+        },
+        {
+          "endMs": 287759,
+          "startMs": 284320,
+          "startTime": "4:44",
+          "text": "what messages are safe and which ones"
+        },
+        {
+          "endMs": 289199,
+          "startMs": 285840,
+          "startTime": "4:45",
+          "text": "aren't and what makes them unsafe."
+        },
+        {
+          "endMs": 291440,
+          "startMs": 287759,
+          "startTime": "4:47",
+          "text": "There's so many things you can use it"
+        },
+        {
+          "endMs": 293280,
+          "startMs": 289199,
+          "startTime": "4:49",
+          "text": "for. And when it's as insanely fast as"
+        },
+        {
+          "endMs": 294720,
+          "startMs": 291440,
+          "startTime": "4:51",
+          "text": "this model is, the results are kind of"
+        },
+        {
+          "endMs": 296160,
+          "startMs": 293280,
+          "startTime": "4:53",
+          "text": "crazy. We'll go to the official"
+        },
+        {
+          "endMs": 298080,
+          "startMs": 294720,
+          "startTime": "4:54",
+          "text": "announcement in a sec, but first I just"
+        },
+        {
+          "endMs": 299840,
+          "startMs": 296160,
+          "startTime": "4:56",
+          "text": "want to show you how insanely fast the"
+        },
+        {
+          "endMs": 301360,
+          "startMs": 298080,
+          "startTime": "4:58",
+          "text": "model is with an example of something it"
+        },
+        {
+          "endMs": 302800,
+          "startMs": 299840,
+          "startTime": "4:59",
+          "text": "can do. Not saying it can do it well."
+        },
+        {
+          "endMs": 304560,
+          "startMs": 301360,
+          "startTime": "5:01",
+          "text": "You'll actually see the type 1, type two"
+        },
+        {
+          "endMs": 307600,
+          "startMs": 302800,
+          "startTime": "5:02",
+          "text": "distinction here. But this is a game of"
+        },
+        {
+          "endMs": 310160,
+          "startMs": 304560,
+          "startTime": "5:04",
+          "text": "checkers that I built to use Jev. Jev"
+        },
+        {
+          "endMs": 311680,
+          "startMs": 307600,
+          "startTime": "5:07",
+          "text": "takes the whole board as an input, as a"
+        },
+        {
+          "endMs": 314080,
+          "startMs": 310160,
+          "startTime": "5:10",
+          "text": "state, not an image because it doesn't"
+        },
+        {
+          "endMs": 317039,
+          "startMs": 311680,
+          "startTime": "5:11",
+          "text": "have vision. It takes the board state as"
+        },
+        {
+          "endMs": 319520,
+          "startMs": 314080,
+          "startTime": "5:14",
+          "text": "data and then it chooses what to move"
+        },
+        {
+          "endMs": 323520,
+          "startMs": 317039,
+          "startTime": "5:17",
+          "text": "based on the output it gives. So here it"
+        },
+        {
+          "endMs": 325440,
+          "startMs": 319520,
+          "startTime": "5:19",
+          "text": "might say it wants to move B6 to C5. I"
+        },
+        {
+          "endMs": 328560,
+          "startMs": 323520,
+          "startTime": "5:23",
+          "text": "go first, so I'll make a move. Watch how"
+        },
+        {
+          "endMs": 333400,
+          "startMs": 325440,
+          "startTime": "5:25",
+          "text": "fast it responds. I'm clicking now."
+        },
+        {
+          "endMs": 333400,
+          "startMs": 328560,
+          "startTime": "5:28",
+          "text": "Yeah, it's practically instant."
+        },
+        {
+          "endMs": 339199,
+          "startMs": 334160,
+          "startTime": "5:34",
+          "text": "There is a catch though. It's not very"
+        },
+        {
+          "endMs": 341680,
+          "startMs": 337440,
+          "startTime": "5:37",
+          "text": "smart."
+        },
+        {
+          "endMs": 345039,
+          "startMs": 339199,
+          "startTime": "5:39",
+          "text": "I was able to barely pay attention while"
+        },
+        {
+          "endMs": 347600,
+          "startMs": 341680,
+          "startTime": "5:41",
+          "text": "playing and crush this model. Yeah, it's"
+        },
+        {
+          "endMs": 349199,
+          "startMs": 345039,
+          "startTime": "5:45",
+          "text": "just it's not good. I was barely paying"
+        },
+        {
+          "endMs": 350639,
+          "startMs": 347600,
+          "startTime": "5:47",
+          "text": "attention and I'm going to crush it"
+        },
+        {
+          "endMs": 353120,
+          "startMs": 349199,
+          "startTime": "5:49",
+          "text": "here. Point I'm trying to make is that"
+        },
+        {
+          "endMs": 356080,
+          "startMs": 350639,
+          "startTime": "5:50",
+          "text": "it's super fast but it's not using the"
+        },
+        {
+          "endMs": 358639,
+          "startMs": 353120,
+          "startTime": "5:53",
+          "text": "reasoning part of its brain so to speak."
+        },
+        {
+          "endMs": 361520,
+          "startMs": 356080,
+          "startTime": "5:56",
+          "text": "It is just processing the data. Let's"
+        },
+        {
+          "endMs": 363440,
+          "startMs": 358639,
+          "startTime": "5:58",
+          "text": "take a look at what do models have been"
+        },
+        {
+          "endMs": 365199,
+          "startMs": 361520,
+          "startTime": "6:01",
+          "text": "superhuman at chat for years. So where's"
+        },
+        {
+          "endMs": 366560,
+          "startMs": 363440,
+          "startTime": "6:03",
+          "text": "all the automation? This has been my"
+        },
+        {
+          "endMs": 368400,
+          "startMs": 365199,
+          "startTime": "6:05",
+          "text": "driving question for the last four"
+        },
+        {
+          "endMs": 370000,
+          "startMs": 366560,
+          "startTime": "6:06",
+          "text": "years. At OpenAI, I help build the"
+        },
+        {
+          "endMs": 371440,
+          "startMs": 368400,
+          "startTime": "6:08",
+          "text": "methods that make language models useful"
+        },
+        {
+          "endMs": 373120,
+          "startMs": 370000,
+          "startTime": "6:10",
+          "text": "at following instructions and talking"
+        },
+        {
+          "endMs": 375360,
+          "startMs": 371440,
+          "startTime": "6:11",
+          "text": "with people. The work ended up as the"
+        },
+        {
+          "endMs": 376800,
+          "startMs": 373120,
+          "startTime": "6:13",
+          "text": "research behind Chaz GBT. At the time, I"
+        },
+        {
+          "endMs": 378639,
+          "startMs": 375360,
+          "startTime": "6:15",
+          "text": "thought maybe chat models would lead to"
+        },
+        {
+          "endMs": 379759,
+          "startMs": 376800,
+          "startTime": "6:16",
+          "text": "AGI. But despite the hype, it became"
+        },
+        {
+          "endMs": 381759,
+          "startMs": 378639,
+          "startTime": "6:18",
+          "text": "obvious to me that there was something"
+        },
+        {
+          "endMs": 383440,
+          "startMs": 379759,
+          "startTime": "6:19",
+          "text": "really big missing. After two years in"
+        },
+        {
+          "endMs": 385360,
+          "startMs": 381759,
+          "startTime": "6:21",
+          "text": "stealth, countless technical challenges,"
+        },
+        {
+          "endMs": 386960,
+          "startMs": 383440,
+          "startTime": "6:23",
+          "text": "and research breakthroughs, he's beyond"
+        },
+        {
+          "endMs": 389199,
+          "startMs": 385360,
+          "startTime": "6:25",
+          "text": "excited to announce that today Typesafe"
+        },
+        {
+          "endMs": 390880,
+          "startMs": 386960,
+          "startTime": "6:26",
+          "text": "AI is releasing its first system 1"
+        },
+        {
+          "endMs": 392240,
+          "startMs": 389199,
+          "startTime": "6:29",
+          "text": "model, a new class of frontier model"
+        },
+        {
+          "endMs": 394319,
+          "startMs": 390880,
+          "startTime": "6:30",
+          "text": "built to make fast structured decisions"
+        },
+        {
+          "endMs": 396319,
+          "startMs": 392240,
+          "startTime": "6:32",
+          "text": "that software can use directly. This is"
+        },
+        {
+          "endMs": 398400,
+          "startMs": 394319,
+          "startTime": "6:34",
+          "text": "one of the biggest important pieces to"
+        },
+        {
+          "endMs": 400479,
+          "startMs": 396319,
+          "startTime": "6:36",
+          "text": "understand. The point of this model is"
+        },
+        {
+          "endMs": 401919,
+          "startMs": 398400,
+          "startTime": "6:38",
+          "text": "to integrate it into your code. This"
+        },
+        {
+          "endMs": 403759,
+          "startMs": 400479,
+          "startTime": "6:40",
+          "text": "model isn't even useful if a human"
+        },
+        {
+          "endMs": 405840,
+          "startMs": 401919,
+          "startTime": "6:41",
+          "text": "triggers it. The model is useful if the"
+        },
+        {
+          "endMs": 407360,
+          "startMs": 403759,
+          "startTime": "6:43",
+          "text": "human triggers some code to run or"
+        },
+        {
+          "endMs": 409600,
+          "startMs": 405840,
+          "startTime": "6:45",
+          "text": "something else triggers some code to run"
+        },
+        {
+          "endMs": 412240,
+          "startMs": 407360,
+          "startTime": "6:47",
+          "text": "and when the code runs it passes certain"
+        },
+        {
+          "endMs": 414639,
+          "startMs": 409600,
+          "startTime": "6:49",
+          "text": "data to this model and then it comes"
+        },
+        {
+          "endMs": 416080,
+          "startMs": 412240,
+          "startTime": "6:52",
+          "text": "back with JSON. That's when it's useful"
+        },
+        {
+          "endMs": 417759,
+          "startMs": 414639,
+          "startTime": "6:54",
+          "text": "when it's integrated almost like a"
+        },
+        {
+          "endMs": 419039,
+          "startMs": 416080,
+          "startTime": "6:56",
+          "text": "function in your codebase. In order to"
+        },
+        {
+          "endMs": 420800,
+          "startMs": 417759,
+          "startTime": "6:57",
+          "text": "do this they had to build a new stack"
+        },
+        {
+          "endMs": 422479,
+          "startMs": 419039,
+          "startTime": "6:59",
+          "text": "entirely focused on automation, new"
+        },
+        {
+          "endMs": 424160,
+          "startMs": 420800,
+          "startTime": "7:00",
+          "text": "model architectures, parallel samplers"
+        },
+        {
+          "endMs": 425599,
+          "startMs": 422479,
+          "startTime": "7:02",
+          "text": "for maximum efficiency and training"
+        },
+        {
+          "endMs": 427919,
+          "startMs": 424160,
+          "startTime": "7:04",
+          "text": "methods that they call reinforcement"
+        },
+        {
+          "endMs": 429360,
+          "startMs": 425599,
+          "startTime": "7:05",
+          "text": "learning for calibrated decisions. The"
+        },
+        {
+          "endMs": 431120,
+          "startMs": 427919,
+          "startTime": "7:07",
+          "text": "first public version of this is Jev"
+        },
+        {
+          "endMs": 432960,
+          "startMs": 429360,
+          "startTime": "7:09",
+          "text": "which is now available in early access."
+        },
+        {
+          "endMs": 434479,
+          "startMs": 431120,
+          "startTime": "7:11",
+          "text": "It is invite only, but you can get"
+        },
+        {
+          "endMs": 436160,
+          "startMs": 432960,
+          "startTime": "7:12",
+          "text": "access to it on things like open route"
+        },
+        {
+          "endMs": 438000,
+          "startMs": 434479,
+          "startTime": "7:14",
+          "text": "or the versel AI gateway and a couple"
+        },
+        {
+          "endMs": 439360,
+          "startMs": 436160,
+          "startTime": "7:16",
+          "text": "other places. While Jev gives up string"
+        },
+        {
+          "endMs": 441039,
+          "startMs": 438000,
+          "startTime": "7:18",
+          "text": "generation, it's optimized for"
+        },
+        {
+          "endMs": 443680,
+          "startMs": 439360,
+          "startTime": "7:19",
+          "text": "structural outputs and it can't"
+        },
+        {
+          "endMs": 445919,
+          "startMs": 441039,
+          "startTime": "7:21",
+          "text": "hallucinate. This is a key piece. Since"
+        },
+        {
+          "endMs": 448000,
+          "startMs": 443680,
+          "startTime": "7:23",
+          "text": "it has to give the output in a certain"
+        },
+        {
+          "endMs": 450319,
+          "startMs": 445919,
+          "startTime": "7:25",
+          "text": "format, it's not going to change or make"
+        },
+        {
+          "endMs": 452319,
+          "startMs": 448000,
+          "startTime": "7:28",
+          "text": "up the format, which happens a hilarious"
+        },
+        {
+          "endMs": 454639,
+          "startMs": 450319,
+          "startTime": "7:30",
+          "text": "amount. Think of Jev as a frontier"
+        },
+        {
+          "endMs": 456960,
+          "startMs": 452319,
+          "startTime": "7:32",
+          "text": "intelligence function call. Unstructured"
+        },
+        {
+          "endMs": 459120,
+          "startMs": 454639,
+          "startTime": "7:34",
+          "text": "state in, typed probabilistic decisions"
+        },
+        {
+          "endMs": 460960,
+          "startMs": 456960,
+          "startTime": "7:36",
+          "text": "out. That's the key piece. You hand it"
+        },
+        {
+          "endMs": 462960,
+          "startMs": 459120,
+          "startTime": "7:39",
+          "text": "some [ __ ] text data and you get back"
+        },
+        {
+          "endMs": 464639,
+          "startMs": 460960,
+          "startTime": "7:40",
+          "text": "a type- safe shape. There have been"
+        },
+        {
+          "endMs": 466319,
+          "startMs": 462960,
+          "startTime": "7:42",
+          "text": "other attempts to do this in various"
+        },
+        {
+          "endMs": 468560,
+          "startMs": 464639,
+          "startTime": "7:44",
+          "text": "different ways from attempts to train"
+        },
+        {
+          "endMs": 470400,
+          "startMs": 466319,
+          "startTime": "7:46",
+          "text": "models to act like this to tools to"
+        },
+        {
+          "endMs": 472560,
+          "startMs": 468560,
+          "startTime": "7:48",
+          "text": "force other models to behave similarly"
+        },
+        {
+          "endMs": 474639,
+          "startMs": 470400,
+          "startTime": "7:50",
+          "text": "too. One that I really liked once it"
+        },
+        {
+          "endMs": 477599,
+          "startMs": 472560,
+          "startTime": "7:52",
+          "text": "clicked for me is called BAML. The point"
+        },
+        {
+          "endMs": 480639,
+          "startMs": 474639,
+          "startTime": "7:54",
+          "text": "of BAML was to make a language that"
+        },
+        {
+          "endMs": 482400,
+          "startMs": 477599,
+          "startTime": "7:57",
+          "text": "interfaces between agents and real code"
+        },
+        {
+          "endMs": 484400,
+          "startMs": 480639,
+          "startTime": "8:00",
+          "text": "so that you can define something in a"
+        },
+        {
+          "endMs": 487120,
+          "startMs": 482400,
+          "startTime": "8:02",
+          "text": "syntax that of course agents understand"
+        },
+        {
+          "endMs": 489680,
+          "startMs": 484400,
+          "startTime": "8:04",
+          "text": "but also to give a specific format and"
+        },
+        {
+          "endMs": 491599,
+          "startMs": 487120,
+          "startTime": "8:07",
+          "text": "instruction set to the model to get it"
+        },
+        {
+          "endMs": 492960,
+          "startMs": 489680,
+          "startTime": "8:09",
+          "text": "to output a certain shape. They frame it"
+        },
+        {
+          "endMs": 494479,
+          "startMs": 491599,
+          "startTime": "8:11",
+          "text": "kind of like TypeScript but as the"
+        },
+        {
+          "endMs": 496800,
+          "startMs": 492960,
+          "startTime": "8:12",
+          "text": "interface from the TypeScript to the"
+        },
+        {
+          "endMs": 498240,
+          "startMs": 494479,
+          "startTime": "8:14",
+          "text": "LLM. For example, here is a text"
+        },
+        {
+          "endMs": 500000,
+          "startMs": 496800,
+          "startTime": "8:16",
+          "text": "sentiment classifier that they have on"
+        },
+        {
+          "endMs": 501680,
+          "startMs": 498240,
+          "startTime": "8:18",
+          "text": "their site. You give it a label type"
+        },
+        {
+          "endMs": 503759,
+          "startMs": 500000,
+          "startTime": "8:20",
+          "text": "which positive, negative or neutral are"
+        },
+        {
+          "endMs": 505280,
+          "startMs": 501680,
+          "startTime": "8:21",
+          "text": "valid for verdict which has label and"
+        },
+        {
+          "endMs": 506879,
+          "startMs": 503759,
+          "startTime": "8:23",
+          "text": "confidence which is a float. Then you"
+        },
+        {
+          "endMs": 509360,
+          "startMs": 505280,
+          "startTime": "8:25",
+          "text": "define the function classify. It takes"
+        },
+        {
+          "endMs": 511599,
+          "startMs": 506879,
+          "startTime": "8:26",
+          "text": "in text. It outputs a verdict. You use"
+        },
+        {
+          "endMs": 512880,
+          "startMs": 509360,
+          "startTime": "8:29",
+          "text": "OpenAI GD55 here as the client. You hand"
+        },
+        {
+          "endMs": 514719,
+          "startMs": 511599,
+          "startTime": "8:31",
+          "text": "it the prompt. You use their special"
+        },
+        {
+          "endMs": 517279,
+          "startMs": 512880,
+          "startTime": "8:32",
+          "text": "formatting things. And then you can call"
+        },
+        {
+          "endMs": 519839,
+          "startMs": 514719,
+          "startTime": "8:34",
+          "text": "this in your TypeScript code in order to"
+        },
+        {
+          "endMs": 521680,
+          "startMs": 517279,
+          "startTime": "8:37",
+          "text": "get a formatted correctly output. BAML"
+        },
+        {
+          "endMs": 523360,
+          "startMs": 519839,
+          "startTime": "8:39",
+          "text": "is basically a madeup language, but what"
+        },
+        {
+          "endMs": 525600,
+          "startMs": 521680,
+          "startTime": "8:41",
+          "text": "makes it cool is how well it interfaces"
+        },
+        {
+          "endMs": 527360,
+          "startMs": 523360,
+          "startTime": "8:43",
+          "text": "with other languages and how it fixes"
+        },
+        {
+          "endMs": 528880,
+          "startMs": 525600,
+          "startTime": "8:45",
+          "text": "all the things that can go wrong. For"
+        },
+        {
+          "endMs": 531760,
+          "startMs": 527360,
+          "startTime": "8:47",
+          "text": "example, I was using this a bunch with"
+        },
+        {
+          "endMs": 533360,
+          "startMs": 528880,
+          "startTime": "8:48",
+          "text": "GBT OSS120B to find comments that"
+        },
+        {
+          "endMs": 535200,
+          "startMs": 531760,
+          "startTime": "8:51",
+          "text": "mentioned sponsors and things. And when"
+        },
+        {
+          "endMs": 536399,
+          "startMs": 533360,
+          "startTime": "8:53",
+          "text": "I did that, I had a really good"
+        },
+        {
+          "endMs": 538160,
+          "startMs": 535200,
+          "startTime": "8:55",
+          "text": "experience with it. It all just worked."
+        },
+        {
+          "endMs": 539839,
+          "startMs": 536399,
+          "startTime": "8:56",
+          "text": "And when I tried to move off BAML for"
+        },
+        {
+          "endMs": 542080,
+          "startMs": 538160,
+          "startTime": "8:58",
+          "text": "another thing I was doing, I learned"
+        },
+        {
+          "endMs": 544000,
+          "startMs": 539839,
+          "startTime": "8:59",
+          "text": "that apparently GPOSS120B"
+        },
+        {
+          "endMs": 545760,
+          "startMs": 542080,
+          "startTime": "9:02",
+          "text": "doesn't format JSON correctly half the"
+        },
+        {
+          "endMs": 547680,
+          "startMs": 544000,
+          "startTime": "9:04",
+          "text": "time. One of the many things they do"
+        },
+        {
+          "endMs": 550240,
+          "startMs": 545760,
+          "startTime": "9:05",
+          "text": "with BAML is in their runtime, they fix"
+        },
+        {
+          "endMs": 552080,
+          "startMs": 547680,
+          "startTime": "9:07",
+          "text": "the mal formatting in the JSON outputs"
+        },
+        {
+          "endMs": 554399,
+          "startMs": 550240,
+          "startTime": "9:10",
+          "text": "to make sure it is guaranteed to match"
+        },
+        {
+          "endMs": 556080,
+          "startMs": 552080,
+          "startTime": "9:12",
+          "text": "the format it puts on the tin. when you"
+        },
+        {
+          "endMs": 557680,
+          "startMs": 554399,
+          "startTime": "9:14",
+          "text": "say this is the response format and you"
+        },
+        {
+          "endMs": 559680,
+          "startMs": 556080,
+          "startTime": "9:16",
+          "text": "call it through BAML that's the format"
+        },
+        {
+          "endMs": 561440,
+          "startMs": 557680,
+          "startTime": "9:17",
+          "text": "you get sometimes that takes time though"
+        },
+        {
+          "endMs": 563279,
+          "startMs": 559680,
+          "startTime": "9:19",
+          "text": "because it has to reformat it fix it"
+        },
+        {
+          "endMs": 564880,
+          "startMs": 561440,
+          "startTime": "9:21",
+          "text": "change it all with code that it's"
+        },
+        {
+          "endMs": 566560,
+          "startMs": 563279,
+          "startTime": "9:23",
+          "text": "running but and even some high-end"
+        }
+      ],
+      "source": "live",
+      "totalDurationMs": 1831120,
+      "videoId": "F3YXg7AaKWE"
+    }
+  },
+  "error": null,
+  "logId": "log_kxosAettTW5H"
+}

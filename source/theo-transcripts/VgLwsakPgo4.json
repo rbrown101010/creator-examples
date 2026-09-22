@@ -1,0 +1,1778 @@
+{
+  "successful": true,
+  "data": {
+    "credits": {
+      "charged": 2,
+      "remaining": 18
+    },
+    "data": {
+      "_truncated": {
+        "field": "segments",
+        "reason": "response size limit — lower \"limit\" for full detail",
+        "shown": 292,
+        "total": 715
+      },
+      "dataRefreshedAt": "2026-09-22T00:19:31.309Z",
+      "fullText": "Nvidia's a weird company. They originally started making chips for gamers to have fancy 3D graphics in their computer games, and now they are the most valuable company in the world powering the majority of intelligence that we get from all the fancy AI tools we use every single day. There's a lot of pieces that make Nvidia's borderline monopoly on compute for intelligence just impossible to crack. Things like CUDA, which is the language and system of choice for the vast majority of AI research, to the crazy deals that they're cutting with everybody from the government itself in the United States to businesses like of course OpenAI, Anthropic, XAI, and more. And it seems like everyone is realizing that Nvidia is a not great core dependency to have on your business's success. OpenAI could not function if Nvidia decided they wanted to start charging them 10 times more. The US government would be pissed if their whole plan to build this crazy set of data centers fails because Nvidia changes their mind. A whole of these businesses are struggling to work with the terms Nvidia's giving them today. And with the promise that those terms will get worse tomorrow, they're all looking for ways out. But there's one particular place that is more motivated than anywhere else to solve this. China. Nvidia chips have largely been banned from being sent to China by the US government. Some have been cleared for export, but it's a very very small set, and it's not the giant powerful GPUs that we are using for training in the US. All of this is pretty much forced the Chinese labs like ZAI to rely heavily on chips that are being made by Chinese companies like Huawei. But it's not even just the Chinese labs anymore. Even OpenAI has started developing their own chips to get faster, cheaper inference and training available to them internally. All of this has Nvidia acting pretty scared and very very weird. From crashing out on Jim Cramer's show to buying Hugging Face, a little bit absurd. But as you guys can probably guess, I have a lot of thoughts on this. I'm a big nerd about chips. I'm a big nerd about Nvidia in particular, and never been the biggest fan of them. And the opportunity to point out how their monopoly is about to be crushed and crumbled is one I have to take. But unlike my friends who invested in Nvidia early, I don't have billions of dollars to spare, so I'm going to have to take a quick break for today's sponsor. I got a hot take for you guys. The knowledge in existing LLMs is nowhere near enough for us to do real work and get our jobs done. Thankfully, the labs have noticed this, too, and that's why the majority of the context your agents work with isn't stuff that they already knew, it's stuff that they got from the internet. The vast majority of the context in our real context windows is things that the agents fetched from online. What I'm trying to say is that your agents need access to the internet, and if they want the best possible way to do it, you should probably use today's sponsor, Browserbase. They provide all of the pieces your agents need to be smarter and have modern knowledge. From their search API, which is literally a single curl request that allows your agents to look things up and find real context from the web, to their fetch API, which lets agents give a URL to Browserbase and get back markdown that can actually parse and understand from pretty much any website across the entire web. And don't forget about the browser as a service, which allows your agents to actually navigate the web like a human would with a real Chromium browser, allowing them to fill out forms, sign into pages, and do real actions on users' behalfs. Over 85% of the APIs on the web can't be accessed by simply curling them. If you're okay with only having that 15%, stick to curl. But if you want to unblock your agents and give them the whole web, do it today at soda.link/browserbase. Before we can talk about how Nvidia loses, it's important to understand how they won. There are a couple core pieces, but I want to just fixate on the two that I'm most interested in right now. Those pieces are, of course, the chips that are being used by all of these companies that Nvidia makes. But the other piece is CUDA. We'll come back to this one in a bit because this is where things will get complicated. But for now, I want to focus on the chips side. GPUs are uniquely tailored for these types of AI tasks because they have millions of small cores instead of a handful of big ones. In order to traverse these gigantic piles of weights and parameters that a model is, you have to trail all of the data inside of it to make a response. You get a lot of value from having a chip that has lots of different processors on it that can handle that type of large amounts of data and crazy matrix transform [ __ ] Lots of small brains are a lot more powerful than one giant one in these cases. You also need to have enough memory to hold the weights that are being traversed, which is another real fun problem that Nvidia is consistently causing for themselves. The two pieces of a given I'll change this to be GPUs. The two pieces that matter for a GPU are the actual like process itself. I'll say the chip and the high-bandwidth memory are probably the easiest way to do this. The GPU has these two parts. The actual silicon that has all of the things on it that can process all of this data and then the high-bandwidth memory, which actually holds said data. Nvidia has had a lot of fun with this split and arguably using it to fix prices in their favor. I won't say it's cheap, but getting a powerful Nvidia chip is not the hardest or most expensive thing in the world. One of the highest-end Nvidia GPUs available in terms of its actual like GPU performance and throughput is the RTX 5090. The retail price for the RTX 5090 was originally $2,000. They now consistently go for around 4,500 because the demand is so absurd. There's also a server card they put out called the RTX Pro 6000 that ranges between 12,000 and $16,000. You would assume this chip must be way, way faster than the 5090 if it's going to be six to 10 times more expensive. But guess what? It is the same speed or slower. This might sound crazy. You might be confused. How is the chip that costs six to eight times more slower? Why would I ever get that instead of the 5090? Well, it turns out the chip isn't the only thing that matters. The 96 gigs of GDDR7 are what mattered here. The 5090 only gets 32 gigs of GDDR7 and it's not error correcting. Technically, the RTX Pro has more CUDA cores, but I believe the process on the 5090 is slightly like newer and better. It should be within spitting distance for the raw performance and throughput there, but the RAM difference is why they're able to charge so much more. And just to be explicitly clear here, they were doing this way before RAM got more expensive. They do this because they know the people who need a fast chip and a lot of RAM are much more willing to spend lots of money than a video game player is. And we're already seeing my favorite question in chat, which is why not just connect them? I'm going to use my favorite analogy I always use for chip-related stuff here. A kitchen. Imagine you have a kitchen that serves a bunch of customers at your restaurant. You have three really talented chefs in there, but your freezer is full and your refrigerator is full. You're running out of space. So, you decide you need another fridge. You're out of space in your restaurant though, but you need that other fridge pretty bad. So, you buy a building a mile away and you put the fridge there. Maybe you put 10 fridges and five giant deep freezers there. You massively increase the amount of storage you have, but now every time the chef needs something from those fridges or freezers, they have to run a mile to the other place, grab it, and then run back. You can't just plug the chips in together. If you have a model that is 40 gigs, hell, if you have a model that's 33 gigs and it doesn't fit on your 5090, you now have to split the data across the two GPUs, which means ideally you have some way of predicting which data is needed when and how so that GPU one only has the data it needs and two only needs the data that it needs. Good luck. Have fun. Not [ __ ] happening. There are techniques around things like mixture of experts models that allow you to more easily some amount assign the work across stuff. But there is no way on consumer hardware to get reasonable bandwidth between two 5090s to allow them to share memory. By the way, that memory that they're using for this is as much as 48 gigabits per second. That means you need something even faster in order to transfer the data between the GPUs. Once again, not happening. Don't worry though, Nvidia has an answer for you. If you need more memory, they're more than willing to sell you something. And no, I'm not referring to the RTX Pro. They know that there are people who can't put out 18 grand plus on a GPU that they're just going to use to run shitty models locally. And that's why they made the DGX Spark. This small little box costs four grand and I hope you don't plan to use it as a computer. That is what it is to be clear. It's a computer. It shows up running a botched install of Ubuntu that they filled with [ __ ] and it runs a 20 core arm chip. And having spent far far far too much time fighting arm Linux in my life, I promise you you're not going to use this computer as a computer. Linux on arm is hell. Don't bother for this for anything other than inference. So this arm chip in this random $4,000 mini PC that you can't use as a computer does have a benefit. 128 gigs of unified memory. That memory is LPDDR5 memory though, which says a different number here. There's a lot of layers to how those numbers are measured. LPDDR5 is meaningfully slower than GDDR7. So the RAM is slower, but you have way more of it. But most importantly, you have CUDA cores, cores that can be used with CUDA-backed stuff that are actually capable of running real workflows. But you get 6,000 of them instead of the 24,000 plus you get on hardware like a 5090 or an RTX Pro. So, your options here are the world's worst computer environment possibly that you can buy today for real amounts of money. But you get a real amount of RAM you can use for models at the cost of an absolute [ __ ] garbage chip that runs terribly slow. Or you can get a really powerful, capable chip like an RTX 5090, and now you're entirely gimped on RAM. And if you want RAM and a high-end chip, you're paying the 16,000 plus dollars for that RTX Pro, sadly. Do you see what they've done here? They have the cheap option if you need more RAM. They have the cheap option if you want a fast chip. But you're paying up to 10 times plus more if you need both. They did do one really nice thing with the Sparks. They gave them a 200 gigabit per second NIC so that you can connect them over SFP. So, you can have the different Sparks transfer data between each other relatively fast. It's hell to set up, but you can at least do it. So, we've addressed all the fun things here for where Nvidia's at and how they can charge these absurd prices. What we haven't yet addressed is why I'm filming this today. There's a couple of things that are inspiring me to take this video on. The first is an anonymous model that dropped last week called Aux Alpha. I already have a video about this. It's probably already out on the channel, by the way. You should check that out. And when you're on the way to it, you should hit that subscribe button cuz it costs you nothing and with these videos take a lot of work. So, Aux Alpha was an anonymous model that came out on open router and open code, both of which had an absurd amount of free throughput on them. I believe it was 100 trillion tokens a day for free. And the model was great. A bunch of people were using it. I was using it a bunch. …[+14968 chars truncated]",
+      "segments": [
+        {
+          "endMs": 4640,
+          "startMs": 480,
+          "startTime": "0:00",
+          "text": "Nvidia's a weird company. They"
+        },
+        {
+          "endMs": 6760,
+          "startMs": 2880,
+          "startTime": "0:02",
+          "text": "originally started making chips for"
+        },
+        {
+          "endMs": 8640,
+          "startMs": 4640,
+          "startTime": "0:04",
+          "text": "gamers to have fancy 3D graphics in"
+        },
+        {
+          "endMs": 10360,
+          "startMs": 6760,
+          "startTime": "0:06",
+          "text": "their computer games, and now they are"
+        },
+        {
+          "endMs": 12240,
+          "startMs": 8640,
+          "startTime": "0:08",
+          "text": "the most valuable company in the world"
+        },
+        {
+          "endMs": 14640,
+          "startMs": 10360,
+          "startTime": "0:10",
+          "text": "powering the majority of intelligence"
+        },
+        {
+          "endMs": 16600,
+          "startMs": 12240,
+          "startTime": "0:12",
+          "text": "that we get from all the fancy AI tools"
+        },
+        {
+          "endMs": 18600,
+          "startMs": 14640,
+          "startTime": "0:14",
+          "text": "we use every single day. There's a lot"
+        },
+        {
+          "endMs": 20920,
+          "startMs": 16600,
+          "startTime": "0:16",
+          "text": "of pieces that make Nvidia's borderline"
+        },
+        {
+          "endMs": 23120,
+          "startMs": 18600,
+          "startTime": "0:18",
+          "text": "monopoly on compute for intelligence"
+        },
+        {
+          "endMs": 24760,
+          "startMs": 20920,
+          "startTime": "0:20",
+          "text": "just impossible to crack. Things like"
+        },
+        {
+          "endMs": 27080,
+          "startMs": 23120,
+          "startTime": "0:23",
+          "text": "CUDA, which is the language and system"
+        },
+        {
+          "endMs": 29080,
+          "startMs": 24760,
+          "startTime": "0:24",
+          "text": "of choice for the vast majority of AI"
+        },
+        {
+          "endMs": 30600,
+          "startMs": 27080,
+          "startTime": "0:27",
+          "text": "research, to the crazy deals that"
+        },
+        {
+          "endMs": 32759,
+          "startMs": 29080,
+          "startTime": "0:29",
+          "text": "they're cutting with everybody from the"
+        },
+        {
+          "endMs": 34520,
+          "startMs": 30600,
+          "startTime": "0:30",
+          "text": "government itself in the United States"
+        },
+        {
+          "endMs": 36880,
+          "startMs": 32759,
+          "startTime": "0:32",
+          "text": "to businesses like of course OpenAI,"
+        },
+        {
+          "endMs": 39360,
+          "startMs": 34520,
+          "startTime": "0:34",
+          "text": "Anthropic, XAI, and more. And it seems"
+        },
+        {
+          "endMs": 42080,
+          "startMs": 36880,
+          "startTime": "0:36",
+          "text": "like everyone is realizing that Nvidia"
+        },
+        {
+          "endMs": 44640,
+          "startMs": 39360,
+          "startTime": "0:39",
+          "text": "is a not great core dependency to have"
+        },
+        {
+          "endMs": 46520,
+          "startMs": 42080,
+          "startTime": "0:42",
+          "text": "on your business's success. OpenAI could"
+        },
+        {
+          "endMs": 48200,
+          "startMs": 44640,
+          "startTime": "0:44",
+          "text": "not function if Nvidia decided they"
+        },
+        {
+          "endMs": 50160,
+          "startMs": 46520,
+          "startTime": "0:46",
+          "text": "wanted to start charging them 10 times"
+        },
+        {
+          "endMs": 52200,
+          "startMs": 48200,
+          "startTime": "0:48",
+          "text": "more. The US government would be pissed"
+        },
+        {
+          "endMs": 54360,
+          "startMs": 50160,
+          "startTime": "0:50",
+          "text": "if their whole plan to build this crazy"
+        },
+        {
+          "endMs": 56080,
+          "startMs": 52200,
+          "startTime": "0:52",
+          "text": "set of data centers fails because Nvidia"
+        },
+        {
+          "endMs": 58160,
+          "startMs": 54360,
+          "startTime": "0:54",
+          "text": "changes their mind. A whole of these"
+        },
+        {
+          "endMs": 60240,
+          "startMs": 56080,
+          "startTime": "0:56",
+          "text": "businesses are struggling to work with"
+        },
+        {
+          "endMs": 61440,
+          "startMs": 58160,
+          "startTime": "0:58",
+          "text": "the terms Nvidia's giving them today."
+        },
+        {
+          "endMs": 63360,
+          "startMs": 60240,
+          "startTime": "1:00",
+          "text": "And with the promise that those terms"
+        },
+        {
+          "endMs": 65600,
+          "startMs": 61440,
+          "startTime": "1:01",
+          "text": "will get worse tomorrow, they're all"
+        },
+        {
+          "endMs": 67520,
+          "startMs": 63360,
+          "startTime": "1:03",
+          "text": "looking for ways out. But there's one"
+        },
+        {
+          "endMs": 70080,
+          "startMs": 65600,
+          "startTime": "1:05",
+          "text": "particular place that is more motivated"
+        },
+        {
+          "endMs": 72400,
+          "startMs": 67520,
+          "startTime": "1:07",
+          "text": "than anywhere else to solve this."
+        },
+        {
+          "endMs": 74600,
+          "startMs": 70080,
+          "startTime": "1:10",
+          "text": "China. Nvidia chips have largely been"
+        },
+        {
+          "endMs": 77040,
+          "startMs": 72400,
+          "startTime": "1:12",
+          "text": "banned from being sent to China by the"
+        },
+        {
+          "endMs": 78960,
+          "startMs": 74600,
+          "startTime": "1:14",
+          "text": "US government. Some have been cleared"
+        },
+        {
+          "endMs": 81880,
+          "startMs": 77040,
+          "startTime": "1:17",
+          "text": "for export, but it's a very very small"
+        },
+        {
+          "endMs": 83720,
+          "startMs": 78960,
+          "startTime": "1:18",
+          "text": "set, and it's not the giant powerful"
+        },
+        {
+          "endMs": 85680,
+          "startMs": 81880,
+          "startTime": "1:21",
+          "text": "GPUs that we are using for training in"
+        },
+        {
+          "endMs": 88160,
+          "startMs": 83720,
+          "startTime": "1:23",
+          "text": "the US. All of this is pretty much"
+        },
+        {
+          "endMs": 90000,
+          "startMs": 85680,
+          "startTime": "1:25",
+          "text": "forced the Chinese labs like ZAI to rely"
+        },
+        {
+          "endMs": 92080,
+          "startMs": 88160,
+          "startTime": "1:28",
+          "text": "heavily on chips that are being made by"
+        },
+        {
+          "endMs": 94360,
+          "startMs": 90000,
+          "startTime": "1:30",
+          "text": "Chinese companies like Huawei. But it's"
+        },
+        {
+          "endMs": 96200,
+          "startMs": 92080,
+          "startTime": "1:32",
+          "text": "not even just the Chinese labs anymore."
+        },
+        {
+          "endMs": 98400,
+          "startMs": 94360,
+          "startTime": "1:34",
+          "text": "Even OpenAI has started developing their"
+        },
+        {
+          "endMs": 100760,
+          "startMs": 96200,
+          "startTime": "1:36",
+          "text": "own chips to get faster, cheaper"
+        },
+        {
+          "endMs": 102960,
+          "startMs": 98400,
+          "startTime": "1:38",
+          "text": "inference and training available to them"
+        },
+        {
+          "endMs": 105360,
+          "startMs": 100760,
+          "startTime": "1:40",
+          "text": "internally. All of this has Nvidia"
+        },
+        {
+          "endMs": 107640,
+          "startMs": 102960,
+          "startTime": "1:42",
+          "text": "acting pretty scared and very very"
+        },
+        {
+          "endMs": 110880,
+          "startMs": 105360,
+          "startTime": "1:45",
+          "text": "weird. From crashing out on Jim Cramer's"
+        },
+        {
+          "endMs": 113440,
+          "startMs": 107640,
+          "startTime": "1:47",
+          "text": "show to buying Hugging Face, a little"
+        },
+        {
+          "endMs": 115800,
+          "startMs": 110880,
+          "startTime": "1:50",
+          "text": "bit absurd. But as you guys can probably"
+        },
+        {
+          "endMs": 117760,
+          "startMs": 113440,
+          "startTime": "1:53",
+          "text": "guess, I have a lot of thoughts on this."
+        },
+        {
+          "endMs": 120000,
+          "startMs": 115800,
+          "startTime": "1:55",
+          "text": "I'm a big nerd about chips. I'm a big"
+        },
+        {
+          "endMs": 121720,
+          "startMs": 117760,
+          "startTime": "1:57",
+          "text": "nerd about Nvidia in particular, and"
+        },
+        {
+          "endMs": 123400,
+          "startMs": 120000,
+          "startTime": "2:00",
+          "text": "never been the biggest fan of them. And"
+        },
+        {
+          "endMs": 125680,
+          "startMs": 121720,
+          "startTime": "2:01",
+          "text": "the opportunity to point out how their"
+        },
+        {
+          "endMs": 127880,
+          "startMs": 123400,
+          "startTime": "2:03",
+          "text": "monopoly is about to be crushed and"
+        },
+        {
+          "endMs": 129320,
+          "startMs": 125680,
+          "startTime": "2:05",
+          "text": "crumbled is one I have to take. But"
+        },
+        {
+          "endMs": 131080,
+          "startMs": 127880,
+          "startTime": "2:07",
+          "text": "unlike my friends who invested in Nvidia"
+        },
+        {
+          "endMs": 132640,
+          "startMs": 129320,
+          "startTime": "2:09",
+          "text": "early, I don't have billions of dollars"
+        },
+        {
+          "endMs": 134520,
+          "startMs": 131080,
+          "startTime": "2:11",
+          "text": "to spare, so I'm going to have to take a"
+        },
+        {
+          "endMs": 136200,
+          "startMs": 132640,
+          "startTime": "2:12",
+          "text": "quick break for today's sponsor. I got a"
+        },
+        {
+          "endMs": 138680,
+          "startMs": 134520,
+          "startTime": "2:14",
+          "text": "hot take for you guys. The knowledge in"
+        },
+        {
+          "endMs": 140760,
+          "startMs": 136200,
+          "startTime": "2:16",
+          "text": "existing LLMs is nowhere near enough for"
+        },
+        {
+          "endMs": 142560,
+          "startMs": 138680,
+          "startTime": "2:18",
+          "text": "us to do real work and get our jobs"
+        },
+        {
+          "endMs": 144160,
+          "startMs": 140760,
+          "startTime": "2:20",
+          "text": "done. Thankfully, the labs have noticed"
+        },
+        {
+          "endMs": 146080,
+          "startMs": 142560,
+          "startTime": "2:22",
+          "text": "this, too, and that's why the majority"
+        },
+        {
+          "endMs": 147880,
+          "startMs": 144160,
+          "startTime": "2:24",
+          "text": "of the context your agents work with"
+        },
+        {
+          "endMs": 149560,
+          "startMs": 146080,
+          "startTime": "2:26",
+          "text": "isn't stuff that they already knew, it's"
+        },
+        {
+          "endMs": 151600,
+          "startMs": 147880,
+          "startTime": "2:27",
+          "text": "stuff that they got from the internet."
+        },
+        {
+          "endMs": 153440,
+          "startMs": 149560,
+          "startTime": "2:29",
+          "text": "The vast majority of the context in our"
+        },
+        {
+          "endMs": 155160,
+          "startMs": 151600,
+          "startTime": "2:31",
+          "text": "real context windows is things that the"
+        },
+        {
+          "endMs": 156760,
+          "startMs": 153440,
+          "startTime": "2:33",
+          "text": "agents fetched from online. What I'm"
+        },
+        {
+          "endMs": 158560,
+          "startMs": 155160,
+          "startTime": "2:35",
+          "text": "trying to say is that your agents need"
+        },
+        {
+          "endMs": 160200,
+          "startMs": 156760,
+          "startTime": "2:36",
+          "text": "access to the internet, and if they want"
+        },
+        {
+          "endMs": 161480,
+          "startMs": 158560,
+          "startTime": "2:38",
+          "text": "the best possible way to do it, you"
+        },
+        {
+          "endMs": 163000,
+          "startMs": 160200,
+          "startTime": "2:40",
+          "text": "should probably use today's sponsor,"
+        },
+        {
+          "endMs": 164720,
+          "startMs": 161480,
+          "startTime": "2:41",
+          "text": "Browserbase. They provide all of the"
+        },
+        {
+          "endMs": 166480,
+          "startMs": 163000,
+          "startTime": "2:43",
+          "text": "pieces your agents need to be smarter"
+        },
+        {
+          "endMs": 168400,
+          "startMs": 164720,
+          "startTime": "2:44",
+          "text": "and have modern knowledge. From their"
+        },
+        {
+          "endMs": 170080,
+          "startMs": 166480,
+          "startTime": "2:46",
+          "text": "search API, which is literally a single"
+        },
+        {
+          "endMs": 172200,
+          "startMs": 168400,
+          "startTime": "2:48",
+          "text": "curl request that allows your agents to"
+        },
+        {
+          "endMs": 174000,
+          "startMs": 170080,
+          "startTime": "2:50",
+          "text": "look things up and find real context"
+        },
+        {
+          "endMs": 176320,
+          "startMs": 172200,
+          "startTime": "2:52",
+          "text": "from the web, to their fetch API, which"
+        },
+        {
+          "endMs": 178080,
+          "startMs": 174000,
+          "startTime": "2:54",
+          "text": "lets agents give a URL to Browserbase"
+        },
+        {
+          "endMs": 179880,
+          "startMs": 176320,
+          "startTime": "2:56",
+          "text": "and get back markdown that can actually"
+        },
+        {
+          "endMs": 181800,
+          "startMs": 178080,
+          "startTime": "2:58",
+          "text": "parse and understand from pretty much"
+        },
+        {
+          "endMs": 182880,
+          "startMs": 179880,
+          "startTime": "2:59",
+          "text": "any website across the entire web. And"
+        },
+        {
+          "endMs": 184440,
+          "startMs": 181800,
+          "startTime": "3:01",
+          "text": "don't forget about the browser as a"
+        },
+        {
+          "endMs": 186480,
+          "startMs": 182880,
+          "startTime": "3:02",
+          "text": "service, which allows your agents to"
+        },
+        {
+          "endMs": 188239,
+          "startMs": 184440,
+          "startTime": "3:04",
+          "text": "actually navigate the web like a human"
+        },
+        {
+          "endMs": 189959,
+          "startMs": 186480,
+          "startTime": "3:06",
+          "text": "would with a real Chromium browser,"
+        },
+        {
+          "endMs": 192560,
+          "startMs": 188239,
+          "startTime": "3:08",
+          "text": "allowing them to fill out forms, sign"
+        },
+        {
+          "endMs": 195320,
+          "startMs": 189959,
+          "startTime": "3:09",
+          "text": "into pages, and do real actions on"
+        },
+        {
+          "endMs": 197160,
+          "startMs": 192560,
+          "startTime": "3:12",
+          "text": "users' behalfs. Over 85% of the APIs on"
+        },
+        {
+          "endMs": 198760,
+          "startMs": 195320,
+          "startTime": "3:15",
+          "text": "the web can't be accessed by simply"
+        },
+        {
+          "endMs": 201000,
+          "startMs": 197160,
+          "startTime": "3:17",
+          "text": "curling them. If you're okay with only"
+        },
+        {
+          "endMs": 202360,
+          "startMs": 198760,
+          "startTime": "3:18",
+          "text": "having that 15%, stick to curl. But if"
+        },
+        {
+          "endMs": 203959,
+          "startMs": 201000,
+          "startTime": "3:21",
+          "text": "you want to unblock your agents and give"
+        },
+        {
+          "endMs": 205560,
+          "startMs": 202360,
+          "startTime": "3:22",
+          "text": "them the whole web, do it today at"
+        },
+        {
+          "endMs": 207080,
+          "startMs": 203959,
+          "startTime": "3:23",
+          "text": "soda.link/browserbase."
+        },
+        {
+          "endMs": 209480,
+          "startMs": 205560,
+          "startTime": "3:25",
+          "text": "Before we can talk about how Nvidia"
+        },
+        {
+          "endMs": 211519,
+          "startMs": 207080,
+          "startTime": "3:27",
+          "text": "loses, it's important to understand how"
+        },
+        {
+          "endMs": 213600,
+          "startMs": 209480,
+          "startTime": "3:29",
+          "text": "they won. There are a couple core"
+        },
+        {
+          "endMs": 215080,
+          "startMs": 211519,
+          "startTime": "3:31",
+          "text": "pieces, but I want to just fixate on the"
+        },
+        {
+          "endMs": 216959,
+          "startMs": 213600,
+          "startTime": "3:33",
+          "text": "two that I'm most interested in right"
+        },
+        {
+          "endMs": 218800,
+          "startMs": 215080,
+          "startTime": "3:35",
+          "text": "now. Those pieces are, of course, the"
+        },
+        {
+          "endMs": 221280,
+          "startMs": 216959,
+          "startTime": "3:36",
+          "text": "chips that are being used by all of"
+        },
+        {
+          "endMs": 223959,
+          "startMs": 218800,
+          "startTime": "3:38",
+          "text": "these companies that Nvidia makes."
+        },
+        {
+          "endMs": 225600,
+          "startMs": 221280,
+          "startTime": "3:41",
+          "text": "But the other piece is CUDA. We'll come"
+        },
+        {
+          "endMs": 227400,
+          "startMs": 223959,
+          "startTime": "3:43",
+          "text": "back to this one in a bit because this"
+        },
+        {
+          "endMs": 228760,
+          "startMs": 225600,
+          "startTime": "3:45",
+          "text": "is where things will get complicated."
+        },
+        {
+          "endMs": 231920,
+          "startMs": 227400,
+          "startTime": "3:47",
+          "text": "But for now, I want to focus on the"
+        },
+        {
+          "endMs": 234320,
+          "startMs": 228760,
+          "startTime": "3:48",
+          "text": "chips side. GPUs are uniquely tailored"
+        },
+        {
+          "endMs": 237040,
+          "startMs": 231920,
+          "startTime": "3:51",
+          "text": "for these types of AI tasks because they"
+        },
+        {
+          "endMs": 239200,
+          "startMs": 234320,
+          "startTime": "3:54",
+          "text": "have millions of small cores instead of"
+        },
+        {
+          "endMs": 241480,
+          "startMs": 237040,
+          "startTime": "3:57",
+          "text": "a handful of big ones. In order to"
+        },
+        {
+          "endMs": 244560,
+          "startMs": 239200,
+          "startTime": "3:59",
+          "text": "traverse these gigantic piles of weights"
+        },
+        {
+          "endMs": 246800,
+          "startMs": 241480,
+          "startTime": "4:01",
+          "text": "and parameters that a model is, you have"
+        },
+        {
+          "endMs": 248640,
+          "startMs": 244560,
+          "startTime": "4:04",
+          "text": "to trail all of the data inside of it to"
+        },
+        {
+          "endMs": 250600,
+          "startMs": 246800,
+          "startTime": "4:06",
+          "text": "make a response. You get a lot of value"
+        },
+        {
+          "endMs": 252400,
+          "startMs": 248640,
+          "startTime": "4:08",
+          "text": "from having a chip that has lots of"
+        },
+        {
+          "endMs": 254520,
+          "startMs": 250600,
+          "startTime": "4:10",
+          "text": "different processors on it that can"
+        },
+        {
+          "endMs": 256680,
+          "startMs": 252400,
+          "startTime": "4:12",
+          "text": "handle that type of large amounts of"
+        },
+        {
+          "endMs": 258959,
+          "startMs": 254520,
+          "startTime": "4:14",
+          "text": "data and crazy matrix transform"
+        },
+        {
+          "endMs": 260840,
+          "startMs": 256680,
+          "startTime": "4:16",
+          "text": "[ __ ] Lots of small brains are a lot"
+        },
+        {
+          "endMs": 262640,
+          "startMs": 258959,
+          "startTime": "4:18",
+          "text": "more powerful than one giant one in"
+        },
+        {
+          "endMs": 264480,
+          "startMs": 260840,
+          "startTime": "4:20",
+          "text": "these cases. You also need to have"
+        },
+        {
+          "endMs": 266360,
+          "startMs": 262640,
+          "startTime": "4:22",
+          "text": "enough memory to hold the weights that"
+        },
+        {
+          "endMs": 268280,
+          "startMs": 264480,
+          "startTime": "4:24",
+          "text": "are being traversed, which is another"
+        },
+        {
+          "endMs": 270919,
+          "startMs": 266360,
+          "startTime": "4:26",
+          "text": "real fun problem that Nvidia is"
+        },
+        {
+          "endMs": 272800,
+          "startMs": 268280,
+          "startTime": "4:28",
+          "text": "consistently causing for themselves. The"
+        },
+        {
+          "endMs": 275440,
+          "startMs": 270919,
+          "startTime": "4:30",
+          "text": "two pieces of a given I'll change this"
+        },
+        {
+          "endMs": 278560,
+          "startMs": 272800,
+          "startTime": "4:32",
+          "text": "to be GPUs. The two pieces that matter"
+        },
+        {
+          "endMs": 279800,
+          "startMs": 275440,
+          "startTime": "4:35",
+          "text": "for a GPU are the actual like process"
+        },
+        {
+          "endMs": 282560,
+          "startMs": 278560,
+          "startTime": "4:38",
+          "text": "itself."
+        },
+        {
+          "endMs": 284040,
+          "startMs": 279800,
+          "startTime": "4:39",
+          "text": "I'll say the chip and the high-bandwidth"
+        },
+        {
+          "endMs": 286600,
+          "startMs": 282560,
+          "startTime": "4:42",
+          "text": "memory are probably the easiest way to"
+        },
+        {
+          "endMs": 288560,
+          "startMs": 284040,
+          "startTime": "4:44",
+          "text": "do this. The GPU has these two parts."
+        },
+        {
+          "endMs": 290400,
+          "startMs": 286600,
+          "startTime": "4:46",
+          "text": "The actual silicon that has all of the"
+        },
+        {
+          "endMs": 292200,
+          "startMs": 288560,
+          "startTime": "4:48",
+          "text": "things on it that can process all of"
+        },
+        {
+          "endMs": 294640,
+          "startMs": 290400,
+          "startTime": "4:50",
+          "text": "this data and then the high-bandwidth"
+        },
+        {
+          "endMs": 295840,
+          "startMs": 292200,
+          "startTime": "4:52",
+          "text": "memory, which actually holds said data."
+        },
+        {
+          "endMs": 299000,
+          "startMs": 294640,
+          "startTime": "4:54",
+          "text": "Nvidia has had a lot of fun with this"
+        },
+        {
+          "endMs": 301320,
+          "startMs": 295840,
+          "startTime": "4:55",
+          "text": "split and arguably using it to fix"
+        },
+        {
+          "endMs": 304440,
+          "startMs": 299000,
+          "startTime": "4:59",
+          "text": "prices in their favor. I won't say it's"
+        },
+        {
+          "endMs": 306560,
+          "startMs": 301320,
+          "startTime": "5:01",
+          "text": "cheap, but getting a powerful Nvidia"
+        },
+        {
+          "endMs": 308560,
+          "startMs": 304440,
+          "startTime": "5:04",
+          "text": "chip is not the hardest or most"
+        },
+        {
+          "endMs": 310800,
+          "startMs": 306560,
+          "startTime": "5:06",
+          "text": "expensive thing in the world. One of the"
+        },
+        {
+          "endMs": 313560,
+          "startMs": 308560,
+          "startTime": "5:08",
+          "text": "highest-end Nvidia GPUs available in"
+        },
+        {
+          "endMs": 316640,
+          "startMs": 310800,
+          "startTime": "5:10",
+          "text": "terms of its actual like GPU performance"
+        },
+        {
+          "endMs": 318880,
+          "startMs": 313560,
+          "startTime": "5:13",
+          "text": "and throughput is the RTX 5090. The"
+        },
+        {
+          "endMs": 321720,
+          "startMs": 316640,
+          "startTime": "5:16",
+          "text": "retail price for the RTX 5090 was"
+        },
+        {
+          "endMs": 324440,
+          "startMs": 318880,
+          "startTime": "5:18",
+          "text": "originally $2,000. They now consistently"
+        },
+        {
+          "endMs": 326200,
+          "startMs": 321720,
+          "startTime": "5:21",
+          "text": "go for around 4,500 because the demand"
+        },
+        {
+          "endMs": 329280,
+          "startMs": 324440,
+          "startTime": "5:24",
+          "text": "is so absurd. There's also a server card"
+        },
+        {
+          "endMs": 332800,
+          "startMs": 326200,
+          "startTime": "5:26",
+          "text": "they put out called the RTX Pro 6000"
+        },
+        {
+          "endMs": 335680,
+          "startMs": 329280,
+          "startTime": "5:29",
+          "text": "that ranges between 12,000 and $16,000."
+        },
+        {
+          "endMs": 337440,
+          "startMs": 332800,
+          "startTime": "5:32",
+          "text": "You would assume this chip must be way,"
+        },
+        {
+          "endMs": 341280,
+          "startMs": 335680,
+          "startTime": "5:35",
+          "text": "way faster than the 5090 if it's going"
+        },
+        {
+          "endMs": 343600,
+          "startMs": 337440,
+          "startTime": "5:37",
+          "text": "to be six to 10 times more expensive."
+        },
+        {
+          "endMs": 345919,
+          "startMs": 341280,
+          "startTime": "5:41",
+          "text": "But guess what? It is the same speed or"
+        },
+        {
+          "endMs": 348400,
+          "startMs": 343600,
+          "startTime": "5:43",
+          "text": "slower. This might sound crazy. You"
+        },
+        {
+          "endMs": 351560,
+          "startMs": 345919,
+          "startTime": "5:45",
+          "text": "might be confused. How is the chip that"
+        },
+        {
+          "endMs": 353400,
+          "startMs": 348400,
+          "startTime": "5:48",
+          "text": "costs six to eight times more slower?"
+        },
+        {
+          "endMs": 355520,
+          "startMs": 351560,
+          "startTime": "5:51",
+          "text": "Why would I ever get that instead of the"
+        },
+        {
+          "endMs": 357080,
+          "startMs": 353400,
+          "startTime": "5:53",
+          "text": "5090? Well, it turns out the chip isn't"
+        },
+        {
+          "endMs": 360360,
+          "startMs": 355520,
+          "startTime": "5:55",
+          "text": "the only thing that matters."
+        },
+        {
+          "endMs": 363040,
+          "startMs": 357080,
+          "startTime": "5:57",
+          "text": "The 96 gigs of GDDR7"
+        },
+        {
+          "endMs": 365400,
+          "startMs": 360360,
+          "startTime": "6:00",
+          "text": "are what mattered here. The 5090 only"
+        },
+        {
+          "endMs": 367720,
+          "startMs": 363040,
+          "startTime": "6:03",
+          "text": "gets 32 gigs of GDDR7 and it's not error"
+        },
+        {
+          "endMs": 369600,
+          "startMs": 365400,
+          "startTime": "6:05",
+          "text": "correcting. Technically, the RTX Pro has"
+        },
+        {
+          "endMs": 371720,
+          "startMs": 367720,
+          "startTime": "6:07",
+          "text": "more CUDA cores, but I believe the"
+        },
+        {
+          "endMs": 373520,
+          "startMs": 369600,
+          "startTime": "6:09",
+          "text": "process on the 5090 is slightly like"
+        },
+        {
+          "endMs": 374960,
+          "startMs": 371720,
+          "startTime": "6:11",
+          "text": "newer and better. It should be within"
+        },
+        {
+          "endMs": 376520,
+          "startMs": 373520,
+          "startTime": "6:13",
+          "text": "spitting distance for the raw"
+        },
+        {
+          "endMs": 378240,
+          "startMs": 374960,
+          "startTime": "6:14",
+          "text": "performance and throughput there, but"
+        },
+        {
+          "endMs": 380280,
+          "startMs": 376520,
+          "startTime": "6:16",
+          "text": "the RAM difference is why they're able"
+        },
+        {
+          "endMs": 382760,
+          "startMs": 378240,
+          "startTime": "6:18",
+          "text": "to charge so much more."
+        },
+        {
+          "endMs": 385200,
+          "startMs": 380280,
+          "startTime": "6:20",
+          "text": "And just to be explicitly clear here,"
+        },
+        {
+          "endMs": 387560,
+          "startMs": 382760,
+          "startTime": "6:22",
+          "text": "they were doing this way before RAM got"
+        },
+        {
+          "endMs": 389480,
+          "startMs": 385200,
+          "startTime": "6:25",
+          "text": "more expensive. They do this because"
+        },
+        {
+          "endMs": 392360,
+          "startMs": 387560,
+          "startTime": "6:27",
+          "text": "they know the people who need a fast"
+        },
+        {
+          "endMs": 394000,
+          "startMs": 389480,
+          "startTime": "6:29",
+          "text": "chip and a lot of RAM are much more"
+        },
+        {
+          "endMs": 396360,
+          "startMs": 392360,
+          "startTime": "6:32",
+          "text": "willing to spend lots of money than a"
+        },
+        {
+          "endMs": 398200,
+          "startMs": 394000,
+          "startTime": "6:34",
+          "text": "video game player is. And we're already"
+        },
+        {
+          "endMs": 402000,
+          "startMs": 396360,
+          "startTime": "6:36",
+          "text": "seeing my favorite question in chat,"
+        },
+        {
+          "endMs": 403240,
+          "startMs": 398200,
+          "startTime": "6:38",
+          "text": "which is why not just connect them?"
+        },
+        {
+          "endMs": 405400,
+          "startMs": 402000,
+          "startTime": "6:42",
+          "text": "I'm going to use my favorite analogy I"
+        },
+        {
+          "endMs": 407760,
+          "startMs": 403240,
+          "startTime": "6:43",
+          "text": "always use for chip-related stuff here."
+        },
+        {
+          "endMs": 410520,
+          "startMs": 405400,
+          "startTime": "6:45",
+          "text": "A kitchen. Imagine you have a kitchen"
+        },
+        {
+          "endMs": 412919,
+          "startMs": 407760,
+          "startTime": "6:47",
+          "text": "that serves a bunch of customers at your"
+        },
+        {
+          "endMs": 414760,
+          "startMs": 410520,
+          "startTime": "6:50",
+          "text": "restaurant. You have three really"
+        },
+        {
+          "endMs": 417160,
+          "startMs": 412919,
+          "startTime": "6:52",
+          "text": "talented chefs in there, but your"
+        },
+        {
+          "endMs": 419720,
+          "startMs": 414760,
+          "startTime": "6:54",
+          "text": "freezer is full and your refrigerator is"
+        },
+        {
+          "endMs": 421880,
+          "startMs": 417160,
+          "startTime": "6:57",
+          "text": "full. You're running out of space. So,"
+        },
+        {
+          "endMs": 424280,
+          "startMs": 419720,
+          "startTime": "6:59",
+          "text": "you decide you need another fridge."
+        },
+        {
+          "endMs": 425800,
+          "startMs": 421880,
+          "startTime": "7:01",
+          "text": "You're out of space in your restaurant"
+        },
+        {
+          "endMs": 428560,
+          "startMs": 424280,
+          "startTime": "7:04",
+          "text": "though, but you need that other fridge"
+        },
+        {
+          "endMs": 431800,
+          "startMs": 425800,
+          "startTime": "7:05",
+          "text": "pretty bad. So, you buy a building a"
+        },
+        {
+          "endMs": 433760,
+          "startMs": 428560,
+          "startTime": "7:08",
+          "text": "mile away and you put the fridge there."
+        },
+        {
+          "endMs": 435600,
+          "startMs": 431800,
+          "startTime": "7:11",
+          "text": "Maybe you put 10 fridges and five giant"
+        },
+        {
+          "endMs": 437480,
+          "startMs": 433760,
+          "startTime": "7:13",
+          "text": "deep freezers there. You massively"
+        },
+        {
+          "endMs": 439000,
+          "startMs": 435600,
+          "startTime": "7:15",
+          "text": "increase the amount of storage you have,"
+        },
+        {
+          "endMs": 440400,
+          "startMs": 437480,
+          "startTime": "7:17",
+          "text": "but now every time the chef needs"
+        },
+        {
+          "endMs": 442760,
+          "startMs": 439000,
+          "startTime": "7:19",
+          "text": "something from those fridges or"
+        },
+        {
+          "endMs": 445240,
+          "startMs": 440400,
+          "startTime": "7:20",
+          "text": "freezers, they have to run a mile to the"
+        },
+        {
+          "endMs": 447160,
+          "startMs": 442760,
+          "startTime": "7:22",
+          "text": "other place, grab it, and then run back."
+        },
+        {
+          "endMs": 450360,
+          "startMs": 445240,
+          "startTime": "7:25",
+          "text": "You can't just plug the chips in"
+        },
+        {
+          "endMs": 451720,
+          "startMs": 447160,
+          "startTime": "7:27",
+          "text": "together. If you have a model that is 40"
+        },
+        {
+          "endMs": 455680,
+          "startMs": 450360,
+          "startTime": "7:30",
+          "text": "gigs, hell, if you have a model that's"
+        },
+        {
+          "endMs": 458320,
+          "startMs": 451720,
+          "startTime": "7:31",
+          "text": "33 gigs and it doesn't fit on your 5090,"
+        },
+        {
+          "endMs": 461000,
+          "startMs": 455680,
+          "startTime": "7:35",
+          "text": "you now have to split the data across"
+        },
+        {
+          "endMs": 463200,
+          "startMs": 458320,
+          "startTime": "7:38",
+          "text": "the two GPUs, which means ideally you"
+        },
+        {
+          "endMs": 466200,
+          "startMs": 461000,
+          "startTime": "7:41",
+          "text": "have some way of predicting which data"
+        },
+        {
+          "endMs": 468200,
+          "startMs": 463200,
+          "startTime": "7:43",
+          "text": "is needed when and how so that GPU one"
+        },
+        {
+          "endMs": 470240,
+          "startMs": 466200,
+          "startTime": "7:46",
+          "text": "only has the data it needs and two only"
+        },
+        {
+          "endMs": 472720,
+          "startMs": 468200,
+          "startTime": "7:48",
+          "text": "needs the data that it needs. Good luck."
+        },
+        {
+          "endMs": 474120,
+          "startMs": 470240,
+          "startTime": "7:50",
+          "text": "Have fun. Not [ __ ] happening. There"
+        },
+        {
+          "endMs": 475880,
+          "startMs": 472720,
+          "startTime": "7:52",
+          "text": "are techniques around things like"
+        },
+        {
+          "endMs": 478440,
+          "startMs": 474120,
+          "startTime": "7:54",
+          "text": "mixture of experts models that allow you"
+        },
+        {
+          "endMs": 481200,
+          "startMs": 475880,
+          "startTime": "7:55",
+          "text": "to more easily some amount assign the"
+        },
+        {
+          "endMs": 483440,
+          "startMs": 478440,
+          "startTime": "7:58",
+          "text": "work across stuff. But there is no way"
+        },
+        {
+          "endMs": 486880,
+          "startMs": 481200,
+          "startTime": "8:01",
+          "text": "on consumer hardware to get reasonable"
+        },
+        {
+          "endMs": 489400,
+          "startMs": 483440,
+          "startTime": "8:03",
+          "text": "bandwidth between two 5090s to allow"
+        },
+        {
+          "endMs": 491960,
+          "startMs": 486880,
+          "startTime": "8:06",
+          "text": "them to share memory. By the way, that"
+        },
+        {
+          "endMs": 495040,
+          "startMs": 489400,
+          "startTime": "8:09",
+          "text": "memory that they're using for this is as"
+        },
+        {
+          "endMs": 497720,
+          "startMs": 491960,
+          "startTime": "8:11",
+          "text": "much as 48 gigabits per second. That"
+        },
+        {
+          "endMs": 498960,
+          "startMs": 495040,
+          "startTime": "8:15",
+          "text": "means you need something even faster in"
+        },
+        {
+          "endMs": 501240,
+          "startMs": 497720,
+          "startTime": "8:17",
+          "text": "order to transfer the data between the"
+        },
+        {
+          "endMs": 503640,
+          "startMs": 498960,
+          "startTime": "8:18",
+          "text": "GPUs. Once again,"
+        },
+        {
+          "endMs": 505840,
+          "startMs": 501240,
+          "startTime": "8:21",
+          "text": "not happening. Don't worry though,"
+        },
+        {
+          "endMs": 507720,
+          "startMs": 503640,
+          "startTime": "8:23",
+          "text": "Nvidia has an answer for you. If you"
+        },
+        {
+          "endMs": 509400,
+          "startMs": 505840,
+          "startTime": "8:25",
+          "text": "need more memory, they're more than"
+        },
+        {
+          "endMs": 511200,
+          "startMs": 507720,
+          "startTime": "8:27",
+          "text": "willing to sell you something. And no,"
+        },
+        {
+          "endMs": 512800,
+          "startMs": 509400,
+          "startTime": "8:29",
+          "text": "I'm not referring to the RTX Pro. They"
+        },
+        {
+          "endMs": 515680,
+          "startMs": 511200,
+          "startTime": "8:31",
+          "text": "know that there are people who can't put"
+        },
+        {
+          "endMs": 517080,
+          "startMs": 512800,
+          "startTime": "8:32",
+          "text": "out 18 grand plus on a GPU that they're"
+        },
+        {
+          "endMs": 519240,
+          "startMs": 515680,
+          "startTime": "8:35",
+          "text": "just going to use to run shitty models"
+        },
+        {
+          "endMs": 523120,
+          "startMs": 517080,
+          "startTime": "8:37",
+          "text": "locally. And that's why they made the"
+        },
+        {
+          "endMs": 526120,
+          "startMs": 519240,
+          "startTime": "8:39",
+          "text": "DGX Spark. This small little box costs"
+        },
+        {
+          "endMs": 528760,
+          "startMs": 523120,
+          "startTime": "8:43",
+          "text": "four grand and I hope you don't plan to"
+        },
+        {
+          "endMs": 531640,
+          "startMs": 526120,
+          "startTime": "8:46",
+          "text": "use it as a computer. That is what it is"
+        },
+        {
+          "endMs": 534400,
+          "startMs": 528760,
+          "startTime": "8:48",
+          "text": "to be clear. It's a computer. It shows"
+        },
+        {
+          "endMs": 536160,
+          "startMs": 531640,
+          "startTime": "8:51",
+          "text": "up running a botched install of Ubuntu"
+        },
+        {
+          "endMs": 539560,
+          "startMs": 534400,
+          "startTime": "8:54",
+          "text": "that they filled with [ __ ] and it"
+        },
+        {
+          "endMs": 543800,
+          "startMs": 536160,
+          "startTime": "8:56",
+          "text": "runs a 20 core arm chip. And having"
+        },
+        {
+          "endMs": 546680,
+          "startMs": 539560,
+          "startTime": "8:59",
+          "text": "spent far far far too much time fighting"
+        },
+        {
+          "endMs": 548720,
+          "startMs": 543800,
+          "startTime": "9:03",
+          "text": "arm Linux in my life, I promise you"
+        },
+        {
+          "endMs": 552040,
+          "startMs": 546680,
+          "startTime": "9:06",
+          "text": "you're not going to use this computer as"
+        },
+        {
+          "endMs": 553680,
+          "startMs": 548720,
+          "startTime": "9:08",
+          "text": "a computer. Linux on arm is hell. Don't"
+        },
+        {
+          "endMs": 557040,
+          "startMs": 552040,
+          "startTime": "9:12",
+          "text": "bother for this for anything other than"
+        },
+        {
+          "endMs": 560320,
+          "startMs": 553680,
+          "startTime": "9:13",
+          "text": "inference. So this arm chip in this"
+        },
+        {
+          "endMs": 563560,
+          "startMs": 557040,
+          "startTime": "9:17",
+          "text": "random $4,000 mini PC that you can't use"
+        },
+        {
+          "endMs": 566800,
+          "startMs": 560320,
+          "startTime": "9:20",
+          "text": "as a computer does have a benefit. 128"
+        },
+        {
+          "endMs": 569480,
+          "startMs": 563560,
+          "startTime": "9:23",
+          "text": "gigs of unified memory. That memory is"
+        },
+        {
+          "endMs": 570600,
+          "startMs": 566800,
+          "startTime": "9:26",
+          "text": "LPDDR5 memory though, which says a"
+        },
+        {
+          "endMs": 571360,
+          "startMs": 569480,
+          "startTime": "9:29",
+          "text": "different number here. There's a lot of"
+        },
+        {
+          "endMs": 574720,
+          "startMs": 570600,
+          "startTime": "9:30",
+          "text": "layers to how those numbers are"
+        },
+        {
+          "endMs": 577839,
+          "startMs": 571360,
+          "startTime": "9:31",
+          "text": "measured. LPDDR5 is meaningfully slower"
+        },
+        {
+          "endMs": 579520,
+          "startMs": 574720,
+          "startTime": "9:34",
+          "text": "than GDDR7. So the RAM is slower,"
+        },
+        {
+          "endMs": 582600,
+          "startMs": 577839,
+          "startTime": "9:37",
+          "text": "but you have way more of it. But most"
+        },
+        {
+          "endMs": 585000,
+          "startMs": 579520,
+          "startTime": "9:39",
+          "text": "importantly, you have CUDA cores, cores"
+        },
+        {
+          "endMs": 587600,
+          "startMs": 582600,
+          "startTime": "9:42",
+          "text": "that can be used with CUDA-backed stuff"
+        },
+        {
+          "endMs": 590120,
+          "startMs": 585000,
+          "startTime": "9:45",
+          "text": "that are actually capable of running"
+        },
+        {
+          "endMs": 593280,
+          "startMs": 587600,
+          "startTime": "9:47",
+          "text": "real workflows. But you get 6,000 of"
+        },
+        {
+          "endMs": 596400,
+          "startMs": 590120,
+          "startTime": "9:50",
+          "text": "them instead of the 24,000 plus you get"
+        },
+        {
+          "endMs": 599600,
+          "startMs": 593280,
+          "startTime": "9:53",
+          "text": "on hardware like a 5090 or an RTX Pro."
+        },
+        {
+          "endMs": 601760,
+          "startMs": 596400,
+          "startTime": "9:56",
+          "text": "So, your options here are the world's"
+        },
+        {
+          "endMs": 603440,
+          "startMs": 599600,
+          "startTime": "9:59",
+          "text": "worst computer environment possibly that"
+        },
+        {
+          "endMs": 605760,
+          "startMs": 601760,
+          "startTime": "10:01",
+          "text": "you can buy today for real amounts of"
+        },
+        {
+          "endMs": 607960,
+          "startMs": 603440,
+          "startTime": "10:03",
+          "text": "money. But you get a real amount of RAM"
+        },
+        {
+          "endMs": 609680,
+          "startMs": 605760,
+          "startTime": "10:05",
+          "text": "you can use for models at the cost of an"
+        },
+        {
+          "endMs": 611920,
+          "startMs": 607960,
+          "startTime": "10:07",
+          "text": "absolute [ __ ] garbage chip that runs"
+        },
+        {
+          "endMs": 615760,
+          "startMs": 609680,
+          "startTime": "10:09",
+          "text": "terribly slow. Or you can get a really"
+        },
+        {
+          "endMs": 618640,
+          "startMs": 611920,
+          "startTime": "10:11",
+          "text": "powerful, capable chip like an RTX 5090,"
+        },
+        {
+          "endMs": 621240,
+          "startMs": 615760,
+          "startTime": "10:15",
+          "text": "and now you're entirely gimped on RAM."
+        },
+        {
+          "endMs": 623400,
+          "startMs": 618640,
+          "startTime": "10:18",
+          "text": "And if you want RAM and a high-end chip,"
+        },
+        {
+          "endMs": 626120,
+          "startMs": 621240,
+          "startTime": "10:21",
+          "text": "you're paying the 16,000 plus dollars"
+        },
+        {
+          "endMs": 627360,
+          "startMs": 623400,
+          "startTime": "10:23",
+          "text": "for that RTX Pro, sadly. Do you see what"
+        },
+        {
+          "endMs": 628960,
+          "startMs": 626120,
+          "startTime": "10:26",
+          "text": "they've done here?"
+        },
+        {
+          "endMs": 630680,
+          "startMs": 627360,
+          "startTime": "10:27",
+          "text": "They have the cheap option if you need"
+        },
+        {
+          "endMs": 632600,
+          "startMs": 628960,
+          "startTime": "10:28",
+          "text": "more RAM. They have the cheap option if"
+        },
+        {
+          "endMs": 634680,
+          "startMs": 630680,
+          "startTime": "10:30",
+          "text": "you want a fast chip. But you're paying"
+        },
+        {
+          "endMs": 636440,
+          "startMs": 632600,
+          "startTime": "10:32",
+          "text": "up to 10 times plus more if you need"
+        },
+        {
+          "endMs": 638800,
+          "startMs": 634680,
+          "startTime": "10:34",
+          "text": "both. They did do one really nice thing"
+        },
+        {
+          "endMs": 641520,
+          "startMs": 636440,
+          "startTime": "10:36",
+          "text": "with the Sparks. They gave them a 200"
+        },
+        {
+          "endMs": 643920,
+          "startMs": 638800,
+          "startTime": "10:38",
+          "text": "gigabit per second NIC so that you can"
+        },
+        {
+          "endMs": 646040,
+          "startMs": 641520,
+          "startTime": "10:41",
+          "text": "connect them over SFP. So, you can have"
+        },
+        {
+          "endMs": 649160,
+          "startMs": 643920,
+          "startTime": "10:43",
+          "text": "the different Sparks transfer data"
+        }
+      ],
+      "source": "live",
+      "totalDurationMs": 1529000,
+      "videoId": "VgLwsakPgo4"
+    }
+  },
+  "error": null,
+  "logId": "log_LCOh8IkM74Dm"
+}

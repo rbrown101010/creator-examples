@@ -1,0 +1,20 @@
+{
+ "creators": [
+  {
+   "name": "Theo",
+   "slug": "theo",
+   "type": "intros",
+   "page": "https://creator-examples.vercel.app/intros/theo/",
+   "json": "https://creator-examples.vercel.app/data/theo.json",
+   "count": 10
+  },
+  {
+   "name": "Riley Brown",
+   "slug": "riley-brown",
+   "type": "intros",
+   "page": "https://creator-examples.vercel.app/intros/riley-brown/",
+   "json": "https://creator-examples.vercel.app/data/riley-brown.json",
+   "count": 10
+  }
+ ]
+}

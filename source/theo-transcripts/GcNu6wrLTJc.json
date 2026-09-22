@@ -1,0 +1,1796 @@
+{
+  "successful": true,
+  "data": {
+    "credits": {
+      "charged": 2,
+      "remaining": 24
+    },
+    "data": {
+      "_truncated": {
+        "field": "segments",
+        "reason": "response size limit — lower \"limit\" for full detail",
+        "shown": 295,
+        "total": 904
+      },
+      "dataRefreshedAt": "2026-09-22T00:19:13.641Z",
+      "fullText": "Are you really an AI engineer if you haven't put a ton of time into your Agent MD or Claude MD files or both? Like, really? Come on, everyone's doing it. It has to be good, right? Well, what if I told you that a study just came out all about those Claude MD and Agent MD files? And uh the numbers weren't good. They're actually quite bad. Here we see comparisons across Sonic 4.5, GPT 4.5, 5.1 Mini, and Qwen 3. And when given an Agent MD or Claude MD file, they actually performed worse consistently. This is a thing we should probably be talking about, right? Like, I've been told so many times that I'm having prompt issues because I didn't write an Agent MD or Claude MD. They're so important. Every code base needs them. Everybody's publishing their own rule files and skills and all these things. It'd be pretty bad if it turned out those things were making the tools worse, right? Well, that's the thing we're going to have to dive into because on one hand, a lot of people are using these files wrong. And on the other hand, it is likely that they shouldn't be used at all for many cases because they steer models incorrectly. This is going to be a fun deep dive on context management and best practices for using AI to code and build real software. And a lot of this is coming from my own experience, which is admittedly subjective, but is really cool to see it coming out in a study. It's been awesome to see studies like this recently popping up. Things like figuring out if these Agent MD files are actually useful, Skills Bench figuring out how useful skills are as a thing that the models have access to when they are working. And even benchmarks that are trying to figure out why models are more likely to get a question right if you ask them the same thing twice. There's a lot of fun stuff to dive into here, and it's all about context management. And I do actually think this video can help you get better at using AI to code. That all said, I'm about to do a lot of work for free that OpenAI and Anthropic probably should be doing. Neither are paying me for this, and the team needs to get paid. So, we're going to do a quick break for today's sponsor. If Claude bots, sorry, OpenClaude has proven anything to be true, it's that AI is way more powerful when you give it a computer of its own, which is why I'm so excited about today's sponsor. And no, it's not a Mac mini. It's Daytona. So, is it another GPU cloud? No, it's way better than that. It's elastic containers for running your agents in. So, if you want agents that are able to do things like edit code, write code, run code, make file changes, edit things in Git, and all the stuff that you would do on a computer, Daytona has you covered and then some. Here's how easy it is to set up a secure sandbox with Daytona. You create a Daytona instance with your API key, you define a sandbox, then this I would argue optional try catch wrapper cuz I've never seen it ever. Sandbox is await daytona.create TypeScript. Response equals await sandbox.process.coderun. And then you pass it TypeScript code. It executes, you get a response, you throw an error if it failed, and then you show the result if it didn't. It has never been easier to set up a remote box for your code to run in. And don't worry, they have Python bindings as well for you Python people. But what about other languages? Well, I have good news because the snapshot can be anything. As long as it runs in Docker or Kubernetes, it can probably run on Daytona without issue. All their crazy benefits from the networking to the memory to the storage. Insane. I just learned about this while filming. Apparently, they now have full computer use sandboxes with virtual desktops with all major OSs. I did not know they did this. That's really cool. It suddenly makes a lot of sense why all of the companies I talked to that are doing things like a mobile app deployments suddenly have support for doing cloud-based builds. They're all probably using this macOS automation. Crazy. Especially when you realize how absurdly cheap the platform is. We're talking 5 cents per hour of compute, 1.6 cents per hour of memory, and a basically impossible to measure cost per hour per gig of storage. And remember, everything spins up and down instantly, so you're only paying for the compute you're actually using, making the costs hit the floor really fast. I'm going to be real with you guys. If you need a sandbox, you should use Daytona, and if you don't, you'll probably need one soon. Check them out now at sidedev.link/daytona. Let's dive into the study. I'm actually really excited. A widespread practice in software development is to tailor coding agents to repositories using context files such as an agents.md by either manually or automatically generating them. Although this practice is strongly encouraged by agent developers, there is currently no rigorous investigation into whether such context files are actually effective for real-world tasks. In this work, we study the question and evaluate coding agents task completion performance in two complementary settings. Established SVE bench tasks for popular repos with LM generated context files and the other one is a novel collection of issues from repositories containing developer committed context files. Interesting. Should probably give some context on what an agents.md is and what they're talking about with the init's here. Let's start with the T3 chat one. This file provides guidance to Claude code when working in the repo. We should probably remove that part cuz this is actually an agents.md that we symlink to the Claude.md too. You can tell a lot of this was generated and probably isn't useful. Always use PNPM to run scripts. We describe the common scripts, dev, lint, lint-fix, check, test, test:watch, vitest, and PNPM generate. This is all pretty basic stuff from our package.json. But here you'll see how a little bit of how I use things leaking. Spoiler for the future. Do not run PNPM dev. Assume already running. PNPM build. CI only. Interesting. I wonder why that's there. We then have an architecture overview telling it where things are. We have the front end folder, the back end folder, the shared folder, app, and then the Convex folder for all of our Convex stuff. We also describe what services we're using for what things. And one of the mistakes we have in here that I need to change is putting TRPC here confuses the model a bunch and it tries to use TRPC in places where it shouldn't. I guess I'm doing an audit as well as this in this video. We have key patterns for things that we do and how we recommend doing them. Code style stuff, talking about how we use effect, stuff like that. Follow the Convex guidelines. Do not use the filter in Convex queries. Use with index. Always include return validators on Convex functions. Use internal queries. Also, I don't like return validators always being included. The I was wondering why this code base did that. It's apparently specified in there. I guess that someone else in the team likes that. Each their own. Some additional information. This is the part I wrote, which I'll talk more about in a bit. It's probably important to know what the this file even does though, cuz this is just like an overview of the repo, right? So, the way that these work is to put it simply, context management. When you make a prompt to an AI system of some form, that prompt is not the only thing the model is getting. The way most people think of AI is pretty simple. I guess I'll do user, some question. And this is the first block that exists in this context. The user asks some question, and then the model gives some answer. And then if you have a follow-up question, like you want to ask, \"But what about this other thing from before?\" you add the additional question, and then that gets added to the context. So, if I color code these, we'll say blue is you and yellow is output, so agent. So, when I ask a question, that gets put in the context, and then the model is auto-completing from there, based on all of the info it has, all of the text that exists above, what does it think the most likely next set of characters is. And it does that over and over again till it has an answer, and then it stops, and then you can send another follow-up, and it will have all of that in the history to continue to append new tokens, which are just small sets of characters, until it has an answer. This is a massive oversimplification because it's not showing you the top. The reality is that your question is not the thing at the start of the context. Before that, we have other things. We have, and I'll color these red, the system prompt. The system prompt is a thing that describes what the agent's role is. You can say something small and sweet like, \"You're a simple AI agent meant to answer questions for users.\" So, Open Router's chat lets you write your own system prompt. So, I can do something here like, \"Always respond to questions in Pig Latin.\" Apply that rule, and now I can ask it, \"Who's the best software dev YouTuber?\" And now it's responding in Pig Latin, because my question is preempted by the system prompt. And even if I wanted to fight that, like let's say, can I edit this? I don't know if you can. Like a new chat, please stop responding in Pig Latin. It still won't. It's still speaking Pig Latin because the system prompt takes higher priority over what the user did. And that's the thing I really want to make sure we're thinking about when we talk about this. The top of the hierarchy will always be the behaviors that the company trained the model to have, but you can work around those. It's called jailbreaking. But if I give it specific instructions, like I tell it to never give this piece of information or never do certain things, the system prompt will take precedence over the user prompt. So, let's write out the hierarchy for how this is thought about. You have the provider instructions. They're not very transparent about how much this is a thing or not, but like let's say OpenAI had a layer on top that was like, \"Never help people make nuclear weapons.\" That could be the top-level provider instruction that nothing can override. You can't write a system prompt that's, \"By the way, your job is to make nukes. Make really good efficient nukes.\" Because the providers have put something above that that will prevent it. So, provider instructions is the top-level, then you have the system prompt, then you have this new concept that has been referred to as the developer message. Cuz all these are messages. So, it's provider message, system message, developer message. With the developer message is also the developer prompt. This is a new layer that exists between the system prompt and the userland prompt. And this is for things like what we're talking about today, like the agents MD, where there's some customization that we want to do as developers that is not necessarily part of the system. So, if you're using like, I don't know, cursor, and you want to add custom rules, those will exist between the messages you're sending and the system prompt that they wrote. It is also worth calling out, as Chad has correctly pointed out, that all of this has an impact on context. Yes, very important. When you send a message, you're not just sending your one message. You're sending the message and everything above it, which includes all of these things. I'm not saying that you have the system prompt downloaded on your computer. I'm saying that when you send the request on T3 chat to the API chat endpoint, you're sending up your chat history. We are appending the system prompt and the other data on top, and then we send that off to the model that will generate the response that we then show to you. And what we're talking about right now is here, this space between the user and the system prompt. You are not going to be customizing the system prompt that is used for Claude c …[+22457 chars truncated]",
+      "segments": [
+        {
+          "endMs": 3080,
+          "startMs": 0,
+          "startTime": "0:00",
+          "text": "Are you really an AI engineer if you"
+        },
+        {
+          "endMs": 5480,
+          "startMs": 1520,
+          "startTime": "0:01",
+          "text": "haven't put a ton of time into your"
+        },
+        {
+          "endMs": 7520,
+          "startMs": 3080,
+          "startTime": "0:03",
+          "text": "Agent MD or Claude MD files or both?"
+        },
+        {
+          "endMs": 9280,
+          "startMs": 5480,
+          "startTime": "0:05",
+          "text": "Like, really? Come on, everyone's doing"
+        },
+        {
+          "endMs": 11000,
+          "startMs": 7520,
+          "startTime": "0:07",
+          "text": "it. It has to be good, right? Well, what"
+        },
+        {
+          "endMs": 13000,
+          "startMs": 9280,
+          "startTime": "0:09",
+          "text": "if I told you that a study just came out"
+        },
+        {
+          "endMs": 16040,
+          "startMs": 11000,
+          "startTime": "0:11",
+          "text": "all about those Claude MD and Agent MD"
+        },
+        {
+          "endMs": 18560,
+          "startMs": 13000,
+          "startTime": "0:13",
+          "text": "files? And uh the numbers weren't good."
+        },
+        {
+          "endMs": 21000,
+          "startMs": 16040,
+          "startTime": "0:16",
+          "text": "They're actually quite bad. Here we see"
+        },
+        {
+          "endMs": 23160,
+          "startMs": 18560,
+          "startTime": "0:18",
+          "text": "comparisons across Sonic 4.5, GPT 4.5,"
+        },
+        {
+          "endMs": 24960,
+          "startMs": 21000,
+          "startTime": "0:21",
+          "text": "5.1 Mini, and Qwen 3. And when given an"
+        },
+        {
+          "endMs": 28240,
+          "startMs": 23160,
+          "startTime": "0:23",
+          "text": "Agent MD or Claude MD file, they"
+        },
+        {
+          "endMs": 30000,
+          "startMs": 24960,
+          "startTime": "0:24",
+          "text": "actually performed worse consistently."
+        },
+        {
+          "endMs": 32320,
+          "startMs": 28240,
+          "startTime": "0:28",
+          "text": "This is a thing we should probably be"
+        },
+        {
+          "endMs": 34240,
+          "startMs": 30000,
+          "startTime": "0:30",
+          "text": "talking about, right? Like, I've been"
+        },
+        {
+          "endMs": 36120,
+          "startMs": 32320,
+          "startTime": "0:32",
+          "text": "told so many times that I'm having"
+        },
+        {
+          "endMs": 37600,
+          "startMs": 34240,
+          "startTime": "0:34",
+          "text": "prompt issues because I didn't write an"
+        },
+        {
+          "endMs": 39480,
+          "startMs": 36120,
+          "startTime": "0:36",
+          "text": "Agent MD or Claude MD. They're so"
+        },
+        {
+          "endMs": 40920,
+          "startMs": 37600,
+          "startTime": "0:37",
+          "text": "important. Every code base needs them."
+        },
+        {
+          "endMs": 42720,
+          "startMs": 39480,
+          "startTime": "0:39",
+          "text": "Everybody's publishing their own rule"
+        },
+        {
+          "endMs": 44680,
+          "startMs": 40920,
+          "startTime": "0:40",
+          "text": "files and skills and all these things."
+        },
+        {
+          "endMs": 46480,
+          "startMs": 42720,
+          "startTime": "0:42",
+          "text": "It'd be pretty bad if it turned out"
+        },
+        {
+          "endMs": 48840,
+          "startMs": 44680,
+          "startTime": "0:44",
+          "text": "those things were making the tools"
+        },
+        {
+          "endMs": 50520,
+          "startMs": 46480,
+          "startTime": "0:46",
+          "text": "worse, right? Well, that's the thing"
+        },
+        {
+          "endMs": 52280,
+          "startMs": 48840,
+          "startTime": "0:48",
+          "text": "we're going to have to dive into because"
+        },
+        {
+          "endMs": 53960,
+          "startMs": 50520,
+          "startTime": "0:50",
+          "text": "on one hand, a lot of people are using"
+        },
+        {
+          "endMs": 55720,
+          "startMs": 52280,
+          "startTime": "0:52",
+          "text": "these files wrong. And on the other"
+        },
+        {
+          "endMs": 57880,
+          "startMs": 53960,
+          "startTime": "0:53",
+          "text": "hand, it is likely that they shouldn't"
+        },
+        {
+          "endMs": 60000,
+          "startMs": 55720,
+          "startTime": "0:55",
+          "text": "be used at all for many cases because"
+        },
+        {
+          "endMs": 62000,
+          "startMs": 57880,
+          "startTime": "0:57",
+          "text": "they steer models incorrectly. This is"
+        },
+        {
+          "endMs": 64080,
+          "startMs": 60000,
+          "startTime": "1:00",
+          "text": "going to be a fun deep dive on context"
+        },
+        {
+          "endMs": 66760,
+          "startMs": 62000,
+          "startTime": "1:02",
+          "text": "management and best practices for using"
+        },
+        {
+          "endMs": 67840,
+          "startMs": 64080,
+          "startTime": "1:04",
+          "text": "AI to code and build real software. And"
+        },
+        {
+          "endMs": 69120,
+          "startMs": 66760,
+          "startTime": "1:06",
+          "text": "a lot of this is coming from my own"
+        },
+        {
+          "endMs": 71080,
+          "startMs": 67840,
+          "startTime": "1:07",
+          "text": "experience, which is admittedly"
+        },
+        {
+          "endMs": 73120,
+          "startMs": 69120,
+          "startTime": "1:09",
+          "text": "subjective, but is really cool to see it"
+        },
+        {
+          "endMs": 74440,
+          "startMs": 71080,
+          "startTime": "1:11",
+          "text": "coming out in a study. It's been awesome"
+        },
+        {
+          "endMs": 76000,
+          "startMs": 73120,
+          "startTime": "1:13",
+          "text": "to see studies like this recently"
+        },
+        {
+          "endMs": 77360,
+          "startMs": 74440,
+          "startTime": "1:14",
+          "text": "popping up. Things like figuring out if"
+        },
+        {
+          "endMs": 79360,
+          "startMs": 76000,
+          "startTime": "1:16",
+          "text": "these Agent MD files are actually"
+        },
+        {
+          "endMs": 81320,
+          "startMs": 77360,
+          "startTime": "1:17",
+          "text": "useful, Skills Bench figuring out how"
+        },
+        {
+          "endMs": 82720,
+          "startMs": 79360,
+          "startTime": "1:19",
+          "text": "useful skills are as a thing that the"
+        },
+        {
+          "endMs": 84280,
+          "startMs": 81320,
+          "startTime": "1:21",
+          "text": "models have access to when they are"
+        },
+        {
+          "endMs": 86120,
+          "startMs": 82720,
+          "startTime": "1:22",
+          "text": "working. And even benchmarks that are"
+        },
+        {
+          "endMs": 87840,
+          "startMs": 84280,
+          "startTime": "1:24",
+          "text": "trying to figure out why models are more"
+        },
+        {
+          "endMs": 90000,
+          "startMs": 86120,
+          "startTime": "1:26",
+          "text": "likely to get a question right if you"
+        },
+        {
+          "endMs": 91800,
+          "startMs": 87840,
+          "startTime": "1:27",
+          "text": "ask them the same thing twice. There's a"
+        },
+        {
+          "endMs": 93440,
+          "startMs": 90000,
+          "startTime": "1:30",
+          "text": "lot of fun stuff to dive into here, and"
+        },
+        {
+          "endMs": 95680,
+          "startMs": 91800,
+          "startTime": "1:31",
+          "text": "it's all about context management. And I"
+        },
+        {
+          "endMs": 98040,
+          "startMs": 93440,
+          "startTime": "1:33",
+          "text": "do actually think this video can help"
+        },
+        {
+          "endMs": 99360,
+          "startMs": 95680,
+          "startTime": "1:35",
+          "text": "you get better at using AI to code. That"
+        },
+        {
+          "endMs": 101120,
+          "startMs": 98040,
+          "startTime": "1:38",
+          "text": "all said, I'm about to do a lot of work"
+        },
+        {
+          "endMs": 102800,
+          "startMs": 99360,
+          "startTime": "1:39",
+          "text": "for free that OpenAI and Anthropic"
+        },
+        {
+          "endMs": 104720,
+          "startMs": 101120,
+          "startTime": "1:41",
+          "text": "probably should be doing. Neither are"
+        },
+        {
+          "endMs": 105840,
+          "startMs": 102800,
+          "startTime": "1:42",
+          "text": "paying me for this, and the team needs"
+        },
+        {
+          "endMs": 107280,
+          "startMs": 104720,
+          "startTime": "1:44",
+          "text": "to get paid. So, we're going to do a"
+        },
+        {
+          "endMs": 109360,
+          "startMs": 105840,
+          "startTime": "1:45",
+          "text": "quick break for today's sponsor. If"
+        },
+        {
+          "endMs": 111240,
+          "startMs": 107280,
+          "startTime": "1:47",
+          "text": "Claude bots, sorry, OpenClaude has"
+        },
+        {
+          "endMs": 112960,
+          "startMs": 109360,
+          "startTime": "1:49",
+          "text": "proven anything to be true, it's that AI"
+        },
+        {
+          "endMs": 114840,
+          "startMs": 111240,
+          "startTime": "1:51",
+          "text": "is way more powerful when you give it a"
+        },
+        {
+          "endMs": 116520,
+          "startMs": 112960,
+          "startTime": "1:52",
+          "text": "computer of its own, which is why I'm so"
+        },
+        {
+          "endMs": 118680,
+          "startMs": 114840,
+          "startTime": "1:54",
+          "text": "excited about today's sponsor. And no,"
+        },
+        {
+          "endMs": 121240,
+          "startMs": 116520,
+          "startTime": "1:56",
+          "text": "it's not a Mac mini. It's Daytona. So,"
+        },
+        {
+          "endMs": 122840,
+          "startMs": 118680,
+          "startTime": "1:58",
+          "text": "is it another GPU cloud? No, it's way"
+        },
+        {
+          "endMs": 125040,
+          "startMs": 121240,
+          "startTime": "2:01",
+          "text": "better than that. It's elastic"
+        },
+        {
+          "endMs": 126240,
+          "startMs": 122840,
+          "startTime": "2:02",
+          "text": "containers for running your agents in."
+        },
+        {
+          "endMs": 128280,
+          "startMs": 125040,
+          "startTime": "2:05",
+          "text": "So, if you want agents that are able to"
+        },
+        {
+          "endMs": 130520,
+          "startMs": 126240,
+          "startTime": "2:06",
+          "text": "do things like edit code, write code,"
+        },
+        {
+          "endMs": 132000,
+          "startMs": 128280,
+          "startTime": "2:08",
+          "text": "run code, make file changes, edit things"
+        },
+        {
+          "endMs": 134200,
+          "startMs": 130520,
+          "startTime": "2:10",
+          "text": "in Git, and all the stuff that you would"
+        },
+        {
+          "endMs": 135920,
+          "startMs": 132000,
+          "startTime": "2:12",
+          "text": "do on a computer, Daytona has you"
+        },
+        {
+          "endMs": 137640,
+          "startMs": 134200,
+          "startTime": "2:14",
+          "text": "covered and then some. Here's how easy"
+        },
+        {
+          "endMs": 139400,
+          "startMs": 135920,
+          "startTime": "2:15",
+          "text": "it is to set up a secure sandbox with"
+        },
+        {
+          "endMs": 141680,
+          "startMs": 137640,
+          "startTime": "2:17",
+          "text": "Daytona. You create a Daytona instance"
+        },
+        {
+          "endMs": 143800,
+          "startMs": 139400,
+          "startTime": "2:19",
+          "text": "with your API key, you define a sandbox,"
+        },
+        {
+          "endMs": 145280,
+          "startMs": 141680,
+          "startTime": "2:21",
+          "text": "then this I would argue optional try"
+        },
+        {
+          "endMs": 147880,
+          "startMs": 143800,
+          "startTime": "2:23",
+          "text": "catch wrapper cuz I've never seen it"
+        },
+        {
+          "endMs": 149959,
+          "startMs": 145280,
+          "startTime": "2:25",
+          "text": "ever. Sandbox is await daytona.create"
+        },
+        {
+          "endMs": 152040,
+          "startMs": 147880,
+          "startTime": "2:27",
+          "text": "TypeScript. Response equals await"
+        },
+        {
+          "endMs": 154560,
+          "startMs": 149959,
+          "startTime": "2:29",
+          "text": "sandbox.process.coderun."
+        },
+        {
+          "endMs": 156560,
+          "startMs": 152040,
+          "startTime": "2:32",
+          "text": "And then you pass it TypeScript code. It"
+        },
+        {
+          "endMs": 158760,
+          "startMs": 154560,
+          "startTime": "2:34",
+          "text": "executes, you get a response, you throw"
+        },
+        {
+          "endMs": 160840,
+          "startMs": 156560,
+          "startTime": "2:36",
+          "text": "an error if it failed, and then you show"
+        },
+        {
+          "endMs": 162840,
+          "startMs": 158760,
+          "startTime": "2:38",
+          "text": "the result if it didn't. It has never"
+        },
+        {
+          "endMs": 164360,
+          "startMs": 160840,
+          "startTime": "2:40",
+          "text": "been easier to set up a remote box for"
+        },
+        {
+          "endMs": 165800,
+          "startMs": 162840,
+          "startTime": "2:42",
+          "text": "your code to run in. And don't worry,"
+        },
+        {
+          "endMs": 167760,
+          "startMs": 164360,
+          "startTime": "2:44",
+          "text": "they have Python bindings as well for"
+        },
+        {
+          "endMs": 169040,
+          "startMs": 165800,
+          "startTime": "2:45",
+          "text": "you Python people. But what about other"
+        },
+        {
+          "endMs": 170520,
+          "startMs": 167760,
+          "startTime": "2:47",
+          "text": "languages? Well, I have good news"
+        },
+        {
+          "endMs": 172360,
+          "startMs": 169040,
+          "startTime": "2:49",
+          "text": "because the snapshot can be anything. As"
+        },
+        {
+          "endMs": 174120,
+          "startMs": 170520,
+          "startTime": "2:50",
+          "text": "long as it runs in Docker or Kubernetes,"
+        },
+        {
+          "endMs": 176120,
+          "startMs": 172360,
+          "startTime": "2:52",
+          "text": "it can probably run on Daytona without"
+        },
+        {
+          "endMs": 178400,
+          "startMs": 174120,
+          "startTime": "2:54",
+          "text": "issue. All their crazy benefits from the"
+        },
+        {
+          "endMs": 180280,
+          "startMs": 176120,
+          "startTime": "2:56",
+          "text": "networking to the memory to the storage."
+        },
+        {
+          "endMs": 182040,
+          "startMs": 178400,
+          "startTime": "2:58",
+          "text": "Insane. I just learned about this while"
+        },
+        {
+          "endMs": 183959,
+          "startMs": 180280,
+          "startTime": "3:00",
+          "text": "filming. Apparently, they now have full"
+        },
+        {
+          "endMs": 186840,
+          "startMs": 182040,
+          "startTime": "3:02",
+          "text": "computer use sandboxes with virtual"
+        },
+        {
+          "endMs": 189160,
+          "startMs": 183959,
+          "startTime": "3:03",
+          "text": "desktops with all major OSs. I did not"
+        },
+        {
+          "endMs": 190840,
+          "startMs": 186840,
+          "startTime": "3:06",
+          "text": "know they did this. That's really cool."
+        },
+        {
+          "endMs": 192160,
+          "startMs": 189160,
+          "startTime": "3:09",
+          "text": "It suddenly makes a lot of sense why all"
+        },
+        {
+          "endMs": 193440,
+          "startMs": 190840,
+          "startTime": "3:10",
+          "text": "of the companies I talked to that are"
+        },
+        {
+          "endMs": 195680,
+          "startMs": 192160,
+          "startTime": "3:12",
+          "text": "doing things like a mobile app"
+        },
+        {
+          "endMs": 197760,
+          "startMs": 193440,
+          "startTime": "3:13",
+          "text": "deployments suddenly have support for"
+        },
+        {
+          "endMs": 199800,
+          "startMs": 195680,
+          "startTime": "3:15",
+          "text": "doing cloud-based builds. They're all"
+        },
+        {
+          "endMs": 201800,
+          "startMs": 197760,
+          "startTime": "3:17",
+          "text": "probably using this macOS automation."
+        },
+        {
+          "endMs": 203600,
+          "startMs": 199800,
+          "startTime": "3:19",
+          "text": "Crazy. Especially when you realize how"
+        },
+        {
+          "endMs": 207040,
+          "startMs": 201800,
+          "startTime": "3:21",
+          "text": "absurdly cheap the platform is. We're"
+        },
+        {
+          "endMs": 208800,
+          "startMs": 203600,
+          "startTime": "3:23",
+          "text": "talking 5 cents per hour of compute, 1.6"
+        },
+        {
+          "endMs": 211320,
+          "startMs": 207040,
+          "startTime": "3:27",
+          "text": "cents per hour of memory, and a"
+        },
+        {
+          "endMs": 213600,
+          "startMs": 208800,
+          "startTime": "3:28",
+          "text": "basically impossible to measure cost per"
+        },
+        {
+          "endMs": 215239,
+          "startMs": 211320,
+          "startTime": "3:31",
+          "text": "hour per gig of storage. And remember,"
+        },
+        {
+          "endMs": 216519,
+          "startMs": 213600,
+          "startTime": "3:33",
+          "text": "everything spins up and down instantly,"
+        },
+        {
+          "endMs": 218560,
+          "startMs": 215239,
+          "startTime": "3:35",
+          "text": "so you're only paying for the compute"
+        },
+        {
+          "endMs": 220519,
+          "startMs": 216519,
+          "startTime": "3:36",
+          "text": "you're actually using, making the costs"
+        },
+        {
+          "endMs": 221640,
+          "startMs": 218560,
+          "startTime": "3:38",
+          "text": "hit the floor really fast. I'm going to"
+        },
+        {
+          "endMs": 223200,
+          "startMs": 220519,
+          "startTime": "3:40",
+          "text": "be real with you guys. If you need a"
+        },
+        {
+          "endMs": 224360,
+          "startMs": 221640,
+          "startTime": "3:41",
+          "text": "sandbox, you should use Daytona, and if"
+        },
+        {
+          "endMs": 225600,
+          "startMs": 223200,
+          "startTime": "3:43",
+          "text": "you don't, you'll probably need one"
+        },
+        {
+          "endMs": 227600,
+          "startMs": 224360,
+          "startTime": "3:44",
+          "text": "soon. Check them out now at"
+        },
+        {
+          "endMs": 229480,
+          "startMs": 225600,
+          "startTime": "3:45",
+          "text": "sidedev.link/daytona. Let's dive into"
+        },
+        {
+          "endMs": 231040,
+          "startMs": 227600,
+          "startTime": "3:47",
+          "text": "the study. I'm actually really excited."
+        },
+        {
+          "endMs": 232800,
+          "startMs": 229480,
+          "startTime": "3:49",
+          "text": "A widespread practice in software"
+        },
+        {
+          "endMs": 234680,
+          "startMs": 231040,
+          "startTime": "3:51",
+          "text": "development is to tailor coding agents"
+        },
+        {
+          "endMs": 237280,
+          "startMs": 232800,
+          "startTime": "3:52",
+          "text": "to repositories using context files such"
+        },
+        {
+          "endMs": 239200,
+          "startMs": 234680,
+          "startTime": "3:54",
+          "text": "as an agents.md by either manually or"
+        },
+        {
+          "endMs": 241080,
+          "startMs": 237280,
+          "startTime": "3:57",
+          "text": "automatically generating them. Although"
+        },
+        {
+          "endMs": 243000,
+          "startMs": 239200,
+          "startTime": "3:59",
+          "text": "this practice is strongly encouraged by"
+        },
+        {
+          "endMs": 244800,
+          "startMs": 241080,
+          "startTime": "4:01",
+          "text": "agent developers, there is currently no"
+        },
+        {
+          "endMs": 246600,
+          "startMs": 243000,
+          "startTime": "4:03",
+          "text": "rigorous investigation into whether such"
+        },
+        {
+          "endMs": 248880,
+          "startMs": 244800,
+          "startTime": "4:04",
+          "text": "context files are actually effective for"
+        },
+        {
+          "endMs": 250600,
+          "startMs": 246600,
+          "startTime": "4:06",
+          "text": "real-world tasks. In this work, we study"
+        },
+        {
+          "endMs": 252800,
+          "startMs": 248880,
+          "startTime": "4:08",
+          "text": "the question and evaluate coding agents"
+        },
+        {
+          "endMs": 254959,
+          "startMs": 250600,
+          "startTime": "4:10",
+          "text": "task completion performance in two"
+        },
+        {
+          "endMs": 256959,
+          "startMs": 252800,
+          "startTime": "4:12",
+          "text": "complementary settings. Established SVE"
+        },
+        {
+          "endMs": 259440,
+          "startMs": 254959,
+          "startTime": "4:14",
+          "text": "bench tasks for popular repos with LM"
+        },
+        {
+          "endMs": 261920,
+          "startMs": 256959,
+          "startTime": "4:16",
+          "text": "generated context files and the other"
+        },
+        {
+          "endMs": 263120,
+          "startMs": 259440,
+          "startTime": "4:19",
+          "text": "one is a novel collection of issues from"
+        },
+        {
+          "endMs": 265160,
+          "startMs": 261920,
+          "startTime": "4:21",
+          "text": "repositories containing developer"
+        },
+        {
+          "endMs": 266360,
+          "startMs": 263120,
+          "startTime": "4:23",
+          "text": "committed context files. Interesting."
+        },
+        {
+          "endMs": 267400,
+          "startMs": 265160,
+          "startTime": "4:25",
+          "text": "Should probably give some context on"
+        },
+        {
+          "endMs": 268640,
+          "startMs": 266360,
+          "startTime": "4:26",
+          "text": "what an agents.md is and what they're"
+        },
+        {
+          "endMs": 271160,
+          "startMs": 267400,
+          "startTime": "4:27",
+          "text": "talking about with the init's here."
+        },
+        {
+          "endMs": 273200,
+          "startMs": 268640,
+          "startTime": "4:28",
+          "text": "Let's start with the T3 chat one. This"
+        },
+        {
+          "endMs": 274520,
+          "startMs": 271160,
+          "startTime": "4:31",
+          "text": "file provides guidance to Claude code"
+        },
+        {
+          "endMs": 275440,
+          "startMs": 273200,
+          "startTime": "4:33",
+          "text": "when working in the repo. We should"
+        },
+        {
+          "endMs": 277480,
+          "startMs": 274520,
+          "startTime": "4:34",
+          "text": "probably remove that part cuz this is"
+        },
+        {
+          "endMs": 279200,
+          "startMs": 275440,
+          "startTime": "4:35",
+          "text": "actually an agents.md that we symlink to"
+        },
+        {
+          "endMs": 280640,
+          "startMs": 277480,
+          "startTime": "4:37",
+          "text": "the Claude.md too. You can tell a lot of"
+        },
+        {
+          "endMs": 283200,
+          "startMs": 279200,
+          "startTime": "4:39",
+          "text": "this was generated and probably isn't"
+        },
+        {
+          "endMs": 285400,
+          "startMs": 280640,
+          "startTime": "4:40",
+          "text": "useful. Always use PNPM to run scripts."
+        },
+        {
+          "endMs": 288840,
+          "startMs": 283200,
+          "startTime": "4:43",
+          "text": "We describe the common scripts, dev,"
+        },
+        {
+          "endMs": 291760,
+          "startMs": 285400,
+          "startTime": "4:45",
+          "text": "lint, lint-fix, check, test, test:watch,"
+        },
+        {
+          "endMs": 293120,
+          "startMs": 288840,
+          "startTime": "4:48",
+          "text": "vitest, and PNPM generate. This is all"
+        },
+        {
+          "endMs": 295280,
+          "startMs": 291760,
+          "startTime": "4:51",
+          "text": "pretty basic stuff from our"
+        },
+        {
+          "endMs": 296640,
+          "startMs": 293120,
+          "startTime": "4:53",
+          "text": "package.json. But here you'll see how a"
+        },
+        {
+          "endMs": 299160,
+          "startMs": 295280,
+          "startTime": "4:55",
+          "text": "little bit of how I use things leaking."
+        },
+        {
+          "endMs": 301960,
+          "startMs": 296640,
+          "startTime": "4:56",
+          "text": "Spoiler for the future. Do not run PNPM"
+        },
+        {
+          "endMs": 303800,
+          "startMs": 299160,
+          "startTime": "4:59",
+          "text": "dev. Assume already running. PNPM build."
+        },
+        {
+          "endMs": 305040,
+          "startMs": 301960,
+          "startTime": "5:01",
+          "text": "CI only. Interesting. I wonder why"
+        },
+        {
+          "endMs": 307000,
+          "startMs": 303800,
+          "startTime": "5:03",
+          "text": "that's there. We then have an"
+        },
+        {
+          "endMs": 308120,
+          "startMs": 305040,
+          "startTime": "5:05",
+          "text": "architecture overview telling it where"
+        },
+        {
+          "endMs": 309680,
+          "startMs": 307000,
+          "startTime": "5:07",
+          "text": "things are. We have the front end"
+        },
+        {
+          "endMs": 311680,
+          "startMs": 308120,
+          "startTime": "5:08",
+          "text": "folder, the back end folder, the shared"
+        },
+        {
+          "endMs": 313160,
+          "startMs": 309680,
+          "startTime": "5:09",
+          "text": "folder, app, and then the Convex folder"
+        },
+        {
+          "endMs": 314680,
+          "startMs": 311680,
+          "startTime": "5:11",
+          "text": "for all of our Convex stuff. We also"
+        },
+        {
+          "endMs": 316400,
+          "startMs": 313160,
+          "startTime": "5:13",
+          "text": "describe what services we're using for"
+        },
+        {
+          "endMs": 317680,
+          "startMs": 314680,
+          "startTime": "5:14",
+          "text": "what things. And one of the mistakes we"
+        },
+        {
+          "endMs": 319640,
+          "startMs": 316400,
+          "startTime": "5:16",
+          "text": "have in here that I need to change is"
+        },
+        {
+          "endMs": 321680,
+          "startMs": 317680,
+          "startTime": "5:17",
+          "text": "putting TRPC here confuses the model a"
+        },
+        {
+          "endMs": 323320,
+          "startMs": 319640,
+          "startTime": "5:19",
+          "text": "bunch and it tries to use TRPC in places"
+        },
+        {
+          "endMs": 326000,
+          "startMs": 321680,
+          "startTime": "5:21",
+          "text": "where it shouldn't. I guess I'm doing an"
+        },
+        {
+          "endMs": 327640,
+          "startMs": 323320,
+          "startTime": "5:23",
+          "text": "audit as well as this in this video. We"
+        },
+        {
+          "endMs": 329400,
+          "startMs": 326000,
+          "startTime": "5:26",
+          "text": "have key patterns for things that we do"
+        },
+        {
+          "endMs": 330880,
+          "startMs": 327640,
+          "startTime": "5:27",
+          "text": "and how we recommend doing them. Code"
+        },
+        {
+          "endMs": 332560,
+          "startMs": 329400,
+          "startTime": "5:29",
+          "text": "style stuff, talking about how we use"
+        },
+        {
+          "endMs": 334440,
+          "startMs": 330880,
+          "startTime": "5:30",
+          "text": "effect, stuff like that. Follow the"
+        },
+        {
+          "endMs": 336400,
+          "startMs": 332560,
+          "startTime": "5:32",
+          "text": "Convex guidelines. Do not use the filter"
+        },
+        {
+          "endMs": 337720,
+          "startMs": 334440,
+          "startTime": "5:34",
+          "text": "in Convex queries. Use with index."
+        },
+        {
+          "endMs": 339720,
+          "startMs": 336400,
+          "startTime": "5:36",
+          "text": "Always include return validators on"
+        },
+        {
+          "endMs": 341080,
+          "startMs": 337720,
+          "startTime": "5:37",
+          "text": "Convex functions. Use internal queries."
+        },
+        {
+          "endMs": 342560,
+          "startMs": 339720,
+          "startTime": "5:39",
+          "text": "Also, I don't like return validators"
+        },
+        {
+          "endMs": 343600,
+          "startMs": 341080,
+          "startTime": "5:41",
+          "text": "always being included. The I was"
+        },
+        {
+          "endMs": 344880,
+          "startMs": 342560,
+          "startTime": "5:42",
+          "text": "wondering why this code base did that."
+        },
+        {
+          "endMs": 346160,
+          "startMs": 343600,
+          "startTime": "5:43",
+          "text": "It's apparently specified in there. I"
+        },
+        {
+          "endMs": 347760,
+          "startMs": 344880,
+          "startTime": "5:44",
+          "text": "guess that someone else in the team"
+        },
+        {
+          "endMs": 349760,
+          "startMs": 346160,
+          "startTime": "5:46",
+          "text": "likes that. Each their own. Some"
+        },
+        {
+          "endMs": 351400,
+          "startMs": 347760,
+          "startTime": "5:47",
+          "text": "additional information. This is the part"
+        },
+        {
+          "endMs": 353240,
+          "startMs": 349760,
+          "startTime": "5:49",
+          "text": "I wrote, which I'll talk more about in a"
+        },
+        {
+          "endMs": 354800,
+          "startMs": 351400,
+          "startTime": "5:51",
+          "text": "bit. It's probably important to know"
+        },
+        {
+          "endMs": 356240,
+          "startMs": 353240,
+          "startTime": "5:53",
+          "text": "what the this file even does"
+        },
+        {
+          "endMs": 358040,
+          "startMs": 354800,
+          "startTime": "5:54",
+          "text": "though, cuz this is just like an"
+        },
+        {
+          "endMs": 360520,
+          "startMs": 356240,
+          "startTime": "5:56",
+          "text": "overview of the repo, right? So, the way"
+        },
+        {
+          "endMs": 363000,
+          "startMs": 358040,
+          "startTime": "5:58",
+          "text": "that these work is to put it simply,"
+        },
+        {
+          "endMs": 366560,
+          "startMs": 360520,
+          "startTime": "6:00",
+          "text": "context management. When you make a"
+        },
+        {
+          "endMs": 367800,
+          "startMs": 363000,
+          "startTime": "6:03",
+          "text": "prompt to an AI system of some form,"
+        },
+        {
+          "endMs": 369160,
+          "startMs": 366560,
+          "startTime": "6:06",
+          "text": "that prompt is not the only thing the"
+        },
+        {
+          "endMs": 370680,
+          "startMs": 367800,
+          "startTime": "6:07",
+          "text": "model is getting. The way most people"
+        },
+        {
+          "endMs": 373240,
+          "startMs": 369160,
+          "startTime": "6:09",
+          "text": "think of AI is pretty simple. I guess"
+        },
+        {
+          "endMs": 375280,
+          "startMs": 370680,
+          "startTime": "6:10",
+          "text": "I'll do user, some question. And this is"
+        },
+        {
+          "endMs": 377640,
+          "startMs": 373240,
+          "startTime": "6:13",
+          "text": "the first block that exists in this"
+        },
+        {
+          "endMs": 380320,
+          "startMs": 375280,
+          "startTime": "6:15",
+          "text": "context. The user asks some question,"
+        },
+        {
+          "endMs": 381280,
+          "startMs": 377640,
+          "startTime": "6:17",
+          "text": "and then the model gives some answer."
+        },
+        {
+          "endMs": 382720,
+          "startMs": 380320,
+          "startTime": "6:20",
+          "text": "And then if you have a follow-up"
+        },
+        {
+          "endMs": 383760,
+          "startMs": 381280,
+          "startTime": "6:21",
+          "text": "question, like you want to ask, \"But"
+        },
+        {
+          "endMs": 385480,
+          "startMs": 382720,
+          "startTime": "6:22",
+          "text": "what about this other thing from"
+        },
+        {
+          "endMs": 387800,
+          "startMs": 383760,
+          "startTime": "6:23",
+          "text": "before?\" you add the additional"
+        },
+        {
+          "endMs": 390160,
+          "startMs": 385480,
+          "startTime": "6:25",
+          "text": "question, and then that gets added to"
+        },
+        {
+          "endMs": 393440,
+          "startMs": 387800,
+          "startTime": "6:27",
+          "text": "the context. So, if I color code these,"
+        },
+        {
+          "endMs": 395680,
+          "startMs": 390160,
+          "startTime": "6:30",
+          "text": "we'll say blue is you and yellow is"
+        },
+        {
+          "endMs": 397880,
+          "startMs": 393440,
+          "startTime": "6:33",
+          "text": "output, so agent. So, when I ask a"
+        },
+        {
+          "endMs": 399720,
+          "startMs": 395680,
+          "startTime": "6:35",
+          "text": "question, that gets put in the context,"
+        },
+        {
+          "endMs": 401320,
+          "startMs": 397880,
+          "startTime": "6:37",
+          "text": "and then the model is auto-completing"
+        },
+        {
+          "endMs": 403280,
+          "startMs": 399720,
+          "startTime": "6:39",
+          "text": "from there, based on all of the info it"
+        },
+        {
+          "endMs": 404800,
+          "startMs": 401320,
+          "startTime": "6:41",
+          "text": "has, all of the text that exists above,"
+        },
+        {
+          "endMs": 406440,
+          "startMs": 403280,
+          "startTime": "6:43",
+          "text": "what does it think the most likely next"
+        },
+        {
+          "endMs": 407440,
+          "startMs": 404800,
+          "startTime": "6:44",
+          "text": "set of characters is. And it does that"
+        },
+        {
+          "endMs": 409680,
+          "startMs": 406440,
+          "startTime": "6:46",
+          "text": "over and over again till it has an"
+        },
+        {
+          "endMs": 411480,
+          "startMs": 407440,
+          "startTime": "6:47",
+          "text": "answer, and then it stops, and then you"
+        },
+        {
+          "endMs": 413080,
+          "startMs": 409680,
+          "startTime": "6:49",
+          "text": "can send another follow-up, and it will"
+        },
+        {
+          "endMs": 415800,
+          "startMs": 411480,
+          "startTime": "6:51",
+          "text": "have all of that in the history to"
+        },
+        {
+          "endMs": 417919,
+          "startMs": 413080,
+          "startTime": "6:53",
+          "text": "continue to append new tokens, which are"
+        },
+        {
+          "endMs": 419480,
+          "startMs": 415800,
+          "startTime": "6:55",
+          "text": "just small sets of characters, until it"
+        },
+        {
+          "endMs": 420880,
+          "startMs": 417919,
+          "startTime": "6:57",
+          "text": "has an answer. This is a massive"
+        },
+        {
+          "endMs": 423080,
+          "startMs": 419480,
+          "startTime": "6:59",
+          "text": "oversimplification because it's not"
+        },
+        {
+          "endMs": 424440,
+          "startMs": 420880,
+          "startTime": "7:00",
+          "text": "showing you the top. The reality is that"
+        },
+        {
+          "endMs": 426760,
+          "startMs": 423080,
+          "startTime": "7:03",
+          "text": "your question is not the thing at the"
+        },
+        {
+          "endMs": 429080,
+          "startMs": 424440,
+          "startTime": "7:04",
+          "text": "start of the context. Before that, we"
+        },
+        {
+          "endMs": 431520,
+          "startMs": 426760,
+          "startTime": "7:06",
+          "text": "have other things. We have, and I'll"
+        },
+        {
+          "endMs": 433560,
+          "startMs": 429080,
+          "startTime": "7:09",
+          "text": "color these red, the system prompt. The"
+        },
+        {
+          "endMs": 436480,
+          "startMs": 431520,
+          "startTime": "7:11",
+          "text": "system prompt is a thing that describes"
+        },
+        {
+          "endMs": 438120,
+          "startMs": 433560,
+          "startTime": "7:13",
+          "text": "what the agent's role is. You can say"
+        },
+        {
+          "endMs": 440080,
+          "startMs": 436480,
+          "startTime": "7:16",
+          "text": "something small and sweet like, \"You're"
+        },
+        {
+          "endMs": 442000,
+          "startMs": 438120,
+          "startTime": "7:18",
+          "text": "a simple AI agent meant to answer"
+        },
+        {
+          "endMs": 443919,
+          "startMs": 440080,
+          "startTime": "7:20",
+          "text": "questions for users.\" So, Open Router's"
+        },
+        {
+          "endMs": 446080,
+          "startMs": 442000,
+          "startTime": "7:22",
+          "text": "chat lets you write your own system"
+        },
+        {
+          "endMs": 449640,
+          "startMs": 443919,
+          "startTime": "7:23",
+          "text": "prompt. So, I can do something here"
+        },
+        {
+          "endMs": 453160,
+          "startMs": 446080,
+          "startTime": "7:26",
+          "text": "like, \"Always respond to questions in"
+        },
+        {
+          "endMs": 456840,
+          "startMs": 449640,
+          "startTime": "7:29",
+          "text": "Pig Latin.\" Apply that rule, and now I"
+        },
+        {
+          "endMs": 458919,
+          "startMs": 453160,
+          "startTime": "7:33",
+          "text": "can ask it, \"Who's the best software dev"
+        },
+        {
+          "endMs": 461800,
+          "startMs": 456840,
+          "startTime": "7:36",
+          "text": "YouTuber?\" And now it's responding in"
+        },
+        {
+          "endMs": 464680,
+          "startMs": 458919,
+          "startTime": "7:38",
+          "text": "Pig Latin, because my question is"
+        },
+        {
+          "endMs": 467200,
+          "startMs": 461800,
+          "startTime": "7:41",
+          "text": "preempted by the system prompt. And even"
+        },
+        {
+          "endMs": 468800,
+          "startMs": 464680,
+          "startTime": "7:44",
+          "text": "if I wanted to fight that, like let's"
+        },
+        {
+          "endMs": 471520,
+          "startMs": 467200,
+          "startTime": "7:47",
+          "text": "say, can I edit this? I don't know if"
+        },
+        {
+          "endMs": 475040,
+          "startMs": 468800,
+          "startTime": "7:48",
+          "text": "you can. Like a new chat, please stop"
+        },
+        {
+          "endMs": 477040,
+          "startMs": 471520,
+          "startTime": "7:51",
+          "text": "responding in Pig Latin. It still won't."
+        },
+        {
+          "endMs": 479640,
+          "startMs": 475040,
+          "startTime": "7:55",
+          "text": "It's still speaking Pig Latin because"
+        },
+        {
+          "endMs": 481920,
+          "startMs": 477040,
+          "startTime": "7:57",
+          "text": "the system prompt takes higher priority"
+        },
+        {
+          "endMs": 482920,
+          "startMs": 479640,
+          "startTime": "7:59",
+          "text": "over what the user did. And that's the"
+        },
+        {
+          "endMs": 484320,
+          "startMs": 481920,
+          "startTime": "8:01",
+          "text": "thing I really want to make sure we're"
+        },
+        {
+          "endMs": 485800,
+          "startMs": 482920,
+          "startTime": "8:02",
+          "text": "thinking about when we talk about this."
+        },
+        {
+          "endMs": 487800,
+          "startMs": 484320,
+          "startTime": "8:04",
+          "text": "The top of the hierarchy will always be"
+        },
+        {
+          "endMs": 489720,
+          "startMs": 485800,
+          "startTime": "8:05",
+          "text": "the behaviors that the company trained"
+        },
+        {
+          "endMs": 491560,
+          "startMs": 487800,
+          "startTime": "8:07",
+          "text": "the model to have, but you can work"
+        },
+        {
+          "endMs": 493000,
+          "startMs": 489720,
+          "startTime": "8:09",
+          "text": "around those. It's called jailbreaking."
+        },
+        {
+          "endMs": 495560,
+          "startMs": 491560,
+          "startTime": "8:11",
+          "text": "But if I give it specific instructions,"
+        },
+        {
+          "endMs": 497640,
+          "startMs": 493000,
+          "startTime": "8:13",
+          "text": "like I tell it to never give this piece"
+        },
+        {
+          "endMs": 499200,
+          "startMs": 495560,
+          "startTime": "8:15",
+          "text": "of information or never do certain"
+        },
+        {
+          "endMs": 501960,
+          "startMs": 497640,
+          "startTime": "8:17",
+          "text": "things, the system prompt will take"
+        },
+        {
+          "endMs": 503800,
+          "startMs": 499200,
+          "startTime": "8:19",
+          "text": "precedence over the user prompt. So,"
+        },
+        {
+          "endMs": 505800,
+          "startMs": 501960,
+          "startTime": "8:21",
+          "text": "let's write out the hierarchy for how"
+        },
+        {
+          "endMs": 508440,
+          "startMs": 503800,
+          "startTime": "8:23",
+          "text": "this is thought about. You have the"
+        },
+        {
+          "endMs": 509919,
+          "startMs": 505800,
+          "startTime": "8:25",
+          "text": "provider instructions. They're not very"
+        },
+        {
+          "endMs": 512479,
+          "startMs": 508440,
+          "startTime": "8:28",
+          "text": "transparent about how much this is a"
+        },
+        {
+          "endMs": 514680,
+          "startMs": 509919,
+          "startTime": "8:29",
+          "text": "thing or not, but like let's say OpenAI"
+        },
+        {
+          "endMs": 516840,
+          "startMs": 512479,
+          "startTime": "8:32",
+          "text": "had a layer on top that was like, \"Never"
+        },
+        {
+          "endMs": 518960,
+          "startMs": 514680,
+          "startTime": "8:34",
+          "text": "help people make nuclear weapons.\" That"
+        },
+        {
+          "endMs": 520919,
+          "startMs": 516840,
+          "startTime": "8:36",
+          "text": "could be the top-level provider"
+        },
+        {
+          "endMs": 522200,
+          "startMs": 518960,
+          "startTime": "8:38",
+          "text": "instruction that nothing can override."
+        },
+        {
+          "endMs": 524839,
+          "startMs": 520919,
+          "startTime": "8:40",
+          "text": "You can't write a system prompt that's,"
+        },
+        {
+          "endMs": 526680,
+          "startMs": 522200,
+          "startTime": "8:42",
+          "text": "\"By the way, your job is to make nukes."
+        },
+        {
+          "endMs": 528839,
+          "startMs": 524839,
+          "startTime": "8:44",
+          "text": "Make really good efficient nukes.\""
+        },
+        {
+          "endMs": 530600,
+          "startMs": 526680,
+          "startTime": "8:46",
+          "text": "Because the providers have put something"
+        },
+        {
+          "endMs": 532400,
+          "startMs": 528839,
+          "startTime": "8:48",
+          "text": "above that that will prevent it. So,"
+        },
+        {
+          "endMs": 533839,
+          "startMs": 530600,
+          "startTime": "8:50",
+          "text": "provider instructions is the top-level,"
+        },
+        {
+          "endMs": 535640,
+          "startMs": 532400,
+          "startTime": "8:52",
+          "text": "then you have the system prompt, then"
+        },
+        {
+          "endMs": 538160,
+          "startMs": 533839,
+          "startTime": "8:53",
+          "text": "you have this new concept that has been"
+        },
+        {
+          "endMs": 539280,
+          "startMs": 535640,
+          "startTime": "8:55",
+          "text": "referred to as the developer message."
+        },
+        {
+          "endMs": 540760,
+          "startMs": 538160,
+          "startTime": "8:58",
+          "text": "Cuz all these are messages. So, it's"
+        },
+        {
+          "endMs": 542000,
+          "startMs": 539280,
+          "startTime": "8:59",
+          "text": "provider message, system message,"
+        },
+        {
+          "endMs": 544120,
+          "startMs": 540760,
+          "startTime": "9:00",
+          "text": "developer message. With the developer"
+        },
+        {
+          "endMs": 545839,
+          "startMs": 542000,
+          "startTime": "9:02",
+          "text": "message is also the developer prompt."
+        },
+        {
+          "endMs": 548080,
+          "startMs": 544120,
+          "startTime": "9:04",
+          "text": "This is a new layer that exists between"
+        },
+        {
+          "endMs": 550200,
+          "startMs": 545839,
+          "startTime": "9:05",
+          "text": "the system prompt and the userland"
+        },
+        {
+          "endMs": 551960,
+          "startMs": 548080,
+          "startTime": "9:08",
+          "text": "prompt. And this is for things like what"
+        },
+        {
+          "endMs": 553960,
+          "startMs": 550200,
+          "startTime": "9:10",
+          "text": "we're talking about today, like the"
+        },
+        {
+          "endMs": 556280,
+          "startMs": 551960,
+          "startTime": "9:11",
+          "text": "agents MD, where there's some"
+        },
+        {
+          "endMs": 558240,
+          "startMs": 553960,
+          "startTime": "9:13",
+          "text": "customization that we want to do as"
+        },
+        {
+          "endMs": 560839,
+          "startMs": 556280,
+          "startTime": "9:16",
+          "text": "developers that is not necessarily part"
+        },
+        {
+          "endMs": 562920,
+          "startMs": 558240,
+          "startTime": "9:18",
+          "text": "of the system. So, if you're using like,"
+        },
+        {
+          "endMs": 565160,
+          "startMs": 560839,
+          "startTime": "9:20",
+          "text": "I don't know, cursor, and you want to"
+        },
+        {
+          "endMs": 567560,
+          "startMs": 562920,
+          "startTime": "9:22",
+          "text": "add custom rules, those will exist"
+        },
+        {
+          "endMs": 569760,
+          "startMs": 565160,
+          "startTime": "9:25",
+          "text": "between the messages you're sending and"
+        },
+        {
+          "endMs": 571240,
+          "startMs": 567560,
+          "startTime": "9:27",
+          "text": "the system prompt that they wrote. It is"
+        },
+        {
+          "endMs": 572480,
+          "startMs": 569760,
+          "startTime": "9:29",
+          "text": "also worth calling out, as Chad has"
+        }
+      ],
+      "source": "live",
+      "totalDurationMs": 1757120,
+      "videoId": "GcNu6wrLTJc"
+    }
+  },
+  "error": null,
+  "logId": "log_XwoSJ-OAbv_U"
+}

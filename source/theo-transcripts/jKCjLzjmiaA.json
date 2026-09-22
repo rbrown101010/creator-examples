@@ -1,0 +1,1676 @@
+{
+  "successful": true,
+  "data": {
+    "credits": {
+      "charged": 2,
+      "remaining": 26
+    },
+    "data": {
+      "_truncated": {
+        "field": "segments",
+        "reason": "response size limit — lower \"limit\" for full detail",
+        "shown": 275,
+        "total": 843
+      },
+      "dataRefreshedAt": "2026-09-22T00:19:05.863Z",
+      "fullText": "Mom and dad are fighting and I'm going to be real with you guys, it's kind of stressing me out. For those who don't know, I've been a big fan of both Cursor and OpenAI for quite a while. For those who aren't reading the screen right now, what it says is the following. We're ending our partnership with Cursor following its acquisition by SpaceX. Under our proposal, Cursor's direct access to our models would end on November 12th. Yeah, this is real. Your Cursor subs will no longer allow you to use OpenAI models. So, instead of spending my weekend relaxing or doing weekend things, I'm stuck here on a Saturday night filming a last second video to cover all of this stuff because it's been, let's be real, kind of chaotic. I've talked to my friends at both Cursor and OpenAI in order to get as many of the important details as I possibly can. And I will do my best to make sure you know what's actually going on as well as what you can do to work around these limitations. I have a bad feeling I'm about to piss off both mom and dad. So, let me cover my bases quick with a word from today's sponsor. I have an important question for the builders out there. If you were building an app that was pretty good and useful into a company that was like pretty big came over and asked to use it, you know, like a Fortune 500, maybe a company like a Microsoft or a Google or a Stripe, they hit you up and said, \"Hey, we want to use your thing. Can you get us set up? Do you actually think you could do it?\" Because I have a feeling a lot of you guys are going to get stuck on the first step, which is setting up your app in a way where the company's IT team is willing to onboard. This is where work OS comes in clutch. And there's a reason why everyone from OpenAI and Anthropic to Cursor to Bolt, Clay, Thinking Machines, Fallon, just like look at the logos. There's a reason all of these logos are here. And it's not cuz rolling your own off is easy. Rolling your own off is easy. But rolling it in a way that is enterprise ready is not. Especially if you don't want to make your developers hate themselves. Work OS has all of the integrations, SDKs, components, and more that you and your agents expect, which is huge because it means setting it up is not miserable as often can be. But more importantly, their admin portal will unblock those big companies from signing up to your app. They set up all of the identity providers for you with this really nice simple panel that you can link your users to. They set it up with their IT teams and they're good to go without you having to do a whole bunch of back and forth to set up their specific SAML Duo ADP or whatever else they're using. And if that company's agents need to sign up, they have you covered there, too. Because OMD is a new standard they're helping pioneer with a bunch of other awesome companies. you know, people like Cloudflare, Firecrawl, Resendon, Monday, Kernel, and more in order to try and get a standard that will allow agents to sign up on a user's behalf really ready to go. And since they already support it, cuz I mean, obviously they do. They invented it. Works is for everyone, users, enterprises, and agents. Set yourself up for every customer at soy. Oo. I'm going to start by covering exactly what is changing and how it affects things. But I also want to save some time to talk about the personal drama between people involved at the companies. The beef forming between Tibo and Michael and the weird conversations that they are dancing around and the details of all that. But most importantly, I want to save some time at the very end to cover how to work around this and make sure you're still getting the best possible models without having to rely on weird business deals like this taking access away from the things you use every day. So, let's start with the official post. And there's a little bit at the end I feel like almost everyone has been missing that you should definitely pay attention to. Our decision on Curser following its acquisition by SpaceX. That's an important detail for those who somehow have not caught the news. SpaceX acquired Cursor. It was originally meant to be a joint partnership, but there were two potential outcomes of it. Either SpaceX AI would pay Cursor $10 billion for the collab, mostly in order to get access to their data and their engineers around RL to make the Grock models better, which spoiler, the reason Grock got so much better is because they bought Cursor. The other option they had was to at the end of the year acquire Cursor for $60 billion. SpaceX decided to not wait and instead just make the deal happen immediately. And the result is Curser is now part of SpaceX. I know this is closing aggressively fast because I probably mentioned this before. I was an early investor in Cursor and I've been getting spammed with emails and still have no idea if I'll even be allowed to get the stock, much less sell it. So, uh, yeah, I might make some money off this deal. I might not. It's hard to know. But since the deal is over, so to speak, any allegiance I have to Curser is kind of dead because I do, let's be real, intend to sell that equity as soon as I'm able to from the SpaceX acquisition. But, uh, we'll see what happens when we get there. I have no bottom line tied to how I cover cursor here. Nice to be free of any potential burden I had there, but I'll be honest, I rarely let the fact that I have money in a company prevent me from saying what I want to about them. If anything, I tend to be more harsh on the companies that I have financial ties to. I also have no tie financially whatsoever to OpenAI. In fact, I spend a lot of money on OpenAI, so take that as you will. Anthropic is still the company I pay the most. But yeah, anyways, let's read what they said. Today we notified SpaceX that we intend to wind down our contract providing OpenAI models to Cursor with a proposed shut off date of November 12th, 2026. To maximize the time that developers can retain access to our models through Curser, we're giving them the maximum notice provided by our contract. This seems to be a internal back and forth between these two companies gone wrong around the details of a specific contract and OpenAI has decided to just honor the exact specification of the contract and not do a renewal or continue extending or whatever other thing that they were doing before. The contracts between the companies consuming all of this AI stuff and the companies who are actually making the models and hosting. So the Googles, Anthropics, and OpenAIs of the world versus everyone else tend to be kind of weird because the margins for hosting the models are really good for those businesses, which gives them a lot of wiggle room in how they negotiate these contracts. And I think it's important to remember that cursor at a point in time was doing over 70% of the inference on Anthropic. So of all of the stuff Anthropic was doing with their GPUs, 70% of non-ressearch work was going to cursor. So they are a huge spender in the space and as you can guess they have these huge contracts where they negotiate the prices down massively. Speaking of cloud models in cursor, the head of compute at anthropic had a post about this too, taking the opportunity to dunk. Curser has been a trusted partner of Anthropic and Sonnet 3.5. We'll continue to increase compute to support cloud models in Cursor and are excited for what comes next with them at SpaceX. You might be surprised here because Anthropic's pretty quick to ban competitors from using their stuff and as I mentioned before, they've already banned XAI before. That was before they got a bunch of their compute from SpaceX, though. And now that Anthropic is so reliant on SpaceX for compute, it's not surprising that the compute officer at Anthropic is being nice to them in this beef because Anthropic and XAI might not get along directly, but they both hate OpenAI so much they are more than willing to set aside their differences and partner up here. And also the guy who runs computer Anthropic better be thankful for SpaceX because he probably should have been fired before for not acquiring the compute that they needed and giving anthropic the massive disadvantage that they are currently experiencing. It's particularly funny to see the head of comput and anthropic saying that they're working on increasing compute for cursor just a day ago because right afterwards the claude devs accounts announced that they'll be decreasing your limits in cloud code by 17%. Don't think what they're saying here is true that it's 25% higher because they're turning off the 50% increase right after. I have a whole video about this coming tomorrow. So, keep an eye out for that. Make sure you're subscribed if you haven't. It cost you nothing. It'll help you keep track of this breaking news as it happens. This is all annoying to keep up with, but I've been doing my best. And I bet you that bell can save you a lot of time and money. Anyways, this also means OpenAI is probably losing a pretty big revenue driver by blocking Cursor because Curser doesn't get the absurd subsidization we get in the subscriptions. So you can pay the 200 bucks a month for codeex and get like 8k plus outside of resets in inference for that month. Cursor is paying a probably massively discounted rate, but my honest guess is that it would be in the 20 to 30% range, not the 80 to 95% range that we can get with subscriptions. Anyways, back to the details that were shared here. This decision was incredibly tough and we care deeply about our models being broadly available for developers. We are making this choice because we cannot be confident that SpaceX will use our technology within our terms of service based on our experience with Elon Musk's company's violating contracts. And there's the detail that matters. The thing that OpenAI is concerned about here is that Elon has said on the record that he is distilling OpenAI's models from the information that they get using them. Whether it's internally at their company collecting the inputs and outputs, whether it is the data they can buy from other places or if it is the data that cursor has had for a long time that is clearly quite useful as the models that cursor put out like composer are really good and they got that largely from the data that they have from everyone using cursor for all of their AI code for as long as they've been around for. That data advantage has helped cursor a ton with their positioning. And now that they are owned by SpaceX, that data is owned by Elon. And that could be very helpful for Grock. I mean, it is. We've already seen the results. But they want to make sure their competitors aren't getting this huge surge of data from OpenAI. For what it is worth, there is a history of this happening in the past. For example, when Windsurf was rumored to be acquired by OpenAI, Anthropic banned access to cloud models in Windsurf concerned that they would use it for distillation. Separately, XAI was banned from using Anthropic models through Cursor. Funny enough, all the way back at the start of this year, again citing concerns that XAI would use the data from anthropic models in cursor in order to RL their models. Particularly funny when you realize how close anthropic and XAI are now because Anthropic needed to compute really bad and Elon hates OpenAI so much. But one final one that I think is notable here is that Anthropic revoked OpenAI's access to Claude in their API, claiming that they were violating terms of service when it is generally understood that the use of this API was so that they could do benchmarking of claude models against OpenAI models. This is a big part of why anthropic models do not appear as much in OpenAI's benchmarks that they run themselves because they are not allowed to run the anthropic models against benchmarks themselves. They do still include the numbers sometimes, but it's always fr …[+20187 chars truncated]",
+      "segments": [
+        {
+          "endMs": 2960,
+          "startMs": 80,
+          "startTime": "0:00",
+          "text": "Mom and dad are fighting and I'm going"
+        },
+        {
+          "endMs": 4640,
+          "startMs": 1439,
+          "startTime": "0:01",
+          "text": "to be real with you guys, it's kind of"
+        },
+        {
+          "endMs": 6560,
+          "startMs": 2960,
+          "startTime": "0:02",
+          "text": "stressing me out. For those who don't"
+        },
+        {
+          "endMs": 8639,
+          "startMs": 4640,
+          "startTime": "0:04",
+          "text": "know, I've been a big fan of both Cursor"
+        },
+        {
+          "endMs": 10080,
+          "startMs": 6560,
+          "startTime": "0:06",
+          "text": "and OpenAI for quite a while. For those"
+        },
+        {
+          "endMs": 11679,
+          "startMs": 8639,
+          "startTime": "0:08",
+          "text": "who aren't reading the screen right now,"
+        },
+        {
+          "endMs": 13280,
+          "startMs": 10080,
+          "startTime": "0:10",
+          "text": "what it says is the following. We're"
+        },
+        {
+          "endMs": 15360,
+          "startMs": 11679,
+          "startTime": "0:11",
+          "text": "ending our partnership with Cursor"
+        },
+        {
+          "endMs": 17039,
+          "startMs": 13280,
+          "startTime": "0:13",
+          "text": "following its acquisition by SpaceX."
+        },
+        {
+          "endMs": 18560,
+          "startMs": 15360,
+          "startTime": "0:15",
+          "text": "Under our proposal, Cursor's direct"
+        },
+        {
+          "endMs": 21840,
+          "startMs": 17039,
+          "startTime": "0:17",
+          "text": "access to our models would end on"
+        },
+        {
+          "endMs": 23920,
+          "startMs": 18560,
+          "startTime": "0:18",
+          "text": "November 12th. Yeah, this is real. Your"
+        },
+        {
+          "endMs": 25840,
+          "startMs": 21840,
+          "startTime": "0:21",
+          "text": "Cursor subs will no longer allow you to"
+        },
+        {
+          "endMs": 27519,
+          "startMs": 23920,
+          "startTime": "0:23",
+          "text": "use OpenAI models. So, instead of"
+        },
+        {
+          "endMs": 29119,
+          "startMs": 25840,
+          "startTime": "0:25",
+          "text": "spending my weekend relaxing or doing"
+        },
+        {
+          "endMs": 30560,
+          "startMs": 27519,
+          "startTime": "0:27",
+          "text": "weekend things, I'm stuck here on a"
+        },
+        {
+          "endMs": 32480,
+          "startMs": 29119,
+          "startTime": "0:29",
+          "text": "Saturday night filming a last second"
+        },
+        {
+          "endMs": 34559,
+          "startMs": 30560,
+          "startTime": "0:30",
+          "text": "video to cover all of this stuff because"
+        },
+        {
+          "endMs": 36160,
+          "startMs": 32480,
+          "startTime": "0:32",
+          "text": "it's been, let's be real, kind of"
+        },
+        {
+          "endMs": 37840,
+          "startMs": 34559,
+          "startTime": "0:34",
+          "text": "chaotic. I've talked to my friends at"
+        },
+        {
+          "endMs": 39680,
+          "startMs": 36160,
+          "startTime": "0:36",
+          "text": "both Cursor and OpenAI in order to get"
+        },
+        {
+          "endMs": 41600,
+          "startMs": 37840,
+          "startTime": "0:37",
+          "text": "as many of the important details as I"
+        },
+        {
+          "endMs": 43040,
+          "startMs": 39680,
+          "startTime": "0:39",
+          "text": "possibly can. And I will do my best to"
+        },
+        {
+          "endMs": 44719,
+          "startMs": 41600,
+          "startTime": "0:41",
+          "text": "make sure you know what's actually going"
+        },
+        {
+          "endMs": 46960,
+          "startMs": 43040,
+          "startTime": "0:43",
+          "text": "on as well as what you can do to work"
+        },
+        {
+          "endMs": 48879,
+          "startMs": 44719,
+          "startTime": "0:44",
+          "text": "around these limitations. I have a bad"
+        },
+        {
+          "endMs": 50879,
+          "startMs": 46960,
+          "startTime": "0:46",
+          "text": "feeling I'm about to piss off both mom"
+        },
+        {
+          "endMs": 52559,
+          "startMs": 48879,
+          "startTime": "0:48",
+          "text": "and dad. So, let me cover my bases quick"
+        },
+        {
+          "endMs": 54000,
+          "startMs": 50879,
+          "startTime": "0:50",
+          "text": "with a word from today's sponsor. I have"
+        },
+        {
+          "endMs": 55600,
+          "startMs": 52559,
+          "startTime": "0:52",
+          "text": "an important question for the builders"
+        },
+        {
+          "endMs": 57440,
+          "startMs": 54000,
+          "startTime": "0:54",
+          "text": "out there. If you were building an app"
+        },
+        {
+          "endMs": 59280,
+          "startMs": 55600,
+          "startTime": "0:55",
+          "text": "that was pretty good and useful into a"
+        },
+        {
+          "endMs": 60960,
+          "startMs": 57440,
+          "startTime": "0:57",
+          "text": "company that was like pretty big came"
+        },
+        {
+          "endMs": 63280,
+          "startMs": 59280,
+          "startTime": "0:59",
+          "text": "over and asked to use it, you know, like"
+        },
+        {
+          "endMs": 65760,
+          "startMs": 60960,
+          "startTime": "1:00",
+          "text": "a Fortune 500, maybe a company like a"
+        },
+        {
+          "endMs": 67280,
+          "startMs": 63280,
+          "startTime": "1:03",
+          "text": "Microsoft or a Google or a Stripe, they"
+        },
+        {
+          "endMs": 69119,
+          "startMs": 65760,
+          "startTime": "1:05",
+          "text": "hit you up and said, \"Hey, we want to"
+        },
+        {
+          "endMs": 70720,
+          "startMs": 67280,
+          "startTime": "1:07",
+          "text": "use your thing. Can you get us set up?"
+        },
+        {
+          "endMs": 72159,
+          "startMs": 69119,
+          "startTime": "1:09",
+          "text": "Do you actually think you could do it?\""
+        },
+        {
+          "endMs": 73600,
+          "startMs": 70720,
+          "startTime": "1:10",
+          "text": "Because I have a feeling a lot of you"
+        },
+        {
+          "endMs": 75360,
+          "startMs": 72159,
+          "startTime": "1:12",
+          "text": "guys are going to get stuck on the first"
+        },
+        {
+          "endMs": 77040,
+          "startMs": 73600,
+          "startTime": "1:13",
+          "text": "step, which is setting up your app in a"
+        },
+        {
+          "endMs": 78720,
+          "startMs": 75360,
+          "startTime": "1:15",
+          "text": "way where the company's IT team is"
+        },
+        {
+          "endMs": 80479,
+          "startMs": 77040,
+          "startTime": "1:17",
+          "text": "willing to onboard. This is where work"
+        },
+        {
+          "endMs": 82720,
+          "startMs": 78720,
+          "startTime": "1:18",
+          "text": "OS comes in clutch. And there's a reason"
+        },
+        {
+          "endMs": 85040,
+          "startMs": 80479,
+          "startTime": "1:20",
+          "text": "why everyone from OpenAI and Anthropic"
+        },
+        {
+          "endMs": 86720,
+          "startMs": 82720,
+          "startTime": "1:22",
+          "text": "to Cursor to Bolt, Clay, Thinking"
+        },
+        {
+          "endMs": 88159,
+          "startMs": 85040,
+          "startTime": "1:25",
+          "text": "Machines, Fallon, just like look at the"
+        },
+        {
+          "endMs": 89680,
+          "startMs": 86720,
+          "startTime": "1:26",
+          "text": "logos. There's a reason all of these"
+        },
+        {
+          "endMs": 91439,
+          "startMs": 88159,
+          "startTime": "1:28",
+          "text": "logos are here. And it's not cuz rolling"
+        },
+        {
+          "endMs": 93439,
+          "startMs": 89680,
+          "startTime": "1:29",
+          "text": "your own off is easy. Rolling your own"
+        },
+        {
+          "endMs": 95600,
+          "startMs": 91439,
+          "startTime": "1:31",
+          "text": "off is easy. But rolling it in a way"
+        },
+        {
+          "endMs": 96479,
+          "startMs": 93439,
+          "startTime": "1:33",
+          "text": "that is enterprise ready is not."
+        },
+        {
+          "endMs": 98400,
+          "startMs": 95600,
+          "startTime": "1:35",
+          "text": "Especially if you don't want to make"
+        },
+        {
+          "endMs": 100159,
+          "startMs": 96479,
+          "startTime": "1:36",
+          "text": "your developers hate themselves. Work OS"
+        },
+        {
+          "endMs": 101520,
+          "startMs": 98400,
+          "startTime": "1:38",
+          "text": "has all of the integrations, SDKs,"
+        },
+        {
+          "endMs": 103439,
+          "startMs": 100159,
+          "startTime": "1:40",
+          "text": "components, and more that you and your"
+        },
+        {
+          "endMs": 105840,
+          "startMs": 101520,
+          "startTime": "1:41",
+          "text": "agents expect, which is huge because it"
+        },
+        {
+          "endMs": 107920,
+          "startMs": 103439,
+          "startTime": "1:43",
+          "text": "means setting it up is not miserable as"
+        },
+        {
+          "endMs": 109920,
+          "startMs": 105840,
+          "startTime": "1:45",
+          "text": "often can be. But more importantly,"
+        },
+        {
+          "endMs": 111439,
+          "startMs": 107920,
+          "startTime": "1:47",
+          "text": "their admin portal will unblock those"
+        },
+        {
+          "endMs": 113200,
+          "startMs": 109920,
+          "startTime": "1:49",
+          "text": "big companies from signing up to your"
+        },
+        {
+          "endMs": 114880,
+          "startMs": 111439,
+          "startTime": "1:51",
+          "text": "app. They set up all of the identity"
+        },
+        {
+          "endMs": 116560,
+          "startMs": 113200,
+          "startTime": "1:53",
+          "text": "providers for you with this really nice"
+        },
+        {
+          "endMs": 118479,
+          "startMs": 114880,
+          "startTime": "1:54",
+          "text": "simple panel that you can link your"
+        },
+        {
+          "endMs": 120240,
+          "startMs": 116560,
+          "startTime": "1:56",
+          "text": "users to. They set it up with their IT"
+        },
+        {
+          "endMs": 121759,
+          "startMs": 118479,
+          "startTime": "1:58",
+          "text": "teams and they're good to go without you"
+        },
+        {
+          "endMs": 123840,
+          "startMs": 120240,
+          "startTime": "2:00",
+          "text": "having to do a whole bunch of back and"
+        },
+        {
+          "endMs": 125759,
+          "startMs": 121759,
+          "startTime": "2:01",
+          "text": "forth to set up their specific SAML Duo"
+        },
+        {
+          "endMs": 127439,
+          "startMs": 123840,
+          "startTime": "2:03",
+          "text": "ADP or whatever else they're using. And"
+        },
+        {
+          "endMs": 129039,
+          "startMs": 125759,
+          "startTime": "2:05",
+          "text": "if that company's agents need to sign"
+        },
+        {
+          "endMs": 130879,
+          "startMs": 127439,
+          "startTime": "2:07",
+          "text": "up, they have you covered there, too."
+        },
+        {
+          "endMs": 132400,
+          "startMs": 129039,
+          "startTime": "2:09",
+          "text": "Because OMD is a new standard they're"
+        },
+        {
+          "endMs": 134480,
+          "startMs": 130879,
+          "startTime": "2:10",
+          "text": "helping pioneer with a bunch of other"
+        },
+        {
+          "endMs": 136560,
+          "startMs": 132400,
+          "startTime": "2:12",
+          "text": "awesome companies. you know, people like"
+        },
+        {
+          "endMs": 138959,
+          "startMs": 134480,
+          "startTime": "2:14",
+          "text": "Cloudflare, Firecrawl, Resendon, Monday,"
+        },
+        {
+          "endMs": 140959,
+          "startMs": 136560,
+          "startTime": "2:16",
+          "text": "Kernel, and more in order to try and get"
+        },
+        {
+          "endMs": 143280,
+          "startMs": 138959,
+          "startTime": "2:18",
+          "text": "a standard that will allow agents to"
+        },
+        {
+          "endMs": 145120,
+          "startMs": 140959,
+          "startTime": "2:20",
+          "text": "sign up on a user's behalf really ready"
+        },
+        {
+          "endMs": 147040,
+          "startMs": 143280,
+          "startTime": "2:23",
+          "text": "to go. And since they already support"
+        },
+        {
+          "endMs": 149040,
+          "startMs": 145120,
+          "startTime": "2:25",
+          "text": "it, cuz I mean, obviously they do. They"
+        },
+        {
+          "endMs": 151040,
+          "startMs": 147040,
+          "startTime": "2:27",
+          "text": "invented it. Works is for everyone,"
+        },
+        {
+          "endMs": 153360,
+          "startMs": 149040,
+          "startTime": "2:29",
+          "text": "users, enterprises, and agents. Set"
+        },
+        {
+          "endMs": 154959,
+          "startMs": 151040,
+          "startTime": "2:31",
+          "text": "yourself up for every customer at soy."
+        },
+        {
+          "endMs": 156480,
+          "startMs": 153360,
+          "startTime": "2:33",
+          "text": "Oo. I'm going to start by covering"
+        },
+        {
+          "endMs": 158319,
+          "startMs": 154959,
+          "startTime": "2:34",
+          "text": "exactly what is changing and how it"
+        },
+        {
+          "endMs": 159840,
+          "startMs": 156480,
+          "startTime": "2:36",
+          "text": "affects things. But I also want to save"
+        },
+        {
+          "endMs": 161760,
+          "startMs": 158319,
+          "startTime": "2:38",
+          "text": "some time to talk about the personal"
+        },
+        {
+          "endMs": 163920,
+          "startMs": 159840,
+          "startTime": "2:39",
+          "text": "drama between people involved at the"
+        },
+        {
+          "endMs": 166080,
+          "startMs": 161760,
+          "startTime": "2:41",
+          "text": "companies. The beef forming between Tibo"
+        },
+        {
+          "endMs": 167519,
+          "startMs": 163920,
+          "startTime": "2:43",
+          "text": "and Michael and the weird conversations"
+        },
+        {
+          "endMs": 168959,
+          "startMs": 166080,
+          "startTime": "2:46",
+          "text": "that they are dancing around and the"
+        },
+        {
+          "endMs": 170560,
+          "startMs": 167519,
+          "startTime": "2:47",
+          "text": "details of all that. But most"
+        },
+        {
+          "endMs": 172640,
+          "startMs": 168959,
+          "startTime": "2:48",
+          "text": "importantly, I want to save some time at"
+        },
+        {
+          "endMs": 174000,
+          "startMs": 170560,
+          "startTime": "2:50",
+          "text": "the very end to cover how to work around"
+        },
+        {
+          "endMs": 175680,
+          "startMs": 172640,
+          "startTime": "2:52",
+          "text": "this and make sure you're still getting"
+        },
+        {
+          "endMs": 178319,
+          "startMs": 174000,
+          "startTime": "2:54",
+          "text": "the best possible models without having"
+        },
+        {
+          "endMs": 180160,
+          "startMs": 175680,
+          "startTime": "2:55",
+          "text": "to rely on weird business deals like"
+        },
+        {
+          "endMs": 181840,
+          "startMs": 178319,
+          "startTime": "2:58",
+          "text": "this taking access away from the things"
+        },
+        {
+          "endMs": 183760,
+          "startMs": 180160,
+          "startTime": "3:00",
+          "text": "you use every day. So, let's start with"
+        },
+        {
+          "endMs": 185120,
+          "startMs": 181840,
+          "startTime": "3:01",
+          "text": "the official post. And there's a little"
+        },
+        {
+          "endMs": 187280,
+          "startMs": 183760,
+          "startTime": "3:03",
+          "text": "bit at the end I feel like almost"
+        },
+        {
+          "endMs": 189040,
+          "startMs": 185120,
+          "startTime": "3:05",
+          "text": "everyone has been missing that you"
+        },
+        {
+          "endMs": 191040,
+          "startMs": 187280,
+          "startTime": "3:07",
+          "text": "should definitely pay attention to. Our"
+        },
+        {
+          "endMs": 193599,
+          "startMs": 189040,
+          "startTime": "3:09",
+          "text": "decision on Curser following its"
+        },
+        {
+          "endMs": 195200,
+          "startMs": 191040,
+          "startTime": "3:11",
+          "text": "acquisition by SpaceX. That's an"
+        },
+        {
+          "endMs": 197440,
+          "startMs": 193599,
+          "startTime": "3:13",
+          "text": "important detail for those who somehow"
+        },
+        {
+          "endMs": 199519,
+          "startMs": 195200,
+          "startTime": "3:15",
+          "text": "have not caught the news. SpaceX"
+        },
+        {
+          "endMs": 200959,
+          "startMs": 197440,
+          "startTime": "3:17",
+          "text": "acquired Cursor. It was originally meant"
+        },
+        {
+          "endMs": 202480,
+          "startMs": 199519,
+          "startTime": "3:19",
+          "text": "to be a joint partnership, but there"
+        },
+        {
+          "endMs": 204800,
+          "startMs": 200959,
+          "startTime": "3:20",
+          "text": "were two potential outcomes of it."
+        },
+        {
+          "endMs": 207280,
+          "startMs": 202480,
+          "startTime": "3:22",
+          "text": "Either SpaceX AI would pay Cursor $10"
+        },
+        {
+          "endMs": 208800,
+          "startMs": 204800,
+          "startTime": "3:24",
+          "text": "billion for the collab, mostly in order"
+        },
+        {
+          "endMs": 210720,
+          "startMs": 207280,
+          "startTime": "3:27",
+          "text": "to get access to their data and their"
+        },
+        {
+          "endMs": 212720,
+          "startMs": 208800,
+          "startTime": "3:28",
+          "text": "engineers around RL to make the Grock"
+        },
+        {
+          "endMs": 214239,
+          "startMs": 210720,
+          "startTime": "3:30",
+          "text": "models better, which spoiler, the reason"
+        },
+        {
+          "endMs": 216480,
+          "startMs": 212720,
+          "startTime": "3:32",
+          "text": "Grock got so much better is because they"
+        },
+        {
+          "endMs": 218480,
+          "startMs": 214239,
+          "startTime": "3:34",
+          "text": "bought Cursor. The other option they had"
+        },
+        {
+          "endMs": 220879,
+          "startMs": 216480,
+          "startTime": "3:36",
+          "text": "was to at the end of the year acquire"
+        },
+        {
+          "endMs": 222480,
+          "startMs": 218480,
+          "startTime": "3:38",
+          "text": "Cursor for $60 billion. SpaceX decided"
+        },
+        {
+          "endMs": 224400,
+          "startMs": 220879,
+          "startTime": "3:40",
+          "text": "to not wait and instead just make the"
+        },
+        {
+          "endMs": 226879,
+          "startMs": 222480,
+          "startTime": "3:42",
+          "text": "deal happen immediately. And the result"
+        },
+        {
+          "endMs": 228400,
+          "startMs": 224400,
+          "startTime": "3:44",
+          "text": "is Curser is now part of SpaceX. I know"
+        },
+        {
+          "endMs": 229680,
+          "startMs": 226879,
+          "startTime": "3:46",
+          "text": "this is closing aggressively fast"
+        },
+        {
+          "endMs": 231200,
+          "startMs": 228400,
+          "startTime": "3:48",
+          "text": "because I probably mentioned this"
+        },
+        {
+          "endMs": 233040,
+          "startMs": 229680,
+          "startTime": "3:49",
+          "text": "before. I was an early investor in"
+        },
+        {
+          "endMs": 235280,
+          "startMs": 231200,
+          "startTime": "3:51",
+          "text": "Cursor and I've been getting spammed"
+        },
+        {
+          "endMs": 236959,
+          "startMs": 233040,
+          "startTime": "3:53",
+          "text": "with emails and still have no idea if"
+        },
+        {
+          "endMs": 239599,
+          "startMs": 235280,
+          "startTime": "3:55",
+          "text": "I'll even be allowed to get the stock,"
+        },
+        {
+          "endMs": 241040,
+          "startMs": 236959,
+          "startTime": "3:56",
+          "text": "much less sell it. So, uh, yeah, I might"
+        },
+        {
+          "endMs": 243200,
+          "startMs": 239599,
+          "startTime": "3:59",
+          "text": "make some money off this deal. I might"
+        },
+        {
+          "endMs": 245360,
+          "startMs": 241040,
+          "startTime": "4:01",
+          "text": "not. It's hard to know. But since the"
+        },
+        {
+          "endMs": 247599,
+          "startMs": 243200,
+          "startTime": "4:03",
+          "text": "deal is over, so to speak, any"
+        },
+        {
+          "endMs": 249519,
+          "startMs": 245360,
+          "startTime": "4:05",
+          "text": "allegiance I have to Curser is kind of"
+        },
+        {
+          "endMs": 251360,
+          "startMs": 247599,
+          "startTime": "4:07",
+          "text": "dead because I do, let's be real, intend"
+        },
+        {
+          "endMs": 253840,
+          "startMs": 249519,
+          "startTime": "4:09",
+          "text": "to sell that equity as soon as I'm able"
+        },
+        {
+          "endMs": 254959,
+          "startMs": 251360,
+          "startTime": "4:11",
+          "text": "to from the SpaceX acquisition. But, uh,"
+        },
+        {
+          "endMs": 257359,
+          "startMs": 253840,
+          "startTime": "4:13",
+          "text": "we'll see what happens when we get"
+        },
+        {
+          "endMs": 259840,
+          "startMs": 254959,
+          "startTime": "4:14",
+          "text": "there. I have no bottom line tied to how"
+        },
+        {
+          "endMs": 261359,
+          "startMs": 257359,
+          "startTime": "4:17",
+          "text": "I cover cursor here. Nice to be free of"
+        },
+        {
+          "endMs": 263440,
+          "startMs": 259840,
+          "startTime": "4:19",
+          "text": "any potential burden I had there, but"
+        },
+        {
+          "endMs": 265120,
+          "startMs": 261359,
+          "startTime": "4:21",
+          "text": "I'll be honest, I rarely let the fact"
+        },
+        {
+          "endMs": 266479,
+          "startMs": 263440,
+          "startTime": "4:23",
+          "text": "that I have money in a company prevent"
+        },
+        {
+          "endMs": 268160,
+          "startMs": 265120,
+          "startTime": "4:25",
+          "text": "me from saying what I want to about"
+        },
+        {
+          "endMs": 269440,
+          "startMs": 266479,
+          "startTime": "4:26",
+          "text": "them. If anything, I tend to be more"
+        },
+        {
+          "endMs": 271759,
+          "startMs": 268160,
+          "startTime": "4:28",
+          "text": "harsh on the companies that I have"
+        },
+        {
+          "endMs": 274320,
+          "startMs": 269440,
+          "startTime": "4:29",
+          "text": "financial ties to. I also have no tie"
+        },
+        {
+          "endMs": 276479,
+          "startMs": 271759,
+          "startTime": "4:31",
+          "text": "financially whatsoever to OpenAI. In"
+        },
+        {
+          "endMs": 278320,
+          "startMs": 274320,
+          "startTime": "4:34",
+          "text": "fact, I spend a lot of money on OpenAI,"
+        },
+        {
+          "endMs": 280240,
+          "startMs": 276479,
+          "startTime": "4:36",
+          "text": "so take that as you will. Anthropic is"
+        },
+        {
+          "endMs": 282960,
+          "startMs": 278320,
+          "startTime": "4:38",
+          "text": "still the company I pay the most. But"
+        },
+        {
+          "endMs": 285120,
+          "startMs": 280240,
+          "startTime": "4:40",
+          "text": "yeah, anyways, let's read what they"
+        },
+        {
+          "endMs": 286800,
+          "startMs": 282960,
+          "startTime": "4:42",
+          "text": "said. Today we notified SpaceX that we"
+        },
+        {
+          "endMs": 289120,
+          "startMs": 285120,
+          "startTime": "4:45",
+          "text": "intend to wind down our contract"
+        },
+        {
+          "endMs": 291280,
+          "startMs": 286800,
+          "startTime": "4:46",
+          "text": "providing OpenAI models to Cursor with a"
+        },
+        {
+          "endMs": 293600,
+          "startMs": 289120,
+          "startTime": "4:49",
+          "text": "proposed shut off date of November 12th,"
+        },
+        {
+          "endMs": 295040,
+          "startMs": 291280,
+          "startTime": "4:51",
+          "text": "2026. To maximize the time that"
+        },
+        {
+          "endMs": 296639,
+          "startMs": 293600,
+          "startTime": "4:53",
+          "text": "developers can retain access to our"
+        },
+        {
+          "endMs": 298720,
+          "startMs": 295040,
+          "startTime": "4:55",
+          "text": "models through Curser, we're giving them"
+        },
+        {
+          "endMs": 301759,
+          "startMs": 296639,
+          "startTime": "4:56",
+          "text": "the maximum notice provided by our"
+        },
+        {
+          "endMs": 303199,
+          "startMs": 298720,
+          "startTime": "4:58",
+          "text": "contract. This seems to be a internal"
+        },
+        {
+          "endMs": 305440,
+          "startMs": 301759,
+          "startTime": "5:01",
+          "text": "back and forth between these two"
+        },
+        {
+          "endMs": 307600,
+          "startMs": 303199,
+          "startTime": "5:03",
+          "text": "companies gone wrong around the details"
+        },
+        {
+          "endMs": 309520,
+          "startMs": 305440,
+          "startTime": "5:05",
+          "text": "of a specific contract and OpenAI has"
+        },
+        {
+          "endMs": 312000,
+          "startMs": 307600,
+          "startTime": "5:07",
+          "text": "decided to just honor the exact"
+        },
+        {
+          "endMs": 313600,
+          "startMs": 309520,
+          "startTime": "5:09",
+          "text": "specification of the contract and not do"
+        },
+        {
+          "endMs": 315120,
+          "startMs": 312000,
+          "startTime": "5:12",
+          "text": "a renewal or continue extending or"
+        },
+        {
+          "endMs": 316800,
+          "startMs": 313600,
+          "startTime": "5:13",
+          "text": "whatever other thing that they were"
+        },
+        {
+          "endMs": 318720,
+          "startMs": 315120,
+          "startTime": "5:15",
+          "text": "doing before. The contracts between the"
+        },
+        {
+          "endMs": 320240,
+          "startMs": 316800,
+          "startTime": "5:16",
+          "text": "companies consuming all of this AI stuff"
+        },
+        {
+          "endMs": 321840,
+          "startMs": 318720,
+          "startTime": "5:18",
+          "text": "and the companies who are actually"
+        },
+        {
+          "endMs": 323680,
+          "startMs": 320240,
+          "startTime": "5:20",
+          "text": "making the models and hosting. So the"
+        },
+        {
+          "endMs": 325600,
+          "startMs": 321840,
+          "startTime": "5:21",
+          "text": "Googles, Anthropics, and OpenAIs of the"
+        },
+        {
+          "endMs": 327440,
+          "startMs": 323680,
+          "startTime": "5:23",
+          "text": "world versus everyone else tend to be"
+        },
+        {
+          "endMs": 329120,
+          "startMs": 325600,
+          "startTime": "5:25",
+          "text": "kind of weird because the margins for"
+        },
+        {
+          "endMs": 331120,
+          "startMs": 327440,
+          "startTime": "5:27",
+          "text": "hosting the models are really good for"
+        },
+        {
+          "endMs": 332720,
+          "startMs": 329120,
+          "startTime": "5:29",
+          "text": "those businesses, which gives them a lot"
+        },
+        {
+          "endMs": 334400,
+          "startMs": 331120,
+          "startTime": "5:31",
+          "text": "of wiggle room in how they negotiate"
+        },
+        {
+          "endMs": 336160,
+          "startMs": 332720,
+          "startTime": "5:32",
+          "text": "these contracts. And I think it's"
+        },
+        {
+          "endMs": 339280,
+          "startMs": 334400,
+          "startTime": "5:34",
+          "text": "important to remember that cursor at a"
+        },
+        {
+          "endMs": 341600,
+          "startMs": 336160,
+          "startTime": "5:36",
+          "text": "point in time was doing over 70% of the"
+        },
+        {
+          "endMs": 343120,
+          "startMs": 339280,
+          "startTime": "5:39",
+          "text": "inference on Anthropic. So of all of the"
+        },
+        {
+          "endMs": 346639,
+          "startMs": 341600,
+          "startTime": "5:41",
+          "text": "stuff Anthropic was doing with their"
+        },
+        {
+          "endMs": 348639,
+          "startMs": 343120,
+          "startTime": "5:43",
+          "text": "GPUs, 70% of non-ressearch work was"
+        },
+        {
+          "endMs": 350080,
+          "startMs": 346639,
+          "startTime": "5:46",
+          "text": "going to cursor. So they are a huge"
+        },
+        {
+          "endMs": 351600,
+          "startMs": 348639,
+          "startTime": "5:48",
+          "text": "spender in the space and as you can"
+        },
+        {
+          "endMs": 353199,
+          "startMs": 350080,
+          "startTime": "5:50",
+          "text": "guess they have these huge contracts"
+        },
+        {
+          "endMs": 355440,
+          "startMs": 351600,
+          "startTime": "5:51",
+          "text": "where they negotiate the prices down"
+        },
+        {
+          "endMs": 358160,
+          "startMs": 353199,
+          "startTime": "5:53",
+          "text": "massively. Speaking of cloud models in"
+        },
+        {
+          "endMs": 359600,
+          "startMs": 355440,
+          "startTime": "5:55",
+          "text": "cursor, the head of compute at anthropic"
+        },
+        {
+          "endMs": 361360,
+          "startMs": 358160,
+          "startTime": "5:58",
+          "text": "had a post about this too, taking the"
+        },
+        {
+          "endMs": 363039,
+          "startMs": 359600,
+          "startTime": "5:59",
+          "text": "opportunity to dunk. Curser has been a"
+        },
+        {
+          "endMs": 365280,
+          "startMs": 361360,
+          "startTime": "6:01",
+          "text": "trusted partner of Anthropic and Sonnet"
+        },
+        {
+          "endMs": 367280,
+          "startMs": 363039,
+          "startTime": "6:03",
+          "text": "3.5. We'll continue to increase compute"
+        },
+        {
+          "endMs": 368479,
+          "startMs": 365280,
+          "startTime": "6:05",
+          "text": "to support cloud models in Cursor and"
+        },
+        {
+          "endMs": 370479,
+          "startMs": 367280,
+          "startTime": "6:07",
+          "text": "are excited for what comes next with"
+        },
+        {
+          "endMs": 372160,
+          "startMs": 368479,
+          "startTime": "6:08",
+          "text": "them at SpaceX. You might be surprised"
+        },
+        {
+          "endMs": 373680,
+          "startMs": 370479,
+          "startTime": "6:10",
+          "text": "here because Anthropic's pretty quick to"
+        },
+        {
+          "endMs": 375120,
+          "startMs": 372160,
+          "startTime": "6:12",
+          "text": "ban competitors from using their stuff"
+        },
+        {
+          "endMs": 377199,
+          "startMs": 373680,
+          "startTime": "6:13",
+          "text": "and as I mentioned before, they've"
+        },
+        {
+          "endMs": 379199,
+          "startMs": 375120,
+          "startTime": "6:15",
+          "text": "already banned XAI before. That was"
+        },
+        {
+          "endMs": 381120,
+          "startMs": 377199,
+          "startTime": "6:17",
+          "text": "before they got a bunch of their compute"
+        },
+        {
+          "endMs": 383360,
+          "startMs": 379199,
+          "startTime": "6:19",
+          "text": "from SpaceX, though. And now that"
+        },
+        {
+          "endMs": 385039,
+          "startMs": 381120,
+          "startTime": "6:21",
+          "text": "Anthropic is so reliant on SpaceX for"
+        },
+        {
+          "endMs": 387360,
+          "startMs": 383360,
+          "startTime": "6:23",
+          "text": "compute, it's not surprising that the"
+        },
+        {
+          "endMs": 388960,
+          "startMs": 385039,
+          "startTime": "6:25",
+          "text": "compute officer at Anthropic is being"
+        },
+        {
+          "endMs": 391039,
+          "startMs": 387360,
+          "startTime": "6:27",
+          "text": "nice to them in this beef because"
+        },
+        {
+          "endMs": 393199,
+          "startMs": 388960,
+          "startTime": "6:28",
+          "text": "Anthropic and XAI might not get along"
+        },
+        {
+          "endMs": 394720,
+          "startMs": 391039,
+          "startTime": "6:31",
+          "text": "directly, but they both hate OpenAI so"
+        },
+        {
+          "endMs": 396400,
+          "startMs": 393199,
+          "startTime": "6:33",
+          "text": "much they are more than willing to set"
+        },
+        {
+          "endMs": 398479,
+          "startMs": 394720,
+          "startTime": "6:34",
+          "text": "aside their differences and partner up"
+        },
+        {
+          "endMs": 400720,
+          "startMs": 396400,
+          "startTime": "6:36",
+          "text": "here. And also the guy who runs computer"
+        },
+        {
+          "endMs": 402080,
+          "startMs": 398479,
+          "startTime": "6:38",
+          "text": "Anthropic better be thankful for SpaceX"
+        },
+        {
+          "endMs": 404000,
+          "startMs": 400720,
+          "startTime": "6:40",
+          "text": "because he probably should have been"
+        },
+        {
+          "endMs": 405600,
+          "startMs": 402080,
+          "startTime": "6:42",
+          "text": "fired before for not acquiring the"
+        },
+        {
+          "endMs": 407360,
+          "startMs": 404000,
+          "startTime": "6:44",
+          "text": "compute that they needed and giving"
+        },
+        {
+          "endMs": 408800,
+          "startMs": 405600,
+          "startTime": "6:45",
+          "text": "anthropic the massive disadvantage that"
+        },
+        {
+          "endMs": 410160,
+          "startMs": 407360,
+          "startTime": "6:47",
+          "text": "they are currently experiencing. It's"
+        },
+        {
+          "endMs": 411680,
+          "startMs": 408800,
+          "startTime": "6:48",
+          "text": "particularly funny to see the head of"
+        },
+        {
+          "endMs": 413680,
+          "startMs": 410160,
+          "startTime": "6:50",
+          "text": "comput and anthropic saying that they're"
+        },
+        {
+          "endMs": 416400,
+          "startMs": 411680,
+          "startTime": "6:51",
+          "text": "working on increasing compute for cursor"
+        },
+        {
+          "endMs": 418319,
+          "startMs": 413680,
+          "startTime": "6:53",
+          "text": "just a day ago because right afterwards"
+        },
+        {
+          "endMs": 420160,
+          "startMs": 416400,
+          "startTime": "6:56",
+          "text": "the claude devs accounts announced that"
+        },
+        {
+          "endMs": 422720,
+          "startMs": 418319,
+          "startTime": "6:58",
+          "text": "they'll be decreasing your limits in"
+        },
+        {
+          "endMs": 424240,
+          "startMs": 420160,
+          "startTime": "7:00",
+          "text": "cloud code by 17%. Don't think what"
+        },
+        {
+          "endMs": 426400,
+          "startMs": 422720,
+          "startTime": "7:02",
+          "text": "they're saying here is true that it's"
+        },
+        {
+          "endMs": 428720,
+          "startMs": 424240,
+          "startTime": "7:04",
+          "text": "25% higher because they're turning off"
+        },
+        {
+          "endMs": 430080,
+          "startMs": 426400,
+          "startTime": "7:06",
+          "text": "the 50% increase right after. I have a"
+        },
+        {
+          "endMs": 431199,
+          "startMs": 428720,
+          "startTime": "7:08",
+          "text": "whole video about this coming tomorrow."
+        },
+        {
+          "endMs": 432400,
+          "startMs": 430080,
+          "startTime": "7:10",
+          "text": "So, keep an eye out for that. Make sure"
+        },
+        {
+          "endMs": 433759,
+          "startMs": 431199,
+          "startTime": "7:11",
+          "text": "you're subscribed if you haven't. It"
+        },
+        {
+          "endMs": 434880,
+          "startMs": 432400,
+          "startTime": "7:12",
+          "text": "cost you nothing. It'll help you keep"
+        },
+        {
+          "endMs": 436400,
+          "startMs": 433759,
+          "startTime": "7:13",
+          "text": "track of this breaking news as it"
+        },
+        {
+          "endMs": 438000,
+          "startMs": 434880,
+          "startTime": "7:14",
+          "text": "happens. This is all annoying to keep up"
+        },
+        {
+          "endMs": 439759,
+          "startMs": 436400,
+          "startTime": "7:16",
+          "text": "with, but I've been doing my best. And I"
+        },
+        {
+          "endMs": 442160,
+          "startMs": 438000,
+          "startTime": "7:18",
+          "text": "bet you that bell can save you a lot of"
+        },
+        {
+          "endMs": 444240,
+          "startMs": 439759,
+          "startTime": "7:19",
+          "text": "time and money. Anyways, this also means"
+        },
+        {
+          "endMs": 446160,
+          "startMs": 442160,
+          "startTime": "7:22",
+          "text": "OpenAI is probably losing a pretty big"
+        },
+        {
+          "endMs": 448000,
+          "startMs": 444240,
+          "startTime": "7:24",
+          "text": "revenue driver by blocking Cursor"
+        },
+        {
+          "endMs": 449360,
+          "startMs": 446160,
+          "startTime": "7:26",
+          "text": "because Curser doesn't get the absurd"
+        },
+        {
+          "endMs": 450800,
+          "startMs": 448000,
+          "startTime": "7:28",
+          "text": "subsidization we get in the"
+        },
+        {
+          "endMs": 452720,
+          "startMs": 449360,
+          "startTime": "7:29",
+          "text": "subscriptions. So you can pay the 200"
+        },
+        {
+          "endMs": 455120,
+          "startMs": 450800,
+          "startTime": "7:30",
+          "text": "bucks a month for codeex and get like 8k"
+        },
+        {
+          "endMs": 457680,
+          "startMs": 452720,
+          "startTime": "7:32",
+          "text": "plus outside of resets in inference for"
+        },
+        {
+          "endMs": 459440,
+          "startMs": 455120,
+          "startTime": "7:35",
+          "text": "that month. Cursor is paying a probably"
+        },
+        {
+          "endMs": 460880,
+          "startMs": 457680,
+          "startTime": "7:37",
+          "text": "massively discounted rate, but my honest"
+        },
+        {
+          "endMs": 464080,
+          "startMs": 459440,
+          "startTime": "7:39",
+          "text": "guess is that it would be in the 20 to"
+        },
+        {
+          "endMs": 466160,
+          "startMs": 460880,
+          "startTime": "7:40",
+          "text": "30% range, not the 80 to 95% range that"
+        },
+        {
+          "endMs": 467840,
+          "startMs": 464080,
+          "startTime": "7:44",
+          "text": "we can get with subscriptions. Anyways,"
+        },
+        {
+          "endMs": 469840,
+          "startMs": 466160,
+          "startTime": "7:46",
+          "text": "back to the details that were shared"
+        },
+        {
+          "endMs": 471599,
+          "startMs": 467840,
+          "startTime": "7:47",
+          "text": "here. This decision was incredibly tough"
+        },
+        {
+          "endMs": 473840,
+          "startMs": 469840,
+          "startTime": "7:49",
+          "text": "and we care deeply about our models"
+        },
+        {
+          "endMs": 475440,
+          "startMs": 471599,
+          "startTime": "7:51",
+          "text": "being broadly available for developers."
+        },
+        {
+          "endMs": 477599,
+          "startMs": 473840,
+          "startTime": "7:53",
+          "text": "We are making this choice because we"
+        },
+        {
+          "endMs": 479680,
+          "startMs": 475440,
+          "startTime": "7:55",
+          "text": "cannot be confident that SpaceX will use"
+        },
+        {
+          "endMs": 481360,
+          "startMs": 477599,
+          "startTime": "7:57",
+          "text": "our technology within our terms of"
+        },
+        {
+          "endMs": 483199,
+          "startMs": 479680,
+          "startTime": "7:59",
+          "text": "service based on our experience with"
+        },
+        {
+          "endMs": 485360,
+          "startMs": 481360,
+          "startTime": "8:01",
+          "text": "Elon Musk's company's violating"
+        },
+        {
+          "endMs": 487120,
+          "startMs": 483199,
+          "startTime": "8:03",
+          "text": "contracts. And there's the detail that"
+        },
+        {
+          "endMs": 489120,
+          "startMs": 485360,
+          "startTime": "8:05",
+          "text": "matters. The thing that OpenAI is"
+        },
+        {
+          "endMs": 491680,
+          "startMs": 487120,
+          "startTime": "8:07",
+          "text": "concerned about here is that Elon has"
+        },
+        {
+          "endMs": 494080,
+          "startMs": 489120,
+          "startTime": "8:09",
+          "text": "said on the record that he is distilling"
+        },
+        {
+          "endMs": 495759,
+          "startMs": 491680,
+          "startTime": "8:11",
+          "text": "OpenAI's models from the information"
+        },
+        {
+          "endMs": 497360,
+          "startMs": 494080,
+          "startTime": "8:14",
+          "text": "that they get using them. Whether it's"
+        },
+        {
+          "endMs": 499039,
+          "startMs": 495759,
+          "startTime": "8:15",
+          "text": "internally at their company collecting"
+        },
+        {
+          "endMs": 500639,
+          "startMs": 497360,
+          "startTime": "8:17",
+          "text": "the inputs and outputs, whether it is"
+        },
+        {
+          "endMs": 502479,
+          "startMs": 499039,
+          "startTime": "8:19",
+          "text": "the data they can buy from other places"
+        },
+        {
+          "endMs": 504720,
+          "startMs": 500639,
+          "startTime": "8:20",
+          "text": "or if it is the data that cursor has had"
+        },
+        {
+          "endMs": 506879,
+          "startMs": 502479,
+          "startTime": "8:22",
+          "text": "for a long time that is clearly quite"
+        },
+        {
+          "endMs": 509520,
+          "startMs": 504720,
+          "startTime": "8:24",
+          "text": "useful as the models that cursor put out"
+        },
+        {
+          "endMs": 511680,
+          "startMs": 506879,
+          "startTime": "8:26",
+          "text": "like composer are really good and they"
+        },
+        {
+          "endMs": 513919,
+          "startMs": 509520,
+          "startTime": "8:29",
+          "text": "got that largely from the data that they"
+        },
+        {
+          "endMs": 515760,
+          "startMs": 511680,
+          "startTime": "8:31",
+          "text": "have from everyone using cursor for all"
+        },
+        {
+          "endMs": 518240,
+          "startMs": 513919,
+          "startTime": "8:33",
+          "text": "of their AI code for as long as they've"
+        },
+        {
+          "endMs": 519680,
+          "startMs": 515760,
+          "startTime": "8:35",
+          "text": "been around for. That data advantage has"
+        }
+      ],
+      "source": "live",
+      "totalDurationMs": 1626080,
+      "videoId": "jKCjLzjmiaA"
+    }
+  },
+  "error": null,
+  "logId": "log_rLA59ZsUG5sx"
+}
