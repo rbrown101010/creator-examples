@@ -39,6 +39,46 @@
    "page": "https://creator-examples.vercel.app/intros/kallaway/",
    "json": "https://creator-examples.vercel.app/data/kallaway.json",
    "count": 10
+  },
+  {
+   "name": "Kallaway",
+   "slug": "kallaway",
+   "type": "short-form",
+   "page": "https://creator-examples.vercel.app/short-form/kallaway/",
+   "json": "https://creator-examples.vercel.app/data/short-form/kallaway.json",
+   "count": 10
+  },
+  {
+   "name": "Dylan Page",
+   "slug": "dylan-page",
+   "type": "short-form",
+   "page": "https://creator-examples.vercel.app/short-form/dylan-page/",
+   "json": "https://creator-examples.vercel.app/data/short-form/dylan-page.json",
+   "count": 10
+  },
+  {
+   "name": "Roberto Nickson (RPN)",
+   "slug": "roberto-nickson",
+   "type": "short-form",
+   "page": "https://creator-examples.vercel.app/short-form/roberto-nickson/",
+   "json": "https://creator-examples.vercel.app/data/short-form/roberto-nickson.json",
+   "count": 10
+  },
+  {
+   "name": "Cleo Abram",
+   "slug": "cleo-abram",
+   "type": "short-form",
+   "page": "https://creator-examples.vercel.app/short-form/cleo-abram/",
+   "json": "https://creator-examples.vercel.app/data/short-form/cleo-abram.json",
+   "count": 10
+  },
+  {
+   "name": "Nick Saraev",
+   "slug": "nick-saraev",
+   "type": "short-form",
+   "page": "https://creator-examples.vercel.app/short-form/nick-saraev/",
+   "json": "https://creator-examples.vercel.app/data/short-form/nick-saraev.json",
+   "count": 10
   }
  ]
 }

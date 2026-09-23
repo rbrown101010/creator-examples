@@ -1,9 +1,10 @@
 # Creator Examples
 
-> A plain-text database of creator content examples (YouTube intros and more), kept by Riley Brown. Every page is unstyled HTML. Machine-readable JSON lives under /data/.
+> A plain-text database of creator content examples (YouTube intros, short-form video scripts, and more), kept by Riley Brown. Every page is unstyled HTML. Machine-readable JSON lives under /data/.
 
 - Home: https://creator-examples.vercel.app/
 - Intros index: https://creator-examples.vercel.app/intros/
+- Short Form index: https://creator-examples.vercel.app/short-form/
 - Data index: https://creator-examples.vercel.app/data/index.json
 - Skill for agents: https://creator-examples.vercel.app/skill/SKILL.md
 
@@ -81,4 +82,79 @@
 - https://creator-examples.vercel.app/intros/kallaway/08-the-new-era-of-personal-brands-is-here-and-you-re-not-ready/ : The NEW Era of Personal Brands is Here (and you’re not ready) (135,681 views)
 - https://creator-examples.vercel.app/intros/kallaway/09-how-to-speedrun-social-media/ : How to Speedrun Social Media (116,501 views)
 - https://creator-examples.vercel.app/intros/kallaway/10-5-claude-skills-to-grow-faster-than-99-of-people-on-social-media/ : 5 Claude Skills To Grow Faster Than 99% of People on Social Media (110,576 views)
+
+## Short Form: Kallaway
+- Creator page: https://creator-examples.vercel.app/short-form/kallaway/
+- JSON: https://creator-examples.vercel.app/data/short-form/kallaway.json
+- Method: Top 10 of 537 Instagram reels on @kallaway, all time, ranked by Instagram play count. Sponsored posts left out: anything Instagram marks as a paid partnership or whose caption carries a partner tag (#lumapartner, #chatgptpartner), which dropped 5 of his top 14. Full spoken transcripts via ScrapeCreators.
+- https://creator-examples.vercel.app/short-form/kallaway/01-check-this-out-this-guy-s-building-a-real-iron-man-suit-in-his-garage/ : Check this out. This guy's building a real Iron Man suit in his garage. (17,642,357 views)
+- https://creator-examples.vercel.app/short-form/kallaway/02-leo-messi-just-changed-the-sports-world-forever/ : Leo Messi just changed the sports world forever. (17,580,460 views)
+- https://creator-examples.vercel.app/short-form/kallaway/03-openai-just-solved-one-of-the-most-famous-unsolved-math-problems-in-th/ : OpenAI just solved one of the most famous unsolved math problems in the world, and it sounds super nerdy,... (12,608,495 views)
+- https://creator-examples.vercel.app/short-form/kallaway/04-check-this-out-this-company-lets-you-order-sunlight-on-demand/ : Check this out. This company lets you order sunlight on demand. (11,061,905 views)
+- https://creator-examples.vercel.app/short-form/kallaway/05-if-you-work-in-any-of-these-jobs-your-life-is-about-to-change/ : If you work in any of these jobs, your life is about to change. (8,456,476 views)
+- https://creator-examples.vercel.app/short-form/kallaway/06-the-tech-in-the-vegas-sphere-is-insane/ : The tech in the Vegas Sphere is insane. (7,983,587 views)
+- https://creator-examples.vercel.app/short-form/kallaway/07-this-company-3d-printed-an-entire-neighborhood/ : This company 3D printed an entire neighborhood. (7,980,046 views)
+- https://creator-examples.vercel.app/short-form/kallaway/08-taylor-swift-s-tour-is-about-to-make-a-billion-dollars-the-most-ever-b/ : Taylor Swift's tour is about to make a billion dollars, the most ever by any artist. (7,726,290 views)
+- https://creator-examples.vercel.app/short-form/kallaway/09-this-is-faye-she-s-8-years-old-and-she-just-built-this-entire-harry-po/ : This is Faye. She's 8 years old, and she just built this entire Harry Potter website in like 45 minutes. (7,330,695 views)
+- https://creator-examples.vercel.app/short-form/kallaway/10-this-is-the-most-insane-tech-company-in-the-world-asml/ : This is the most insane tech company in the world, ASML. (5,938,276 views)
+
+## Short Form: Dylan Page
+- Creator page: https://creator-examples.vercel.app/short-form/dylan-page/
+- JSON: https://creator-examples.vercel.app/data/short-form/dylan-page.json
+- Method: Top 10 of 92 Instagram reels on @dylanpage.ning, all time, ranked by Instagram play count. One reel with almost no speech was skipped (a 38-second Erling Haaland collab whose only line is 'Today, I am Erling Haaland'). Full spoken transcripts via ScrapeCreators.
+- https://creator-examples.vercel.app/short-form/dylan-page/01-i-have-just-arrived-to-the-craziest-city-on-earth-and-you-probably-nev/ : I have just arrived to the craziest city on earth and you probably never even heard about it. (109,565,568 views)
+- https://creator-examples.vercel.app/short-form/dylan-page/02-this-20-year-old-student-spent-7-months-single-handedly-cleaning-up-a/ : This 20-year-old student spent 7 months single-handedly cleaning up a polluted river in India, and the... (19,321,133 views)
+- https://creator-examples.vercel.app/short-form/dylan-page/03-no-bro-of-course-bro-no-no-no-of-course-not-brother/ : No, bro. Of course, bro. No, no, no. Of course not, brother. (5,331,097 views)
+- https://creator-examples.vercel.app/short-form/dylan-page/04-three-of-the-richest-countries-in-asia/ : Three of the richest countries in Asia. (5,264,070 views)
+- https://creator-examples.vercel.app/short-form/dylan-page/05-i-don-t-think-anyone-is-noticing-how-deadly-this-weekend-was-for-all-t/ : I don't think anyone is noticing how deadly this weekend was for all these adrenaline activities. (4,835,281 views)
+- https://creator-examples.vercel.app/short-form/dylan-page/06-a-russian-biologist-is-now-reporting-a-surge-of-aggressive-ticks-that/ : A Russian biologist is now reporting a surge of aggressive ticks that as you can see by the video have a... (4,617,475 views)
+- https://creator-examples.vercel.app/short-form/dylan-page/07-the-disaster-in-nepal-is-so-much-worse-than-we-could-have-imagined/ : The disaster in Nepal is so much worse than we could have imagined. (4,374,659 views)
+- https://creator-examples.vercel.app/short-form/dylan-page/08-this-is-absolutely-insane-a-woman-in-her-20s-has-just-died-in-brazil-a/ : This is absolutely insane. A woman in her 20s has just died in Brazil after workers at a bungee jumping... (4,345,699 views)
+- https://creator-examples.vercel.app/short-form/dylan-page/09-bro-the-whole-world-is-absolutely-trolling-the-iphone-duo-right-now-an/ : Bro, the whole world is absolutely trolling the iPhone duo right now, and it's just like they predicted. (3,815,426 views)
+- https://creator-examples.vercel.app/short-form/dylan-page/10-if-you-ever-feel-like-you-re-being-followed-in-japan-visit-one-of-thes/ : If you ever feel like you're being followed in Japan, visit one of these stores, because it might just... (3,456,338 views)
+
+## Short Form: Roberto Nickson (RPN)
+- Creator page: https://creator-examples.vercel.app/short-form/roberto-nickson/
+- JSON: https://creator-examples.vercel.app/data/short-form/roberto-nickson.json
+- Method: Top 10 of 93 Instagram reels on @rpn (Roberto P. Nickson), all time, ranked by Instagram play count. Sponsored posts are kept and marked. One reel with almost no speech was skipped (a 13-second RPN HQ teaser). Full spoken transcripts via ScrapeCreators.
+- https://creator-examples.vercel.app/short-form/roberto-nickson/01-we-have-a-major-update-from-open-ai/ : We have a major update from Open AI. (54,026,902 views) [sponsored]
+- https://creator-examples.vercel.app/short-form/roberto-nickson/02-perplexity-just-reinvented-the-computer-with-computer/ : Perplexity just reinvented the computer with computer. (20,029,889 views) [sponsored]
+- https://creator-examples.vercel.app/short-form/roberto-nickson/03-i-m-going-to-tell-you-why-i-love-this-thing/ : I'm going to tell you why I love this thing. (13,113,182 views) [sponsored]
+- https://creator-examples.vercel.app/short-form/roberto-nickson/04-meta-just-launched-some-of-the-most-revolutionary-consumer-tech-produc/ : Meta just launched some of the most revolutionary consumer tech products of the year. (9,539,858 views) [sponsored]
+- https://creator-examples.vercel.app/short-form/roberto-nickson/05-apple-just-dropped-the-iphone-16-with-something-we-didn-t-expect/ : Apple just dropped the iPhone 16 with something we didn't expect. (7,433,429 views)
+- https://creator-examples.vercel.app/short-form/roberto-nickson/06-well-we-all-knew-this-day-was-coming-and-it-s-officially-here/ : Well, we all knew this day was coming, and it's officially here. (5,598,201 views)
+- https://creator-examples.vercel.app/short-form/roberto-nickson/07-this-is-nano-banana-vs-nano-banana-pro/ : This is Nano Banana vs. Nano Banana Pro. (5,331,788 views)
+- https://creator-examples.vercel.app/short-form/roberto-nickson/08-social-media-is-dead-there-s-no-social-anymore/ : Social media is dead. There's no social anymore. (5,269,023 views)
+- https://creator-examples.vercel.app/short-form/roberto-nickson/09-so-this-is-the-future-of-jobs-report-that-just-came-out-and-it-details/ : So, this is the future of jobs report that just came out and it details just how much the global economy... (5,187,398 views)
+- https://creator-examples.vercel.app/short-form/roberto-nickson/10-let-me-show-you-the-craziest-part-about-the-vision-pro/ : Let me show you the craziest part about the Vision Pro. (4,666,366 views)
+
+## Short Form: Cleo Abram
+- Creator page: https://creator-examples.vercel.app/short-form/cleo-abram/
+- JSON: https://creator-examples.vercel.app/data/short-form/cleo-abram.json
+- Method: Top 10 of 627 Instagram reels on @cleoabram, all time, ranked by Instagram play count. Sponsored posts are kept and marked. Full spoken transcripts via ScrapeCreators.
+- https://creator-examples.vercel.app/short-form/cleo-abram/01-look-at-these-these-are-the-new-meta-ray-ban-display-and-i-got-to-test/ : Look at these. These are the new Meta Ray-Ban display, and I got to test them. (102,317,443 views) [sponsored]
+- https://creator-examples.vercel.app/short-form/cleo-abram/02-what-would-happen-if-you-dug-a-hole-straight-through-the-earth-and-the/ : What would happen if you dug a hole straight through the Earth and then jumped in? (32,732,433 views)
+- https://creator-examples.vercel.app/short-form/cleo-abram/03-what-would-happen-if-you-drilled-a-hole-straight-through-the-ice-in-an/ : What would happen if you drilled a hole straight through the ice in Antarctica and jumped in? (20,586,590 views)
+- https://creator-examples.vercel.app/short-form/cleo-abram/04-if-you-ve-ever-thought-what-if-i-just-dug-a-really-really-deep-hole/ : If you've ever thought, what if I just dug a really, really deep hole? (19,280,448 views)
+- https://creator-examples.vercel.app/short-form/cleo-abram/05-this-is-a-drawing-of-a-normal-modern-animal-that-you-d-recognize/ : This is a drawing of a normal modern animal that you'd recognize. (15,460,180 views)
+- https://creator-examples.vercel.app/short-form/cleo-abram/06-have-you-ever-wondered-what-if-you-just-kept-going-away-from-earth/ : Have you ever wondered what if you just kept going away from Earth? (14,368,123 views)
+- https://creator-examples.vercel.app/short-form/cleo-abram/07-this-is-the-first-ever-footage-of-a-giant-squid-in-its-natural-habitat/ : This is the first ever footage of a giant squid in its natural habitat. (10,908,898 views)
+- https://creator-examples.vercel.app/short-form/cleo-abram/08-this-is-a-drawing-of-a-normal-modern-animal-that-you-d-recognize/ : This is a drawing of a normal, modern animal that you'd recognize. (10,451,907 views)
+- https://creator-examples.vercel.app/short-form/cleo-abram/09-roughly-a-million-people-are-attending-the-2024-us-open-in-new-york-bu/ : Roughly a million people are attending the 2024 US Open in New York, but roughly 15 million fans like me... (10,123,306 views) [sponsored]
+- https://creator-examples.vercel.app/short-form/cleo-abram/10-this-incredible-new-lego-smart-brick-is-full-of-new-tech-and-it-s-goin/ : This incredible new LEGO smart brick is full of new tech and it's going to bring my Lego set to life in a... (9,965,299 views) [sponsored]
+
+## Short Form: Nick Saraev
+- Creator page: https://creator-examples.vercel.app/short-form/nick-saraev/
+- JSON: https://creator-examples.vercel.app/data/short-form/nick-saraev.json
+- Method: Top 10 of 411 Instagram reels on @nick_saraev, all time, ranked by Instagram play count. Full spoken transcripts via ScrapeCreators.
+- https://creator-examples.vercel.app/short-form/nick-saraev/01-you-can-now-run-claude-code-for-completely-free-with-almost-unlimited/ : You can now run Claude code for completely free with almost unlimited usage. (3,675,694 views)
+- https://creator-examples.vercel.app/short-form/nick-saraev/02-google-just-released-15-ai-tools-that-are-completely-free-and-can-save/ : Google just released 15 AI tools that are completely free and can save you thousands of dollars every... (3,331,500 views)
+- https://creator-examples.vercel.app/short-form/nick-saraev/03-china-just-released-another-ai-video-model-that-s-on-par-with-chatgpt/ : China just released another AI video model that's on par with ChatGPT SORA, but it's completely open source. (2,007,918 views)
+- https://creator-examples.vercel.app/short-form/nick-saraev/04-someone-just-leaked-the-full-system-prompts-from-cursor-manis-bolt-lov/ : Someone just leaked the full system prompts from Cursor, Manis, Bolt, Lovable and other AI tools worth... (1,855,948 views)
+- https://creator-examples.vercel.app/short-form/nick-saraev/05-don-t-use-claude-code-unless-you-ve-installed-these-five-plugins/ : Don't use Claude code unless you've installed these five plugins. (1,772,119 views)
+- https://creator-examples.vercel.app/short-form/nick-saraev/06-china-didn-t-just-launch-deepseek-they-also-released-three-more-ai-cha/ : China didn't just launch DeepSeek, they also released three more AI chatbots that are substantially better... (1,687,938 views)
+- https://creator-examples.vercel.app/short-form/nick-saraev/07-claude-code-is-great-at-coding-but-it-usually-struggles-with-front-end/ : Claude code is great at coding, but it usually struggles with front-end design. (1,181,767 views)
+- https://creator-examples.vercel.app/short-form/nick-saraev/08-you-don-t-need-chatgpt-premium-anymore/ : You don't need ChatGPT Premium anymore. (1,092,218 views)
+- https://creator-examples.vercel.app/short-form/nick-saraev/09-with-this-new-ai-tool-you-can-now-create-hyper-realistic-talking-ai-vi/ : With this new AI tool, you can now create hyper-realistic talking AI videos with perfect lip sync, natural... (1,086,280 views)
+- https://creator-examples.vercel.app/short-form/nick-saraev/10-china-just-had-another-deep-seek-moment/ : China just had another deep seek moment. (1,010,161 views)
 
