@@ -79,6 +79,14 @@
    "page": "https://creator-examples.vercel.app/short-form/nick-saraev/",
    "json": "https://creator-examples.vercel.app/data/short-form/nick-saraev.json",
    "count": 10
+  },
+  {
+   "name": "Natalie Fratto",
+   "slug": "natalie-fratto",
+   "type": "short-form",
+   "page": "https://creator-examples.vercel.app/short-form/natalie-fratto/",
+   "json": "https://creator-examples.vercel.app/data/short-form/natalie-fratto.json",
+   "count": 10
   }
  ]
 }

@@ -1,6 +1,6 @@
 ---
 name: creator-examples
-description: Look up Riley Brown's Creator Examples database, a plain-text website of creator content examples (YouTube video intros from Theo t3.gg, Riley Brown, Greg Isenberg, Alex Hormozi, and Kallaway, plus full short-form scripts from the top Instagram reels of Kallaway, Dylan Page, Roberto Nickson (RPN), Cleo Abram, and Nick Saraev). Use whenever Riley or an agent needs reference intros, hooks, or outlier-video examples to study, imitate, compare against, or cite; when asked "what does a good intro look like", "show me Theo's intros", "pull my best intros", "show me Cleo Abram's short form scripts"; or when adding new creators or examples to the database.
+description: Look up Riley Brown's Creator Examples database, a plain-text website of creator content examples (YouTube video intros from Theo t3.gg, Riley Brown, Greg Isenberg, Alex Hormozi, and Kallaway, plus full short-form scripts from the top Instagram reels of Kallaway, Dylan Page, Roberto Nickson (RPN), Cleo Abram, Nick Saraev, and Natalie Fratto). Use whenever Riley or an agent needs reference intros, hooks, or outlier-video examples to study, imitate, compare against, or cite; when asked "what does a good intro look like", "show me Theo's intros", "pull my best intros", "show me Cleo Abram's short form scripts"; or when adding new creators or examples to the database.
 ---
 
 # Creator Examples
@@ -24,7 +24,7 @@ A static, unstyled website that acts as a database of creator content examples. 
 - /intros/greg-isenberg/ : Greg Isenberg top 10 outliers, past year. Intro = produced cold open plus the guest setup, ending at "let's get into it" or "Enjoy the episode".
 - /intros/alex-hormozi/ : Alex Hormozi top 10 outliers, past year. Intro = hook and promise up to the line that starts the first point or business breakdown.
 - /intros/kallaway/ : Kallaway top 10 outliers, past year. Intro = hook, promise, and credibility line up to the sentence that opens section one.
-- /short-form/ : Short Form. Full spoken transcripts of each creator's 10 most-viewed Instagram reels (all time, ranked by play count). Creators: kallaway (sponsored posts left out), dylan-page, roberto-nickson, cleo-abram, nick-saraev. Sponsored reels elsewhere are kept and marked.
+- /short-form/ : Short Form. Full spoken transcripts of each creator's 10 most-viewed Instagram reels (all time, ranked by play count). Creators: kallaway (sponsored posts left out), dylan-page, roberto-nickson, cleo-abram, nick-saraev, natalie-fratto. Sponsored reels elsewhere are kept and marked.
 - /short-form/<creator>/<NN-slug>/ : one page per reel with the spoken hook as title, reel link, views, likes, comments, duration, sponsored flag, the full transcript (one sentence per line) and the original caption.
 - /data/short-form/<creator>.json : the same data as JSON.
 - /intros/<creator>/<NN-slug>/ : one page per example with title, source video link, views, duration, where the intro ends, and the intro text.

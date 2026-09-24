@@ -158,3 +158,18 @@
 - https://creator-examples.vercel.app/short-form/nick-saraev/09-with-this-new-ai-tool-you-can-now-create-hyper-realistic-talking-ai-vi/ : With this new AI tool, you can now create hyper-realistic talking AI videos with perfect lip sync, natural... (1,086,280 views)
 - https://creator-examples.vercel.app/short-form/nick-saraev/10-china-just-had-another-deep-seek-moment/ : China just had another deep seek moment. (1,010,161 views)
 
+## Short Form: Natalie Fratto
+- Creator page: https://creator-examples.vercel.app/short-form/natalie-fratto/
+- JSON: https://creator-examples.vercel.app/data/short-form/natalie-fratto.json
+- Method: Top 10 of 49 Instagram reels on @nataliefratto, all time, ranked by Instagram play count. Sponsored posts are kept and marked (one reel carries a #databrickspartner tag). Her reels run 2 to 3 minutes, past ScrapeCreators' 2-minute transcript limit, so transcripts were made with Whisper large-v3-turbo from the reel audio and lightly corrected for misheard names.
+- https://creator-examples.vercel.app/short-form/natalie-fratto/01-databricks-is-the-hardest-company-i-ve-tried-to-explain-yet/ : Databricks is the hardest company I've tried to explain yet. (6,315,391 views)
+- https://creator-examples.vercel.app/short-form/natalie-fratto/02-this-is-the-weirdest-company-winning-in-ai-part-two/ : This is the weirdest company winning in AI, part two. (4,078,580 views)
+- https://creator-examples.vercel.app/short-form/natalie-fratto/03-i-m-going-to-try-to-explain-the-entire-ai-stack-in-just-two-minutes/ : I'm going to try to explain the entire AI stack in just two minutes. (1,696,862 views) [sponsored]
+- https://creator-examples.vercel.app/short-form/natalie-fratto/04-silicon-valley-has-changed-everything-even-the-way-we-go-to-war/ : Silicon Valley has changed everything, even the way we go to war. (1,141,979 views)
+- https://creator-examples.vercel.app/short-form/natalie-fratto/05-energy-is-getting-really-scarce-for-ai-but-there-s-one-company-that-tu/ : Energy is getting really scarce for AI, but there's one company that turned that problem into a... (755,246 views)
+- https://creator-examples.vercel.app/short-form/natalie-fratto/06-this-one-s-a-little-weird-there-s-a-toilet-manufacturer-in-japan-that/ : This one's a little weird. There's a toilet manufacturer in Japan that's sneakily critical to the... (751,200 views)
+- https://creator-examples.vercel.app/short-form/natalie-fratto/07-the-spacex-origin-story-it-s-even-crazier-than-you-know/ : The SpaceX origin story? It's even crazier than you know. (500,012 views)
+- https://creator-examples.vercel.app/short-form/natalie-fratto/08-you-re-so-wrong-if-you-think-stripe-is-just-a-payments-company/ : You're so wrong if you think Stripe is just a payments company. (428,895 views)
+- https://creator-examples.vercel.app/short-form/natalie-fratto/09-people-talk-about-palantir-all-the-time-it-s-political-it-s-mysterious/ : People talk about Palantir all the time. It's political, it's mysterious, it's controversial, but... (426,751 views)
+- https://creator-examples.vercel.app/short-form/natalie-fratto/10-okay-so-two-siblings-left-openai-because-they-wanted-to-make-a-safer-a/ : Okay, so two siblings left OpenAI because they wanted to make a safer AI company, and just this... (401,570 views)
+

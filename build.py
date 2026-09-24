@@ -23,6 +23,7 @@ SHORT_FORM = [  # order on the Short Form page
     ("roberto-nickson", "Roberto Nickson (RPN)", "data/short-form/roberto-nickson.json"),
     ("cleo-abram", "Cleo Abram", "data/short-form/cleo-abram.json"),
     ("nick-saraev", "Nick Saraev", "data/short-form/nick-saraev.json"),
+    ("natalie-fratto", "Natalie Fratto", "data/short-form/natalie-fratto.json"),
 ]
 
 def slug(s):
